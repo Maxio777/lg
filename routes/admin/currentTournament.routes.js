@@ -19,7 +19,7 @@ router.get('/current-tournament/:id',
                 .populate('homePlayers')
                 .populate('guestPlayers')
                 .populate('homeManagers')
-                .populate('guestManagers')
+                .populate('guestManagers') 
                 .populate('referees')
                 .populate('events')
                 .populate('guest')
