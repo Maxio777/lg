@@ -1,0 +1,84 @@
+<div class="app-container">
+  <div class="title text-center"><h5>{{ editTitle }}</h5></div>
+  <div class="title d-flex flex-row">
+    <div class="w-100 p-4">
+      <div *ngIf="getSelectedItems(existingItems).length" perfectScrollbar>
+        Будут удалены:
+        <ul class="players-ul position-relative">
+          <li *ngFor="let item of getSelectedItems(existingItems)">
+            <mat-icon *ngIf="item.selected" class="lg-close cursor-pointer rotate" (click)="toggleDelete(item)">close</mat-icon>
+            <mat-icon *ngIf="!item.selected" class="lg-close cursor-pointer" (click)="toggleDelete(item)">close</mat-icon>
+            <span>{{ item.lastName }} {{ item.firstName }} {{ item.middleName }}</span>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="" *ngIf="getNotSelectedItems(existingItems).length" >
+        Заявлены на игру:
+        <ul class="players-in-list-game position-relative" perfectScrollbar>
+          <li *ngFor="let item of getNotSelectedItems(existingItems)">
+            <mat-icon class="lg-close cursor-pointer" (click)="toggleDelete(item)">close</mat-icon>
+            <span>{{ item.lastName }} {{ item.firstName }} {{ item.middleName }}</span>
+          </li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <div class="w-100 p-4">
+
+      <div *ngIf="getSelectedItems(getItemsForSelect).length">
+        Будут добавлены:
+        <ul class="players-ul position-relative" perfectScrollbar>
+          <li *ngFor="let item of getSelectedItems(getItemsForSelect)">
+            <label>
+              <mat-checkbox class="mr-3" [(ngModel)]="item.selected" (change)="changeSelectPlayer(item)"></mat-checkbox>
+              <span [class.for-adding]="item.selected">{{ item.lastName }} {{ item.firstName }} {{ item.middleName }}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="getNotSelectedItems(getItemsForSelect).length">
+        Список для выбора:
+        <ul class="players-ul position-relative" perfectScrollbar>
+          <li *ngFor="let item of getNotSelectedItems(getItemsForSelect)">
+            <label>
+              <mat-checkbox class="mr-3" [(ngModel)]="item.selected" (change)="changeSelectPlayer(item)"></mat-checkbox>
+              <span [class.for-adding]="item.selected">{{ item.lastName }} {{ item.firstName }} {{ item.middleName }}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+      <div class="buttons w-100 d-flex flex-row justify-content-end">
+
+        <button mat-raised-button color="warn" class="delete m-2"
+                (click)="cancel()"
+        >Закрыть
+        </button>
+
+        <button mat-raised-button color="primary" class="m-2"
+                [disabled]="!candidatesIds.length && !getSelectedItems(existingItems).length"
+                (click)="submit()"
+        >Сохранить
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+

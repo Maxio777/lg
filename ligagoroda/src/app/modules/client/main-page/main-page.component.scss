@@ -1,0 +1,64 @@
+.main {
+  padding: 50px 15px;
+
+}
+
+.area {
+
+  &__left {
+    padding-right: 15px;
+    padding-left: 0;
+  }
+  &__right {
+
+  }
+}
+
+.footer {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100px;
+  background: #00355D;
+}
+
+.example-card {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.mat-card-title {
+  font-size: 20px;
+}
+
+::ng-deep.mat-tab-label, .mat-tab-link {
+  //font-size: 12px!important;
+  //padding: auto!important;
+  max-width: 140px!important;
+  min-width: unset!important;
+}
+::ng-deep.mat-tab-labels {
+  justify-content: space-around !important;
+}
+
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none!important;
+}
+
+::ng-deep.mat-cell:last-of-type, ::ng-deep.mat-footer-cell:last-of-type, ::ng-deep.mat-header-cell:last-of-type {
+  padding-right: 0;
+}
+
+.container {
+  max-width: 1140px!important;
+}
+
+.mat-tab-label {
+  padding: 0!important;
+  min-width: unset!important;
+}
+
+::ng-deep.row {
+  justify-content: space-around;
+}
+
+

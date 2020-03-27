@@ -1,0 +1,30 @@
+.del {
+  margin-right: 10px;
+  font-weight: bold;
+  &:hover {
+    color: #f44336;
+  }
+}
+
+li {
+  list-style: none;
+  vertical-align: middle;
+  display: flex;
+}
+
+.lg-close {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.5);
+  &:hover {
+    color: #f44336;
+  }
+}
+
+.rotate {
+  transform: rotate(45deg);
+  &:hover {
+    color: green;
+  }
+}
+
+

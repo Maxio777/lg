@@ -1,0 +1,162 @@
+<div class="container my-animation w-100" [style.margin-top.px]="isMainPage ? 30 : 50 ">
+  <mat-card class="games-mat-card">
+  <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+
+
+<!--    ВСЕ ИГРЫ    --------------------------------------------------------------------------------------------------->
+    <mat-tab label="ВСЕ ИГРЫ" class="my-animation" *ngIf="!isMainPage">
+
+  <div *ngFor="let d of uniqDate | slice:isMainPage ? -3 : -99">
+    <mat-card class="example-card" [class.games-card]="isMainPage">
+        <mat-card-title>
+          <div class="date-title">
+          {{ (d | date)?.toUpperCase() }}
+          </div>
+        </mat-card-title>
+
+      <mat-card-content *ngFor="let game of getGamesForView(d)" class="games-list align-middle">
+        <div class="row">
+          <div class="date">
+            {{ game.date | date: 'MM.dd.yy, H:mm' }}
+          </div>
+          <div class="home-team cursor-pointer" (click)="goToRouter(URLS.team, game.home._id)"
+               [class.win]="game.homeGoal > game.guestGoal"
+               [class.loss]="game.homeGoal < game.guestGoal"
+               [class.draw]="game.homeGoal === game.guestGoal"
+          >
+            {{ game.home.name }}
+            <img *ngIf="game?.home?.img" src="{{ game?.home?.img }}">
+          </div>
+          <div class="score cursor-pointer"
+               (click)="goToRouter('/games/', game._id)"
+          >
+            <span *ngIf="game.completed">{{ game.homeGoal }} : {{ game.guestGoal }}</span>
+            <span *ngIf="!game.completed">— : —</span>
+
+          </div>
+          <div class="guest-team cursor-pointer" (click)="goToRouter(URLS.team, game.home._id)"
+               [class.win]="game.homeGoal < game.guestGoal"
+               [class.loss]="game.homeGoal > game.guestGoal"
+               [class.draw]="game.homeGoal === game.guestGoal"
+          >
+            <img *ngIf="game?.guest?.img" src="{{ game.guest.img }}">
+            {{ game.guest.name }}
+          </div>
+          <div class="tour">
+            {{ game.tour }} тур.
+          </div>
+        <p>
+        </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+    </mat-tab>
+
+<!--    ПОСЛЕДНИЕ' : 'СЫГРАННЫЕ     ----------------------------------------------------------------------------------->
+    <mat-tab class="my-animation" label="{{ isMainPage ? 'ПОСЛЕДНИЕ' : 'СЫГРАННЫЕ'}}">
+
+      <div *ngFor="let d of uniqDate | slice:isMainPage ? -3 : -99">
+        <mat-card class="example-card" [class.games-card]="isMainPage" *ngIf="isNeedDate(true, d)">
+          <mat-card-title>
+            <div class="date-title">
+              {{ (d | date).toUpperCase() }}
+            </div>
+          </mat-card-title>
+
+          <mat-card-content *ngFor="let game of getGamesByCompleted(getGamesForView(d), true)" class="games-list align-middle">
+              <div class="row">
+                <div class="date">
+                  {{ game?.date | date: 'MM.dd.yy, H:mm' }}
+                </div>
+                <div class="home-team cursor-pointer" (click)="goToRouter(URLS.team, game.home._id)"
+                     [class.win]="game.homeGoal > game.guestGoal"
+                     [class.loss]="game.homeGoal < game.guestGoal"
+                     [class.draw]="game.homeGoal === game.guestGoal"
+                >
+                  {{ game.home.name }}
+                  <img *ngIf="game?.home?.img" src="{{ game.home.img }}">
+                </div>
+                <div class="score cursor-pointer"
+                     (click)="goToRouter('/games/', game._id)"
+                >
+                  <span *ngIf="game.completed">{{ game.homeGoal }} : {{ game.guestGoal }}</span>
+                  <span *ngIf="!game.completed">— : —</span>
+
+                </div>
+                <div class="guest-team cursor-pointer" (click)="goToRouter(URLS.team, game.home._id)"
+                     [class.win]="game.homeGoal < game.guestGoal"
+                     [class.loss]="game.homeGoal > game.guestGoal"
+                     [class.draw]="game.homeGoal === game.guestGoal"
+                >
+                  <img *ngIf="game?.guest?.img" src="{{ game.guest.img }}">
+                  {{ game.guest.name }}
+                </div>
+                <div class="tour">
+                  {{ game.tour }} тур.
+                </div>
+                <p>
+                </p>
+              </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+
+    </mat-tab>
+    <mat-tab class="my-animation" label="ПРЕДСТОЯЩИЕ" [disabled]="!isHasNoCompleted()">
+      <div class="no-game" *ngIf="!isHasNoCompleted()">
+        Игры еще не назначены.
+      </div>
+
+      <div *ngFor="let d of uniqDate | slice:0: isMainPage ? 3 : 99">
+        <mat-card class="example-card" [class.games-card]="isMainPage" *ngIf="isNeedDate(false, d)">
+          <mat-card-title>
+            <div class="date-title">
+              {{ (d | date)?.toUpperCase() }}
+            </div>
+          </mat-card-title>
+
+          <mat-card-content *ngFor="let game of getGamesForView(d)" class="games-list align-middle">
+            <div *ngIf="!game.completed">
+              <div class="row">
+                <div class="date">
+                  {{ (game?.date | date: 'MM.dd.yy, H:mm') || 'Время не назначено' }}
+                </div>
+                <div class="home-team cursor-pointer" (click)="goToRouter(URLS.team, game.home._id)">
+                  {{ game.home.name }}
+                  <img *ngIf="game?.home?.img" src="{{ game.home.img }}">
+                </div>
+                <div class="score cursor-pointer"
+                     (click)="goToRouter(URLS.game, game._id)"
+                >
+                  <span>— : —</span>
+                </div>
+                <div class="guest-team cursor-pointer"
+                     (click)="goToRouter(URLS.team, game.home._id)">
+                  <img *ngIf="game?.guest?.img" src="{{ game.guest.img }}">
+                  {{ game.guest.name }}
+                </div>
+                <div class="tour">
+                  {{ game.tour }} тур.
+                </div>
+                <p>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+    <button mat-raised-button color="warn" class="showMore"
+            *ngIf="isMainPage"
+            (click)="goToRouter(URLS.games)"
+    >ВСЕ ИГРЫ</button>
+  </mat-card>
+</div>

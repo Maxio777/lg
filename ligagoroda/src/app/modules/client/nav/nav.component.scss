@@ -1,0 +1,162 @@
+.sidenav-container {
+  height: calc(100% - 120px);
+}
+
+.logo-tournament {
+  //left: 20px;
+  top: 15px;
+  padding: 1px;
+}
+
+.logo {
+  height: 120px;
+  border: 1px solid #f1f1f1;
+  margin-left: 10px;
+}
+
+@media (max-width: 700px) {
+  .logo-tournament {
+    left: 60px;
+    top: 7px;
+  }
+
+  .logo {
+    height: 55px;
+  }
+}
+
+//.home-background {
+//  //background-image: url(/assets/img/stadium-background.jpg);
+//  background-position: left top;
+//  background-color: #CFD8E1;
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  height: 120px;
+  padding: 0;
+}
+
+.menu-desktop {
+  z-index: 4;
+}
+
+.header {
+  margin-top: 10px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  height: 70px;
+}
+
+.header-bottom {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: #00355D	;
+  height: 50px;
+}
+
+.header-title {
+  vertical-align: bottom;
+  z-index: 0;
+  background-color: unset;
+  height: 32px;
+  margin: 0 auto -32px;
+  color: #00355D;
+  font-size: 16px;
+}
+
+.title {
+  margin-top: -7px;
+  z-index: 5;
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  border: 1px solid #d7d8dc;
+  border-top-width: 0;
+  border-radius: 0px 0px 31px 31px;
+}
+
+.index-main {
+  margin-top: 40px;
+  background-color: white;
+  border-radius: 4px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.mat-toolbar {
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.mat-toolbar.mat-primary {
+  background: #00518F;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.liga {
+  font-family: Romic SH Light;
+  margin-left: 30px;
+  font-size: 32px;
+}
+
+.menu-desktop {
+  text-align: right;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:focus {
+  outline: 0px;
+  outline: 0px;
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin-top: 0;
+  }
+  .sidenav-container {
+    height: calc(100% - 70px);
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 70px;
+  }
+}
+
+.left-menu {
+  margin-right: 7px;
+}
+
+.mat-list-item.active{
+  color: #51A351;
+  mat-icon {
+    margin-left: 10px;
+  }
+}

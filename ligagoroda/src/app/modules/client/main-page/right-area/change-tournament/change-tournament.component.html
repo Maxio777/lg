@@ -1,0 +1,5 @@
+<mat-form-field>
+  <mat-select (selectionChange)="changeTournament($event)" required [value]="currentTournamentId | async">
+    <mat-option [value]="tournament._id" *ngFor="let tournament of tournaments">{{ tournament.name }}</mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,48 @@
+
+<div class="app-container">
+  <div class="col-12">
+    <div [formGroup]="form" class="text-center flex-row">
+
+      <mat-form-field appearance="legacy">
+        <mat-select placeholder="Тип события" required formControlName="type">
+          <mat-option [value]="type" *ngFor="let type of types">{{ TYPES_EVENTS[type] }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <input label="" type="number" matInput placeholder="Минута" formControlName="minute">
+        <!--<mat-hint>Hint</mat-hint>-->
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-select placeholder="Автор" required formControlName="owner">
+          <mat-option [value]="player._id" *ngFor="let player of players">{{ player.firstName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-select placeholder="Ассистент" formControlName="assistant">
+          <mat-option [value]="player._id" *ngFor="let player of players">{{ player.firstName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="buttons w-100 d-flex flex-row justify-content-end">
+
+      <button mat-raised-button color="warn" class="delete m-2"
+              (click)="cancel()"
+      >Закрыть
+      </button>
+
+      <button mat-raised-button color="primary" class="m-2"
+              (click)="submit()"
+      >Сохранить
+      </button>
+
+    </div>
+
+  </div>
+
+
+</div>

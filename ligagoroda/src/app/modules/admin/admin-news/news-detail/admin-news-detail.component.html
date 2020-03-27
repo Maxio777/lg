@@ -1,0 +1,56 @@
+<div class="pt-5">
+  <div class="col-12 d-flex flex-row">
+    <div class="col-8">
+
+      <div [formGroup]="form" class="text-center flex-row">
+
+        <mat-form-field appearance="fill">
+          <input label="" type="text" matInput placeholder="Заголовок" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <textarea  label="" type="text" matInput placeholder="Привью" formControlName="textPreview"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <textarea  label="" type="text" matInput placeholder="Текст" formControlName="text"></textarea>
+        </mat-form-field>
+
+
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <div class="">
+        <img class="w-100" src="{{ news?.img }}" alt="">
+      </div>
+
+      <br>
+      <app-admin-file-upload [kind]="kind" [_id]="news?._id"></app-admin-file-upload>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div class="buttons w-100 d-flex flex-row justify-content-end">
+    <button mat-raised-button color="warn" class="delete m-2"
+            (click)="goToBack()"
+    >Назад
+    </button>
+
+    <button mat-raised-button color="primary" class="m-2"
+            (click)="postOrUpdate()"
+    >Сохранить
+    </button>
+
+  </div>
+
+</div>

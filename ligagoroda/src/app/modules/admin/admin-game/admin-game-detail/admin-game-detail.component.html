@@ -1,0 +1,251 @@
+<button (click)="showToast()">Show toast</button>
+
+<div class="w-100 d-flex flex-column pt-5">
+
+  <div class="d-flex flex-column">
+    <div class="col-12">
+      <div [formGroup]="form" class="text-center flex-row">
+
+        <mat-form-field appearance="legacy">
+          <mat-select placeholder="Турнир" required formControlName="tournament">
+            <mat-option [value]="tournament?._id" *ngFor="let tournament of tournaments">{{ tournament.name }}</mat-option>
+          </mat-select>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-select placeholder="Хозяева" required formControlName="home">
+            <mat-option [value]="team?._id" *ngFor="let team of teams">{{ team?.name }}</mat-option>
+          </mat-select>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-select placeholder="Гости" required formControlName="guest">
+            <mat-option [value]="team?._id" *ngFor="let team of teams">{{ team?.name }}</mat-option>
+          </mat-select>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <input #in type="datetime-local" label="" matInput placeholder="Дата" formControlName="date">
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <input label="" type="number" matInput placeholder="Тур" formControlName="tour">
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <input label="" matInput placeholder="Голы хозяева" formControlName="homeGoal">
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <input label="" matInput placeholder="Голы гости" formControlName="guestGoal">
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-checkbox formControlName="completed">Завершен/Незавершен</mat-checkbox>
+
+
+      </div>
+
+    </div>
+
+<!--    СОБЫТИЯ-->
+    <div class="text-left" *ngIf="game">
+      <div class="unit referees text-center">
+        <h5>События
+          <button mat-stroked-button class="ml-4"
+                  (click)="editSelect(null, 'events')"
+          >
+            Add
+          </button>
+        </h5>
+
+        <ul>
+          <li *ngFor="let event of game?.events">
+            <pre>{{ event | json }}</pre>
+          </li>
+        </ul>
+      </div>
+
+<!--    СУДЬИ-->
+    <div class="text-left" *ngIf="game && game._id">
+      <div class="unit referees text-center">
+        <h5>Судейский состав
+          <button mat-stroked-button class="ml-4"
+                  (click)="editSelect(null,'referees')"
+          >
+            Edit
+          </button>
+        </h5>
+
+        <ul>
+          <li *ngFor="let referee of game?.referees">
+            {{ referee.lastName }} {{ referee.firstName }} {{ referee.middleName }}
+          </li>
+        </ul>
+      </div>
+
+      <!--          РУКОВОДСТВО-->
+      <div class="teams d-flex flex-column">
+        <div class="management d-flex flex-row justify-content-around">
+
+
+          <div class="unit home-managers">
+            <h5>Менеджеры хозяева
+              <button mat-stroked-button class="ml-4" (click)="editSelect(null, 'homeManagers')">Edit</button>
+            </h5>
+            <ul>
+              <li *ngFor="let hManager of game?.homeManagers">
+                {{ hManager.lastName }} {{ hManager.firstName }} {{ hManager.middleName }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="unit guest-managers">
+            <h5>Менеджеры гостей
+              <button mat-stroked-button class="ml-4" (click)="editSelect(null, 'guestManagers')">
+                Edit
+              </button>
+            </h5>
+            <ul>
+              <li *ngFor="let gManager of game?.guestManagers">
+                {{ gManager.lastName }} {{ gManager.firstName }} {{ gManager.middleName }}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+          <div class="unit teams-players d-flex flex-row justify-content-around">
+
+            <!--          ИГРОКИ-->
+            <div class="unit home-players">
+              <h5>Состав хозяев
+                <button mat-stroked-button class="ml-4"
+                        (click)="editSelect(null, 'homePlayers')"
+                >
+                  Edit
+                </button>
+              </h5>
+              <ul>
+                <li *ngFor="let hPlayer of game?.homePlayers">
+                  {{ hPlayer.lastName }} {{ hPlayer.firstName }} {{ hPlayer.middleName }}
+                  <span *ngFor="let ev of getEventsForPlayer(hPlayer)"> :: {{ev.minute}} {{ev.type}}
+
+                    <mat-icon class="cursor-pointer" (click)="editSelect(null, 'events'); currentEv = ev">edit</mat-icon></span>
+
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="unit guest-players">
+
+              <h5>Состав гостей
+                <button mat-stroked-button class="ml-4"
+                        (click)="editSelect(null, 'guestPlayers')"
+                >
+                  Edit
+                </button>
+              </h5>
+              <ul>
+                <li *ngFor="let gPlayer of game?.guestPlayers">
+                  {{ gPlayer.lastName }} {{ gPlayer.firstName }} {{ gPlayer.middleName }}
+                  <span *ngFor="let ev of getEventsForPlayer(gPlayer)"> :: {{ev.minute}} {{ev.type}}
+
+                    <mat-icon class="cursor-pointer" (click)="editSelect(ev, 'events')">edit</mat-icon></span>
+                </li>
+              </ul>
+            </div>
+
+
+          </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<hr>
+
+<div class="buttons w-100 d-flex flex-row justify-content-end">
+  <button mat-raised-button color="warn" class="delete m-2"
+          (click)="editSelect(null)"
+  >Отменить изменения
+  </button>
+
+  <button mat-raised-button color="primary" class="m-2"
+          (click)="save()"
+  >Сохранить
+  </button>
+
+</div>
+
+<!--<pre>{{ isEdit | json }}</pre>-->
+<pre>{{ game?.tournament?.format | json }}</pre>
+
+  <app-edit-events *ngIf="isEdit.events && getAllGamePlayers().length"
+                   [players]="getAllGamePlayers()"
+                   [format]="game?.tournament?.format"
+                   [event]="currentEv"
+                   (cancelEdit)="editSelect(null)"
+                   (newEvent)="createEvent($event)"
+  ></app-edit-events>
+
+<app-add-items *ngIf="isEdit.homeManagers"
+               [items]="managers"
+               [existingItems]="game?.homeManagers"
+               [editTitle]="'Менеджеры хозяев'"
+               (cancelEdit)="editSelect(null)"
+               (submitItems)="updateItems('homeManagers', $event)"
+></app-add-items>
+
+<!--Менеджеры гостей-->
+<app-add-items *ngIf="isEdit.guestManagers"
+               [items]="managers"
+               [existingItems]="game?.guestManagers"
+               [editTitle]="'Менеджеры гостей'"
+               (cancelEdit)="editSelect(null)"
+               (submitItems)="updateItems('guestManagers', $event)"
+></app-add-items>
+
+<!--Судьи-->
+<app-add-items *ngIf="isEdit.referees"
+               [items]="referees"
+               [existingItems]="game?.referees"
+               [editTitle]="'Судьи'"
+               (cancelEdit)="editSelect(null)"
+               (submitItems)="updateItems('referees', $event)"
+></app-add-items>
+
+<!--Игроки гостей-->
+<app-add-items *ngIf="isEdit.guestPlayers"
+               [items]="game?.guest.players"
+               [existingItems]="game?.guestPlayers"
+               [editTitle]="'Игроки гостей'"
+               (cancelEdit)="editSelect(null)"
+               (submitItems)="updateItems('guestPlayers', $event)"
+></app-add-items>
+
+<!--Игроки хозяев-->
+<app-add-items *ngIf="isEdit.homePlayers"
+               [items]="game?.home?.players"
+               [existingItems]="game?.homePlayers"
+               [editTitle]="'Игроки хозяев'"
+               (cancelEdit)="editSelect(null)"
+               (submitItems)="updateItems('homePlayers', $event)"
+></app-add-items>
+
+
+
+</div>

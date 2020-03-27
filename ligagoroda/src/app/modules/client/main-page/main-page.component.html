@@ -1,0 +1,12 @@
+<div class="container main" >
+  <div class="d-flex area w-100"  >
+    <div class="area__left col-{{ isAdmin ? 12 : 8 }}">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="area__right col-4" *ngIf="!isAdmin">
+      <app-right-area></app-right-area>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+

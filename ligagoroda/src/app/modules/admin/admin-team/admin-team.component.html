@@ -1,0 +1,256 @@
+
+<div class="d-flex flex-row pt-5">
+  <div class="col-{{currentTeamId || openAdd ? 6 : 12}}">
+    <div class="mat-elevation-z8">
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-row pt-4 flex-grow-1">
+          <mat-form-field class="col-5">
+            <input label="" matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск" #value>
+            <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="applyFilter(''); value.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <button mat-mini-fab color="accent" class="float-right mr-5 m-auto open-close-add" (click)="openADD()" *ngIf="!openAdd">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+
+      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef >id</th>
+          <td mat-cell *matCellDef="let row; let idx = index;">{{row._id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Название</th>
+          <td mat-cell *matCellDef="let row">{{row.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="selected">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+
+            <div class="d-flex flex-row">
+              <div class="m-auto align-middle flex-grow-1">
+
+                <mat-checkbox
+                  (change)="offOtherCheck(row, $event.checked);"
+                  [(ngModel)]="row.selected">
+                </mat-checkbox>
+
+              </div>
+
+              <div class="m-auto align-middle flex-grow-1 cursor-pointer">
+                <mat-icon (click)="deleteTeamLG(row._id)">delete</mat-icon>
+              </div>
+
+            </div>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [length]="dataSource?.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 15, 20, 25]">
+      </mat-paginator>
+    </div>
+  </div>
+
+
+<!--  Редактирование названия-->
+
+
+  <div class="col-6 form py-4" *ngIf="currentTeamId || openAdd">
+    <div class="d-flex flex-row justify-content-around align-middle">
+      <h4 class="my-auto"> {{ !openAdd && currentTeamId ? 'Редактирование команды ' + currentTeam.name : 'Добавление' }}</h4>
+      <button mat-raised-button color="accent" class="delete m-2"
+              (click)="resetAllChanges()"
+      >Закрыть
+      </button>
+    </div>
+    <hr>
+
+    <div [formGroup]="form" class="text-center" *ngIf="!addPlayer && !addManager && isEditTeamName">
+
+      <mat-form-field>
+        <mat-label>Название</mat-label>
+        <input label="" matInput placeholder="Фамилия" formControlName="name" appInputTrim (inputTrim)="form.get('name').setValue($event)" required>
+        <!--<mat-hint>Hint</mat-hint>-->
+      </mat-form-field>
+
+    </div>
+    <div class="buttons w-100 d-flex flex-row" *ngIf="!addPlayer && !addManager && isEditTeamName">
+      <button mat-raised-button color="warn" class="delete m-2 btn-block"
+              (click)="cancel()"
+      >Отменить
+      </button>
+
+      <button mat-raised-button color="primary" class="m-2 btn-block"
+              *ngIf="openAdd && !currentTeamId"
+              [disabled]="!form.valid"
+              (click)="addTeamLG()"
+      >Добавить
+      </button>
+      <button mat-raised-button color="accent" class="delete m-2 btn-block"
+              *ngIf="!openAdd && currentTeamId"
+              [disabled]="!currentTeamId || form.controls.name.value === currentTeam.name"
+              (click)="updateTeamLG(currentTeamId)"
+      >Обновить название
+      </button>
+
+    </div>
+
+<!--Sub Menu-->
+    <div class="sub-action" *ngIf="(!addPlayer && !addManager && !isEditTeamName) && currentTeamId">
+      <button mat-raised-button class="delete m-2"
+              (click)="toggleAddPlayer()"
+      >Редактировать состав
+      </button>
+      <button mat-raised-button class="delete m-2"
+              (click)="toggleAddManager()"
+      >Редактировать руководство
+      </button>
+      <button mat-raised-button class="delete m-2"
+              (click)="toggleEditTeamName()"
+      >Редактировать Название
+      </button>
+
+      <app-admin-file-upload [kind]="kind" [_id]="currentTeamId"></app-admin-file-upload>
+    </div>
+
+
+
+<!--    Редактирование игроков-->
+
+
+
+    <div class="d-flex flex-row">
+      <div class="col-6">
+
+        <div class="player-list" *ngIf="currentTeamId && currentTeam.players.length && addPlayer">
+          <h5>Состав команды <strong>{{ currentTeam?.name }}</strong>:</h5>
+          <ul>
+            <li *ngFor="let player of currentTeam?.players">
+              {{ player?.lastName }} {{ player?.firstName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-6 flex-column" *ngIf="addPlayer && currentTeamId">
+
+        <mat-form-field class="flex-grow-1">
+          <input label="" matInput (keyup)="filterForAddList($event.target.value)" placeholder="Введите имя игрока" #value>
+          <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="filterForAddList(''); value.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="players-select">
+          <span *ngIf="getSelectedPlayers().length">Выбранные</span>
+          <ul class="players-ul position-relative" perfectScrollbar>
+            <li *ngFor="let player of getSelectedPlayers()">
+              <label>
+                <mat-checkbox class="mr-3" [(ngModel)]="player.selected" (change)="changeSelectPlayer(player)"></mat-checkbox>
+                <span [class.for-adding]="player.selected">{{ player.lastName }} {{ player.firstName }} {{ player.middleName }}</span>
+              </label>
+            </li>
+          </ul>
+          Все игроки
+          <ul class="players-ul position-relative" perfectScrollbar>
+            <li *ngFor="let player of getNotSelectedPlayers()">
+              <label>
+                <mat-checkbox class="mr-3" [(ngModel)]="player.selected" (change)="changeSelectPlayer(player)"></mat-checkbox>
+                <span [class.for-adding]="player.selected">{{ player.lastName }} {{ player.firstName }} {{ player.middleName }}</span>
+              </label>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons w-100 d-flex flex-row" *ngIf="addPlayer && currentTeamId">
+
+      <button mat-raised-button color="primary" class="delete m-2 btn-block"
+              (click)="toggleAddPlayer()"
+      >Отменить
+      </button>
+
+      <button mat-raised-button color="accent" class="delete m-2 btn-block"
+              [disabled]="!!(!candidatesIds.length)"
+              (click)="updateTeamLG(currentPlayerId)"
+      >Сохранить
+      </button>
+
+    </div>
+
+
+    <!--   Редактирование менеджеров-->
+
+    <div class="d-flex flex-row">
+      <div class="col-6">
+
+        <div class="player-list" *ngIf="currentTeamId && currentTeam.managers.length && addManager">
+          <h5>Менеджеры</h5>
+          <ul>
+            <li *ngFor="let manager of currentTeam?.managers">
+              {{ manager?.lastName }} {{ manager?.firstName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-6 flex-column" *ngIf="addManager && currentTeamId">
+
+        <mat-form-field class="flex-grow-1">
+          <input label="" matInput (keyup)="filterForAddListManager($event.target.value)" placeholder="Введите имя игрока" #value>
+          <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="filterForAddListManager(''); value.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="players-select">
+          Все менеджеры
+          <ul class="players-ul position-relative" perfectScrollbar>
+            <li *ngFor="let manager of filteredManagersForAdd">
+              <label>
+                <mat-checkbox class="mr-3" [(ngModel)]="manager.selected" (change)="changeSelectManager(manager)"></mat-checkbox>
+                <span [class.for-adding]="manager.selected">{{ manager.lastName }} {{ manager.firstName }} {{ manager.middleName }}</span>
+              </label>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons w-100 d-flex flex-row" *ngIf="addManager && currentTeamId">
+
+      <button mat-raised-button color="primary" class="delete m-2 btn-block"
+              (click)="toggleAddManager()"
+      >Отменить
+      </button>
+
+      <button mat-raised-button color="accent" class="delete m-2 btn-block"
+              [disabled]="!!(!candidatesManagerIds.length)"
+              (click)="updateTeamLG(currentTeamId)"
+      >Сохранить
+      </button>
+
+    </div>
+
+
+  </div>
+</div>
+

@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@import '~@angular/material/theming';
+
+//$custom-typography: mat-typography-config($font-family: '"Oswald", sans-serif;');
+//@include mat-core($custom-typography);
+
+$custom-primary: mat-palette($mat-indigo);
+$custom-accent: mat-palette($mat-deep-orange);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent);
+@include angular-material-theme($custom-theme)
+
+//00508f
+
+html, body { height: 100%; }
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+.container {
+  background: white;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.my-animation {
+  animation: move 500ms;
+  animation-fill-mode: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: unset;
+}
+
+.showMore {
+  width: 100%;
+  outline:none;
+}
+
+@keyframes move {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.98);
+    //-moz-transform: scale(0.98);
+    //-o-transform: scale(0.98);
+  }
+  to{
+    opacity: 1;
+    //-webkit-transform: scale(1);
+    //-moz-transform: scale(1);
+    //-o-transform: scale(1);
+  }
+}
+
+.open-close-add {
+  right: 3%;
+}
+
+.toast {
+  opacity: 1!important;
+  box-shadow: 0 0 12px #000000!important;
+  background-color: #030303;
+  pointer-events: auto;
+}
+.toast-success {
+  background-color: #51A351;
+}
+.toast-error {
+  background-color: #BD362F;
+}
+.toast-info {
+  background-color: #2F96B4;
+}
+.toast-warning {
+  background-color: #F89406;
+}
+.toast-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background-color: #000000;
+  opacity: 0.4;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  background: white;
+  left: 25%;
+  top: 17%;
+  right: 25%;
+  bottom: 2%;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.25), 0 4px 23px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  padding: 20px;
+  overflow: auto;
+}
+
+.mat-card:not([class*='mat-elevation-z']) {
+  box-shadow: 0px -1px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}

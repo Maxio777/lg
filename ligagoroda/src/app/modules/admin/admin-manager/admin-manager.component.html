@@ -1,0 +1,168 @@
+<div class="d-flex flex-row pt-5">
+  <div class="col-{{selectedManagerId || openAdd ? 8 : 12}}">
+    <div class="mat-elevation-z8">
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-row pt-4 flex-grow-1">
+          <mat-form-field class="col-5">
+            <input label="" matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск" #value>
+          <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="applyFilter(''); value.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <button mat-mini-fab color="accent" class="float-right mr-5 m-auto open-close-add" (click)="openADD()" *ngIf="!openAdd">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+
+    <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef >#</th>
+        <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Фото</th>
+        <td mat-cell *matCellDef="let row"  class="cursor-pointer"
+        >
+          <img src="{{row.image ? row.image : '../../assets/img/defaultImage.webp'}}" alt="">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Фамилия</th>
+        <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
+        <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="middleName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Отчество</th>
+        <td mat-cell *matCellDef="let row">{{row.middleName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="birthday">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата рождения</th>
+        <td mat-cell *matCellDef="let row">{{ row.birthday | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="selected">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+
+          <div class="d-flex flex-row">
+            <div class="m-auto align-middle flex-grow-1">
+
+              <mat-checkbox
+                (change)="offOtherCheck(row._id, row.selected);"
+                [(ngModel)]="row.selected">
+              </mat-checkbox>
+
+            </div>
+
+            <div class="m-auto align-middle flex-grow-1 cursor-pointer">
+              <mat-icon (click)="deleteManagerLG(row._id)">delete</mat-icon>
+            </div>
+
+          </div>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator
+                   [length]="dataSource?.data.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[10, 15, 20, 25]">
+    </mat-paginator>
+  </div>
+</div>
+
+
+
+<div class="col-4 form py-4" *ngIf="selectedManagerId || openAdd">
+  <div [formGroup]="form" class="text-center">
+
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input label="" matInput placeholder="Фамилия" formControlName="lastName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)" required>
+      <!--<mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input label="" matInput placeholder="Имя" formControlName="firstName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)" required>
+      <!--<mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Отчество</mat-label>
+      <input label="" matInput placeholder="Отчество" formControlName="middleName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)">
+      <!--<mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input label="" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="birthday" dataformatas="MMM:dd" appInputTrim (inputTrim)="form.get('birthday').setValue($event)" [required]=false>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+      <!--<mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+
+    <!--<mat-hint>Hint</mat-hint>-->
+
+
+
+
+  </div>
+  <div class="buttons w-100 d-flex flex-row">
+    <button mat-raised-button color="warn" class="delete m-2 btn-block"
+            (click)="cancel()"
+    >Отменить
+    </button>
+
+    <button mat-raised-button color="primary" class="m-2 btn-block"
+            *ngIf="openAdd && !selectedManagerId"
+            [disabled]="!form.valid"
+            (click)="addManagerLG()"
+    >Добавить
+    </button>
+    <button mat-raised-button color="accent" class="delete m-2 btn-block"
+            *ngIf="!openAdd && selectedManagerId"
+            [disabled]="!selectedManagerId"
+            (click)="updateManagerLG(selectedManagerId)"
+    >Обновить
+    </button>
+  </div>
+
+</div>
+
+
+
+
+
+<!--<form class="example-container" [formGroup]="options" [style.fontSize.px]="getFontSize()">-->
+<!--<mat-form-fields [color]="options.value.color">-->
+<!--<mat-select placeholder="Color" formControlName="color">-->
+<!--<mat-option value="primary">Primary</mat-option>-->
+<!--<mat-option value="accent">Accent</mat-option>-->
+<!--<mat-option value="warn">Warn</mat-option>-->
+<!--</mat-select>-->
+<!--</mat-form-fields>-->
+
+<!--<mat-form-fields [color]="options.value.color">-->
+<!--<input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10">-->
+<!--<mat-error *ngIf="options.get('fontSize')?.invalid">Min size: 10px</mat-error>-->
+<!--</mat-form-fields>-->
+<!--</form>>-->
+
+

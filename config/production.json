@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "liga secret",
+  "mongoUri": "mongodb+srv://max:1@cluster0-wwrfv.azure.mongodb.net/app2?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}

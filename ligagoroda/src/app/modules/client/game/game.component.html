@@ -1,0 +1,130 @@
+<!--<pre>{{ game | json }}</pre>-->
+
+<div class="tournament text-center">
+  <div class="title">
+    <h2>{{ game?.tournament.name }}</h2>
+  </div>
+  <div class="dates">
+    Даты проведения:
+    <p>{{ game?.tournament?.dateStart | date: 'dd.MM.yyyy' }} - {{ game?.tournament?.dateEnd | date: 'dd.MM.yyyy' }}</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="text-center">
+  <div class="date">
+    {{ game?.date | date: 'dd MMMM yyyy' }}
+  </div>
+  <div class="tour">
+    {{ game?.tour }} тур.
+  </div>
+  <div class="completed">
+    {{ game?.completed ? 'Матч окончен' : 'Матч не начался' }}
+  </div>
+</div>
+
+<div class="score d-flex flex-row text-center">
+  <div class="home col-5 d-flex flex-column">
+    <div class="home-logo">
+      <img src="{{ game?.home.img }}" alt="">
+    </div>
+    <div class="home-name p-2">{{ game?.home.name }}</div>
+  </div>
+  <div class="result col-2 align-middle d-flex align-items-center justify-content-center">
+    <span class="t"><h1>{{ game?.homeGoal }} - {{ game?.guestGoal }}</h1></span>
+  </div>
+  <div class="guest col-5 d-flex flex-column">
+    <div class="guest-logo">
+      <img src="{{ game?.guest?.img }}" alt="">
+    </div>
+    <div class="guest-name p-2">{{ game?.guest?.name }}</div>
+  </div>
+</div>
+
+<div *ngIf="game?.referees.length" class="referees m-auto">
+  <h3 class="m-auto text-center">Судьи</h3>
+  <div class="text-center" *ngFor="let ref of game?.referees">
+    <p>{{ ref.firstName}} {{ ref.lastName}} {{ ref.middleName }}</p>
+
+  </div>
+</div>
+
+
+
+<!--События-->
+<div *ngIf="true" class="goals">
+  <h3 class="m-auto text-center">Голы</h3>
+  <div *ngFor="let event of game?.events"  class="goal d-flex flex-row">
+    <div class="home-goal">
+      <span *ngIf="isHomePlayer(event?.owner?._id)">
+        {{ event?.owner?.lastName }} {{ event?.owner?.firstName }}
+        ({{ event?.assistant?.lastName }} {{ event?.assistant?.firstName }})
+      </span>
+    </div>
+    <div class="time-goal">{{ event.minute }}`</div>
+    <div class="guest-goal">
+       <span *ngIf="!isHomePlayer(event?.owner?._id)">
+        {{ event?.owner?.lastName }} {{ event?.owner?.firstName }}
+         ({{ event?.assistant?.lastName }} {{ event?.assistant?.firstName }})
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!--<div *ngIf="game?.punishment.length" class="punishment">-->
+<!--  <h3 class="m-auto text-center">Наказания</h3>-->
+<!--  <div *ngFor="let punishment of game?.punishment"  class="punishment d-flex flex-row">-->
+<!--    <div class="home-punishment">-->
+<!--      <span *ngIf="punishment.is_home">-->
+<!--        {{ punishment.player.last_name }} {{ punishment.player.first_name }} - {{ punishment.type_punishment }}-->
+<!--      </span>-->
+<!--    </div>-->
+<!--    <div class="time-punishment">{{ punishment.time }}`</div>-->
+<!--    <div class="guest-punishment">-->
+<!--       <span *ngIf="!punishment.is_home">-->
+<!--         {{ punishment.type_punishment }} - {{ punishment.player.last_name }} {{ punishment.player.first_name }}-->
+<!--      </span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<h3 class="m-auto text-center">Составы</h3>
+<div class="player-lists d-flex w-100 flex-row">
+  <div class="home-players col-6">
+    <table>
+      <caption>{{ game?.home.name }}</caption>
+      <tr>
+        <th class="number">№</th>
+        <th class="photo-player"></th>
+        <th class="player">Игрок</th>
+
+      </tr> <!--ряд с ячейками заголовков-->
+      <tr *ngFor="let player of game?.homePlayers">
+        <td class="number">{{ player?.number || 0}}</td>
+        <td class="photo-player"><img src="{{ player?.image ? player.image : '../../assets/img/defaultImage.webp' }}" alt=""></td>
+        <td class="player">{{ player.lastName }} {{ player.firstName }}</td>
+      </tr> <!--ряд с ячейками тела таблицы-->
+    </table>
+  </div>
+  <div class="guest-players col-6">
+    <table>
+      <caption>{{ game?.guest.name }}</caption>
+      <tr>
+        <th class="number">№</th>
+        <th class="photo-player"></th>
+        <th class="player">Игрок</th>
+
+      </tr> <!--ряд с ячейками заголовков-->
+      <tr *ngFor="let player of game?.guestPlayers">
+        <td class="number">{{ player?.number }}</td>
+        <td class="photo-player"><img src="{{ player?.image ? player.image : '../../assets/img/defaultImage.webp' }}" alt=""></td>
+        <td class="player">{{ player.lastName }} {{ player.firstName }}</td>
+      </tr> <!--ряд с ячейками тела таблицы-->
+    </table>
+  </div>
+
+</div>
+

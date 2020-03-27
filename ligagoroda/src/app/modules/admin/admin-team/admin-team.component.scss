@@ -1,0 +1,44 @@
+img {
+  height: 40px;
+}
+
+.full-width-table {
+  width: 100%;
+  //padding-bottom: 15px;
+}
+
+.form mat-form-field {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 90%;
+}
+
+mat-form-field {
+  margin: 10px;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 8px;
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: orange;
+}
+
+.editPlayer {
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  text-align: center;
+}
+
+.players-ul {
+  height: 100%;
+}
+
+.for-adding {
+  font-weight: bold;
+}
