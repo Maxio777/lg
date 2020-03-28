@@ -33,7 +33,7 @@ app.use('/api/v1/admin', require('./routes/admin/uploadFile.routes'));
 app.use('/api/v1/', require('./routes/settings.routes'));
 
 if (process.env.NODE_ENV === 'production') {
-    app.use('/', express.static(path.join(__dirname, 'ligagoroda', 'dist')));
+    app.use('/', express.static(path.join(__dirname, 'ligagoroda', 'dist', 'ligagoroda')));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'ligagoroda', 'dist', 'ligagoroda', 'index.html' ))
