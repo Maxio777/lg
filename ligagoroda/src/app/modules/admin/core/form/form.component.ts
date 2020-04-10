@@ -7,7 +7,7 @@ import { News } from '../../../../models/news';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.sass']
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({});

@@ -9,7 +9,7 @@ import { ClientDataService } from '../../services/client-data/client-data.servic
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.sass'],
+  styleUrls: ['./news-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsListComponent implements OnInit {
