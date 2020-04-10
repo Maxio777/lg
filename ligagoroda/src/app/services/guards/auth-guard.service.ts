@@ -2,7 +2,6 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { URLS } from '../../assets/constants';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()

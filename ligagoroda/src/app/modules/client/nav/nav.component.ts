@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
-import { AuthService } from '../../../services/auth/auth.service';
-// import { AuthService } from '../../../services/auth/auth.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -26,11 +25,8 @@ export class NavComponent implements OnInit, OnDestroy {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router,
-    private route: ActivatedRoute,
     public dataService: DataService,
     private cd: ChangeDetectorRef,
-    private authService: AuthService
-    // private authService: AuthService ,
   ) {}
 
   ngOnInit(): void {
