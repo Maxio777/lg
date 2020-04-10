@@ -12,11 +12,13 @@ import { AdminTeamDetailComponent } from './admin-team/admin-team-detail/admin-t
 import { AdminGameDetailComponent } from './admin-game/admin-game-detail/admin-game-detail.component';
 import { AdminNewsDetailComponent } from './admin-news/news-detail/admin-news-detail.component';
 import { AdminNewsComponent } from './admin-news/admin-news.component';
+import { AuthGuardService } from '../../services/guards/auth-guard.service';
 
 const routes: Routes = [
   {
     path: URLS_ADMIN.admin.route,
     component: AdminComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
         path: URLS_ADMIN.admin.player.route,

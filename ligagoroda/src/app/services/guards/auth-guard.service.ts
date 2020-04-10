@@ -13,8 +13,8 @@ export class AuthGuardService implements CanActivate {
   canActivate():
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isAuth$.pipe(map(isLoginStatus => {
-      if (isLoginStatus) {
-        this.router.navigate([URLS.admin]);
+      if (!isLoginStatus) {
+        this.router.navigate(['auth']);
         return false;
       } else {
         return true;

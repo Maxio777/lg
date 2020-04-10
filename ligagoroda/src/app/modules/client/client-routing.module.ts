@@ -11,10 +11,11 @@ import { SingleNewsComponent } from './all-news/single-news/single-news.componen
 import { URLS_CLIENT } from '../../routing-configs/config-routing-client';
 import { MainPageComponent } from './main-page/main-page.component';
 import { IndexComponent } from './main-page/index/index.component';
+import { AuthGuardService } from '../../services/guards/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent, data: { title: 'ГЛАВНАЯ' },
+  {path: '', component: MainPageComponent, data: { title: 'ГЛАВНАЯ' }, canActivate: [AuthGuardService],
     children: [
       {path: '', component: IndexComponent },
       {path: URLS_CLIENT.stat.route, component: TournamentTableComponent, data: { title: URLS_CLIENT.stat.title  }},

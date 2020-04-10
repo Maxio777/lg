@@ -1,12 +1,12 @@
-<mat-toolbar color="primary">
-  <div class="header">
+<mat-toolbar color="primary" >
+  <div class="header" >
 
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="true">
+        *ngIf="this.authService.isAuth$ | async"
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
   <a routerLink="/auth">
@@ -26,7 +26,8 @@
   </div>
   </mat-toolbar>
 
-<div class="header header-title">
+<div class="header header-title"
+     *ngIf="this.authService.isAuth$ | async">
   <div class="menu-desktop title">
     {{ this.dataService.getCurrentTitle() }}
   </div>
@@ -38,7 +39,7 @@
 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="'side'"
-      [opened]="true"
+      [opened]="false"
       [fixedInViewport]="false">
     <!--<img [src]="assets/img/logo.jpg">-->
 

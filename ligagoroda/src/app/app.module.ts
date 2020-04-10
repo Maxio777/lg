@@ -21,6 +21,8 @@ import { NavComponent } from './modules/client/nav/nav.component';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AdminModule } from './modules/admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
+import { LoaderInterceptor } from './interceptors/loader-interceptor';
+import { LoaderComponent } from './assets/components/loader/loader.component';
 
 registerLocaleData(localeRu, 'ru');
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -31,7 +33,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    LoaderComponent,
+    LoaderComponent
   ],
     imports: [
       NgxsModule.forRoot([]),
@@ -63,7 +67,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DataService,
     AuthGuardService,
     { provide: LOCALE_ID, useValue: 'ru'},
-    { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
