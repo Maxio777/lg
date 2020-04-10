@@ -34,9 +34,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     NavComponent,
-    LoaderComponent,
-    LoaderComponent
-  ],
+    LoaderComponent],
     imports: [
       NgxsModule.forRoot([]),
       BrowserModule,

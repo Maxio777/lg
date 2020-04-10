@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
+import {AuthService} from '../../../services/auth/auth.service';
+
 
 
 @Component({
@@ -23,6 +25,7 @@ export class NavComponent implements OnInit, OnDestroy {
   public isAdmin = () => this.dataService.getCurrentTitle() === 'АДМИНКА';
 
   constructor(
+    public authService: AuthService,
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     public dataService: DataService,
