@@ -23,9 +23,14 @@ table {
     }
   }
 
-  thead tr {
-    border-top: 1px solid;
-    border-color: rgba(0, 0, 0, 0.2);
+  thead {
+    tr {
+      border-top: 1px solid;
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+    .games-count, .points {
+      width: 10%;
+    }
   }
 
   tbody{
@@ -40,106 +45,106 @@ table {
 
 
 
-
-
-.container {
-  margin-top: 10px;
-}
-
-.tournament-mat-card {
-  min-width: 290px;
-}
-
-.tournament-title {
-  text-align: center;
-  font-size: 16px;
-}
-
-.full-width-table {
-  width: 100%;
-  padding-bottom: 15px;
-}
-
-.mat-elevation-z8 {
-  box-shadow: unset;
-}
-
-.mat-row {
-  height: 35px;
-}
-/* размер шрифта в таблице */
-.mat-cell {
-  font-size: 14px;
-}
-
-.mat-form-field {
-  margin-left: 10px;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #f71f8b;
-  text-decoration: underline;
-}
-
-@media screen and (max-width: 568px) {
-  .mat-cell {
-    font-size: 12px;
-  }
-  img {
-    display: none;
-  }
-}
-
-.mat-elevation-z8 {
-  min-height: 80%;
-  padding-top: 1px;
-}
-
-.mat-card {
-
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-}
-
-img {
-  margin-right: 10px;
-  margin-left: 10px;
-  width: 24px;
-  height: 24px;
-  vertical-align: sub;
-}
-
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
-  min-width: 20px;
-}
-
-td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
-  padding-right: 25px;
-  max-width: 25px;
-  text-align: center;
-}
-
-::ng-deep.mat-sort-header-container:last-of-type {
-  font-size: 14px;
-
-  color: #f44336;
-  font-weight: 400;
-  /*justify-content: center;*/
-}
-
-.mat-row:hover {
-  background-color: #0090ff24;
-}
-
-.points {
-  text-align: center;
-}
-
-/*.header-points:first-child {*/
-/*}*/
+//
+//
+//.container {
+//  margin-top: 10px;
+//}
+//
+//.tournament-mat-card {
+//  min-width: 290px;
+//}
+//
+//.tournament-title {
+//  text-align: center;
+//  font-size: 16px;
+//}
+//
+//.full-width-table {
+//  width: 100%;
+//  padding-bottom: 15px;
+//}
+//
+//.mat-elevation-z8 {
+//  box-shadow: unset;
+//}
+//
+//.mat-row {
+//  height: 35px;
+//}
+///* размер шрифта в таблице */
+//.mat-cell {
+//  font-size: 14px;
+//}
+//
+//.mat-form-field {
+//  margin-left: 10px;
+//}
+//
+//a {
+//  color: white;
+//  text-decoration: none;
+//}
+//
+//a:hover {
+//  color: #f71f8b;
+//  text-decoration: underline;
+//}
+//
+//@media screen and (max-width: 568px) {
+//  .mat-cell {
+//    font-size: 12px;
+//  }
+//  img {
+//    display: none;
+//  }
+//}
+//
+//.mat-elevation-z8 {
+//  min-height: 80%;
+//  padding-top: 1px;
+//}
+//
+//.mat-card {
+//
+//  margin-left: auto;
+//  margin-right: auto;
+//  margin-top: 10px;
+//}
+//
+//img {
+//  margin-right: 10px;
+//  margin-left: 10px;
+//  width: 24px;
+//  height: 24px;
+//  vertical-align: sub;
+//}
+//
+//td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+//  min-width: 20px;
+//}
+//
+//td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+//  padding-right: 25px;
+//  max-width: 25px;
+//  text-align: center;
+//}
+//
+//::ng-deep.mat-sort-header-container:last-of-type {
+//  font-size: 14px;
+//
+//  color: #f44336;
+//  font-weight: 400;
+//  /*justify-content: center;*/
+//}
+//
+//.mat-row:hover {
+//  background-color: #0090ff24;
+//}
+//
+//.points {
+//  text-align: center;
+//}
+//
+///*.header-points:first-child {*/
+///*}*/
