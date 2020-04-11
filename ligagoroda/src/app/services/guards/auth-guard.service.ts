@@ -32,7 +32,7 @@ export class ChugunGuardService implements CanActivate {
   canActivate():
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.fullName.pipe(map((fullName) => {
-      if (fullName && fullName.trim() === 'Чугунов Вадим') {
+      if (fullName && fullName.trim() === 'Вадим Чугунов') {
         this.router.navigate(['/']);
         return false;
       } else {
