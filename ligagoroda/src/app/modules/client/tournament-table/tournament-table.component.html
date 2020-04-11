@@ -1,129 +1,168 @@
-<div class="container my-animation">
-  <div class="table-content" [style.margin-top.px]="!isMainPage ? 50 : 15 ">
-  <mat-card class="tournament-mat-card w-100">
-    <mat-card-title class="tournament-title">ТУРНИРНАЯ ТАБЛИЦА</mat-card-title>
-    <hr>
-<div class="mat-elevation-z8" *ngIf="!isMainPage">
-  <!--<mat-form-fields>-->
-    <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите имя игрока">-->
-  <!--</mat-form-fields>-->
-  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef >#</th>
-      <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="teamName">
-      <th mat-header-cell *matHeaderCellDef>Команда</th>
-      <td mat-cell *matCellDef="let row"  class="cursor-pointer"
-          (click)="goToUrl(URLS.team, row._id)">
-        <img src="{{row.img}}" alt="">{{row.teamName}}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="gamesCount">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>И</th>
-      <td mat-cell *matCellDef="let row">{{row.gamesCount}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="win">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>В</th>
-      <td mat-cell *matCellDef="let row">{{row.win}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="loss">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Н</th>
-      <td mat-cell *matCellDef="let row">{{row.loss}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="draws">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>
-      <td mat-cell *matCellDef="let row">{{row.draws}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="goals">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>З</th>
-      <td mat-cell *matCellDef="let row">{{row.goals}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="missedGoals">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>
-      <td mat-cell *matCellDef="let row">{{row.missedGoals}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="goalDifference">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Р</th>
-      <td mat-cell *matCellDef="let row">{{row.goalDifference}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="points">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-points">Очки</th>
-      <td mat-cell *matCellDef="let row">{{row.points}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-
-  <!--<mat-paginator #paginator-->
-      <!--[length]="dataSource?.data.length"-->
-      <!--[pageIndex]="0"-->
-      <!--[pageSize]="10"-->
-      <!--[pageSizeOptions]="[10, 15, 20, 25]">-->
-  <!--</mat-paginator>-->
-</div>
-
-
-    <div class="mat-elevation-z8" *ngIf="isMainPage">
-      <!--<mat-form-fields>-->
-      <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите имя игрока">-->
-      <!--</mat-form-fields>-->
-      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-
-
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef >#</th>
-          <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="teamName">
-          <th mat-header-cell *matHeaderCellDef>Команда</th>
-          <td mat-cell *matCellDef="let row"  class="cursor-pointer"
-              (click)="goToUrl(URLS.team, row._id)">
-            <img src="{{row.img}}" alt="">{{row.teamName}}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="gamesCount">
-          <th mat-header-cell *matHeaderCellDef>И</th>
-          <td mat-cell *matCellDef="let row">{{row.gamesCount}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="points">
-          <th mat-header-cell *matHeaderCellDef>Очки</th>
-          <td mat-cell *matCellDef="let row">{{row.points}}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumnsForMainPage"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumnsForMainPage;"></tr>
-      </table>
-
-      <!--<mat-paginator #paginator-->
-      <!--[length]="dataSource?.data.length"-->
-      <!--[pageIndex]="0"-->
-      <!--[pageSize]="10"-->
-      <!--[pageSizeOptions]="[10, 15, 20, 25]">-->
-      <!--</mat-paginator>-->
+<table>
+  <caption>
+    <div class="">
+      <div>ТУРНИРНАЯ ТАБЛИЦА</div>
+      <div class="tournament-name">{{currentTournament?.name}}</div>
     </div>
-    <br class="my-br">
-    <button mat-raised-button color="warn" class="showMore"
-            *ngIf="isMainPage"
-            (click)="goToUrl(URLS.stat)"
-    >ПОДРОБНАЯ ТАБЛИЦА</button>
-  </mat-card>
-  </div>
 
-</div>
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>и</th>
+    <th>о</th>
+<!--    <th>Р</th>-->
+  </tr>
+
+  </thead>
+  <tr *ngFor="let team of table; let idx = index">
+    <td class="index">{{idx +1}}</td>
+    <td><img src="{{team.img}}" alt=""></td>
+    <td>{{team.teamName}}</td>
+    <td>{{team.gamesCount}}</td>
+    <td>{{team.points}}</td>
+<!--    <td></td>-->
+  </tr>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<!--<div class="container my-animation">-->
+<!--  <div class="table-content" [style.margin-top.px]="!isMainPage ? 50 : 15 ">-->
+<!--  <mat-card class="tournament-mat-card w-100">-->
+<!--    <mat-card-title class="tournament-title">ТУРНИРНАЯ ТАБЛИЦА</mat-card-title>-->
+<!--    <hr>-->
+<!--<div class="mat-elevation-z8" *ngIf="!isMainPage">-->
+<!--  &lt;!&ndash;<mat-form-fields>&ndash;&gt;-->
+<!--    &lt;!&ndash;<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите имя игрока">&ndash;&gt;-->
+<!--  &lt;!&ndash;</mat-form-fields>&ndash;&gt;-->
+<!--  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">-->
+
+
+<!--    <ng-container matColumnDef="id">-->
+<!--      <th mat-header-cell *matHeaderCellDef >#</th>-->
+<!--      <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="teamName">-->
+<!--      <th mat-header-cell *matHeaderCellDef>Команда</th>-->
+<!--      <td mat-cell *matCellDef="let row"  class="cursor-pointer"-->
+<!--          (click)="goToUrl(URLS.team, row._id)">-->
+<!--        <img src="{{row.img}}" alt="">{{row.teamName}}-->
+<!--      </td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="gamesCount">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>И</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.gamesCount}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="win">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>В</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.win}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="loss">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Н</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.loss}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="draws">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.draws}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="goals">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>З</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.goals}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="missedGoals">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.missedGoals}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="goalDifference">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Р</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.goalDifference}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="points">-->
+<!--      <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-points">Очки</th>-->
+<!--      <td mat-cell *matCellDef="let row">{{row.points}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--  </table>-->
+
+
+<!--  &lt;!&ndash;<mat-paginator #paginator&ndash;&gt;-->
+<!--      &lt;!&ndash;[length]="dataSource?.data.length"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageIndex]="0"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageSize]="10"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageSizeOptions]="[10, 15, 20, 25]">&ndash;&gt;-->
+<!--  &lt;!&ndash;</mat-paginator>&ndash;&gt;-->
+<!--</div>-->
+
+
+<!--    <div class="mat-elevation-z8" *ngIf="isMainPage">-->
+<!--      &lt;!&ndash;<mat-form-fields>&ndash;&gt;-->
+<!--      &lt;!&ndash;<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите имя игрока">&ndash;&gt;-->
+<!--      &lt;!&ndash;</mat-form-fields>&ndash;&gt;-->
+<!--      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">-->
+
+
+<!--        <ng-container matColumnDef="id">-->
+<!--          <th mat-header-cell *matHeaderCellDef >#</th>-->
+<!--          <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>-->
+<!--        </ng-container>-->
+
+<!--        <ng-container matColumnDef="teamName">-->
+<!--          <th mat-header-cell *matHeaderCellDef>Команда</th>-->
+<!--          <td mat-cell *matCellDef="let row"  class="cursor-pointer"-->
+<!--              (click)="goToUrl(URLS.team, row._id)">-->
+<!--            <img src="{{row.img}}" alt="">{{row.teamName}}-->
+<!--          </td>-->
+<!--        </ng-container>-->
+
+<!--        <ng-container matColumnDef="gamesCount">-->
+<!--          <th mat-header-cell *matHeaderCellDef>И</th>-->
+<!--          <td mat-cell *matCellDef="let row">{{row.gamesCount}}</td>-->
+<!--        </ng-container>-->
+
+<!--        <ng-container matColumnDef="points">-->
+<!--          <th mat-header-cell *matHeaderCellDef>Очки</th>-->
+<!--          <td mat-cell *matCellDef="let row">{{row.points}}</td>-->
+<!--        </ng-container>-->
+
+<!--        <tr mat-header-row *matHeaderRowDef="displayedColumnsForMainPage"></tr>-->
+<!--        <tr mat-row *matRowDef="let row; columns: displayedColumnsForMainPage;"></tr>-->
+<!--      </table>-->
+
+<!--      &lt;!&ndash;<mat-paginator #paginator&ndash;&gt;-->
+<!--      &lt;!&ndash;[length]="dataSource?.data.length"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageIndex]="0"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageSize]="10"&ndash;&gt;-->
+<!--      &lt;!&ndash;[pageSizeOptions]="[10, 15, 20, 25]">&ndash;&gt;-->
+<!--      &lt;!&ndash;</mat-paginator>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <br class="my-br">-->
+<!--    <button mat-raised-button color="warn" class="showMore"-->
+<!--            *ngIf="isMainPage"-->
+<!--            (click)="goToUrl(URLS.stat)"-->
+<!--    >ПОДРОБНАЯ ТАБЛИЦА</button>-->
+<!--  </mat-card>-->
+<!--  </div>-->
+
+<!--</div>-->

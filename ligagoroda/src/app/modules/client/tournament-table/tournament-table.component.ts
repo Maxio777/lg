@@ -13,22 +13,24 @@ import { Subscription } from 'rxjs';
 import { URLS } from 'src/app/core/urls';
 import { ClientDataService } from '../services/client-data/client-data.service';
 import { TeamTable } from '../../../models/team-table';
+import {TournamentLG} from '../../../models/interfaces';
 
 
 @Component({
   selector: 'app-tournament',
   templateUrl: './tournament-table.component.html',
-  styleUrls: ['./tournament-table.component.css'],
+  styleUrls: ['./tournament-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TournamentTableComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
-  @Input() data: string[] = [];
   @Input() display: string[] = [];
   @Input() isMainPage: boolean = false;
 
   URLS = URLS;
+  table: TeamTable[] | undefined = undefined;
+  currentTournament: TournamentLG | null = null;
   dataSource: MatTableDataSource<TeamTable> | undefined;
   displayedColumns: string[] =
     ['id', 'teamName', 'gamesCount', 'win', 'loss', 'draws', 'goals', 'missedGoals', 'goalDifference', 'points'];
@@ -44,7 +46,12 @@ export class TournamentTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.clientDataService.getTable$().subscribe(table => {
+      this.table = table;
       this.initTable(table);
+    });
+    this.clientDataService.getTournament$().subscribe(tournament => {
+      this.currentTournament = tournament;
+      this.cd.detectChanges();
     });
   }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { GameLG } from '../../../../models/game';
-import { PlayerClient } from '../../../../models/interfaces';
+import { PlayerClient, TournamentLG } from '../../../../models/interfaces';
 import { PlayersService } from '../../../../services/players/players.service';
 import { TableService } from '../../../../services/table/table.service';
 import { TeamTable } from '../../../../models/team-table';
@@ -23,6 +23,7 @@ export class ClientDataService {
   players: BehaviorSubject<PlayerClient[]> = new BehaviorSubject<PlayerClient[]>([]);
   table: BehaviorSubject<TeamTable[]> = new BehaviorSubject<TeamTable[]>([]);
   news: BehaviorSubject<News[]> = new BehaviorSubject<News[]>([]);
+  tournament: BehaviorSubject<TournamentLG | null> = new BehaviorSubject<TournamentLG | null>(null);
 
   constructor(private playersService: PlayersService,
               private tableService: TableService,
@@ -44,9 +45,15 @@ export class ClientDataService {
   public setTable = (players: TeamTable[]): void => this.table.next(players);
   public getTable$ = (): BehaviorSubject<TeamTable[]>  => this.table;
 
+/** tournament */
+  public setTournament = (tournament: TournamentLG | null): void => this.tournament.next(tournament);
+  public getTournament$ = (): BehaviorSubject<TournamentLG | null>  => this.tournament;
+
+
+
   getAllData(id: string = ''): Observable<void> {
     return this.allDataService.getAllDataLG(id)
-      .pipe(map(([games, players, news]) => {
+      .pipe(map(([games, players, news, tournament]) => {
         console.log(1, players.length);
         this.setNews(news);
         let pl: PlayerClient[] = [];
@@ -61,6 +68,7 @@ export class ClientDataService {
         this.setGames(games ? games : []);
         this.setPlayers(pl);
         this.setTable(games ? this.tableService.createTable(games) : []);
+        this.setTournament(tournament);
         this.initData$.next(true);
         }
       ));

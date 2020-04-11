@@ -1,3 +1,47 @@
+table {
+  width: 100%;
+  margin-bottom: 50px;
+
+  img {
+    margin: 3px 10px;
+    width: 24px;
+    height: 24px;
+    vertical-align: sub;
+  }
+
+  caption {
+    caption-side: top;
+    white-space: nowrap;
+    background: rgba(0, 53, 93, 1);
+    color: white;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+
+    .tournament-name {
+      font-size: 12px;
+    }
+  }
+
+  thead tr {
+    border-top: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  tbody{
+    tr:nth-child(odd) {
+      background: rgba(0, 53, 93, 0.04);
+    }
+    .index {
+      text-align: center;
+    }
+  }
+}
+
+
+
+
+
 .container {
   margin-top: 10px;
 }
@@ -66,9 +110,9 @@ a:hover {
 img {
   margin-right: 10px;
   margin-left: 10px;
-  width: 18px;
-  height: 18px;
-  vertical-align: bottom;
+  width: 24px;
+  height: 24px;
+  vertical-align: sub;
 }
 
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerClient } from '../../models/interfaces';
+import {PlayerClient, TournamentLG} from '../../models/interfaces';
 import { GameLG } from '../../models/game';
 import { MainRestService } from '../main-rest-service';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ export class AllDataService {
 
   constructor(private mainRestService: MainRestService) { }
 
-  getAllDataLG(id: string): Observable<[GameLG[], PlayerClient[], News[]]> {
+  getAllDataLG(id: string): Observable<[GameLG[], PlayerClient[], News[], TournamentLG]> {
     return this.mainRestService.getLG(this.apiLG + id);
   }
 }
