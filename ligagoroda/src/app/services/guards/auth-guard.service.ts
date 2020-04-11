@@ -22,3 +22,23 @@ export class AuthGuardService implements CanActivate {
     );
   }
 }
+
+
+@Injectable()
+export class ChugunGuardService implements CanActivate {
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate():
+    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.authService.fullName.pipe(map((fullName) => {
+      if (fullName && fullName.trim() === 'Чугунов Вадим') {
+        this.router.navigate(['/']);
+        return false;
+      } else {
+        return true;
+      }
+    })
+    );
+  }
+}

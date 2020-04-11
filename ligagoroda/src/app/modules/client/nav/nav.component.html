@@ -1,5 +1,13 @@
 <mat-toolbar color="primary" >
-  <div class="header" >
+  <div class="header">
+    <div class="full-name"
+         *ngIf="this.authService.isAuth$ | async">
+      <div class="d-flex flex-row">
+        <div>Здравствуйте, {{userFullName}}</div>
+        <button mat-mini-fab (click)="logout()" matTooltip="Выход"><mat-icon>exit_to_app</mat-icon></button>
+      </div>
+
+    </div>
 
       <button
         type="button"
@@ -14,8 +22,9 @@
   </a>
       <!--<div class="liga cursor-pointer" (click)="goToUrl('/')">ЛИГА ГОРОДА</div>-->
   </div>
+<!--  <div class="header header-bottom" *ngIf="!(isHandset$ | async)">-->
   <div class="header header-bottom" *ngIf="!(isHandset$ | async)">
-    <div class="menu-desktop">
+    <div class="menu-desktop" *ngIf="(this.authService.isAuth$ | async)">
       <button mat-button class="m-1" (click)="goToRouter('/')">ГЛАВНАЯ</button>
       <button mat-button class="m-1" (click)="goToRouter('/games')">ИГРЫ</button>
       <button mat-button class="m-1" (click)="goToRouter('/stat')">ТАБЛИЦА</button>
@@ -91,7 +100,7 @@
 
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="home-background">
+  <mat-sidenav-content class="home-background" perfectScrollbar>
     <router-outlet></router-outlet>
 
     <!--<app-rest-table></app-rest-table>-->

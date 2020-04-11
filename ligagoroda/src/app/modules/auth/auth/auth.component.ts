@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Subscription } from 'rxjs';
-import { URLS_ADMIN } from '../../../routing-configs/config-routing-admin';
+
 
 @Component({
   selector: 'app-auth',
@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub.add(this.authService.isAuth$.subscribe(isAuth => {
       if (isAuth) {
-        this.router.navigate([URLS_ADMIN.admin.player.url]);
+        this.router.navigate(['/']);
       }
     }));
   }

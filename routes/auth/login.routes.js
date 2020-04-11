@@ -41,7 +41,7 @@ router.post('/login', [
 
             const userData = {
                 userId: user.id,
-                fullName: user.data.firstName +' '+ user.data.lastName +' '+ user.data.middleName,
+                fullName: user.data.lastName +' '+ user.data.firstName,
             };
 
             const token = jwt.sign(

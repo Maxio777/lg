@@ -22,6 +22,7 @@ import {
   MatButtonToggleModule,
   MatDatepickerModule,
   MatAutocompleteModule,
+  MatTooltipModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -50,6 +51,7 @@ const MODULES = [
   MatCheckboxModule,
   MatButtonToggleModule,
   MatAutocompleteModule,
+  MatTooltipModule
 ];
 
 @NgModule({

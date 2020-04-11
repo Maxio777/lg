@@ -9,7 +9,7 @@ router.post('/register', [
         check('email', 'Некоректный email').normalizeEmail().isEmail(),
         check('password', 'Минимальная длинна пароля 6 символов').isLength({ min: 6 }),
         check('lastName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
-        check('lastName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
+        check('firstName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
         check('middleName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
     ],
     async (req, res) => {

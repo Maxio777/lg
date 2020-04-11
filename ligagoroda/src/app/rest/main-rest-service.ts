@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_DEV_LG = 'http://ligagoroda.ru/api/v1/';
+// const API_DEV_LG = 'http://localhost:5000/api/v1/';
 const OPTIONS = { headers: { 'Content-Type': 'application/json' }};
 
 

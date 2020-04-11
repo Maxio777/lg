@@ -160,3 +160,20 @@ button:focus {
     margin-left: 10px;
   }
 }
+
+.full-name {
+  position: absolute;
+  right: 0;
+  padding-right: 20px;
+  font-size: 14px;
+
+  div {
+    align-items: flex-end!important;
+  }
+
+  button {
+    padding: 0;
+    margin-left: 20px;
+    background: none;
+  }
+}

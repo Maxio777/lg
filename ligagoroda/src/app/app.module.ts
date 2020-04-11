@@ -12,7 +12,7 @@ import { DataService } from './services/data.service';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthGuardService } from './services/guards/auth-guard.service';
+import {AuthGuardService, ChugunGuardService} from './services/guards/auth-guard.service';
 import { AppHttpInterceptor } from './services/http-interceptor';
 import { MaterialModule } from './modules/material.module';
 import { SharedModule } from './modules/shared.module';
@@ -36,24 +36,24 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavComponent,
     LoaderComponent],
     imports: [
-      NgxsModule.forRoot([]),
-      BrowserModule,
-      AppRoutingModule,
-      HttpClientModule,
-      BrowserAnimationsModule,
-      LayoutModule,
-      FormsModule,
-      ReactiveFormsModule,
-      SharedModule,
-      CoreModule,
-      PerfectScrollbarModule,
-      AdminModule,
-      ToastrModule.forRoot({
-        timeOut: 3000,
-        progressBar: true,
-        // disableTimeOut: true,
-        positionClass: 'toast-bottom-right'
-      })
+        NgxsModule.forRoot([]),
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        CoreModule,
+        PerfectScrollbarModule,
+        AdminModule,
+        ToastrModule.forRoot({
+            timeOut: 3000,
+            progressBar: true,
+            // disableTimeOut: true,
+            positionClass: 'toast-bottom-right'
+        }),
     ],
   exports: [MaterialModule],
   providers: [
@@ -64,6 +64,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MainRestService,
     DataService,
     AuthGuardService,
+    ChugunGuardService,
     { provide: LOCALE_ID, useValue: 'ru'},
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }

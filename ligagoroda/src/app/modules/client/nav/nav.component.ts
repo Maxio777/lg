@@ -16,6 +16,7 @@ import {AuthService} from '../../../services/auth/auth.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
   selected: string = '';
+  userFullName: string | null = '';
 
   isMenuOpen = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -33,6 +34,10 @@ export class NavComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.authService.fullName.subscribe(fullName => {
+      this.userFullName = fullName;
+      this.cd.detectChanges();
+    });
     this.router.events.
     pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -41,6 +46,10 @@ export class NavComponent implements OnInit, OnDestroy {
         msn.scrollTop = 0;
       }
     });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {
