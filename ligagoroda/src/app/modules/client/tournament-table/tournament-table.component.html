@@ -17,7 +17,7 @@
   </tr>
 
   </thead>
-  <tr *ngFor="let team of table; let idx = index">
+  <tr class="cursor-pointer" *ngFor="let team of table; let idx = index" (click)="goToUrl(URLS.team, team._id)">
     <td class="index">{{idx +1}}</td>
     <td><img src="{{team.img}}" alt=""></td>
     <td>{{team.teamName}}</td>

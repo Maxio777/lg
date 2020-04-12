@@ -34,8 +34,17 @@ table {
   }
 
   tbody{
-    tr:nth-child(odd) {
-      background: rgba(0, 53, 93, 0.04);
+
+    tr {
+      &:nth-child(odd) {
+        background: rgba(0, 53, 93, 0.04);
+      }
+      &:hover {
+        background: rgba(0, 53, 93, 0.1);
+        //transform: scale(1.01);
+        color: rgba(0, 53, 93, 1);
+      }
+
     }
     .index {
       text-align: center;
