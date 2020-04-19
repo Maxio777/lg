@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { News } from '../../../../models/news';
 import { RestNewsService } from '../../../../rest/rest-news/rest-news.service';
 import { ToastrService } from 'ngx-toastr';
+import { forEach } from 'lodash';
 
 
 @Component({
@@ -59,19 +60,27 @@ export class AdminNewsDetailComponent implements OnInit {
   }
 
   postOrUpdate() {
+    const data = this.form.getRawValue();
+    forEach(data, (_, key) => {
+      data[key] = data[key].trim();
+    } );
     this.news && this.news._id
-        ? this.restNewsService.updateNewsLG(this.form.value).subscribe((news) => {
+        ? this.restNewsService.updateNewsLG(data).subscribe((news) => {
         this.toastr.success(news.message);
         const allNews = this.adminDataService.news.getValue();
         const index = allNews.findIndex(n => n._id === news.news._id);
         allNews[index] = news.news;
         this.adminDataService.setNews(allNews);
       })
-        : this.restNewsService.postNewsLG(this.form.value).subscribe((news) => {
+        : this.restNewsService.postNewsLG(data).subscribe((news) => {
         this.toastr.success(news.message);
         this.adminDataService.setNews([...this.adminDataService.news.getValue(), news.newNews]);
-        this.router.navigate(['/admin/news/' + news.newNews._id]);
+        this.goToNewsList();
       });
+  }
+
+  goToNewsList() {
+    this.router.navigate(['/admin/news/']);
   }
 
 }

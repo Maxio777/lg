@@ -31,29 +31,30 @@ table {
   }
 
   tbody{
+    font-size: 14px;
     border-top: 1px solid;
     border-color: rgba(0, 0, 0, 0.2);
 
     tr {
+      height: 40px;
       &:nth-child(odd) {
         background: rgba(0, 53, 93, 0.04);
       }
       &:hover {
         background: rgba(0, 53, 93, 0.1);
-        //transform: scale(1.01);
         color: rgba(0, 53, 93, 1);
       }
 
     }
     .outcomes {
       text-align: center;
-    }
 
-    .outcome {
-      width: 6px;
-      height: 6px;
-      border-radius: 3px;
-      margin: 1px;
+      .outcome {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin: 1px;
+      }
     }
 
     .index {

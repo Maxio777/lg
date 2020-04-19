@@ -21,6 +21,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RightAreaComponent } from './main-page/right-area/right-area.component';
 import { ChangeTournamentComponent } from './main-page/right-area/change-tournament/change-tournament.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { NewsMainPageComponent } from './news-main-page/news-main-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     MainPageComponent,
     RightAreaComponent,
     ChangeTournamentComponent,
+    NewsMainPageComponent,
   ],
   imports: [
     CommonModule,

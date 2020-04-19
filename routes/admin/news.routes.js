@@ -5,6 +5,13 @@ const router = Router();
 const fileMiddleware = require('../../middleware/file');
 const auth = require('../../middleware/auth');
 
+
+const checkErrors = [
+    check('title', 'Должно быть минимум 2 буквы').isLength({ min: 2, max: 100 }),
+    check('textPreview', 'Должно быть от 10 до 256 знаков').isLength({ min: 10, max: 256 }),
+    check('text', 'Должно быть от 10 до 2000 знаков').isLength({ min: 10, max: 4000 }),
+]
+
 // /api/v1/admin/news
 router.get('/news',
     async (req, res) => {
@@ -23,17 +30,17 @@ router.get('/news',
         }
     });
 
-router.post('/news', auth,
+router.post('/news', auth, checkErrors,
     async (req, res) => {
         console.log('+', req.body);
         try {
-            // const errors = validationResult(req);
-            // if (!errors.isEmpty()) {
-            //     return res.status(400).json({
-            //         errors: errors.array(),
-            //         message: 'Некорректные данные'
-            //     })
-            // }
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Некорректные данные'
+                })
+            }
 
             const { title, textPreview, text } = req.body;
             const news = await News.findOne({ title, textPreview });
@@ -51,11 +58,7 @@ router.post('/news', auth,
         }
     });
 
-router.put('/news', auth,[
-        check('title', 'Должно быть минимум 2 буквы').isLength({ min: 2, max: 100 }),
-        check('textPreview', 'Должно быть от 10 до 256 знаков').isLength({ min: 10, max: 256 }),
-        check('text', 'Должно быть от 10 до 2000 знаков').isLength({ min: 10, max: 2000 }),
-    ],
+router.put('/news', auth, checkErrors,
     async (req, res) => {
         console.log(req.body);
         try {

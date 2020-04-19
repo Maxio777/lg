@@ -17,7 +17,7 @@ export class MainRestService {
   }
 
   postLG<T>(data: T, url: string) {
-    return this.http.post(API_DEV_LG + url, data );
+    return this.http.post(API_DEV_LG + url, data, OPTIONS );
   }
 
   putLG<T>(data: T, url: string, options = OPTIONS): any {
@@ -25,7 +25,7 @@ export class MainRestService {
   }
 
   deleteLG(id: any, url: string) {
-    return this.http.delete(API_DEV_LG + url, {...OPTIONS, params: id} );
+    return this.http.delete(API_DEV_LG + url, {...OPTIONS} );
   }
 
 }
