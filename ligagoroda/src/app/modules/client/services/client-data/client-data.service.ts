@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { GameLG } from '../../../../models/game';
-import { PlayerClient, TournamentLG } from '../../../../models/interfaces';
-import { PlayersService } from '../../../../services/players/players.service';
-import { TableService } from '../../../../services/table/table.service';
+import { PlayerClient, TeamLG, TournamentLG } from '../../../../models/interfaces';
 import { TeamTable } from '../../../../models/team-table';
-import { AllDataService } from '../../../../rest/all-data/all-data.service';
+import { AllDataRestService } from '../../../../rest/all-data/all-data-rest.service';
 import { News } from '../../../../models/news';
 
 @Injectable({
@@ -15,6 +13,7 @@ import { News } from '../../../../models/news';
 export class ClientDataService {
   playersMap = new Map();
   gamesMap = new Map();
+  teamsMap = new Map();
   initData$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
@@ -24,10 +23,9 @@ export class ClientDataService {
   table: BehaviorSubject<TeamTable[]> = new BehaviorSubject<TeamTable[]>([]);
   news: BehaviorSubject<News[]> = new BehaviorSubject<News[]>([]);
   tournament: BehaviorSubject<TournamentLG | null> = new BehaviorSubject<TournamentLG | null>(null);
+  teams: BehaviorSubject<TeamLG[] | null> = new BehaviorSubject<TeamLG[] | null>(null);
 
-  constructor(private playersService: PlayersService,
-              private tableService: TableService,
-              private allDataService: AllDataService) { }
+  constructor(private allDataRestService: AllDataRestService) { }
 
 /** news */
   public setNews = (news: News[]): void => this.news.next(news);
@@ -49,26 +47,30 @@ export class ClientDataService {
   public setTournament = (tournament: TournamentLG | null): void => this.tournament.next(tournament);
   public getTournament$ = (): BehaviorSubject<TournamentLG | null>  => this.tournament;
 
+/** teams */
+  public setTeams = (teams: TeamLG[] | null): void => this.teams.next(teams);
+  public getTeams$ = (): BehaviorSubject<TeamLG[] | null>  => this.teams;
+
 
 
   getAllData(id: string = ''): Observable<void> {
-    return this.allDataService.getAllDataLG(id)
-      .pipe(map(([games, players, news, tournament]) => {
-        console.log(1, players.length);
+    return this.allDataRestService.getAllDataLG(id)
+      .pipe(map(([games, players, news, tournament, table, teams]) => {
         this.setNews(news);
-        let pl: PlayerClient[] = [];
         if (players && players.length) {
-          pl = this.playersService.addFieldsForPlayers(players, games);
-          pl.forEach(p => this.playersMap.set(p._id, p));
+          players.forEach(p => this.playersMap.set(p._id, p));
         }
-
         if (games && games.length) {
           games.forEach(g => this.gamesMap.set(g._id, g));
         }
+        if (teams && teams.length) {
+          teams.forEach(t => this.teamsMap.set(t._id, t));
+        }
         this.setGames(games ? games : []);
-        this.setPlayers(pl);
-        this.setTable(games ? this.tableService.createTable(games) : []);
+        this.setPlayers(players);
+        this.setTable(table);
         this.setTournament(tournament);
+        this.setTeams(teams);
         this.initData$.next(true);
         }
       ));

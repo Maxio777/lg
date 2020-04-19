@@ -15,7 +15,7 @@
   <div *ngIf="!team?.managers?.length">Руководители еще не добавлены</div>
 
   <div *ngFor="let r of team?.managers">
-    <p>{{ r.lastName }} {{ r.firstName }} {{ r.middleName }}</p>
+    <p>{{ r?.lastName }} {{ r?.firstName }} {{ r?.middleName }}</p>
   </div>
 
 
@@ -45,44 +45,44 @@
 
                 <ng-container matColumnDef="photo">
                   <th mat-header-cell *matHeaderCellDef>Фото</th>
-                  <td mat-cell *matCellDef="let row"  class="cursor-pointer" (click)="goToPlayer(row.id)">
-                    <img class="team-table-photo" src="{{row.img ? row.img : '../../assets/img/defaultImage.webp'}}">
+                  <td mat-cell *matCellDef="let row"  class="cursor-pointer" (click)="goToPlayer(row?.id)">
+                    <img class="team-table-photo" src="{{row?.img ? row?.img : '../../assets/img/defaultImage.webp'}}">
                   </td>
                 </ng-container>
 
                 <ng-container matColumnDef="playerName">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
-                  <td mat-cell *matCellDef="let row" class="cursor-pointer" (click)="goToPlayer(row._id)">{{ row.lastName }} {{ row.firstName }}</td>
+                  <td mat-cell *matCellDef="let row" class="cursor-pointer" (click)="goToPlayer(row?._id)">{{ row?.lastName }} {{ row?.firstName }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="dateOfBirth">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>ДР</th>
-                  <td mat-cell *matCellDef="let row">{{ row.birthday | date: 'MM.dd.yy' }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.birthday | date: 'MM.dd.yy' }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="gamesCount">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>И</th>
-                  <td mat-cell *matCellDef="let row">{{ row.gamesCount }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.gamesCount }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="goalsCount">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Г</th>
-                  <td mat-cell *matCellDef="let row">{{ row.goalsCount }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.goalsCount }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="assistsCount">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>
-                  <td mat-cell *matCellDef="let row">{{ row.assistsCount }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.assistsCount }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="yellow">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>ЖК</th>
-                  <td mat-cell *matCellDef="let row">{{ row.yellow }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.yellow }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="red">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>КК</th>
-                  <td mat-cell *matCellDef="let row">{{ row.red }}</td>
+                  <td mat-cell *matCellDef="let row">{{ row?.red }}</td>
                 </ng-container>
 
 

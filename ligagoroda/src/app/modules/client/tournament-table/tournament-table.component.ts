@@ -11,6 +11,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { URLS } from 'src/app/core/urls';
+import { COLORS } from 'src/app/assets/constants';
 import { ClientDataService } from '../services/client-data/client-data.service';
 import { TeamTable } from '../../../models/team-table';
 import {TournamentLG} from '../../../models/interfaces';
@@ -29,6 +30,7 @@ export class TournamentTableComponent implements OnInit, OnDestroy {
   @Input() isMainPage: boolean = false;
 
   URLS = URLS;
+  COLORS = COLORS;
   table: TeamTable[] | undefined = undefined;
   currentTournament: TournamentLG | null = null;
   dataSource: MatTableDataSource<TeamTable> | undefined;

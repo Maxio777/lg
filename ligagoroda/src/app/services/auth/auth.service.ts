@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { RestAuthService } from '../../rest/rest-auth/rest-auth.service';
 import {Router} from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,15 +34,6 @@ export class AuthService {
     this.fullName.next(null);
     this.router.navigate(['/auth']);
   }
-
-  // getAuth(formData: FormData) {
-    // return this.mainService.createToken(formData).subscribe((response: {[key: string]: any}) => {
-    //   sessionStorage.setItem('Token', response.data.id);
-    //   const isTokenHas = !!sessionStorage.getItem('Token');
-    //   this.isAuth.next(isTokenHas);
-    //   this.router.navigate([URLS_ADMIN.admin.player.url]);
-    // }, error => console.log(error));
-  // }
 
 
 }

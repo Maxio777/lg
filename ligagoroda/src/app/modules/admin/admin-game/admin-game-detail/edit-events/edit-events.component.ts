@@ -24,7 +24,6 @@ export class EditEventsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('events-->', this.event);
     this.TYPES_EVENTS = this.format === '11x11' ? TYPES_EVENTS_11x11 : TYPES_EVENTS_5x5;
     this.types = Object.keys(this.TYPES_EVENTS);
     this.setDataToForm();

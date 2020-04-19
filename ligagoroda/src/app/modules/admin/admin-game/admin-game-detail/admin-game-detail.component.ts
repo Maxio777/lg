@@ -106,7 +106,6 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
       this.restGameService.updateGameLG({_id: this.game._id, data: newData}, unit)
         .subscribe((data) => {
           this.toastr.success(data.message, 'Success');
-          console.log('dadta', data);
           this.adminDataService.getGames().subscribe();
         }, error => this.toastr.success(error.message, 'Success'));
     }
@@ -123,8 +122,6 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
       .subscribe(path => {
         if (path === 'game-new') {
           this.form.controls.date.setValue('2000-01-01T15:00:00');
-
-          console.log('new page');
         }
       }));
 
@@ -159,11 +156,7 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
 
   prepareDataToSave() {
     const data = this.form.getRawValue();
-    console.log('DATE', data.date);
     data.date = moment(data.date);
-    console.log('DATE2', data.date);
-    // data.date = `${data.date}T${data.time}:00.545Z`;
-    // delete data.time;
     return data;
   }
 
@@ -176,7 +169,6 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
         this.managers = managers;
         this.tournaments = tournaments;
         this.teams = teams;
-        console.log([players, referees, managers, tournaments]);
         this.form.controls.tour.setValue(18);
         this.cd.detectChanges();
       });

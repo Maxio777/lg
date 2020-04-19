@@ -12,6 +12,7 @@ export class TeamTable {
   goals: number = 0;
   missedGoals: number = 0;
   goalDifference: number = 0;
+  outcomes: number[] = [];
 
   constructor(team: TeamLG) {
     this._id = team._id;

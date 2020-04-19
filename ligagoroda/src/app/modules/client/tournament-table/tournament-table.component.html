@@ -10,9 +10,10 @@
   <tr>
     <th class="index"></th>
     <th></th>
-    <th></th>
-    <th class="games-count">и</th>
-    <th class="points">о</th>
+    <th>Команды</th>
+    <th class="text-center px-1">и</th>
+    <th class="text-center px-1">о</th>
+    <th class="text-center px-1">ф</th>
 <!--    <th>Р</th>-->
   </tr>
 
@@ -21,8 +22,13 @@
     <td class="index">{{idx +1}}</td>
     <td><img src="{{team.img}}" alt=""></td>
     <td>{{team.teamName}}</td>
-    <td>{{team.gamesCount}}</td>
-    <td>{{team.points}}</td>
+    <td class="text-center px-1">{{team.gamesCount}}</td>
+    <td class="text-center px-1">{{team.points}}</td>
+    <td class="text-center px-1">
+      <div class="outcomes d-flex flex-row justify-content-center">
+        <span class="outcome"  *ngFor="let i of team.outcomes" [style.background]="COLORS[i]"></span>
+      </div>
+    </td>
 <!--    <td></td>-->
   </tr>
 

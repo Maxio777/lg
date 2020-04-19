@@ -20,7 +20,6 @@ export class RestNewsService {
   }
 
   postNewsLG(body: string): Observable<any> {
-    console.log('>>>>>>>', body);
     return this.mainService.postLG(JSON.stringify(body), this.apiLG);
   }
 

@@ -25,7 +25,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   getPlayer(): void {
     this.route.params.subscribe((params: Params) => {
       this.player = this.clientDataService.playersMap.get(params.id);
-      console.log('player', this.player);
       this.cd.detectChanges();
     });
   }

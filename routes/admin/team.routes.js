@@ -4,9 +4,11 @@ const Team = require('../../models/Team');
 const Game = require('../../models/Game');
 const router = Router();
 const auth = require('../../middleware/auth');
+const cache = require('../../middleware/cache')
+
 
 // /api/v1/admin/team
-router.get('/team',
+router.get('/team', cache(60),
     async (req, res) => {
         console.log(req.body);
         try {
@@ -26,9 +28,8 @@ router.get('/team',
     });
 
 // /api/v1/admin/team/id
-router.get('/team/:id',
+router.get('/team/:id', cache(60),
     async (req, res) => {
-        console.log(1, req.body);
         try {
             const { id } = req.params;
             const team = await Team.findOne({ _id: id })

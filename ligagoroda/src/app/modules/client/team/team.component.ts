@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { PlayerClient, TeamLG } from '../../../models/interfaces';
-import { RestTeamsService } from '../../../rest/rest-teams/rest-teams.service';
 import { ClientDataService } from '../services/client-data/client-data.service';
-import { map } from 'rxjs/operators';
 import { GameLG } from '../../../models/game';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-team',
@@ -13,23 +21,25 @@ import { GameLG } from '../../../models/game';
   styleUrls: ['./team.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
   @Input() data: string[] = [];
   @Input() display: string[] = [];
+
   dataSource?: MatTableDataSource<PlayerClient[]>;
+  dataSourceGames?: MatTableDataSource<GameLG[]> | null = null;
+  displayedColumnsGames: string[] = ['date', 'home', 'score', 'guest', 'tour'];
   displayedColumns: string[] =
     ['id', 'photo', 'playerName', 'dateOfBirth', 'gamesCount', 'goalsCount', 'assistsCount', 'yellow', 'red'];
-  dataSourceGames?: MatTableDataSource<GameLG[]> | null = null;
-  displayedColumnsGames: string[] =
-    ['date', 'home', 'score', 'guest', 'tour'];
 
   team?: TeamLG | null = null;
+  players: any = [];
+
+  subs: Subscription = new Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private restTeamsService: RestTeamsService,
     private clientDataService: ClientDataService,
     private router: Router,
     private cd: ChangeDetectorRef
@@ -46,33 +56,39 @@ export class TeamComponent implements OnInit {
       this.dataSourceGames.sort = this.sort;
       this.dataSourceGames.paginator = this.paginator;
     }
-
   }
 
   initTable() {
-    if (this.team && this.team.players) {
-      this.dataSource = new MatTableDataSource<any>(this.team.players);
+    if (this.team && this.players) {
+      this.dataSource = new MatTableDataSource<any>(this.players);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.cd.detectChanges();
     }
-
   }
 
   getTeamDetail() {
     this.route.params.subscribe((params: Params) => {
+
       const idTeam = params.id;
-      this.clientDataService.getIsInitAppData().subscribe(() => {
-        return this.restTeamsService.getTeam(idTeam)
-          .pipe(map(team => {
-            team.games = team.games.map((id: string) => this.clientDataService.gamesMap.get(id));
-            team.players = team.players.map((id: string) => this.clientDataService.playersMap.get(id));
-            return team;
-          }))
-          .subscribe((team: any) => {
-            this.team = team;
+
+      this.subs.add(this.clientDataService.getTeams$().subscribe(teams => {
+        if (teams) {
+          this.team = teams.find(team => team._id === idTeam);
+        }
+          if (this.team) {
+            this.team.games = this.clientDataService.getGames$().getValue()
+              .filter(game => {
+                if (this.team) {
+                  return game.home._id === this.team._id || game.guest._id === this.team._id;
+                }
+                return false;
+              });
+            const players = [...this.team.players];
+            this.players = players.map((id: any) => this.clientDataService.playersMap.get(id));
             this.getDataForTable();
-          });
-      });
+          }
+        }));
 
     });
   }
@@ -89,6 +105,8 @@ export class TeamComponent implements OnInit {
     this.router.navigate(['player/' + id]);
   }
 
-
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
 }

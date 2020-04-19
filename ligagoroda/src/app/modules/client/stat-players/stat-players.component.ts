@@ -55,7 +55,6 @@ export class StatPlayersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub.add(this.clientDataService.getPlayers$().subscribe(players => {
-      console.log('players', players);
       this.initTable(players);
     }));
   }

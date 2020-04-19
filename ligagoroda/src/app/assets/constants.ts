@@ -20,6 +20,8 @@ export const TYPES_EVENTS_5x5 = {
     '10m': '10m'
   };
 
+export const COLORS = ['grey', 'green', 'red', 'orange'];
+
 export const URLS = {
   stat: 'stat', // Турнирная таблица
   statPlayers: 'stat-players', // Статистика игроков
@@ -28,9 +30,6 @@ export const URLS = {
 
   adminPlayer: 'admin/player', // Администрирование игрока
 };
-
-
-
 
 export const HOURS = [
   { hour : '00' },

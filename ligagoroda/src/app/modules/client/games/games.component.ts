@@ -53,7 +53,6 @@ export class GamesComponent implements OnInit, OnDestroy {
   getGamesForView = (date: string): GameLG[] => this.games.filter(game => game.date.includes(date));
   isHasNoCompleted = (): boolean => !!this.games.filter(game => !game.completed).length;
   goToRouter (url: string, id = '')  {
-    console.log([url + id]);
     this.router.navigate([url + id]);
   }
 

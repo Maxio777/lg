@@ -106,7 +106,6 @@ export class AdminRefereesComponent implements OnInit {
       })))
       .subscribe((referees: Referee[]) => {
         this.referees = referees;
-        console.log(this.referees);
         this.cd.detectChanges();
 
         this.initTable();

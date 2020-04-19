@@ -17,8 +17,7 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute,
     private clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
-  ) {
-    console.log('init game');}
+  ) { }
 
   ngOnInit() {
     this.getSingleNews();

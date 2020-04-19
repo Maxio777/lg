@@ -36,7 +36,6 @@ export class NewsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(params => this.currentP = +params.p);
     this.sub.add(this.clientDataService.getNews$().subscribe(newsAll => {
-      console.log('newsAll', newsAll);
       this.newsAll = newsAll;
       this.cd.detectChanges();
     }));

@@ -3,19 +3,27 @@ const Game = require('../../models/Game');
 const News = require('../../models/News');
 const Tournament = require('../../models/Tournament');
 const router = Router();
-const Event = require('../../models/Event');
 const Player = require('../../models/Player');
+const Team = require('../../models/Team');
+const PreparePlayers = require('../../middleware/preparePlayers');
+const Table = require('../../middleware/createTable');
+const cache = require('../../middleware/cache')
 
 
-router.get('/current-tournament/:id',
+router.get('/current-tournament/:id', cache(60),
     async (req, res) => {
         const { id } = req.params;
         try {
             const currentTournament = await Tournament.findOne({ _id: id });
-            const news = await News.find();
-            const players = await Player.find();
 
-            const games = await Game.find({ tournament: id })
+            if (!currentTournament) {
+                return res.status(400).json({ message: 'Текущий турнир не найден' })
+            }
+
+            const news = await News.find()
+            let players = await Player.find();
+
+            let games = await Game.find({ tournament: id })
                 .populate('tournament')
                 .populate('home')
                 .populate('homePlayers')
@@ -28,23 +36,21 @@ router.get('/current-tournament/:id',
                 .populate({ path: 'guest',  populate: ('players') } )
                 .populate({ path: 'home',  populate: ('players') } )
                 .populate({ path: 'events',  populate: (['owner', 'assistant']) } );
-            const event = await Event.find().populate('owner');
-            // let players = [];
-            // games.forEach(game => players.push(...game.home.players, ...game.guest.players, event));
-            // const setPlayers = new Set(players);
 
-            if (!currentTournament) {
-                return res.status(400).json({ message: 'Текущий турнир не найден' })
-            }
+            let teams = await Team.find({})
+                .populate('managers');
 
-            res.status(200).json([games, players, news, currentTournament]);
+
+            players = await PreparePlayers.addFieldsForPlayers(players, games)
+            const table = await Table.createTables(games)
+
+            res.status(200).json([games, players, news, currentTournament, table, teams]);
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
         }
 
     });
-
 
 
 module.exports = router;
