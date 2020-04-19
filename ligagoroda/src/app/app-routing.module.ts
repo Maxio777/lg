@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientModule } from './modules/client/client.module';
 import {AuthGuardService, ChugunGuardService} from './services/guards/auth-guard.service';
 
 const routes: Routes = [
