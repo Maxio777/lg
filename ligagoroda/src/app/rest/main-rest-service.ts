@@ -25,7 +25,7 @@ export class MainRestService {
   }
 
   deleteLG(id: any, url: string) {
-    return this.http.delete(API_DEV_LG + url, {...OPTIONS} );
+    return this.http.delete(API_DEV_LG + url, {...OPTIONS, params: id} );     // TODO - убрать парам id
   }
 
 }
