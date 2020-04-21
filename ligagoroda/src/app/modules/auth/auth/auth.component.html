@@ -1,6 +1,7 @@
 <div class="auth-container">
 
   <div class="auth">
+    <h2>Авторизация</h2>
     <div class="auth-card">
       <form [formGroup]="form" autocomplete="off" class="pb-2">
         <mat-form-field class="example-full-width">
@@ -15,7 +16,7 @@
           <mat-error *ngIf="form.controls['password']?.errors?.minlength">Минимум 6 знаков, сейчас {{form.controls['password']?.errors?.minlength['actualLength']}}</mat-error>
         </mat-form-field>
       </form>
-      <button mat-raised-button color="primary" class="showMore"
+      <button mat-raised-button color="primary" class="btn-block login"
               (click)="submit()"
       >Войти</button>
     </div>
