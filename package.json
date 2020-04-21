@@ -2,10 +2,10 @@
   "name": "lg",
   "version": "1.0.0",
   "description": "liga goroda",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app.js",
-    "server": "nodemon app.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "server": "nodemon index.js",
     "client": "npm run start --prefix ligagoroda",
     "client:install": "npm install --prefix ligagoroda",
     "client:build": "npm run build --prefix ligagoroda",
@@ -29,6 +29,7 @@
     "express-validator": "^6.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.9",
+    "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-cache": "^5.1.0"
   },

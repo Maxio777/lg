@@ -47,10 +47,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PerfectScrollbarModule,
         AdminModule,
         ToastrModule.forRoot({
-            timeOut: 3000,
-            progressBar: true,
+            timeOut: 6000,
+            // progressBar: true,
             // disableTimeOut: true,
-            positionClass: 'toast-bottom-right'
+            positionClass: 'toast-bottom-right',
         }),
     ],
   exports: [MaterialModule],

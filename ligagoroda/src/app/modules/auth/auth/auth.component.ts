@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -12,18 +12,11 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements OnInit, OnDestroy {
-
-  form: FormGroup | undefined;
-  hide = true;
-  logStatus: boolean = false;
   private sub: Subscription = new Subscription();
+  form: FormGroup = this.initForm();
 
-  constructor(
-    @Inject(FormBuilder) fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.initForm(fb);
+  constructor(private authService: AuthService, private router: Router) {
+    this.initForm();
   }
 
   ngOnInit() {
@@ -33,25 +26,30 @@ export class AuthComponent implements OnInit, OnDestroy {
       }
     }));
   }
-  initForm(fb: FormBuilder) {
-    this.form = fb.group({
-      email: new FormControl('',  [Validators.required]),
-      password: new FormControl('',  [Validators.required])
-    }, {updateOn: 'change'});
+
+  initForm() {
+    return new FormGroup({
+      email: new FormControl('',  [Validators.required, Validators.email]),
+      password: new FormControl('',  [Validators.required, Validators.minLength(6)])
+    });
   }
 
   submit(): any {
-    if (this.form && this.form.value && this.form.valid) {
-      // const formData = new FormData();
-      // formData.append('username', this.form.controls.username.value);
-      // formData.append('password', this.form.controls.password.value);
-      this.authService.login(this.form.value);
-    }
+      this.markDirtyAndTouched(this.form);
+      if (this.form && this.form.value && this.form.valid) {
+        this.authService.login(this.form.value);
+      }
+  }
+
+  markDirtyAndTouched(form: FormGroup) {
+    Object.keys(this.form.controls).forEach(control => {
+      form.controls[control].markAsDirty();
+      form.controls[control].markAsTouched();
+    });
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
 
 }

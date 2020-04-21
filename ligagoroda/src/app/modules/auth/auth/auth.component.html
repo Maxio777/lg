@@ -2,12 +2,17 @@
 
   <div class="auth">
     <div class="auth-card">
-      <form [formGroup]="form" autocomplete="off">
+      <form [formGroup]="form" autocomplete="off" class="pb-2">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Логин" formControlName="email" (keydown.enter)="submit()">
+          <mat-error *ngIf="form.controls['email']?.errors?.required">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls['email']?.errors?.email">Введите валидный email</mat-error>
         </mat-form-field>
+
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Пароль" formControlName="password" [type]="hide ? 'password' : 'text'" (keydown.enter)="submit()">
+          <input matInput placeholder="Пароль" formControlName="password" type="password" (keydown.enter)="submit()">
+          <mat-error *ngIf="form.controls['password']?.errors?.required">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls['password']?.errors?.minlength">Минимум 6 знаков, сейчас {{form.controls['password']?.errors?.minlength['actualLength']}}</mat-error>
         </mat-form-field>
       </form>
       <button mat-raised-button color="primary" class="showMore"
