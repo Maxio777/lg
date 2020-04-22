@@ -1,68 +1,85 @@
-players {
-  padding: 10px;
-}
-
-.team-card {
-  margin-bottom: 10px;
+table {
   width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 50px;
+
+  .name {
+    width: 60%;
+  }
+
+  .index {
+    width: 10%;
+  }
+
+  td {
+    padding: 0 5px;
+  }
+
+  img {
+    margin: 3px 3px;
+    width: 24px;
+    height: 24px;
+    vertical-align: sub;
+  }
+
+  caption {
+    caption-side: top;
+    white-space: nowrap;
+    background: rgba(0, 53, 93, 1);
+    color: white;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+
+    .tournament-name {
+      font-size: 12px;
+    }
+  }
+
+  thead {
+    color: rgba(0,0,0,0.2);
+  }
+
+  tbody{
+
+    font-size: 14px;
+    border-color: rgba(0, 0, 0, 0.2);
+
+    tr {
+      height: 40px;
+      &:nth-child(odd) {
+        background: rgba(0, 53, 93, 0.04);
+      }
+      &:hover {
+        background: rgba(0, 53, 93, 0.1);
+        color: rgba(0, 53, 93, 1);
+      }
+
+    }
+
+    .index {
+      text-align: center;
+    }
+  }
 }
 
-.full-width-table {
-  width: 100%;
-  padding-bottom: 15px;
-}
 
-.mat-row {
-  height: 35px;
+.players-menu {
+  color: rgba(0,0,0,0.5);
+  height: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  &-item {
+    cursor: pointer;
+    width: 20%;
+    &:hover {
+      background: rgba(0, 53, 93, 0.1)
+    }
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .active {
+    background: rgba(0, 53, 93, 0.1);
+    border-bottom: 1px solid #00355d;
+  }
 }
-/* размер шрифта в таблице */
-.mat-cell {
-  font-size: 14px;
-}
-
-.mat-form-field {
-  margin-left: 10px;
-}
-
-.mat-elevation-z8 {
-  box-shadow: unset;
-}
-
-tr {
-  margin-bottom: 5px;
-}
-
-td {
-  height: 45px;
-}
-
-.team-table-photo {
-  height: 30px;
-  border-radius: 15px;
-  margin-right: 5px;
-}
-
-.mat-button-toggle-group {
-  width: 100%;
-}
-
-::ng-deep button:focus {
-  outline: none!important;
-}
-
-.mat-button-toggle {
-  width: inherit;
-}
-
-td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
-  text-align: right;
-}
-
-.team-image {
-  width: 25px;
-  padding: 5px 0;
-}
-

@@ -62,7 +62,7 @@ export interface PlayerClient {
   penalty?: number;
   yellowReds?: number;
   games?: GameLG[];
-  teams?: { _id: string, name: string }[]; // команды конкретного турнира, обогащается на фронте
+  teams?: { _id: string, name: string, img: string }[]; // команды конкретного турнира, обогащается на фронте
 }
 
 export interface PlayerAdmin {

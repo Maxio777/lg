@@ -1,175 +1,44 @@
-<div *ngIf="!isMainPage" class="d-flex col-12 row-2 flex-column flex-wrap games-players">
-  <div class="d-flex col-lg-12 col-md-12 flex-column players">
-    <div class="team-card">
+<table>
 
-      <div class="my-animation">
-        <!--<div class="rest-table-content" [style.margin-top.px]="!isMainPage() ? 50 : 15 ">-->
-        <mat-card-title class="tournament-title">ИГРОКИ</mat-card-title>
-        <hr>
-        <div class="mat-elevation-z8">
-          <!--<mat-form-fields>-->
-          <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите имя игрока">-->
-          <!--</mat-form-fields>-->
-          <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef >#</th>
-              <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="photo">
-              <th mat-header-cell *matHeaderCellDef>Фото</th>
-              <td mat-cell *matCellDef="let row"  class="cursor-pointer" (click)="goToPlayer(row._id)">
-                <img class="team-table-photo" src="{{row.img ? row.img : '../../assets/img/defaultImage.webp'}}">
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="team">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Команда</th>
-              <td mat-cell *matCellDef="let row" class="cursor-pointer" (click)="goToPlayer(row._id)">{{ row.teams[0]?.name }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="playerName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
-              <td mat-cell *matCellDef="let row" class="cursor-pointer" (click)="goToPlayer(row._id)">{{ row.lastName }} {{ row.firstName }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="dateOfBirth">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>ДР</th>
-              <td mat-cell *matCellDef="let row">{{ row.birthday | date: 'dd.MM.yyyy' }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="gamesCount">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>И</th>
-              <td mat-cell *matCellDef="let row">{{ row.gamesCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="goalsCount">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Г</th>
-              <td mat-cell *matCellDef="let row">{{ row.goalsCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="assistsCount">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>П</th>
-              <td mat-cell *matCellDef="let row">{{ row.assistsCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="goalsAssists">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Г+П</th>
-              <td mat-cell *matCellDef="let row">{{ row.goalsAssists }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="yellow">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>ЖК</th>
-              <td mat-cell *matCellDef="let row">{{ row.yellow }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="red">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>КК</th>
-              <td mat-cell *matCellDef="let row">{{ row.red }}</td>
-            </ng-container>
-
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-
-
-          <mat-paginator #paginator
-          [length]="dataSource?.data.length"
-          [pageIndex]="0"
-          [pageSize]="10"
-          [pageSizeOptions]="[10, 15, 20, 25]">
-          </mat-paginator>
-        </div>
-        <!--</div>-->
-      </div>
-
+  <caption>
+    <div class="">
+      <div>ТОП-10 ИГРОКОВ</div>
+      <div class="tournament-name">{{currentTournament?.name}}</div>
     </div>
-  </div>
-</div>
+  </caption>
 
-
-<div *ngIf="isMainPage" class="d-flex col-12 row-2 flex-column flex-wrap games-players mx-0">
-  <div class="d-flex col-lg-12 col-md-12 flex-column players p-0">
-    <div class="team-card">
-
-      <div class="my-animation">
-        <mat-card-title class="tournament-title">ИГРОКИ</mat-card-title>
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="changeCurrentVal($event.value)">
-          <mat-button-toggle value="goalsCount" [checked]="true">Г</mat-button-toggle>
-          <mat-button-toggle value="assistsCount">П</mat-button-toggle>
-          <mat-button-toggle value="goalsAssists">Г+П</mat-button-toggle>
-          <mat-button-toggle value="yellow">ЖК</mat-button-toggle>
-          <mat-button-toggle value="red">КК</mat-button-toggle>
-        </mat-button-toggle-group>
-        <hr>
-        <div class="mat-elevation-z8">
-
-          <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef ></th>
-              <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="team_image">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row" class="cursor-pointer" (click)="goToPlayer(row._id)">
-                <img class="team-image" src="{{ row?.teams[0]?.img }}" alt="">
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="playerName">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row" class="cursor-pointer pl-2"
-                  (click)="goToPlayer(row._id)">{{ row.lastName }} {{ row.firstName }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="gamesCount">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.gamesCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="goalsCount">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.goalsCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="assistsCount">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.assistsCount }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="goalsAssists">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.goalsAssists }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="yellow">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.yellow }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="red">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let row">{{ row.red }}</td>
-            </ng-container>
-
-
-            <tr mat-row *matRowDef="let row; columns: getDisplay();"></tr>
-          </table>
-          <button mat-raised-button color="warn" class="showMore"
-          >
-            ВСЕ ИГРЫ
-          </button>
-
+  <thead>
+    <tr>
+      <th colspan="5">
+        <div class="d-flex flex-row w-100 players-menu">
+          <div class="players-menu-item"
+               [class.active]="currentVal === 'goalsCount'"
+               (click)="changeCurrentVal('goalsCount')">Г</div>
+          <div class="players-menu-item"
+               [class.active]="currentVal === 'assistsCount'"
+               (click)="changeCurrentVal('assistsCount')">П</div>
+          <div class="players-menu-item"
+               [class.active]="currentVal === 'goalsAssists'"
+               (click)="changeCurrentVal('goalsAssists')">Г+П</div>
+          <div class="players-menu-item"
+               [class.active]="currentVal === 'yellow'"
+               (click)="changeCurrentVal('yellow')">Ж</div>
+          <div class="players-menu-item"
+               [class.active]="currentVal === 'red'"
+               (click)="changeCurrentVal('red')">К</div>
         </div>
-      </div>
+      </th>
+    </tr>
+  </thead>
 
-    </div>
-  </div>
-</div>
+  <tbody>
+    <tr class="cursor-pointer w-100" *ngFor="let player of players | slice:0:10; let idx = index" (click)="goToUrl(player._id)">
+      <td class="index">{{idx +1}}</td>
+      <td class="index"><img src="{{player?.teams[0]?.img}}" alt=""></td>
+      <td class="name">{{player.firstName}} {{player.lastName}}</td>
+      <td class="text-center px-1 index">{{player.gamesCount}}</td>
+      <td class="text-center px-1 index">{{player.goalsCount}}</td>
+    </tr>
+  </tbody>
 
+</table>
