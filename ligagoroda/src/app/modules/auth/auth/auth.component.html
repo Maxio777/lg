@@ -11,7 +11,10 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Пароль" formControlName="password" type="password" (keydown.enter)="submit()">
+          <input matInput placeholder="Пароль" formControlName="password" [type]="hide ? 'password' : 'text'" (keydown.enter)="submit()">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
           <mat-error *ngIf="form.controls['password']?.errors?.required">Обязательное поле</mat-error>
           <mat-error *ngIf="form.controls['password']?.errors?.minlength">Минимум 6 знаков, сейчас {{form.controls['password']?.errors?.minlength['actualLength']}}</mat-error>
         </mat-form-field>

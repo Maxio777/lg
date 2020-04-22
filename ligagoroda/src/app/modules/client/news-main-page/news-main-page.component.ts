@@ -2,6 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@an
 import {News} from '../../../models/news';
 import {ClientDataService} from '../services/client-data/client-data.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class NewsMainPageComponent implements OnInit {
   news: News[] = [];
   subs: Subscription = new Subscription();
 
-  constructor(private clientDataService: ClientDataService, private cd: ChangeDetectorRef) { }
+  constructor(private clientDataService: ClientDataService, private cd: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
     this.subs.add(this.subs.add(this.clientDataService.getNews$().subscribe(news => {
@@ -23,5 +24,8 @@ export class NewsMainPageComponent implements OnInit {
     })));
   }
 
+  goToOneNews(id: string) {
+    this.router.navigate(['news/' + id ]);
+  }
 
 }

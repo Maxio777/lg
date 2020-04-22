@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class AuthComponent implements OnInit, OnDestroy {
   private sub: Subscription = new Subscription();
+  hide: boolean = true;
   form: FormGroup = this.initForm();
 
   constructor(private authService: AuthService, private router: Router) {

@@ -1,26 +1,20 @@
 const { Router } = require('express');
 const router = Router();
 const controller = require('../../controllers/auth')
-const { check } = require('express-validator');
+const { isEmail, isLength } = require('../../middleware/validators')
 
-const loginValidators = [
-    check('email', 'Введите корректный email').normalizeEmail().isEmail(),
-    check('password', 'Минимальная длинна пароля 6 символов').isLength({ min: 6 })
-    ]
-
+const loginValidators = [isEmail(), isLength('password',6)]
 const registerValidators = [
-    check('email', 'Некоректный email').normalizeEmail().isEmail(),
-    check('password', 'Минимальная длинна пароля 6 символов').isLength({ min: 6 }),
-    check('lastName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
-    check('firstName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
-    check('middleName', 'Минимальная длинна 2 символа').isLength({ min: 2 }),
+    isEmail(),
+    isLength('password',6),
+    isLength('lastName',2),
+    isLength('firstName',2),
+    isLength('middleName',2)
 ]
 
-// /api/v1/auth/login
-router.post('/login', loginValidators, controller.login);
 
-// /api/v1/auth/register
-router.post('/register', registerValidators, controller.register);
+router.post('/login', loginValidators, controller.login); // /api/v1/auth/login
+router.post('/register', registerValidators, controller.register); // /api/v1/auth/register
 
 
 module.exports = router;
