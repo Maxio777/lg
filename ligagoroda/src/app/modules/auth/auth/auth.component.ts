@@ -38,7 +38,9 @@ export class AuthComponent implements OnInit, OnDestroy {
   submit(): any {
       this.markDirtyAndTouched(this.form);
       if (this.form && this.form.value && this.form.valid) {
-        this.authService.login(this.form.value);
+        const val = {...this.form.value};
+        this.form.reset();
+        this.authService.login(val);
       }
   }
 
