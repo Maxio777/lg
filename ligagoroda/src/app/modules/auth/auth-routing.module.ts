@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', component: AuthComponent, data: { title: 'АВТОРИЗАЦИЯ' } },
 ];
 
 @NgModule({
