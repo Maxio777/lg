@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: 'http://localhost:5000/api/v1/'
+  host: 'http://ligagoroda.ru/api/v1/'
 };
