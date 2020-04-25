@@ -39,7 +39,6 @@ router.put('/event', auth, [
         // check('firstName', 'Должно быть минимум 2 буквы').isLength({ min: 2 }),
     ],
     async (req, res) => {
-        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -56,8 +55,8 @@ router.put('/event', auth, [
                 return res.status(400).json({ message: 'Событие не найдено' })
             }
 
-            await event.update(req.body);
-            res.status(201).json({ message: `Событие было обновлено`, ev: null })
+            const updated = await event.update(req.body);
+            res.status(201).json({ message: `Событие было обновлено`, ev: updated })
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })

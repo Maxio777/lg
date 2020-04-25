@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const compression = require('compression')
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -13,6 +14,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(compression());
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json());

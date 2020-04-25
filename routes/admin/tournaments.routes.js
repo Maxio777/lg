@@ -68,7 +68,7 @@ router.put('/tournaments', auth, [
             const { _id, name, dateStart, dateEnd, completed, format } = req.body;
             const tournament = await Tournament.findOne({ _id });
             if (!tournament) {
-                return res.status(400).json({ message: 'Турнир не найден put' })
+                return res.status(400).json({ message: 'Турнир не найден' })
             }
 
             console.log('перед торнамент сейв');
