@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const fileMiddleware = require('../../middleware/file');
+const upload = require('../../middleware/file');
 const auth = require('../../middleware/auth');
 
 const ITEMS = {
@@ -11,7 +11,7 @@ const ITEMS = {
     team: require('../../models/Team')
 };
 
-router.put('/upload/:kind/:_id/', auth, fileMiddleware.single('image'),
+router.put('/upload/:kind/:_id/', auth, upload.single('image'),
     async (req, res) => {
         try {
             if (req.file) {

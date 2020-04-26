@@ -5,16 +5,13 @@
     <div class="auth-card">
       <form [formGroup]="form" autocomplete="off" class="pb-2">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Логин" formControlName="email" (keydown.enter)="submit()">
+          <input matInput placeholder="Логин" formControlName="email" (keydown.enter)="submit()" aria-label="login">
           <mat-error *ngIf="form.controls['email']?.errors?.required">Обязательное поле</mat-error>
           <mat-error *ngIf="form.controls['email']?.errors?.email">Введите валидный email</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Пароль" formControlName="password" [type]="hide ? 'password' : 'text'" (keydown.enter)="submit()">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+        <mat-form-field class="example-full-width" (keydown.enter)="submit()">
+          <input matInput placeholder="Пароль" formControlName="password" type="password" aria-label="password">
           <mat-error *ngIf="form.controls['password']?.errors?.required">Обязательное поле</mat-error>
           <mat-error *ngIf="form.controls['password']?.errors?.minlength">Минимум 6 знаков, сейчас {{form.controls['password']?.errors?.minlength['actualLength']}}</mat-error>
         </mat-form-field>

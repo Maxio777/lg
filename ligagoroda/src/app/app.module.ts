@@ -22,6 +22,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
 import { LoaderInterceptor } from './interceptors/loader-interceptor';
 import { LoaderComponent } from './assets/components/loader/loader.component';
+import { ErrorInterceptor } from './interceptors/error-interceptor';
 
 registerLocaleData(localeRu, 'ru');
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -65,7 +66,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ChugunGuardService,
     { provide: LOCALE_ID, useValue: 'ru'},
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
