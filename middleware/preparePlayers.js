@@ -50,9 +50,9 @@ class PreparePlayers {
 
     static getTeams(id, games) {
         const teams = [];
-        const homeOrGuest = (game, team) => {
-            if (game[team].players.some(player => player._id === id) && !teams.some(team => team._id === game[team]._id)) {
-                const { _id, name, img } = game[team];
+        const homeOrGuest = (game, homeGuest) => {
+            if (game[homeGuest].players.some(player => player._id === id) && !teams.some(team => team._id === game[homeGuest]._id)) {
+                const { _id, name, img } = game[homeGuest];
                 teams.push({ _id, name, img });
             }
         };
