@@ -7,20 +7,22 @@ const Player = require('../../models/Player');
 const Team = require('../../models/Team');
 const PreparePlayers = require('../../middleware/preparePlayers');
 const Table = require('../../middleware/createTable');
-const cache = require('../../middleware/cache')
+const cache = require('../../middleware/cache');
 
 
-router.get('/current-tournament/:id', cache(60),
+router.get('/current-tournament', cache(60),
     async (req, res) => {
-        const { id } = req.params;
+
         try {
-            const currentTournament = await Tournament.findOne({ _id: id });
+
+            const currentTournament = await Tournament.findOne({ current: true });
+            const { id } = currentTournament;
 
             if (!currentTournament) {
                 return res.status(400).json({ message: 'Текущий турнир не найден' })
             }
 
-            const news = await News.find()
+            const news = await News.find();
             let players = await Player.find();
 
             let games = await Game.find({ tournament: id })
@@ -41,8 +43,8 @@ router.get('/current-tournament/:id', cache(60),
                 .populate('managers');
 
 
-            players = await PreparePlayers.addFieldsForPlayers(players, games)
-            const table = await Table.createTables(games)
+            players = await PreparePlayers.addFieldsForPlayers(players, games);
+            const table = await Table.createTables(games);
 
             res.status(200).json([games, players, news, currentTournament, table, teams]);
 
