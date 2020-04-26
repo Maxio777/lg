@@ -1,18 +1,28 @@
 class PreparePlayers {
 
     static async addFieldsForPlayers(players, games) {
+
         players = JSON.parse(JSON.stringify(players));
         games = JSON.parse(JSON.stringify(games));
+
+        const goals = ['goal', '6mGoal', '10mGoal', 'penaltyGoal'];
+        const yellow = ['yellow'];
+        const red = ['red'];
+        const autoGoal = ['autoGoal'];
+        const penalty = ['penalty'];
+        const yellowRed = ['yellowRed'];
+        const assists = ['goal', '6mGoal', '10mGoal', 'penaltyGoal'];
+
         players.forEach((player) => {
             player.gamesCount = this.getPlayerGamesCount(player._id, games);
-            player.goalsCount = this.getPlayerGoalsCount(player._id, games);
-            player.assistsCount = this.getPlayerAssistCount(player._id, games);
-            player.yellow = this.getYellowCount(player._id, games);
-            player.red = this.getRedCount(player._id, games);
+            player.goalsCount = this.getEventCount(player._id, games, goals);
+            player.assistsCount = this.getPlayerAssistCount(player._id, games, assists);
+            player.yellow = this.getEventCount(player._id, games, yellow);
+            player.red = this.getEventCount(player._id, games, red);
             player.goalsAssists = player.goalsCount + player.assistsCount;
-            player.autoGoals = this.getAutoGoals(player._id, games);
-            player.penalty = this.getPenalty(player._id, games);
-            player.yellowReds = this.getYellowReds(player._id, games);
+            player.autoGoals = this.getEventCount(player._id, games, autoGoal);
+            player.penalty = this.getEventCount(player._id, games, penalty);
+            player.yellowReds = this.getEventCount(player._id, games, yellowRed);
             player.games = this.getGames(player._id, games);
             player.teams = this.getTeams(player._id, games);
         });
@@ -24,39 +34,14 @@ class PreparePlayers {
             || game.homePlayers.filter(player => player._id === id).length).length;
     }
 
-    static getPlayerGoalsCount(id, games) {
+    static getEventCount(id, games, events) {
         return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['goal', '6mGoal', '10mGoal', 'penaltyGoal'].includes(event.type) ).length).length;
+            && events.includes(event.type) ).length).length;
     }
 
-    static getPlayerAssistCount(id, games) {
+    static getPlayerAssistCount(id, games, events) {
         return games.filter(game => game.events.filter(event => event.assistant._id === id
-            && ['goal', '6mGoal', '10mGoal', 'penaltyGoal'].includes(event.type) ).length).length;
-    }
-
-    static getYellowCount(id, games) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['yellow'].includes(event.type) ).length).length;
-    }
-
-    static getRedCount(id, games) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['yellowRed'].includes(event.type) ).length).length;
-    }
-
-    static getAutoGoals(id, games) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['autoGoal'].includes(event.type) ).length).length;
-    }
-
-    static getPenalty(id, games) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['penalty'].includes(event.type) ).length).length;
-    }
-
-    static getYellowReds(id, games) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && ['yellowRed'].includes(event.type) ).length).length;
+            && events.includes(event.type) ).length).length;
     }
 
     static getGames(id, games) {
@@ -65,15 +50,15 @@ class PreparePlayers {
 
     static getTeams(id, games) {
         const teams = [];
+        const homeOrGuest = (game, team) => {
+            if (game[team].players.some(player => player._id === id) && !teams.some(team => team._id === game[team]._id)) {
+                const { _id, name, img } = game[team];
+                teams.push({ _id, name, img });
+            }
+        };
         games.forEach(game => {
-            if (game.guest.players.some(player => player._id === id) && !teams.some(team => team._id === game.guest._id)) {
-                const { _id, name, img } = game.guest;
-                teams.push({ _id, name, img });
-            }
-            if (game.home.players.some(player => player._id === id) && !teams.some(team => team._id === game.home._id)) {
-                const { _id, name, img } = game.home;
-                teams.push({ _id, name, img });
-            }
+            homeOrGuest(game, 'guest');
+            homeOrGuest(game, 'home');
         });
         return teams;
     }
