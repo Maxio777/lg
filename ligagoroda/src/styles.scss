@@ -71,10 +71,11 @@ a:hover {
 }
 
 .toast {
-  opacity: 1!important;
-  box-shadow: 0 0 12px #000000!important;
+  opacity: 0.9!important;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2)!important;
   background-color: #030303;
   pointer-events: auto;
+  border-radius: 5px!important;
 }
 .toast-success {
   background-color: #51A351;

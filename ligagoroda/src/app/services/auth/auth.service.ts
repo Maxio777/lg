@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RestAuthService } from '../../rest/rest-auth/rest-auth.service';
-import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -27,9 +27,7 @@ export class AuthService {
       this.isAuth.next(!!sessionStorage.getItem('Token'));
       this.fullName.next(sessionStorage.getItem('fullName'));
         this.toastr.success(`Вы авторизованы как ${data.fullName}`);
-    }, error => {
-        this.toastr.error(error.error.message);
-      });
+    });
   }
 
   logout() {
