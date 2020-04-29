@@ -1,37 +1,39 @@
 .sidenav-container {
-  height: calc(100% - 120px);
+  height: calc(100% - 110px);
+}
+
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  height: 110px;
+  padding: 0;
 }
 
 .logo-tournament {
   //left: 20px;
-  top: 15px;
-  padding: 1px;
+
 }
 
 .logo {
-  height: 95px;
-  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  top: 15px;
+  padding: 1px;
+  height: 88px;
   margin-left: 10px;
 }
 
 @media (max-width: 700px) {
-  .logo-tournament {
+  .logo {
+    height: 55px;
     left: 60px;
     top: 7px;
   }
-
-  .logo {
-    height: 55px;
-  }
 }
-
-//.home-background {
-//  //background-image: url(/assets/img/stadium-background.jpg);
-//  background-position: left top;
-//  background-color: #CFD8E1;
-//  background-repeat: no-repeat;
-//  background-size: cover;
-//}
 
 .sidenav {
   width: 200px;
@@ -41,21 +43,6 @@
   background: inherit;
 }
 
-.mat-toolbar-row, .mat-toolbar-single-row {
-  display: flex;
-  box-sizing: border-box;
-  padding: 0 16px;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  white-space: nowrap;
-  height: 120px;
-  padding: 0;
-}
-
-.menu-desktop {
-  z-index: 4;
-}
 
 .header {
   margin-top: 10px;
@@ -72,8 +59,8 @@
 .header-bottom {
   margin-left: -16px;
   margin-right: -16px;
-  background-color: #00355D	;
-  height: 50px;
+  background-color: #ffffff;
+  height: 40px;
 }
 
 .header-title {
@@ -95,7 +82,7 @@
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   border: 1px solid #d7d8dc;
   border-top-width: 0;
-  border-radius: 0px 0px 31px 31px;
+  border-radius: 0 0 31px 31px;
 }
 
 .index-main {
@@ -118,24 +105,12 @@
 }
 
 .liga {
-  font-family: Romic SH Light;
   margin-left: 30px;
   font-size: 32px;
 }
 
-.menu-desktop {
-  text-align: right;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 button:focus {
-  outline: 0px;
-  outline: 0px;
+  outline: 0;
 }
 
 @media (max-width: 600px) {
@@ -161,6 +136,36 @@ button:focus {
   }
 }
 
+
+
+.menu-desktop {
+  z-index: 4;
+  color: rgba(0,0,0,0.5);
+  text-align: right;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+
+  button {
+    box-sizing: content-box;
+    border-radius: 0;
+    height: 100%;
+    &:hover {
+      background: rgba(0, 53, 93, 0.05);
+    }
+    &.active {
+      background: rgba(0, 53, 93, 0.1);
+      color: #00518f;
+      border-bottom: 1px solid;
+    }
+
+  }
+}
+
 .full-name {
   position: absolute;
   right: 0;
@@ -176,4 +181,8 @@ button:focus {
     margin-left: 20px;
     background: none;
   }
+}
+.mat-button-ripple.mat-ripple {
+  color: red!important;
+  //color: #00518f;
 }

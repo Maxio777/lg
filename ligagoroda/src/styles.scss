@@ -16,7 +16,11 @@
 }
 //$custom-typography: mat-typography-config($font-family: '"Oswald", sans-serif;');
 //@include mat-core($custom-typography);
-
+@mixin mat-ripple-theme($custom-theme) {
+  .mat-button-ripple.mat-ripple {
+    color: #00518F;
+  }
+}
 $custom-primary: mat-palette($mat-indigo);
 $custom-accent: mat-palette($mat-deep-orange);
 $custom-theme: mat-light-theme($custom-primary, $custom-accent);
@@ -26,6 +30,8 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 
 html, body { height: 100%; }
 /*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+
 
 .container {
   background: white;
@@ -71,7 +77,7 @@ a:hover {
 }
 
 .toast {
-  opacity: 0.9!important;
+  opacity: 1!important;
   box-shadow: 0 0 12px rgba(0,0,0,0.2)!important;
   background-color: #030303;
   pointer-events: auto;

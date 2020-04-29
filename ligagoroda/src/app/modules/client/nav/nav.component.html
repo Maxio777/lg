@@ -25,22 +25,15 @@
 <!--  <div class="header header-bottom" *ngIf="!(isHandset$ | async)">-->
   <div class="header header-bottom" *ngIf="!(isHandset$ | async)">
     <div class="menu-desktop" *ngIf="(this.authService.isAuth$ | async)">
-      <button mat-button class="m-1" (click)="goToRouter('/')">ГЛАВНАЯ</button>
-      <button mat-button class="m-1" (click)="goToRouter('/games')">ИГРЫ</button>
-      <button mat-button class="m-1" (click)="goToRouter('/stat')">ТАБЛИЦА</button>
-      <button mat-button class="m-1" (click)="goToRouter('/stat-players')">ИГРОКИ</button>
-      <button mat-button class="m-1" (click)="goToRouter('/news/page/1')">НОВОСТИ</button>
-      <button mat-button class="m-1" >КОНТАКТЫ</button>
+      <button mat-button [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">ГЛАВНАЯ</button>
+      <button mat-button [routerLink]="['games']" [routerLinkActive]="['active']">ИГРЫ</button>
+      <button mat-button [routerLink]="['stat']" [routerLinkActive]="['active']">ТАБЛИЦА</button>
+      <button mat-button [routerLink]="['stat-players']" [routerLinkActive]="['active']">ИГРОКИ</button>
+      <button mat-button [routerLink]="['news/page/1']" [routerLinkActive]="['active']">НОВОСТИ</button>
+      <button mat-button [disabled]="true">КОНТАКТЫ</button>
     </div>
   </div>
   </mat-toolbar>
-
-<div class="header header-title"
-     *ngIf="this.authService.isAuth$ | async">
-  <div class="menu-desktop title">
-    {{ this.dataService.getCurrentTitle() }}
-  </div>
-</div>
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
