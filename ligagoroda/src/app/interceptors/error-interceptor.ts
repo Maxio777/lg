@@ -18,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         () => {},
         err => {
           if (err instanceof HttpErrorResponse) {
-            this.toastr.error(err.error.message);
+            this.toastr.error(err.error.message || 'Что-то пошло не так, попробуйте снова.');
           }
         }
       )

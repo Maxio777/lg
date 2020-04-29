@@ -1,5 +1,3 @@
-<button (click)="showToast()">Show toast</button>
-
 <div class="w-100 d-flex flex-column pt-5">
 
   <div class="d-flex flex-column">
@@ -191,16 +189,13 @@
 
 </div>
 
-<!--<pre>{{ isEdit | json }}</pre>-->
-<pre>{{ game?.tournament?.format | json }}</pre>
-
-  <app-edit-events *ngIf="isEdit.events && getAllGamePlayers().length"
-                   [players]="getAllGamePlayers()"
-                   [format]="game?.tournament?.format"
-                   [event]="currentEv"
-                   (cancelEdit)="editSelect(null)"
-                   (newEvent)="createEvent($event)"
-  ></app-edit-events>
+<app-edit-events *ngIf="isEdit.events && getAllGamePlayers().length"
+                 [players]="getAllGamePlayers()"
+                 [format]="game?.tournament?.format"
+                 [event]="currentEv"
+                 (cancelEdit)="editSelect(null)"
+                 (newEvent)="createEvent($event)"
+></app-edit-events>
 
 <app-add-items *ngIf="isEdit.homeManagers"
                [items]="managers"

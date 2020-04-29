@@ -26,7 +26,7 @@
     <td class="text-center px-1">{{team.points}}</td>
     <td class="text-center px-1">
       <div class="outcomes d-flex flex-row justify-content-center">
-        <span class="outcome"  *ngFor="let i of team.outcomes" [style.background]="COLORS[i]"></span>
+        <span class="outcome"  *ngFor="let i of team.outcomes | slice:2:5" [style.background]="COLORS[i]"></span>
       </div>
     </td>
 <!--    <td></td>-->

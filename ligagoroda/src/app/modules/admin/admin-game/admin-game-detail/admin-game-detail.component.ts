@@ -113,6 +113,10 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
   }
 
   public editSelect(ev: EventLG | null, editItem: string = ''): void {
+    if (!this.getAllGamePlayers().length) {
+      this.toastr.error('Сначала нужно добавить игроков');
+      return;
+    }
     this.currentEv = ev;
     Object.keys(this.isEdit).forEach(key => this.isEdit[key] = (key === editItem));
   }
