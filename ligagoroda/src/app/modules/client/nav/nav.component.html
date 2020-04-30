@@ -23,7 +23,7 @@
       <!--<div class="liga cursor-pointer" (click)="goToUrl('/')">ЛИГА ГОРОДА</div>-->
   </div>
 <!--  <div class="header header-bottom" *ngIf="!(isHandset$ | async)">-->
-  <div class="header header-bottom" *ngIf="!(isHandset$ | async)">
+  <div class="header header-bottom" *ngIf="!(isHandset$ | async)"  [style.background]="(this.authService.isAuth$ | async) ? '#ffffff' : '#00518f'">
     <div class="menu-desktop" *ngIf="(this.authService.isAuth$ | async)">
       <button mat-button [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">ГЛАВНАЯ</button>
       <button mat-button [routerLink]="['games']" [routerLinkActive]="['active']">ИГРЫ</button>
