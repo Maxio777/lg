@@ -11,7 +11,7 @@ import { DataService } from './services/data.service';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {AuthGuardService, ChugunGuardService} from './services/guards/auth-guard.service';
+import { AuthGuardService, ChugunGuardService } from './services/guards/auth-guard.service';
 import { AppHttpInterceptor } from './services/http-interceptor';
 import { MaterialModule } from './modules/material.module';
 import { SharedModule } from './modules/shared.module';
@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoaderInterceptor } from './interceptors/loader-interceptor';
 import { LoaderComponent } from './assets/components/loader/loader.component';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { NotFoundComponent } from './assets/components/not-found/not-found.component';
 
 registerLocaleData(localeRu, 'ru');
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -34,26 +35,28 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     NavComponent,
-    LoaderComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        FormsModule,
-        ReactiveFormsModule,
-        SharedModule,
-        CoreModule,
-        PerfectScrollbarModule,
-        AdminModule,
-        ToastrModule.forRoot({
-            timeOut: 6000,
-            // progressBar: true,
-            // disableTimeOut: true,
-            positionClass: 'toast-bottom-right',
-        }),
-    ],
+    LoaderComponent,
+    NotFoundComponent
+  ],
+  imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      LayoutModule,
+      FormsModule,
+      ReactiveFormsModule,
+      SharedModule,
+      CoreModule,
+      PerfectScrollbarModule,
+      AdminModule,
+      ToastrModule.forRoot({
+          timeOut: 6000,
+          // progressBar: true,
+          // disableTimeOut: true,
+          positionClass: 'toast-bottom-right',
+      }),
+  ],
   exports: [MaterialModule],
   providers: [
     {

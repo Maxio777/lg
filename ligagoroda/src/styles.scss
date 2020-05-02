@@ -26,12 +26,7 @@ $custom-accent: mat-palette($mat-deep-orange);
 $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 @include angular-material-theme($custom-theme)
 
-//00508f
-
 html, body { height: 100%; }
-/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
-
-
 
 .container {
   background: white;
@@ -60,15 +55,9 @@ a:hover {
 @keyframes move {
   from {
     opacity: 0;
-    -webkit-transform: scale(0.98);
-    //-moz-transform: scale(0.98);
-    //-o-transform: scale(0.98);
   }
   to{
     opacity: 1;
-    //-webkit-transform: scale(1);
-    //-moz-transform: scale(1);
-    //-o-transform: scale(1);
   }
 }
 
@@ -123,4 +112,8 @@ a:hover {
 
 .mat-card:not([class*='mat-elevation-z']) {
   box-shadow: 0px -1px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-drawer {
+  overflow-y: scroll
 }
