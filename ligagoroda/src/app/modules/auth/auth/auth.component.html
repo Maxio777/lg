@@ -3,7 +3,9 @@
   <div class="auth">
     <div class="title-auth"><h2>Авторизация</h2></div>
     <div class="auth-card">
+
       <form [formGroup]="form" autocomplete="off" class="pb-2" (ngSubmit)="submit()">
+
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Логин" formControlName="email" (keydown.enter)="submit()" aria-label="login">
           <mat-error *ngIf="form.controls['email']?.errors?.required">Обязательное поле</mat-error>
@@ -18,8 +20,15 @@
           <mat-error *ngIf="form.controls['password']?.errors?.required">Обязательное поле</mat-error>
           <mat-error *ngIf="form.controls['password']?.errors?.minlength">Минимум 6 знаков, сейчас {{form.controls['password']?.errors?.minlength['actualLength']}}</mat-error>
         </mat-form-field>
+
       </form>
-      <button mat-raised-button color="primary" class="btn-block login-button" type="submit">Войти</button>
+
+      <button mat-raised-button color="primary" class="btn-block login-button"
+              type="submit" (click)="submit()"
+              [disabled]="form.invalid || form.disabled">
+        Войти
+      </button>
+
     </div>
   </div>
 

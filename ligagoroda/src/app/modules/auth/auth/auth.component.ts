@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements OnInit, OnDestroy {
-  @ViewChild('btn') btn: ElementRef | undefined = undefined;
   private sub: Subscription = new Subscription();
   form: FormGroup = this.initForm();
   hide: boolean = true;
@@ -37,18 +36,13 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   submit(): any {
-    this.markDirtyAndTouched(this.form);
-    if (this.form && this.form.value && this.form.valid) {
-      const val = {...this.form.value};
-      this.authService.login(val);
+    if (this.form && this.form.valid) {
+      this.form.disable();
+      this.sub.add(this.authService.login(this.form.value).subscribe(
+        () => true,
+        () => this.form.enable()
+      ));
     }
-  }
-
-  markDirtyAndTouched(form: FormGroup) {
-    Object.keys(this.form.controls).forEach(control => {
-      form.controls[control].markAsDirty();
-      form.controls[control].markAsTouched();
-    });
   }
 
   ngOnDestroy(): void {
