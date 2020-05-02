@@ -15,6 +15,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild('btn') btn: ElementRef | undefined = undefined;
   private sub: Subscription = new Subscription();
   form: FormGroup = this.initForm();
+  hide: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) {
     this.initForm();
