@@ -61,6 +61,7 @@
   margin-right: -16px;
   background-color: #ffffff;
   height: 40px;
+  justify-content: flex-end;
 }
 
 .header-title {
@@ -146,8 +147,6 @@ button:focus {
   justify-content: space-around;
   align-items: flex-start;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
   height: 100%;
 
   button {
