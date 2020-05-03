@@ -11,7 +11,7 @@ import { RestGameService } from '../../../../rest/rest-game/rest-game.service';
 import { ToastrService } from 'ngx-toastr';
 import { RestEventService } from '../../../../rest/rest-event/rest-event.service';
 import { EventLG } from '../../../../models/events';
-import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-admin-game-detail',
@@ -160,7 +160,7 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
 
   prepareDataToSave() {
     const data = this.form.getRawValue();
-    data.date = moment(data.date);
+    data.date = new Date(data.date);
     return data;
   }
 
