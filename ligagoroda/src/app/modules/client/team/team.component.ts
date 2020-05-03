@@ -42,7 +42,7 @@ export class TeamComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private clientDataService: ClientDataService,
     private router: Router,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
   ) { }
 
 
@@ -72,10 +72,10 @@ export class TeamComponent implements OnInit, OnDestroy {
 
       const idTeam = params.id;
 
-      this.subs.add(this.clientDataService.getTeams$().subscribe(teams => {
-        if (teams) {
-          this.team = teams.find(team => team._id === idTeam);
-        }
+      this.subs.add(this.clientDataService.getIsInitAppData().subscribe(() => {
+
+          this.team = this.clientDataService.teamsMap.get(idTeam);
+
           if (this.team) {
             this.team.games = this.clientDataService.getGames$().getValue()
               .filter(game => {

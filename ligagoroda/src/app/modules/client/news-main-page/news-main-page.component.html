@@ -11,16 +11,19 @@
 
   </div>
 
-  <div class="list-news col-5">
+  <div class="list-news col-5 h-100">
 
     <div class="one-news cursor-pointer" *ngFor="let oneNews of news.slice(2, 6) " (click)="goToOneNews(oneNews._id)">
-      <div class="photo col-6">
+      <div class="photo col-5">
         <img src="{{oneNews.img}}" alt="">
       </div>
-      <div class="title-and-description col-6">
-        <div class="title maximum-4-lines">{{oneNews.title}}</div>
-<!--        <div class="description">{{oneNews.textPreview}}</div>-->
+      <div class="title-and-description col-7">
+        {{oneNews.title}}
       </div>
+    </div>
+
+    <div class="mews-link text-center">
+      ВСЕ НОВОСТИ >
     </div>
 
   </div>

@@ -76,7 +76,7 @@ export class ClientDataService {
       ));
   }
 
-  getIsInitAppData(): Observable<boolean> {
+  public getIsInitAppData(): Observable<boolean> {
     return this.initData$.pipe(filter(data => data));
   }
 

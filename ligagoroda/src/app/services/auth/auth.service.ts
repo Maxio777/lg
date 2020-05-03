@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { RestAuthService } from '../../rest/rest-auth/rest-auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -20,14 +21,16 @@ export class AuthService {
   }
 
   login(body: any) {
-    return this.restAuthService.login(body).subscribe(
-      data => {
-      sessionStorage.setItem('Token', data.token);
-      sessionStorage.setItem('fullName', data.fullName);
-      this.isAuth.next(!!sessionStorage.getItem('Token'));
-      this.fullName.next(sessionStorage.getItem('fullName'));
-        this.toastr.success(`Вы авторизованы как ${data.fullName}`);
-    });
+    return this.restAuthService.login(body).pipe(
+      tap(data => {
+          sessionStorage.setItem('Token', data.token);
+          sessionStorage.setItem('fullName', data.fullName);
+          this.isAuth.next(!!sessionStorage.getItem('Token'));
+          this.fullName.next(sessionStorage.getItem('fullName'));
+          this.toastr.success(`Вы авторизованы как ${data.fullName}`);
+        }
+      )
+    );
   }
 
   logout() {
