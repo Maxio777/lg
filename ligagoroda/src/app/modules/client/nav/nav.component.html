@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" >
+<mat-toolbar color="primary" [style.border-bottom-color]="(this.authService.isAuth$ | async) ? '#e1e1e1' : '#00518f'">
   <div class="header">
     <div class="full-name"
          *ngIf="this.authService.isAuth$ | async">
@@ -35,17 +35,14 @@
   </div>
   </mat-toolbar>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" >
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'side'"
+    [opened]="false"
+    [fixedInViewport]="false">
 
-
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="'side'"
-      [opened]="false"
-      [fixedInViewport]="false">
-    <!--<img [src]="assets/img/logo.jpg">-->
-
-    <mat-nav-list >
+    <mat-nav-list>
 
 <!--      <a mat-list-item (click)="goToRouter('/auth'); drawer.toggle()">АВТОРИЗАЦИЯ</a>-->
 

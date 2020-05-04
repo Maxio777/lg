@@ -2,7 +2,6 @@
   height: calc(100% - 110px);
 }
 
-
 .mat-toolbar-row, .mat-toolbar-single-row {
   display: flex;
   box-sizing: border-box;
@@ -95,11 +94,11 @@
 }
 
 .mat-toolbar {
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .mat-toolbar.mat-primary {
-  background: #00518F;
+  background: #003366;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -137,32 +136,35 @@ button:focus {
   }
 }
 
-
-
 .menu-desktop {
+  font-size: 12px;
   z-index: 4;
-  color: rgba(0,0,0,0.5);
+  color: #999999;
   text-align: right;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
   display: flex;
   height: 100%;
+  border-bottom: 2px solid white;
 
   button {
+    letter-spacing: 2px;
     box-sizing: content-box;
     border-radius: 0;
     height: 100%;
     &:hover {
       background: rgba(0, 53, 93, 0.05);
+      border-bottom: 2px solid rgba(0, 53, 93, 0.05);
     }
     &.active {
       background: rgba(0, 53, 93, 0.1);
-      color: #00518f;
-      border-bottom: 1px solid;
+      color: #003333;
+      border-bottom: 2px solid #00518f;
     }
-
   }
+
+
 }
 
 .full-name {

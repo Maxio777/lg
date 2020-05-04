@@ -33,7 +33,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  public logout() {
     sessionStorage.removeItem('Token');
     sessionStorage.removeItem('fullName');
     this.isAuth.next(false);

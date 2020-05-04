@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
-import {AuthService} from '../../../services/auth/auth.service';
-
+import { AuthService } from '../../../services/auth/auth.service';
+import { MatSidenav } from '@angular/material';
 
 
 @Component({
@@ -15,16 +15,6 @@ import {AuthService} from '../../../services/auth/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent implements OnInit, OnDestroy {
-  selected: string = '';
-  userFullName: string | null = '';
-
-  isMenuOpen = false;
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(map(result => result.matches));
-
-  public goToRouter = (direct: string) => this.router.navigate([direct]);
-  public isAdmin = () => this.dataService.getCurrentTitle() === 'АДМИНКА';
-
   constructor(
     public authService: AuthService,
     private breakpointObserver: BreakpointObserver,
@@ -32,12 +22,28 @@ export class NavComponent implements OnInit, OnDestroy {
     public dataService: DataService,
     private cd: ChangeDetectorRef,
   ) {}
+  @ViewChild('drawer') drawer: MatSidenav | undefined;
+  selected: string = '';
+  userFullName: string | null = '';
+
+  isMenuOpen = false;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches));
+  private subs: Subscription = new Subscription();
+
+  public goToRouter = (direct: string) => this.router.navigate([direct]);
+  public isAdmin = () => this.dataService.getCurrentTitle() === 'АДМИНКА';
 
   ngOnInit(): void {
-    this.authService.fullName.subscribe(fullName => {
+    this.subs.add(this.authService.isAuth$.subscribe((bool) => {
+      if (this.drawer && !bool) {
+        this.drawer.toggle(false);
+      }
+    }));
+    this.subs.add(this.authService.fullName.subscribe(fullName => {
       this.userFullName = fullName;
       this.cd.detectChanges();
-    });
+    }));
     this.router.events.
     pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -54,6 +60,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.cd.detach();
+    this.subs.unsubscribe();
   }
 
 }
