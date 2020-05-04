@@ -20,10 +20,8 @@ import { GameLG } from '../../../models/game';
 })
 
 export class GamesComponent implements OnInit, OnDestroy {
-  URLS = URLS;
   completedGames: GameLG[] = [];
   games: GameLG[] = [];
-  uniqDate: string[] = [];
   sub: Subscription = new Subscription();
 
   constructor(private router: Router, private clientDataService: ClientDataService, private cd: ChangeDetectorRef) {}

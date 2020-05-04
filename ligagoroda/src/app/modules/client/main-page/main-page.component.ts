@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { URLS_ADMIN } from '../../../routing-configs/config-routing-admin';
+import { URLS_ADMIN } from '../../../assets/routing-configs/config-routing-admin';
 
 @Component({
   selector: 'app-main-page',

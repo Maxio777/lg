@@ -1,36 +1,44 @@
-<mat-toolbar color="primary" [style.border-bottom-color]="(this.authService.isAuth$ | async) ? '#e1e1e1' : '#00518f'">
+<mat-toolbar color="primary"
+             [style.border-bottom-color]="(authService.isAuth$ | async) ? '#e1e1e1' : '#00518f'">
   <div class="header">
+
     <div class="full-name"
-         *ngIf="this.authService.isAuth$ | async">
+         *ngIf="authService.isAuth$ | async">
       <div class="d-flex flex-row">
         <div>{{userFullName}}</div>
-        <button mat-mini-fab (click)="logout()" matTooltip="Выход"><mat-icon>exit_to_app</mat-icon></button>
+        <button mat-mini-fab (click)="logout()" matTooltip="Выход">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
       </div>
-
     </div>
 
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        *ngIf="this.authService.isAuth$ | async"
-        (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-  <a routerLink="/auth">
-    <img src="./assets/img/logo_120px.png" class="logo logo-tournament position-absolute" alt="">
-  </a>
-      <!--<div class="liga cursor-pointer" (click)="goToUrl('/')">ЛИГА ГОРОДА</div>-->
+    <button type="button" aria-label="Toggle sidenav"
+      mat-icon-button
+      *ngIf="authService.isAuth$ | async"
+      (click)="drawer.toggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+    <a routerLink="/auth">
+      <img src="./assets/img/logo_120px.png" class="logo logo-tournament position-absolute" alt="">
+    </a>
+
   </div>
-<!--  <div class="header header-bottom" *ngIf="!(isHandset$ | async)">-->
-  <div class="header header-bottom" *ngIf="!(isHandset$ | async)"  [style.background]="(this.authService.isAuth$ | async) ? '#ffffff' : '#00518f'">
-    <div class="menu-desktop" *ngIf="(this.authService.isAuth$ | async)">
-      <button mat-button [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">ГЛАВНАЯ</button>
-      <button mat-button [routerLink]="['games']" [routerLinkActive]="['active']">ИГРЫ</button>
-      <button mat-button [routerLink]="['stat']" [routerLinkActive]="['active']">ТАБЛИЦА</button>
-      <button mat-button [routerLink]="['stat-players']" [routerLinkActive]="['active']">ИГРОКИ</button>
-      <button mat-button [routerLink]="['news/page/1']" [routerLinkActive]="['active']">НОВОСТИ</button>
-      <button mat-button [disabled]="true">КОНТАКТЫ</button>
+  <div class="header header-bottom"
+     *ngIf="!(isHandset$ | async)"
+     [style.background]="(authService.isAuth$ | async) ? '#ffffff' : '#00518f'"
+  >
+    <div class="menu-desktop" *ngIf="(authService.isAuth$ | async)">
+      <button mat-button
+        *ngFor="let link of linksTop"
+        [routerLink]="[link.url]"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: link.exact }"
+        [disabled]="link.disabled"
+      >
+        {{link.name}}
+      </button>
     </div>
   </div>
   </mat-toolbar>
@@ -43,59 +51,20 @@
     [fixedInViewport]="false">
 
     <mat-nav-list>
-
-<!--      <a mat-list-item (click)="goToRouter('/auth'); drawer.toggle()">АВТОРИЗАЦИЯ</a>-->
-
       <div *ngIf="!isAdmin()">
-
-        <a mat-list-item [routerLink]="['/admin/tournaments']" [routerLinkActive]="['active']"
+        <a mat-list-item
+           *ngFor="let link of linksLeft"
+           [routerLink]="[link.url]" [routerLinkActive]="['active']"
         >
-          <mat-icon class="left-menu">filter_1</mat-icon>
-          Турниры
+          <mat-icon class="left-menu">{{link.icon}}</mat-icon>
+          {{link.name}}
         </a>
-        <a mat-list-item [routerLink]="['/admin/player/']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_2</mat-icon>
-          Игроки
-        </a>
-        <a mat-list-item [routerLink]="['/admin/referees']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_3</mat-icon>
-          Судьи
-        </a>
-        <a mat-list-item [routerLink]="['/admin/manager']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_4</mat-icon>
-          Менеджеры
-        </a>
-        <a mat-list-item [routerLink]="['/admin/team']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_5</mat-icon>
-          Команды
-        </a>
-        <a mat-list-item [routerLink]="['/admin/game']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_6</mat-icon>
-          Игры
-        </a>
-        <a mat-list-item [routerLink]="['/admin/news']" [routerLinkActive]="['active']">
-          <mat-icon class="left-menu">filter_6</mat-icon>
-          Новости
-        </a>
-
-      </div>
-      <div *ngIf="isAdmin()">
-        <a mat-list-item (click)="goToRouter('/')"></a>
-        <a mat-list-item (click)="goToRouter('/admin/player/')">ИГРОКИ</a>
-        <a mat-list-item (click)="goToRouter('/admin/tournaments')">ТУРНИРЫ</a>
-        <a mat-list-item (click)="goToRouter('/admin/games')">ИГРЫ</a>
-
-        <a mat-list-item href="#">Контакты</a>
       </div>
 
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="home-background" perfectScrollbar>
     <router-outlet></router-outlet>
-
-    <!--<app-rest-table></app-rest-table>-->
-    <!-- Add Content Here -->
-
 
   </mat-sidenav-content>
 </mat-sidenav-container>

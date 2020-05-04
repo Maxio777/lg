@@ -20,9 +20,9 @@ import { NavComponent } from './modules/client/nav/nav.component';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AdminModule } from './modules/admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
-import { LoaderInterceptor } from './interceptors/loader-interceptor';
+import { LoaderInterceptor } from './services/interceptors/loader-interceptor';
 import { LoaderComponent } from './assets/components/loader/loader.component';
-import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { ErrorInterceptor } from './services/interceptors/error-interceptor';
 import { NotFoundComponent } from './assets/components/not-found/not-found.component';
 
 registerLocaleData(localeRu, 'ru');

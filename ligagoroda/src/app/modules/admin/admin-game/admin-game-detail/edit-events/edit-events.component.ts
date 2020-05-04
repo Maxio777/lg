@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TYPES_EVENTS_11x11, TYPES_EVENTS_5x5 } from '../../../../../assets/constants';
+import { TYPES_EVENTS_11X11, TYPES_EVENTS_5X5 } from '../../../../../assets/constants/constants';
 import { PlayerAdmin } from '../../../../../models/interfaces';
 import { EventLG } from '../../../../../models/events';
 
@@ -11,6 +11,8 @@ import { EventLG } from '../../../../../models/events';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditEventsComponent implements OnInit {
+
+  constructor() {}
   @Input() event: EventLG | null = null;
   @Input() players: PlayerAdmin[] = [];
   @Input() format: string = '';
@@ -19,17 +21,9 @@ export class EditEventsComponent implements OnInit {
   TYPES_EVENTS: any;
   types: any;
 
-  form: FormGroup = this.initForm();
+  form: FormGroup = EditEventsComponent.initForm();
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.TYPES_EVENTS = this.format === '11x11' ? TYPES_EVENTS_11x11 : TYPES_EVENTS_5x5;
-    this.types = Object.keys(this.TYPES_EVENTS);
-    this.setDataToForm();
-  }
-
-  private initForm(): FormGroup {
+  static initForm(): FormGroup {
     return new FormGroup({
       _id: new FormControl(''),
       type: new FormControl('', [Validators.required]),
@@ -37,6 +31,12 @@ export class EditEventsComponent implements OnInit {
       owner: new FormControl('', [Validators.required]),
       assistant: new FormControl(''),
     });
+  }
+
+  ngOnInit(): void {
+    this.TYPES_EVENTS = this.format === '11x11' ? TYPES_EVENTS_11X11 : TYPES_EVENTS_5X5;
+    this.types = Object.keys(this.TYPES_EVENTS);
+    this.setDataToForm();
   }
 
   private setDataToForm(): void {

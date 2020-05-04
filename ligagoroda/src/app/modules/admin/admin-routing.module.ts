@@ -4,7 +4,7 @@ import { AdminComponent } from './admin.component';
 import { AdminGameComponent } from './admin-game/admin-game.component';
 import { AdminTournamentComponent } from './admin-tournament/admin-tournament.component';
 import { AdminPlayerComponent } from './admin-player/admin-player.component';
-import { URLS_ADMIN } from '../../routing-configs/config-routing-admin';
+import { URLS_ADMIN } from '../../assets/routing-configs/config-routing-admin';
 import { AdminRefereesComponent } from './admin-referees/admin-referees.component';
 import { AdminManagerComponent } from './admin-manager/admin-manager.component';
 import { AdminTeamComponent } from './admin-team/admin-team.component';

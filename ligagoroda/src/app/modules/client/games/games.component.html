@@ -24,12 +24,16 @@
         <tbody>
         <tr class="cursor-pointer" *ngFor="let game of completedGames | slice:0:5 let idx = index">
           <td>
-            <div class="date">{{ game.date }}</div>
-            <div class="tour">{{ game.tour }}</div>
+            <div class="date">{{ game.date | date: 'dd MMM HH:mm' }}</div>
+            <div class="tour">{{ game.tour }} тур</div>
           </td>
           <td>{{ game.home.name }}</td>
           <td><img src="{{game.home.img}}" alt=""></td>
-          <td>{{ game.homeGoal }} : {{ game.guestGoal }}</td>
+          <td>
+            <span class="res" [style.background]="'red' " ></span>
+            {{ game.homeGoal }} : {{ game.guestGoal }}
+            <span class="res"></span>
+          </td>
           <td><img src="{{game.guest.img}}" alt=""></td>
           <td>{{ game.guest.name }}</td>
           <td>Подробнее</td>

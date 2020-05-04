@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MatSidenav } from '@angular/material';
+import {LINKS_TOP, LINKS_LEFT} from '../../../assets/constants/links-menu';
 
 
 @Component({
@@ -25,13 +26,13 @@ export class NavComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer: MatSidenav | undefined;
   selected: string = '';
   userFullName: string | null = '';
+  linksTop = LINKS_TOP;
+  linksLeft = LINKS_LEFT;
 
-  isMenuOpen = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
   private subs: Subscription = new Subscription();
 
-  public goToRouter = (direct: string) => this.router.navigate([direct]);
   public isAdmin = () => this.dataService.getCurrentTitle() === 'АДМИНКА';
 
   ngOnInit(): void {

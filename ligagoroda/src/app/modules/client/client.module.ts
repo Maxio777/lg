@@ -15,7 +15,6 @@ import { SharedModule } from '../shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NewsListComponent } from './all-news/news-list/news-list.component';
 import { LeftAreaComponent } from './main-page/left-area/left-area.component';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { StatComponent } from './stat/stat.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RightAreaComponent } from './main-page/right-area/right-area.component';
@@ -36,7 +35,6 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
     IndexComponent,
     NewsListComponent,
     LeftAreaComponent,
-    DashboardComponent,
     StatComponent,
     MainPageComponent,
     RightAreaComponent,

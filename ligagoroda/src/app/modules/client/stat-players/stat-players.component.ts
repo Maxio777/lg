@@ -6,11 +6,12 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { sortBy } from 'lodash';
+import {Router} from '@angular/router';
+import {sortBy} from 'lodash';
 import {PlayerClient, TournamentLG} from '../../../models/interfaces';
-import { Subscription } from 'rxjs';
-import { ClientDataService } from '../services/client-data/client-data.service';
+import {Subscription} from 'rxjs';
+import {ClientDataService} from '../services/client-data/client-data.service';
+import {PLAYER_MENU} from '../../../assets/constants/player-menu';
 
 
 @Component({
@@ -22,10 +23,11 @@ import { ClientDataService } from '../services/client-data/client-data.service';
 export class StatPlayersComponent implements OnInit, OnDestroy {
   @Input() isMainPage: boolean = false;
 
-  players: PlayerClient[] | undefined;
-  currentVal: 'goalsCount' | 'assistsCount' | 'goalsAssists' | 'yellow' | 'red' = 'goalsCount';
-  currentTournament: TournamentLG | null = null;
-  subs: Subscription = new Subscription();
+  public players: PlayerClient[] | undefined;
+  public currentVal: 'goalsCount' | 'assistsCount' | 'goalsAssists' | 'yellow' | 'red' = 'goalsCount';
+  public currentTournament: TournamentLG | null = null;
+  public playersMenu = PLAYER_MENU;
+  private subs: Subscription = new Subscription();
 
   goToUrl = (id: string) => this.router.navigate(['player/' + id]);
 
@@ -33,33 +35,34 @@ export class StatPlayersComponent implements OnInit, OnDestroy {
     private router: Router,
     private clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getCurrentTournament();
     this.getPlayers();
   }
 
-  initTable(players: PlayerClient[]) {
+  private initTable(players: PlayerClient[]) {
     this.players = players;
     this.changeCurrentVal('goalsCount');
     this.cd.detectChanges();
   }
 
-  getCurrentTournament() {
+  private getCurrentTournament() {
     this.subs.add(this.clientDataService.getTournament$().subscribe(tournament => {
       this.currentTournament = tournament;
       this.cd.detectChanges();
     }));
   }
 
-  getPlayers() {
+  private getPlayers() {
     this.subs.add(this.clientDataService.getPlayers$().subscribe(players => {
       this.initTable(players);
     }));
   }
 
-  changeCurrentVal(val: any): void {
+  public changeCurrentVal(val: any): void {
     this.currentVal = val;
     this.players = sortBy(this.players, val, 'gamesCount').reverse();
     this.cd.detectChanges();

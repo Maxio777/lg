@@ -8,36 +8,29 @@
   </caption>
 
   <thead>
-    <tr>
-      <th colspan="5">
-        <div class="d-flex flex-row w-100 players-menu">
-          <button mat-button class="players-menu-item"
-               [class.active]="currentVal === 'goalsCount'"
-               (click)="changeCurrentVal('goalsCount')">Г</button>
-          <button mat-button class="players-menu-item"
-               [class.active]="currentVal === 'assistsCount'"
-               (click)="changeCurrentVal('assistsCount')">П</button>
-          <button mat-button class="players-menu-item"
-               [class.active]="currentVal === 'goalsAssists'"
-               (click)="changeCurrentVal('goalsAssists')">Г+П</button>
-          <button mat-button class="players-menu-item"
-               [class.active]="currentVal === 'yellow'"
-               (click)="changeCurrentVal('yellow')">Ж</button>
-          <button mat-button class="players-menu-item"
-               [class.active]="currentVal === 'red'"
-               (click)="changeCurrentVal('red')">К</button>
-        </div>
-      </th>
-    </tr>
+  <tr>
+    <th colspan="5">
+      <div class="d-flex flex-row w-100 players-menu">
+
+        <button mat-button class="players-menu-item"
+                *ngFor="let item of playersMenu"
+                [class.active]="currentVal === item.indicator"
+                (click)="changeCurrentVal(item.indicator)">{{item.view}}
+        </button>
+
+      </div>
+    </th>
+  </tr>
   </thead>
 
   <tbody>
-    <tr class="cursor-pointer w-100" *ngFor="let player of players | slice:0:10; let idx = index" (click)="goToUrl(player._id)">
-      <td class="index">{{idx +1}}</td>
-      <td class="index"><img src="{{player?.teams[0]?.img}}" alt=""></td>
-      <td class="name">{{player.firstName}} {{player.lastName}}</td>
-      <td class="text-center px-1 index">{{player[currentVal]}}</td>
-    </tr>
+  <tr class="cursor-pointer w-100" *ngFor="let player of players | slice:0:10; let idx = index"
+      (click)="goToUrl(player._id)">
+    <td class="index">{{idx + 1}}</td>
+    <td class="index"><img src="{{player?.teams[0]?.img}}" alt=""></td>
+    <td class="name">{{player.firstName}} {{player.lastName}}</td>
+    <td class="text-center px-1 index">{{player[currentVal]}}</td>
+  </tr>
   </tbody>
 
 </table>

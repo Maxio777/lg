@@ -8,7 +8,7 @@ import { PlayerComponent } from './player/player.component';
 import { TeamComponent } from './team/team.component';
 import { NewsComponent } from './all-news/news/news.component';
 import { SingleNewsComponent } from './all-news/single-news/single-news.component';
-import { URLS_CLIENT } from '../../routing-configs/config-routing-client';
+import { URLS_CLIENT } from '../../assets/routing-configs/config-routing-client';
 import { MainPageComponent } from './main-page/main-page.component';
 import { IndexComponent } from './main-page/index/index.component';
 import { AuthGuardService } from '../../services/guards/auth-guard.service';
