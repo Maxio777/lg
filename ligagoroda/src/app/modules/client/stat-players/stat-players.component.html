@@ -11,21 +11,21 @@
     <tr>
       <th colspan="5">
         <div class="d-flex flex-row w-100 players-menu">
-          <div class="players-menu-item"
+          <button mat-button class="players-menu-item"
                [class.active]="currentVal === 'goalsCount'"
-               (click)="changeCurrentVal('goalsCount')">Г</div>
-          <div class="players-menu-item"
+               (click)="changeCurrentVal('goalsCount')">Г</button>
+          <button mat-button class="players-menu-item"
                [class.active]="currentVal === 'assistsCount'"
-               (click)="changeCurrentVal('assistsCount')">П</div>
-          <div class="players-menu-item"
+               (click)="changeCurrentVal('assistsCount')">П</button>
+          <button mat-button class="players-menu-item"
                [class.active]="currentVal === 'goalsAssists'"
-               (click)="changeCurrentVal('goalsAssists')">Г+П</div>
-          <div class="players-menu-item"
+               (click)="changeCurrentVal('goalsAssists')">Г+П</button>
+          <button mat-button class="players-menu-item"
                [class.active]="currentVal === 'yellow'"
-               (click)="changeCurrentVal('yellow')">Ж</div>
-          <div class="players-menu-item"
+               (click)="changeCurrentVal('yellow')">Ж</button>
+          <button mat-button class="players-menu-item"
                [class.active]="currentVal === 'red'"
-               (click)="changeCurrentVal('red')">К</div>
+               (click)="changeCurrentVal('red')">К</button>
         </div>
       </th>
     </tr>
