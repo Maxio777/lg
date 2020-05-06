@@ -30,9 +30,8 @@ router.get('/news',
         }
     });
 
-router.post('/news', auth, checkErrors,
+router.post('/news', auth, fileMiddleware.single('image'), checkErrors,
     async (req, res) => {
-        console.log('+', req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -43,13 +42,13 @@ router.post('/news', auth, checkErrors,
             }
 
             const { title, textPreview, text } = req.body;
-            const news = await News.findOne({ title, textPreview });
+            const news = await News.findOne({ title, textPreview, text });
 
             if (news) {
                 return res.status(400).json({ message: 'Такая новость уже существует' })
             }
 
-            const newNews = new News({ title, textPreview, text });
+            const newNews = new News({ title, textPreview, text, img: req.file ? req.file.path : '' });
             await newNews.save();
             res.status(201).json({ message: `Новость "${title} добавлена`, newNews})
 
@@ -58,7 +57,7 @@ router.post('/news', auth, checkErrors,
         }
     });
 
-router.put('/news', auth, checkErrors,
+router.put('/news/:_id', auth, fileMiddleware.single('image'), checkErrors,
     async (req, res) => {
         console.log(req.body);
         try {
@@ -70,22 +69,29 @@ router.put('/news', auth, checkErrors,
                 })
             }
 
-            const { _id, title, textPreview, text } = req.body;
-            const news = await News.findOne({ _id  });
+            const _id = req.params._id
+
+            const { title, textPreview, text } = req.body;
+            const news = await News.findOne({ _id });
 
             if (!news) {
-                return res.status(400).json({ message: 'Игрок не найден' })
+                return res.status(400).json({ message: 'Новость не найдена' })
+            }
+            const updated = {
+                title, textPreview, text
             }
 
-            await news.update({
-                title, textPreview, text
-            });
+            if (req.file) {
+                updated.img = req.file.path
+            }
 
-            news.title = title;
-            news.textPreview = textPreview;
-            news.text = text;
+            const updatedNews = await News.findOneAndUpdate(
+                { _id },
+                { $set: updated },
+                { new: true }
+            );
 
-            res.status(201).json({ message: `Новость "${title} обновлена`, news })
+            res.status(201).json({ message: `Новость "${updated.title} обновлена`, news: updatedNews })
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
@@ -105,32 +111,6 @@ router.delete('/news/:_id', auth,
 
             await news.remove();
             res.status(201).json({ message: `Новость "${_id}" была удалена` })
-
-        } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
-        }
-    });
-
-router.put('/newsFile/:_id', auth, fileMiddleware.single('image'),
-    async (req, res) => {
-        try {
-            if (req.file) {
-                console.log('+++', req.file.path);
-            }
-
-            const { _id } = req.params;
-            console.log('ID', _id);
-
-            const news = await News.findOne({ _id  });
-
-            if (!news) {
-                return res.status(400).json({ message: 'Новость не найдена' })
-            }
-            console.log('NEWS', news);
-            news.img = req.file.path;
-
-            await news.update(news);
-            res.status(201).json({ message: `Новость "${news.title} обновлена`, news })
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })

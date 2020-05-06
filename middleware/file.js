@@ -2,7 +2,8 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        const { kind } = req.params;
+        console.log('Q', req.query)
+        const { kind } = req.query;
         cb(null, `./public/${kind}`);
     },
     filename(req, file, cb) {

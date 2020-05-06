@@ -28,4 +28,31 @@ export class RestNewsService {
     return this.mainService.deleteLG(newsId, this.apiLG + newsId );
   }
 
+
+  ////////////////////////////////////////
+
+  postNewsLG2(data: News, image: File | null, kind: string): Observable<any> {
+    const fd = new FormData();
+
+    if (image) {
+      fd.append('image', image, image.name);
+    }
+    fd.append('title', data.title);
+    fd.append('textPreview', data.textPreview);
+    fd.append('text', data.text);
+    return this.mainService.postLG2(fd, this.apiLG + '?kind=' + kind);
+  }
+
+  updateNewsLG2(data: News, image: File | null, kind: string, id: string): Observable<any> {
+    const fd = new FormData();
+
+    if (image) {
+      fd.append('image', image, image.name);
+    }
+    fd.append('title', data.title);
+    fd.append('textPreview', data.textPreview);
+    fd.append('text', data.text);
+    return this.mainService.putLG2(fd, this.apiLG + id + '?kind=' + kind);
+  }
+
 }

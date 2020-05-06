@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-// const API_DEV_LG = 'http://ligagoroda.ru/api/v1/';
-// const API_DEV_LG = 'http://localhost:5000/api/v1/';
 const OPTIONS = { headers: { 'Content-Type': 'application/json' }};
 
 
@@ -23,7 +21,6 @@ export class MainRestService {
   postLG<T>(data: T, url: string) {
     return this.http.post(this.host + url, data, OPTIONS );
   }
-
   putLG<T>(data: T, url: string, options = OPTIONS): any {
     return this.http.put(this.host + url, data, options );
   }
@@ -31,5 +28,17 @@ export class MainRestService {
   deleteLG(id: any, url: string) {
     return this.http.delete(this.host + url, {...OPTIONS, params: id} );     // TODO - убрать парам id
   }
+
+
+  // Для запросов с фотками без опшнс
+
+  putLG2<T>(data: T, url: string): any {
+    return this.http.put(this.host + url, data );
+  }
+
+  postLG2<T>(data: T, url: string) {
+    return this.http.post(this.host + url, data );
+  }
+
 
 }

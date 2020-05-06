@@ -1,0 +1,18 @@
+<div>
+  <input #input
+         class="d-none"
+         title="Choose file"
+         type="file"
+         name="avatar"
+         multiple
+         (change)="selectImage($event)"
+         formenctype="multipart/form-data"
+  >
+</div>
+
+<div>
+  <a mat-raised-button class="btn-block mb-3" (click)="onSubmit()">
+    <mat-icon class="mr-2">cloud_upload</mat-icon>
+    <span>ЗАГРУЗИТЬ ИЗОБРАЖЕНИЕ</span>
+  </a>
+</div>

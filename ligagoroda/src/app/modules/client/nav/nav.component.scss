@@ -147,12 +147,14 @@ button:focus {
   display: flex;
   height: 100%;
   border-bottom: 2px solid white;
+  font-weight: bold;
 
   button {
     letter-spacing: 2px;
     box-sizing: content-box;
     border-radius: 0;
     height: 100%;
+
     &:hover {
       background: rgba(0, 53, 93, 0.05);
       border-bottom: 2px solid rgba(0, 53, 93, 0.05);

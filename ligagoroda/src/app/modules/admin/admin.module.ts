@@ -26,7 +26,7 @@ import { AdminTeamDetailComponent } from './admin-team/admin-team-detail/admin-t
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AdminGameDetailComponent } from './admin-game/admin-game-detail/admin-game-detail.component';
 import { EditEventsComponent } from './admin-game/admin-game-detail/edit-events/edit-events.component';
-import { AdminFileUploadComponent } from './admin-file-upload/admin-file-upload/admin-file-upload.component';
+import { AdminFileUploadComponent } from './admin-file-upload/admin-file-upload.component';
 import { AdminNewsDetailComponent } from './admin-news/news-detail/admin-news-detail.component';
 
 
