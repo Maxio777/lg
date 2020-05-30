@@ -90,6 +90,7 @@ export class AdminNewsDetailComponent implements OnInit {
         this.adminDataService.setNews([...this.adminDataService.news.getValue(), news.newNews]);
         this.goToNewsList();
       })
+      // @ts-ignore
 
       : this.restNewsService.updateNewsLG2(data, this.image, this.kind, this.news._id).subscribe((news) => {
         this.toastr.success(news.message);
