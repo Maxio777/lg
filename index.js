@@ -1,9 +1,9 @@
-const {app, path, express, mongoose, config} = require('./app')
+const {app, path, express, mongoose, config} = require('./app');
 
 const PORT = config.get('port') || 5000;
 const MONGO_URI = config.get('mongoUri');
-const STATIC_FOLDER = path.join(__dirname, 'ligagoroda', 'dist', 'ligagoroda')
-const INDEX_HTML = path.resolve(__dirname, 'ligagoroda', 'dist', 'ligagoroda', 'index.html')
+const STATIC_FOLDER = path.join(__dirname, 'ligagoroda', 'dist', 'ligagoroda');
+const INDEX_HTML = path.resolve(__dirname, 'ligagoroda', 'dist', 'ligagoroda', 'index.html');
 
 
 if (process.env.NODE_ENV === 'production') {
