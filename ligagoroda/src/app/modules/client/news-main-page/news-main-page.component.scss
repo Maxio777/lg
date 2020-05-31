@@ -16,8 +16,8 @@ $colorPrimary: #00355D;
 
     img {
       width: 100%;
-      border-top-left-radius: $padding;
-      border-top-right-radius: $padding;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
     }
 
     .title-and-description {
@@ -64,7 +64,7 @@ $colorPrimary: #00355D;
 
       img {
         width: 100%;
-        border-radius: $padding;
+        border-radius: 7px;
       }
 
       .title-and-description {
