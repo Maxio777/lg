@@ -2,16 +2,6 @@
              [style.border-bottom-color]="(authService.isAuth$ | async) ? '#e1e1e1' : '#00518f'">
   <div class="header">
 
-    <div class="full-name"
-         *ngIf="authService.isAuth$ | async">
-      <div class="d-flex flex-row">
-        <div>{{userFullName}}</div>
-        <button mat-mini-fab (click)="logout()" matTooltip="Выход">
-          <mat-icon>exit_to_app</mat-icon>
-        </button>
-      </div>
-    </div>
-
     <button type="button" aria-label="Toggle sidenav"
       mat-icon-button
       *ngIf="authService.isAuth$ | async"
@@ -20,26 +10,22 @@
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
 
-    <a routerLink="/auth">
-      <img src="./assets/img/logo_120px.png" class="logo logo-tournament position-absolute" alt="">
-    </a>
+    <app-logo></app-logo>
+
+    <div class="full-name position-absolute align-items-end"
+         *ngIf="authService.isAuth$ | async">
+      <div class="d-flex flex-row align-items-center">
+        <div class="pr-3">{{ authService.fullName | async}}</div>
+        <app-logout></app-logout>
+      </div>
+    </div>
 
   </div>
   <div class="header header-bottom"
      *ngIf="!(isHandset$ | async)"
      [style.background]="(authService.isAuth$ | async) ? '#ffffff' : '#00518f'"
   >
-    <div class="menu-desktop" *ngIf="(authService.isAuth$ | async)">
-      <button mat-button
-        *ngFor="let link of linksTop"
-        [routerLink]="[link.url]"
-        [routerLinkActive]="['active']"
-        [routerLinkActiveOptions]="{ exact: link.exact }"
-        [disabled]="link.disabled"
-      >
-        {{link.name}}
-      </button>
-    </div>
+    <app-menu></app-menu>
   </div>
   </mat-toolbar>
 

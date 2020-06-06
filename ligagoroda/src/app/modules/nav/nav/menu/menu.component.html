@@ -1,0 +1,13 @@
+<div class="menu" *ngIf="(authService.isAuth$ | async)">
+  <button mat-button
+          class="menu__button"
+          *ngFor="let link of linksTop"
+          [routerLink]="[link.url]"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+          [disabled]="link.disabled"
+          [class.disabled]="link.disabled"
+  >
+    {{link.name}}
+  </button>
+</div>

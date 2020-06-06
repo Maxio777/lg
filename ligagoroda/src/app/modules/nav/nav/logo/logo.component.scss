@@ -1,0 +1,13 @@
+.logo {
+  height: 88px;
+  top: 15px;
+  border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+  .logo {
+    height: 55px;
+    top: 7px;
+    left: 60px;
+  }
+}

@@ -41,6 +41,8 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
     ChangeTournamentComponent,
     NewsMainPageComponent,
   ],
+  exports: [
+  ],
   imports: [
     CommonModule,
     ClientRoutingModule,

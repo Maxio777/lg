@@ -6,7 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MatSidenav } from '@angular/material';
-import {LINKS_TOP, LINKS_LEFT} from '../../../assets/constants/links-menu';
+import { LINKS_LEFT} from '../../../assets/constants/links-menu';
 
 
 @Component({
@@ -25,8 +25,6 @@ export class NavComponent implements OnInit, OnDestroy {
   ) {}
   @ViewChild('drawer') drawer: MatSidenav | undefined;
   selected: string = '';
-  userFullName: string | null = '';
-  linksTop = LINKS_TOP;
   linksLeft = LINKS_LEFT;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -41,22 +39,14 @@ export class NavComponent implements OnInit, OnDestroy {
         this.drawer.toggle(false);
       }
     }));
-    this.subs.add(this.authService.fullName.subscribe(fullName => {
-      this.userFullName = fullName;
-      this.cd.detectChanges();
-    }));
     this.router.events.
     pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-      const msn = document.querySelector('.mat-sidenav-content');
-      if (msn) {
-        msn.scrollTop = 0;
-      }
-    });
-  }
-
-  logout() {
-    this.authService.logout();
+        const msn = document.querySelector('.mat-sidenav-content');
+        if (msn) {
+          msn.scrollTop = 0;
+        }
+      });
   }
 
   ngOnDestroy(): void {

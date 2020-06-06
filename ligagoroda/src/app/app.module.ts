@@ -16,7 +16,6 @@ import { AppHttpInterceptor } from './services/http-interceptor';
 import { MaterialModule } from './modules/material.module';
 import { SharedModule } from './modules/shared.module';
 import { CoreModule } from './modules/core.module';
-import { NavComponent } from './modules/client/nav/nav.component';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AdminModule } from './modules/admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,6 +23,8 @@ import { LoaderInterceptor } from './services/interceptors/loader-interceptor';
 import { LoaderComponent } from './assets/components/loader/loader.component';
 import { ErrorInterceptor } from './services/interceptors/error-interceptor';
 import { NotFoundComponent } from './assets/components/not-found/not-found.component';
+import { ClientModule } from './modules/client/client.module';
+import { NavModule } from './modules/nav/nav.module';
 
 registerLocaleData(localeRu, 'ru');
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -34,11 +35,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     LoaderComponent,
     NotFoundComponent
   ],
-  imports: [
+    imports: [
+      NavModule,
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
@@ -56,8 +57,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
           // disableTimeOut: true,
           positionClass: 'toast-bottom-right',
       }),
-  ],
-  exports: [MaterialModule],
+      ClientModule,
+    ],
+  exports: [MaterialModule, NavModule],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

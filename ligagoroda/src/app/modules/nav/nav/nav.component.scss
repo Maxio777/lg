@@ -13,27 +13,6 @@
   padding: 0;
 }
 
-.logo-tournament {
-  //left: 20px;
-
-}
-
-.logo {
-  border-radius: 5px;
-  top: 15px;
-  padding: 1px;
-  height: 88px;
-  margin-left: 10px;
-}
-
-@media (max-width: 700px) {
-  .logo {
-    height: 55px;
-    left: 60px;
-    top: 7px;
-  }
-}
-
 .sidenav {
   width: 200px;
 }
@@ -60,7 +39,7 @@
   margin-right: -16px;
   background-color: #ffffff;
   height: 40px;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .header-title {
@@ -104,26 +83,6 @@
   z-index: 2;
 }
 
-.liga {
-  margin-left: 30px;
-  font-size: 32px;
-}
-
-button:focus {
-  outline: 0;
-}
-
-@media (max-width: 600px) {
-  .header {
-    margin-top: 0;
-  }
-  .sidenav-container {
-    height: calc(100% - 70px);
-  }
-  .mat-toolbar-row, .mat-toolbar-single-row {
-    height: 70px;
-  }
-}
 
 .left-menu {
   margin-right: 7px;
@@ -136,56 +95,20 @@ button:focus {
   }
 }
 
-.menu-desktop {
-  font-size: 12px;
-  z-index: 4;
-  color: #999999;
-  text-align: right;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  display: flex;
-  height: 100%;
-  border-bottom: 2px solid white;
-  font-weight: bold;
-
-  button {
-    letter-spacing: 2px;
-    box-sizing: content-box;
-    border-radius: 0;
-    height: 100%;
-
-    &:hover {
-      background: rgba(0, 53, 93, 0.05);
-      border-bottom: 2px solid rgba(0, 53, 93, 0.05);
-    }
-    &.active {
-      background: rgba(0, 53, 93, 0.1);
-      color: #003333;
-      border-bottom: 2px solid #00518f;
-    }
-  }
-
-
-}
-
 .full-name {
-  position: absolute;
   right: 0;
   padding-right: 20px;
   font-size: 14px;
-
-  div {
-    align-items: flex-end!important;
-  }
-
-  button {
-    padding: 0;
-    margin-left: 20px;
-    background: none;
-  }
 }
-.mat-button-ripple.mat-ripple {
-  color: red!important;
-  //color: #00518f;
+
+@media (max-width: 600px) {
+  .header {
+    margin-top: 0;
+  }
+  .sidenav-container {
+    height: calc(100% - 70px);
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 70px;
+  }
 }

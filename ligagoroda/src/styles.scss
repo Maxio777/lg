@@ -70,6 +70,10 @@ a:hover {
   text-decoration: unset;
 }
 
+button:focus {
+  outline: none;
+}
+
 .showMore {
   width: 100%;
   outline:none;
@@ -139,4 +143,8 @@ a:hover {
 
 .mat-drawer {
   overflow-y: scroll
+}
+
+.disabled {
+  pointer-events: none;
 }
