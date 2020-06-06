@@ -16,6 +16,9 @@ export class MainPageComponent implements OnInit {
 
   constructor(private dataService: DataService, private router: Router) {}
 
+  get isMobile() {
+    return window.screen.width <= 500;
+  }
 
   ngOnInit(): void {
     this.dataService.currentSiteTitle$.subscribe(data => {

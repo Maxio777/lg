@@ -42,6 +42,7 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
     NewsMainPageComponent,
   ],
   exports: [
+    RightAreaComponent
   ],
   imports: [
     CommonModule,
