@@ -14,13 +14,6 @@ table {
     padding: 0 5px;
   }
 
-  img {
-    margin: 3px 3px;
-    width: 24px;
-    height: 24px;
-    vertical-align: sub;
-  }
-
   caption {
     caption-side: top;
     white-space: nowrap;
@@ -39,6 +32,12 @@ table {
   }
 
   tbody{
+    img {
+      margin: 3px 3px;
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+    }
 
     font-size: 14px;
     border-color: rgba(0, 0, 0, 0.2);
@@ -66,21 +65,26 @@ table {
   color: rgba(0,0,0,0.5);
   height: 40px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  &-item {
+
+  &__item {
+    padding: 0;
     width: 20%;
     border-radius: 0;
     outline: none;
     min-width: unset;
+    line-height: 20px;
     &:hover {
       border-radius: 0;
       background: rgba(0, 53, 93, 0.1)
     }
   }
+
   div {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .active {
     background: rgba(0, 53, 93, 0.1);
     border-bottom: 1px solid #00355d;

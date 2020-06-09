@@ -1,9 +1,15 @@
 <table>
 
   <caption>
-    <div class="">
-      <div>ТОП-10 ИГРОКОВ</div>
-      <div class="tournament-name">{{currentTournament?.name}}</div>
+    <div class="d-flex flex-row justify-content-between px-4">
+      <div class="d-flex align-items-center">
+        <img src="../../../../assets/img/icons/top-players.png" alt="">
+      </div>
+      <div class="text-left pr-5">
+        <div>ТОП-10 ИГРОКОВ</div>
+        <div class="tournament-name">{{currentTournament?.name}}</div>
+      </div>
+
     </div>
   </caption>
 
@@ -12,10 +18,13 @@
     <th colspan="5">
       <div class="d-flex flex-row w-100 players-menu">
 
-        <button mat-button class="players-menu-item"
+        <button mat-button class="players-menu__item"
                 *ngFor="let item of playersMenu"
                 [class.active]="currentVal === item.indicator"
-                (click)="changeCurrentVal(item.indicator)">{{item.view}}
+                (click)="changeActive(item.indicator)"
+        >
+          <img src="../../../../assets/img/icons/{{item.img}}" alt="">
+<!--          {{item.view}}-->
         </button>
 
       </div>

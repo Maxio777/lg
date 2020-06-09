@@ -2,13 +2,6 @@ table {
   width: 100%;
   margin-bottom: 50px;
 
-  img {
-    margin: 3px 10px;
-    width: 24px;
-    height: 24px;
-    vertical-align: sub;
-  }
-
   caption {
     caption-side: top;
     white-space: nowrap;
@@ -34,6 +27,13 @@ table {
     font-size: 14px;
     border-top: 1px solid;
     border-color: rgba(0, 0, 0, 0.2);
+
+    img {
+      margin: 3px 10px;
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+    }
 
     tr {
       height: 40px;

@@ -4,10 +4,10 @@ export const URLS_CLIENT: Readonly<any> = {
     url: '/stat',
     title: 'ТУРНИРНАЯ ТАБЛИЦА'
   },
-  statPlayers: {
-    route: 'stat-players',
-    url: '/stat-players',
-    title: 'СТАТИСТИКА ИГРОКОВ'
+  players: {
+    route: 'players',
+    url: '/players',
+    title: 'ИГРОКИ'
   },
   games: {
     route: 'games',

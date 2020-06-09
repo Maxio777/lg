@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
 import { IndexComponent } from './main-page/index/index.component';
-import { StatPlayersComponent } from './stat-players/stat-players.component';
+import { PlayersComponent } from './players/players.component';
 import { PlayerComponent } from './player/player.component';
 import { GameComponent } from './game/game.component';
 import { TeamComponent } from './team/team.component';
@@ -31,7 +31,7 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
     TeamComponent,
     GameComponent,
     PlayerComponent,
-    StatPlayersComponent,
+    PlayersComponent,
     IndexComponent,
     NewsListComponent,
     LeftAreaComponent,

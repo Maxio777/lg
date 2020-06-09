@@ -18,7 +18,7 @@ export const LINKS_TOP = [
     disabled: false
   },
   {
-    url: '/stat-players',
+    url: '/players',
     name: 'ИГРОКИ',
     exact: false,
     disabled: false

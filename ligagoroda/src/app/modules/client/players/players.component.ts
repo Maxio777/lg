@@ -16,11 +16,11 @@ import {PLAYER_MENU} from '../../../assets/constants/player-menu';
 
 @Component({
   selector: 'app-stat-players',
-  templateUrl: './stat-players.component.html',
-  styleUrls: ['./stat-players.component.scss'],
+  templateUrl: './players.component.html',
+  styleUrls: ['./players.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StatPlayersComponent implements OnInit, OnDestroy {
+export class PlayersComponent implements OnInit, OnDestroy {
   @Input() isMainPage: boolean = false;
 
   public players: PlayerClient[] | undefined;
@@ -29,7 +29,7 @@ export class StatPlayersComponent implements OnInit, OnDestroy {
   public playersMenu = PLAYER_MENU;
   private subs: Subscription = new Subscription();
 
-  goToUrl = (id: string) => this.router.navigate(['player/' + id]);
+  goToUrl = (id: string) => this.router.navigate(['player', id]);
 
   constructor(
     private router: Router,
@@ -45,7 +45,7 @@ export class StatPlayersComponent implements OnInit, OnDestroy {
 
   private initTable(players: PlayerClient[]) {
     this.players = players;
-    this.changeCurrentVal('goalsCount');
+    this.changeActive('goalsCount');
     this.cd.detectChanges();
   }
 
@@ -62,7 +62,7 @@ export class StatPlayersComponent implements OnInit, OnDestroy {
     }));
   }
 
-  public changeCurrentVal(val: any): void {
+  public changeActive(val: any): void {
     this.currentVal = val;
     this.players = sortBy(this.players, val, 'gamesCount').reverse();
     this.cd.detectChanges();

@@ -1,22 +1,27 @@
 export const PLAYER_MENU = [
   {
     indicator: 'goalsCount',
-    view: 'Г'
+    view: 'Г',
+    img: 'goal.png'
   },
   {
     indicator: 'assistsCount',
-    view: 'П'
+    view: 'П',
+    img: 'assist.png'
   },
   {
     indicator: 'goalsAssists',
-    view: 'Г+П'
+    view: 'Г+П',
+    img: 'goal-and-assist.png'
   },
   {
     indicator: 'yellow',
-    view: 'Ж'
+    view: 'Ж',
+    img: 'yellow.png'
   },
   {
     indicator: 'red',
-    view: 'К'
+    view: 'К',
+    img: 'red.png'
   }
 ];
