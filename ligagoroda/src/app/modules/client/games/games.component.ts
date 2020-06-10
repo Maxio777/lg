@@ -40,4 +40,8 @@ export class GamesComponent {
     this.router.navigate([URLS.game + id]);
   }
 
+  goToTeam(id: string) {
+    this.router.navigate([URLS.team, id]);
+  }
+
 }

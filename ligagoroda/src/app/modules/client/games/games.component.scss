@@ -21,7 +21,7 @@
     .tournament {
       height: 20px;
       background: #00355d;
-      color: white;
+      color: rgba(255, 255, 255, 1);
       border-radius: 9px;
       font-style: normal;
       font-weight: 300;
@@ -31,6 +31,14 @@
   }
 
   tbody {
+    td:nth-child(1), td:nth-last-child(1) {
+      border-top: none;
+    }
+
+    //td:nth-last-child(1) {
+    //  border-top: none;
+    //}
+
     td {
       vertical-align: middle;
 
@@ -39,6 +47,62 @@
         height: 10px;
         border-radius: 5px;
       }
+    }
+
+    $backgroundLg: rgba(0, 53, 93, 0.05);
+
+    .tbody {
+      &__date {
+        width: 15%;
+      }
+
+      &__home {
+        width: 20%;
+        background: $backgroundLg;
+      }
+
+      &__home--image {
+        width: 10%;
+        background: $backgroundLg;
+      }
+
+      &__count {
+        width: 10%;
+        background: $backgroundLg;
+      }
+
+      &__tour {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #7F7F7F;
+      }
+
+      &__guest--image {
+        width: 10%;
+        background: $backgroundLg;
+      }
+
+      &__guest {
+        width: 20%;
+        background: $backgroundLg;
+      }
+
+      &__forward {
+        width: 15%;
+      }
+    }
+
+    .tour, .date {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7F7F7F;
     }
 
     img {
