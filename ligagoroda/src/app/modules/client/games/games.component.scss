@@ -1,14 +1,46 @@
 .table {
   width: 100%;
+
+  th {
+    border-bottom: none;
+    border-top: none;
+  }
+
+  tr:nth-child(1) {
+    td {
+      border-top: none;
+    }
+  }
+
+  thead {
+    .title {
+      border-bottom: 1px solid #e1e1e1;
+      color: #00355d;
+    }
+
+    .tournament {
+      height: 20px;
+      background: #00355d;
+      color: white;
+      border-radius: 9px;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+
   tbody {
     td {
       vertical-align: middle;
+
       .res {
         width: 10px;
         height: 10px;
         border-radius: 5px;
       }
     }
+
     img {
       width: 35px;
       height: 35px;
@@ -16,177 +48,26 @@
   }
 }
 
+.action-button {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
 
+  button {
+    padding: 0;
+    width: 20%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
 
+    &:hover {
+      border-radius: 0;
+      background: rgba(0, 53, 93, 0.1)
+    }
+  }
 
-
-
-/*.container {*/
-/*  margin-top: 10px;*/
-/*}*/
-
-/*.games-mat-card {*/
-/*  min-width: 290px;*/
-/*}*/
-
-/*.example-card {*/
-/*  box-shadow: unset;*/
-/*  padding-bottom: 8px;*/
-/*  padding-top: 8px;*/
-/*}*/
-
-/*.date-title {*/
-/*  text-align: center;*/
-/*  font-size: 14px;*/
-/*  border-bottom: 1px solid #98989854;*/
-/*  height: 35px;*/
-/*  line-height: 35px;*/
-/*  color: #f44336;*/
-/*  font-weight: 400;*/
-/*}*/
-
-/*.games-card {*/
-/*  margin: 0!important;*/
-/*}*/
-
-/*.no-game {*/
-/*  text-align: center;*/
-/*  font-size: 24px;*/
-/*  font-weight: 500;*/
-/*  padding-top: 20px;*/
-/*}*/
-
-/*.example-header-image {*/
-/*  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
-/*  background-size: cover;*/
-/*}*/
-
-/*.mat-card-header {*/
-/*  border-bottom-color: green;*/
-/*  border-bottom-style: solid;*/
-/*  border-bottom-width: 8px;*/
-/*  margin-bottom: 20px;*/
-/*}*/
-
-/*.mat-card-content {*/
-/*  white-space: nowrap;*/
-/*  text-align: center;*/
-/*  font-size: 14px;*/
-/*  margin-bottom: 0;*/
-/*  vertical-align: middle !important;*/
-/*}*/
-
-/*.mat-card-title {*/
-/*  margin-bottom: 0;*/
-/*}*/
-
-/*hr {*/
-/*  margin-top: 10px!important;*/
-/*  margin-bottom: 10px!important;*/
-/*}*/
-
-/*.my-flex {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*}*/
-
-/*img {*/
-/*  margin-right: 10px;*/
-/*  margin-left: 10px;*/
-/*  width: 18px;*/
-/*  height: 18px;*/
-/*  vertical-align: center;*/
-/*}*/
-
-/*.games-list {*/
-/*  justify-content: center;*/
-/*  height: 35px;*/
-/*  line-height: 35px;*/
-/*  border-bottom: 1px solid #98989854;*/
-/*}*/
-
-/*.date {*/
-/*  width: 20%;*/
-/*}*/
-
-/*.home-team {*/
-/*  width: 25%;*/
-/*  text-align: right;*/
-/*}*/
-
-/*.guest-team {*/
-/*  width: 25%;*/
-/*  text-align: left;*/
-/*}*/
-
-/*.score {*/
-/*  width: 15%;*/
-/*  text-align: center;*/
-/*}*/
-
-/*.tour {*/
-/*  width: 15%;*/
-/*  text-align: center;*/
-/*}*/
-
-/*.win {*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.loss {*/
-/*}*/
-
-/*.draw {*/
-/*}*/
-
-/*.mat-form-field {*/
-/*  margin-left: 10px;*/
-/*}*/
-
-/*a {*/
-/*  color: white;*/
-/*  text-decoration: none;*/
-/*}*/
-
-/*::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {*/
-/*  display: none!important;*/
-/*}*/
-
-/*::ng-deep.mat-tab-header {*/
-/*  margin-bottom: 6px;*/
-/*}*/
-
-/*a:hover {*/
-/*  color: #f71f8b;*/
-/*  text-decoration: underline;*/
-/*}*/
-
-/*.col {*/
-/*  flex-shrink: 1;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.mat-row:hover {*/
-/*  background-color: #0090ff24;*/
-/*}*/
-
-/*@media (max-width: 576px) {*/
-/*  .tour {*/
-/*    !*display: none !important;*!*/
-/*  }*/
-/*  .mat-card-content {*/
-/*    font-size: 12px;*/
-/*  }*/
-/*  img {*/
-/*    display: none !important;*/
-/*  }*/
-/*  ::ng-deep.mat-tab-label, .mat-tab-link {*/
-/*    font-size: 12px!important;*/
-/*    padding: auto!important;*/
-/*    max-width: 100px;*/
-/*  }*/
-/*  ::ng-deep.mat-tab-labels {*/
-/*    justify-content: center !important;*/
-/*  }*/
-/*}*/
-
+  .active {
+    background: rgba(0, 53, 93, 0.1);
+    border-top: 1px solid #00355d;
+  }
+}

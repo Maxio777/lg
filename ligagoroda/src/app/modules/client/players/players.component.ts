@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {sortBy} from 'lodash';
-import {PlayerClient, TournamentLG} from '../../../models/interfaces';
+import {PlayerClient} from '../../../models/interfaces';
 import {Subscription} from 'rxjs';
 import {ClientDataService} from '../services/client-data/client-data.service';
 import {PLAYER_MENU} from '../../../assets/constants/player-menu';
@@ -25,7 +25,6 @@ export class PlayersComponent implements OnInit, OnDestroy {
 
   public players: PlayerClient[] | undefined;
   public currentVal: 'goalsCount' | 'assistsCount' | 'goalsAssists' | 'yellow' | 'red' = 'goalsCount';
-  public currentTournament: TournamentLG | null = null;
   public playersMenu = PLAYER_MENU;
   private subs: Subscription = new Subscription();
 
@@ -39,7 +38,6 @@ export class PlayersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getCurrentTournament();
     this.getPlayers();
   }
 
@@ -47,13 +45,6 @@ export class PlayersComponent implements OnInit, OnDestroy {
     this.players = players;
     this.changeActive('goalsCount');
     this.cd.detectChanges();
-  }
-
-  private getCurrentTournament() {
-    this.subs.add(this.clientDataService.getTournament$().subscribe(tournament => {
-      this.currentTournament = tournament;
-      this.cd.detectChanges();
-    }));
   }
 
   private getPlayers() {

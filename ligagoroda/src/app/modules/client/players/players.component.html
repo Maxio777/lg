@@ -7,7 +7,7 @@
       </div>
       <div class="text-left pr-5">
         <div>ТОП-10 ИГРОКОВ</div>
-        <div class="tournament-name">{{currentTournament?.name}}</div>
+        <div class="tournament-name">{{(this.clientDataService.getTournament$() | async)?.name}}</div>
       </div>
 
     </div>
@@ -24,7 +24,6 @@
                 (click)="changeActive(item.indicator)"
         >
           <img src="../../../../assets/img/icons/{{item.img}}" alt="">
-<!--          {{item.view}}-->
         </button>
 
       </div>

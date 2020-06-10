@@ -1,15 +1,11 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
+  Component
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { URLS } from '../../../core/urls';
-import { ClientDataService } from '../services/client-data/client-data.service';
-import { GameLG } from '../../../models/game';
+import {Router} from '@angular/router';
+import {URLS} from '../../../core/urls';
+import {ClientDataService} from '../services/client-data/client-data.service';
+import {GameLG} from '../../../models/game';
 
 
 @Component({
@@ -19,27 +15,29 @@ import { GameLG } from '../../../models/game';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class GamesComponent implements OnInit, OnDestroy {
-  completedGames: GameLG[] = [];
-  games: GameLG[] = [];
-  sub: Subscription = new Subscription();
+export class GamesComponent {
+  filterSrt = [
+    {name: 'ВСЕ', str: ''},
+    {name: 'СЫГРАННЫЕ', str: 'completed'},
+    {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
+  ];
+  gamesFilter = '';
 
-  constructor(private router: Router, private clientDataService: ClientDataService, private cd: ChangeDetectorRef) {}
+  constructor(private router: Router, public clientDataService: ClientDataService) {
+  }
 
-  ngOnInit(): void {
-    this.clientDataService.getGames$().subscribe(games => {
-      this.games = games.filter(g => !g.completed).slice(0, 5);
-      this.completedGames = games.filter(g => g.completed).slice(0, 5);
-      this.cd.detectChanges();
-    });
+  filterGames(games: GameLG[]) {
+    return this.gamesFilter ?
+      games.filter(g => this.gamesFilter === 'completed' ? g.completed : !g.completed)
+      : games;
+  }
+
+  setGamesFilter(gamesFilter: '' | 'completed' | 'notCompleted') {
+    this.gamesFilter = gamesFilter;
   }
 
   goToGame(id: string) {
     this.router.navigate([URLS.game + id]);
   }
 
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
 }
