@@ -111,7 +111,6 @@ class Table {
         games.forEach(game => {
 
             if (!teams.some((team) => (team._id === game.home._id))) {
-                console.log(game.home)
                 const team = new TeamTable(game.home);
                 teams.push(team);
             }

@@ -22,11 +22,26 @@
       height: 20px;
       background: #00355d;
       color: rgba(255, 255, 255, 1);
-      border-radius: 9px;
+      border-radius: 10px;
       font-style: normal;
       font-weight: 300;
       font-size: 12px;
       line-height: 20px;
+
+      .link-to-games {
+        outline: none;
+        letter-spacing: 2px;
+        height: 20px;
+        text-align: center;
+        width: 130px;
+        border-radius: 10px;
+        box-sizing: content-box;
+        margin-right: -1px;
+        transition: 0.2s;
+        &:hover {
+          background: darkorange
+        }
+      }
     }
   }
 
@@ -34,10 +49,6 @@
     td:nth-child(1), td:nth-last-child(1) {
       border-top: none;
     }
-
-    //td:nth-last-child(1) {
-    //  border-top: none;
-    //}
 
     td {
       vertical-align: middle;
@@ -57,7 +68,7 @@
       }
 
       &__home {
-        width: 20%;
+        width: 17.5%;
         background: $backgroundLg;
       }
 
@@ -67,8 +78,14 @@
       }
 
       &__count {
-        width: 10%;
+        width: 15%;
         background: $backgroundLg;
+
+        &--circle {
+          width: 6px;
+          height: 6px;
+          border-radius: 3px;
+        }
       }
 
       &__tour {
@@ -86,12 +103,43 @@
       }
 
       &__guest {
-        width: 20%;
+        width: 17.5%;
         background: $backgroundLg;
       }
 
       &__forward {
         width: 15%;
+        &--image {
+          margin: 0 auto;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          border: 2px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s;
+
+          &:hover {
+            transition: 0.2s;
+            border: 2px solid #003366;
+            background: $backgroundLg;
+
+            .arrow {
+              border-top: 2px solid #003366;
+              border-right: 2px solid #003366;
+            }
+          }
+
+          .arrow {
+            transition: 0.2s;
+            width: 9px;
+            height: 9px;
+            border-top: 2px solid grey;
+            border-right: 2px solid grey;
+            transform: translate(-1px) rotate(45deg);
+          }
+        }
       }
     }
 

@@ -17,11 +17,11 @@ import {GameLG} from '../../../models/game';
 
 export class GamesComponent {
   filterSrt = [
-    {name: 'ВСЕ', str: ''},
+    // {name: 'ВСЕ', str: ''}, // TODO ПОНАДОБИТСЯ НА ОТДЕЛЬНОЙ СТРАНИЦЕ
     {name: 'СЫГРАННЫЕ', str: 'completed'},
     {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
   ];
-  gamesFilter = '';
+  gamesFilter = 'completed';
 
   constructor(private router: Router, public clientDataService: ClientDataService) {
   }
@@ -42,6 +42,19 @@ export class GamesComponent {
 
   goToTeam(id: string) {
     this.router.navigate([URLS.team, id]);
+  }
+
+  getColor(game: GameLG, isHome: boolean) {
+    let color = game.completed ? 'yellow' : 'grey';
+    if (game.completed) {
+      if (game.homeGoal > game.guestGoal) {
+        color = isHome ? 'green' : 'red';
+      }
+      if (game.homeGoal < game.guestGoal) {
+        color = isHome ? 'red' : 'green';
+      }
+    }
+    return color;
   }
 
 }
