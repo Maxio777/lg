@@ -1,7 +1,8 @@
 
 
-<div class="news-container" *ngIf="news?.length">
+<div class="news-container mb-4" *ngIf="news?.length">
   <div class="main-news col-7" (click)="goToOneNews(news[1]._id)">
+    <div class="lg-border"></div>
       <img src="{{news[1].img}}" alt="">
       <div class="title-and-description cursor-pointer">
         <div class="title">{{news[1].title}}</div>
@@ -12,6 +13,7 @@
   </div>
 
   <div class="list-news col-5 h-100">
+    <div class="lg-border"></div>
 
     <div class="one-news cursor-pointer" *ngFor="let oneNews of news.slice(2, 6) " (click)="goToOneNews(oneNews._id)">
       <div class="photo col-5">

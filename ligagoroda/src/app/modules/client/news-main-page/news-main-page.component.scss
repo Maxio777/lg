@@ -2,31 +2,38 @@ $padding: 15px;
 $colorPrimary: #00355D;
 
 .news-container {
-  min-height: 465px;
+  min-width: 900px;
+  height: 465px;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  .lg-border {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: #e1e1e1;
+    left: 15px;
+    right: 15px;
+  }
 
   .main-news {
     padding-right: $padding;
-    height: fit-content;
+    height: 100%;
+
     &:hover {
       color: $colorPrimary;
     }
 
     img {
       width: 100%;
-      border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
+      border-radius: 7px;
     }
 
     .title-and-description {
       position: absolute;
       right: 0;
       left: 0;
-      bottom: -100px;
+      bottom: 0;
       padding: 40px $padding $padding;
-      background: linear-gradient(0deg, white 0%, white 75%, rgba(255, 255, 255, 0) 100%);
 
       .title {
         font-size: 19px;
@@ -48,13 +55,13 @@ $colorPrimary: #00355D;
     min-height: 403px;
 
     .one-news {
-      height: 25%;
+      height: 23%;
       display: flex;
       flex-direction: row;
       padding: 0 $padding $padding $padding;
 
       .photo {
-        padding: 0;
+        padding: 0 3px 0 0;
         margin-right: 10px;
       }
 

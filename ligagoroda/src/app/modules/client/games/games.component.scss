@@ -32,12 +32,17 @@
         outline: none;
         letter-spacing: 2px;
         height: 20px;
-        text-align: center;
-        width: 130px;
+        text-align: right;
+        width: 160px;
         border-radius: 10px;
         box-sizing: content-box;
         margin-right: -1px;
         transition: 0.2s;
+
+        mat-icon {
+          line-height: 20px;
+          font-size: 18px;
+        }
         &:hover {
           background: darkorange
         }
@@ -110,34 +115,36 @@
       &__forward {
         width: 15%;
         &--image {
-          margin: 0 auto;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          border: 2px solid grey;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: 0.2s;
 
-          &:hover {
-            transition: 0.2s;
-            border: 2px solid #003366;
-            background: $backgroundLg;
-
-            .arrow {
-              border-top: 2px solid #003366;
-              border-right: 2px solid #003366;
-            }
+          .arrow-3 {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 18px;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
           }
 
-          .arrow {
-            transition: 0.2s;
-            width: 9px;
-            height: 9px;
-            border-top: 2px solid grey;
-            border-right: 2px solid grey;
-            transform: translate(-1px) rotate(45deg);
+          .arrow-3 .arrow-3-icon {
+            position: relative;
+            top: -1px;
+            transition: transform 0.3s ease;
+            vertical-align: middle;
+          }
+
+          .arrow-3 .arrow-3-iconcircle {
+            transition: stroke-dashoffset .3s ease;
+            stroke-dasharray: 95;
+            stroke-dashoffset: 95;
+          }
+
+          .arrow-3:hover .arrow-3-icon {
+            transform: translate3d(2px, 0, 0);
+          }
+
+          .arrow-3:hover .arrow-3-iconcircle {
+            stroke-dashoffset: 0;
           }
         }
       }
@@ -182,4 +189,12 @@
     background: rgba(0, 53, 93, 0.1);
     border-top: 1px solid #00355d;
   }
+}
+
+.arrow-2 {
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: translate(-1px) rotate(45deg);
 }
