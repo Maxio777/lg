@@ -32,7 +32,7 @@ export class PlayersComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private clientDataService: ClientDataService,
+    public clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
   ) {
   }
