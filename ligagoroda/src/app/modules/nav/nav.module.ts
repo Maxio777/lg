@@ -8,13 +8,15 @@ import {LogoutComponent} from './nav/logout/logout.component';
 import {MenuComponent} from './nav/menu/menu.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { FooterComponent } from './nav/footer/footer.component';
 
 @NgModule({
   declarations: [
     NavComponent,
     LogoComponent,
     LogoutComponent,
-    MenuComponent
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

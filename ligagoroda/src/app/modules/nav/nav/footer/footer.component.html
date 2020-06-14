@@ -1,0 +1,44 @@
+<div class="footer">
+  <div class="d-flex flex-row container footer">
+
+    <div class="menu-map d-flex flex-row px-3">
+      <div class="menu d-flex py-3">
+        <ul>
+          <li class="cursor-pointer" *ngFor="let link of links" routerLink="{{link.url}}" [class.disabled]="link.disabled">
+            <div>
+
+            </div>{{link.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="map p-3">
+
+        <img src="../../../../../assets/img/icons/lg-map.png" alt="">
+        <div class="address">
+          <div class="pb-3">Адрес стадиона:</div>
+          <div>г. Санкт-Петербург</div>
+          <div class="pb-3">ул. Наличная д. 44 к. 3</div>
+          <div class="pb-3"> м. Приморская</div>
+          <div class="map-link">
+            <a target="_blank" href="https://yandex.ru/maps/?pt=30.229432,59.952858&z=18&l=map">Открыть карту</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="contacts d-flex flex-column p-3">
+      <div class="managers d-flex flex-row justify-content-between text-left py-2 " *ngFor="let manager of managers">
+        <div class="name w-50">
+          <div class="pb-1">{{manager.name}}</div>
+          <div class="position" *ngFor="let position of manager.positions">{{position}}</div>
+        </div>
+        <div class="contact w-50">
+          <div>{{manager.phone}}</div>
+          <div>{{manager.email}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
