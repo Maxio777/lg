@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {LINKS_TOP} from '../../../../assets/constants/links-menu';
 
 @Component({
@@ -7,7 +7,8 @@ import {LINKS_TOP} from '../../../../assets/constants/links-menu';
   styleUrls: ['./footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
+  @Input() isAuth: boolean = false;
 
   links = LINKS_TOP;
 
@@ -37,12 +38,6 @@ export class FooterComponent implements OnInit {
       email: 'm.morozov@ligagoroda.ru'
     },
   ];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 
 
 }

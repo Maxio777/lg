@@ -6,7 +6,7 @@ import {AuthService} from '../../../../services/auth/auth.service';
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
   linksTop = LINKS_TOP;

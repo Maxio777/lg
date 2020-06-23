@@ -1,40 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "null-style";
+@import "fonts";
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
-
 @import '~@angular/material/theming';
+@import "variables";
 
-@font-face {
-  font-family: 'FuturaPT-Light';
-  src: url('assets/fonts/FuturaPTLight/FuturaPTLight.eot'); /* IE9 Compat Modes */
-  src: url('assets/fonts/FuturaPTLight/FuturaPTLight.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('assets/fonts/FuturaPTLight/FuturaPTLight.otf') format('opentype'), /* Open Type Font */
-  url('assets/fonts/FuturaPTLight/FuturaPTLight.svg') format('svg'), /* Legacy iOS */
-  url('assets/fonts/FuturaPTLight/FuturaPTLight.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('assets/fonts/FuturaPTLight/FuturaPTLight.woff') format('woff'), /* Modern Browsers */
-  url('assets/fonts/FuturaPTLight/FuturaPTLight.woff2') format('woff2'); /* Modern Browsers */
-  font-weight: normal;
-  font-style: normal;
+
+
+
+body, html {
+  font-family: 'FuturaPT', serif;
+  font-size: 16px;
+  color: $main-color;
 }
 
-@font-face {
-  font-family: 'FuturaPT-Book';
-  src: url('assets/fonts/FuturaPTBook/FuturaPTBook.eot'); /* IE9 Compat Modes */
-  src: url('assets/fonts/FuturaPTBook/FuturaPTBook.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('assets/fonts/FuturaPTBook/FuturaPTBook.otf') format('opentype'), /* Open Type Font */
-  url('assets/fonts/FuturaPTBook/FuturaPTBook.svg') format('svg'), /* Legacy iOS */
-  url('assets/fonts/FuturaPTBook/FuturaPTBook.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('assets/fonts/FuturaPTBook/FuturaPTBook.woff') format('woff'), /* Modern Browsers */
-  url('assets/fonts/FuturaPTBook/FuturaPTBook.woff2') format('woff2'); /* Modern Browsers */
-  font-weight: normal;
-  font-style: normal;
+h1 {
+  font-family: 'FuturaPTBook', serif;
+  font-size: 18px;
+  line-height: 23px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'FuturaPT-Light', serif;
+h2 {
+  font-family: 'FuturaPT', serif;
+  font-size: 16px;
+  line-height: 18px;
 }
+
+h3 {
+  font-family: 'FuturaPT', serif;
+  font-size: 13px!important;
+  line-height: 15px;
+}
+
 //$custom-typography: mat-typography-config($font-family: ''Oswald', sans-serif;');
 //@include mat-core($custom-typography);
 @mixin mat-ripple-theme($custom-theme) {

@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { RestAuthService } from '../../rest/rest-auth/rest-auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+// import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -14,7 +15,11 @@ export class AuthService {
   public fullName: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(sessionStorage.getItem('fullName'));
   public isAuth$: Observable<boolean> = this.isAuth.asObservable();
 
-  constructor(private restAuthService: RestAuthService, private router: Router, private toastr: ToastrService ) { }
+  constructor(private restAuthService: RestAuthService, private router: Router, private toastr: ToastrService ) {
+    // if (environment.host = 'http://localhost:5000/api/v1/') {
+    //   this.isAuth.next(true);
+    // }
+  }
 
   register(body: any) {
     return this.restAuthService.register(body).subscribe(v => console.log(v));

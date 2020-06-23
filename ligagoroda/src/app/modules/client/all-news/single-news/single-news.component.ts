@@ -8,7 +8,7 @@ import { ClientDataService } from '../../services/client-data/client-data.servic
 @Component({
   selector: 'app-single-news',
   templateUrl: './single-news.component.html',
-  styleUrls: ['./single-news.component.css'],
+  styleUrls: ['./single-news.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SingleNewsComponent implements OnInit, OnDestroy {

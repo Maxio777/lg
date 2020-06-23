@@ -1,0 +1,47 @@
+@import "variables";
+
+@mixin content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin x-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin menu-hover-active($side) {
+  color: $gray;
+  @include lg-hover($side);
+  @include lg-active($side);
+}
+
+@mixin lg-hover($side, $border-color: $hover-border-bottom) {
+  &:hover {
+    background: $hover-background;
+
+    @if ($side == 't') {
+      border-top: $border-color;
+    }
+    @if ($side == 'b') {
+      border-bottom: $border-color;
+  }
+
+  }
+}
+
+@mixin lg-active($side) {
+  &.active {
+    background: $active-background;
+    color: $main-color;
+
+    @if ($side == 't') {
+      border-top: 1px solid $main-color
+    }
+    @if ($side == 'b') {
+      border-bottom: 1px solid $main-color;
+    }
+
+  }
+}

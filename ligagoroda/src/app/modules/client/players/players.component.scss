@@ -1,3 +1,6 @@
+@import "mixins";
+@import "variables";
+
 table {
   width: 100%;
   margin-bottom: 50px;
@@ -47,11 +50,7 @@ table {
       &:nth-child(even) {
         background: rgba(0, 53, 93, 0.04);
       }
-      &:hover {
-        background: rgba(0, 53, 93, 0.1);
-        color: rgba(0, 53, 93, 1);
-      }
-
+      @include lg-hover('b', 0);
     }
 
     .index {
@@ -64,7 +63,6 @@ table {
 .players-menu {
   color: rgba(0,0,0,0.5);
   height: 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   &__item {
     padding: 0;
@@ -73,20 +71,15 @@ table {
     outline: none;
     min-width: unset;
     line-height: 20px;
-    &:hover {
-      border-radius: 0;
-      background: rgba(0, 53, 93, 0.1)
-    }
+    box-sizing: content-box;
+    border-bottom: 1px solid $light-gray;
+    @include lg-hover('b');
+    @include lg-active('b');
   }
 
   div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include content-center;
   }
 
-  .active {
-    background: rgba(0, 53, 93, 0.1);
-    border-bottom: 1px solid #00355d;
-  }
+
 }

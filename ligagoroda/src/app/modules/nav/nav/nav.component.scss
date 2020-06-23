@@ -1,3 +1,5 @@
+@import 'variables';
+
 .sidenav-container {
   height: calc(100% - 110px);
 }
@@ -59,7 +61,7 @@
   width: 100%;
   max-width: 500px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-  border: 1px solid #d7d8dc;
+  border: $border;
   border-top-width: 0;
   border-radius: 0 0 31px 31px;
 }
@@ -77,7 +79,7 @@
 }
 
 .mat-toolbar.mat-primary {
-  background: #003366;
+  background: $nav-color;
   position: sticky;
   top: 0;
   z-index: 2;

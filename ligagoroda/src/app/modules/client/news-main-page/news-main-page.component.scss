@@ -1,5 +1,6 @@
+@import "variables";
+
 $padding: 15px;
-$colorPrimary: #00355D;
 
 .news-container {
   min-width: 900px;
@@ -19,10 +20,6 @@ $colorPrimary: #00355D;
     padding-right: $padding;
     height: 100%;
 
-    &:hover {
-      color: $colorPrimary;
-    }
-
     img {
       width: 100%;
       border-radius: 7px;
@@ -34,6 +31,10 @@ $colorPrimary: #00355D;
       left: 0;
       bottom: 0;
       padding: 40px $padding $padding;
+
+      &:hover {
+        color: $maim-color;
+      }
 
       .title {
         font-size: 19px;
@@ -66,7 +67,7 @@ $colorPrimary: #00355D;
       }
 
       &:hover {
-        color: $colorPrimary;
+        color: $maim-color;
       }
 
       img {
@@ -86,6 +87,11 @@ $colorPrimary: #00355D;
         }
       }
 
+    }
+
+    .mews-link:hover {
+      color: $maim-color;
+      text-decoration: underline;
     }
   }
 }

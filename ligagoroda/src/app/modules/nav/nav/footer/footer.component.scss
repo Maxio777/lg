@@ -44,6 +44,10 @@ li {
   position: relative;
   text-align: center;
   width: 80%;
+
+  img {
+    height: 280px;
+  }
 }
 
 
@@ -60,7 +64,4 @@ li {
 
 a {
   color: white;
-  &:hover {
-    color: #5ad95a;
-  }
 }

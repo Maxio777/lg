@@ -1,3 +1,6 @@
+@import "mixins";
+@import "variables";
+
 .table {
   width: 100%;
 
@@ -43,8 +46,9 @@
           line-height: 20px;
           font-size: 18px;
         }
+
         &:hover {
-          background: darkorange
+          background: $accent;
         }
       }
     }
@@ -114,6 +118,7 @@
 
       &__forward {
         width: 15%;
+
         &--image {
 
           .arrow-3 {
@@ -179,15 +184,7 @@
     min-width: unset;
     line-height: 20px;
 
-    &:hover {
-      border-radius: 0;
-      background: rgba(0, 53, 93, 0.1)
-    }
-  }
-
-  .active {
-    background: rgba(0, 53, 93, 0.1);
-    border-top: 1px solid #00355d;
+    @include menu-hover-active('t');
   }
 }
 

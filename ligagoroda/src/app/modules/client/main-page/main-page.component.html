@@ -1,11 +1,11 @@
 <div class="main" *ngIf="!isMobile">
   <div class="d-flex area w-100">
 
-    <div class="area__right col-3" *ngIf="!isAdmin">
+    <div class="area__right col-3 order-{{(dataService.currentSiteTitle$ | async) === 'ГЛАВНАЯ' ? 0 : 1}}" *ngIf="!isAdmin">
       <app-right-area></app-right-area>
     </div>
 
-    <div class="area__left col-9">
+    <div class="area__left col-9 order-{{(dataService.currentSiteTitle$ | async) === 'ГЛАВНАЯ' ? 1 : 0}}">
       <router-outlet></router-outlet>
     </div>
 

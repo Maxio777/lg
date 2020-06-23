@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { URLS_ADMIN } from '../../../assets/routing-configs/config-routing-admin';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {DataService} from '../../../services/data.service';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-page',
@@ -13,8 +12,10 @@ import { URLS_ADMIN } from '../../../assets/routing-configs/config-routing-admin
 export class MainPageComponent implements OnInit {
   currentTitle: string | undefined;
   isAdmin: boolean = false;
+  isMainPage: any;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {
+  }
 
   get isMobile() {
     return window.screen.width <= 500;
@@ -25,10 +26,9 @@ export class MainPageComponent implements OnInit {
       this.currentTitle = data;
     });
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd))
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((p: any) => {
-        this.isAdmin = p.urlAfterRedirects.includes(URLS_ADMIN.admin.url);
+        this.isAdmin = p.url === '/admin';
       });
   }
 }

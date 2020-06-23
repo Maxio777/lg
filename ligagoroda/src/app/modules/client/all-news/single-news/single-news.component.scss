@@ -1,10 +1,12 @@
+@import "mixins.scss";
+
+
 .container {
   margin-top: 30px;
 }
 
 .news-container {
-  margin-right: auto;
-  margin-left: auto;
+  @include x-center;
   padding-top: 30px;
 }
 
@@ -30,8 +32,7 @@
 }
 
 .col-photo-and-text {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px 0 10px;
 }
 
 .news-text {
