@@ -18,7 +18,7 @@ export class TablePageComponent implements OnInit {
 
   constructor(
     // private router: Router,
-              private clientDataService: ClientDataService,
+              public clientDataService: ClientDataService,
               private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
