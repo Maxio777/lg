@@ -9,13 +9,12 @@ import { GameComponent } from './game/game.component';
 import { TeamComponent } from './team/team.component';
 import { SingleNewsComponent } from './all-news/single-news/single-news.component';
 import { NewsComponent } from './all-news/news/news.component';
-import { TournamentTableComponent } from './tournament-table/tournament-table.component';
+import { TableComponent } from './table/table.component';
 import { GamesComponent } from './games/games.component';
 import { SharedModule } from '../shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NewsListComponent } from './all-news/news-list/news-list.component';
 import { LeftAreaComponent } from './main-page/left-area/left-area.component';
-import { StatComponent } from './stat/stat.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RightAreaComponent } from './main-page/right-area/right-area.component';
 import { ChangeTournamentComponent } from './main-page/right-area/change-tournament/change-tournament.component';
@@ -25,7 +24,7 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
 @NgModule({
   declarations: [
     GamesComponent,
-    TournamentTableComponent,
+    TableComponent,
     NewsComponent,
     SingleNewsComponent,
     TeamComponent,
@@ -35,7 +34,6 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
     IndexComponent,
     NewsListComponent,
     LeftAreaComponent,
-    StatComponent,
     MainPageComponent,
     RightAreaComponent,
     ChangeTournamentComponent,

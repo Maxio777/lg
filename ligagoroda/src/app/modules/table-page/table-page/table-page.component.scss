@@ -1,0 +1,94 @@
+@import "variables";
+@import "mixins";
+
+$height-tr: 55px;
+
+.default-container {
+  padding-top: 0;
+}
+
+table {
+  margin-bottom: 130px;
+
+  width: 100%;
+  text-align: center;
+
+  caption {
+    caption-side: top;
+    white-space: nowrap;
+
+    .title {
+      margin-left: 20px;
+      color: $main-color;
+    }
+
+    .tournament {
+
+    }
+  }
+
+  thead {
+
+    .line {
+      border-radius: 3px;
+      height: 6px;
+      background: $main-color;
+    }
+
+    .heading {
+      height: $height-tr;
+      color: $gray;
+      font-family: 'FuturaPT', serif;
+      font-size: 16px;
+
+
+
+      th {
+        padding: 5px;
+        font-weight: 500;
+        &:nth-child(3) {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  tbody {
+    .idx {
+      font-family: 'FuturaPT', serif;
+      font-weight: bold;
+    }
+
+    @include grey-border('t');
+    @include grey-border('b');
+
+    tr {
+      height: $height-tr;
+      cursor: pointer;
+      @include zebra;
+      @include lg-hover('b', 0);
+
+      td {
+        &:nth-child(3) {
+          text-align: left;
+        }
+
+        &:nth-child(11) {
+          font-weight: bold;
+        }
+
+        padding: 5px;
+
+        .outcomes {
+          @include outcomes(8px);
+        }
+      }
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+

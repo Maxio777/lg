@@ -12,7 +12,7 @@ export const LINKS_TOP = [
     disabled: false
   },
   {
-    url: '/stat',
+    url: '/table',
     name: 'ТАБЛИЦА',
     exact: false,
     disabled: false

@@ -1,3 +1,3 @@
 <!--<app-change-tournament></app-change-tournament>-->
-<app-tournament [isMainPage]="true"></app-tournament>
-<app-stat-players [isMainPage]="true"></app-stat-players>
+<app-tournament [isMainPage]="true" *ngIf="(dataService.currentSiteTitle$ | async) !== 'ТУРНИРНАЯ ТАБЛИЦА'"></app-tournament>
+<app-stat-players [isMainPage]="true" *ngIf="(dataService.currentSiteTitle$ | async) !== 'ИГРОКИ'"></app-stat-players>

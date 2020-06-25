@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatComponent } from './stat.component';
+import { TablePageComponent } from './table-page.component';
 
-describe('StatComponent', () => {
-  let component: StatComponent;
-  let fixture: ComponentFixture<StatComponent>;
+describe('TablePageComponent', () => {
+  let component: TablePageComponent;
+  let fixture: ComponentFixture<TablePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatComponent ]
+      declarations: [ TablePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatComponent);
+    fixture = TestBed.createComponent(TablePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

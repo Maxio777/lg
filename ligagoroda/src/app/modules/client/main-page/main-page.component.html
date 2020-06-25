@@ -1,7 +1,8 @@
 <div class="main" *ngIf="!isMobile">
   <div class="d-flex area w-100">
 
-    <div class="area__right col-3 order-{{(dataService.currentSiteTitle$ | async) === 'ГЛАВНАЯ' ? 0 : 1}}" *ngIf="!isAdmin">
+
+    <div class="area__right default-container col-3 order-{{(dataService.currentSiteTitle$ | async) === 'ГЛАВНАЯ' ? 0 : 1}}" *ngIf="!isAdmin">
       <app-right-area></app-right-area>
     </div>
 

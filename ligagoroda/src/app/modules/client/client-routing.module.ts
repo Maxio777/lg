@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {TournamentTableComponent} from './tournament-table/tournament-table.component';
 import {PlayersComponent} from './players/players.component';
 import {GamesComponent} from './games/games.component';
 import {GameComponent} from './game/game.component';
@@ -19,11 +18,7 @@ const routes: Routes = [
     path: '', component: MainPageComponent, data: {title: 'ГЛАВНАЯ'}, canActivate: [AuthGuardService],
     children: [
       {path: '', component: IndexComponent},
-      {
-        path: URLS_CLIENT.stat.route,
-        component: TournamentTableComponent,
-        data: {title: URLS_CLIENT.stat.title}
-      },
+      {path: 'table', loadChildren: '../table-page/table-page.module#TablePageModule'},
       {
         path: URLS_CLIENT.players.route,
         component: PlayersComponent,

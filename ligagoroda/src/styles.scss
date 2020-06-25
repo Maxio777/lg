@@ -19,6 +19,7 @@ h1 {
   font-family: 'FuturaPTBook', serif;
   font-size: 18px;
   line-height: 23px;
+  font-weight: bold;
 }
 
 h2 {
@@ -146,4 +147,12 @@ button:focus {
 .disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.default-container {
+  padding: 15px;
 }

@@ -19,11 +19,11 @@ import {TournamentLG} from '../../../models/interfaces';
 
 @Component({
   selector: 'app-tournament',
-  templateUrl: './tournament-table.component.html',
-  styleUrls: ['./tournament-table.component.scss'],
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TournamentTableComponent implements OnInit, OnDestroy {
+export class TableComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
   @Input() display: string[] = [];

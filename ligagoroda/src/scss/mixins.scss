@@ -37,7 +37,7 @@
     color: $main-color;
 
     @if ($side == 't') {
-      border-top: 1px solid $main-color
+      border-top: 1px solid $main-color;
     }
     @if ($side == 'b') {
       border-bottom: 1px solid $main-color;
@@ -45,3 +45,40 @@
 
   }
 }
+
+@mixin zebra {
+  &:nth-child(even) {
+    background: rgba(0, 53, 93, 0.04);
+  }
+}
+
+@mixin grey-border ($side: 'all', $color: $light-gray) {
+  @if ($side == 't') {
+    border-top: 1px solid $color;
+  }
+  @if ($side == 'r') {
+    border-right: 1px solid $color;
+  }
+  @if ($side == 'b') {
+    border-bottom: 1px solid $color;
+  }
+  @if ($side == 'l') {
+    border-left: 1px solid $color;
+  }
+  @if ($side == 'all') {
+    border: 1px solid $color;
+  }
+}
+
+@mixin outcomes($width-height: 6px) {
+  text-align: center;
+
+  & > span {
+    width: $width-height;
+    height: $width-height;
+    border-radius: $width-height / 2;
+    margin: 1px;
+  }
+}
+
+

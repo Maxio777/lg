@@ -1,6 +1,6 @@
 
 
-<div class="news-container mb-4" *ngIf="news?.length">
+<div class="news-container" *ngIf="news?.length">
   <div class="main-news col-7" (click)="goToOneNews(news[1]._id)">
     <div class="lg-border"></div>
       <img src="{{news[1].img}}" alt="">
@@ -25,7 +25,14 @@
     </div>
 
     <div class="cursor-pointer mews-link text-center" routerLink="/news/page/1">
-      ВСЕ НОВОСТИ >
+      ВСЕ НОВОСТИ
+
+      <svg class="arrow-3-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+        <g fill="none" stroke="#00355d" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+          <path class="arrow-3-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+        </g>
+      </svg>
+
     </div>
 
   </div>

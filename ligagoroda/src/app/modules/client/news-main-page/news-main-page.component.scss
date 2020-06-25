@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 $padding: 15px;
 
@@ -7,6 +8,7 @@ $padding: 15px;
   height: 465px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 30px;
   .lg-border {
     position: absolute;
     bottom: 0;
@@ -89,9 +91,29 @@ $padding: 15px;
 
     }
 
-    .mews-link:hover {
-      color: $main-color;
-      text-decoration: underline;
+    .mews-link {
+      box-sizing: content-box;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px;
+      .arrow-3-icon {
+        transition: 0.2s ease-out;
+        margin-left: 10px;
+      }
+      @include lg-hover(0);
+      &:hover {
+        color: $main-color;
+
+        .arrow-3-icon {
+          transition: 0.2s ease-out;
+          transform: translate(10px);
+        }
+      }
     }
   }
 }
