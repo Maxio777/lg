@@ -1,0 +1,157 @@
+@import "variables";
+@import "mixins";
+
+$fz-date: 16px;
+
+.news {
+  font-size: 22px;
+
+  .date {
+    padding: 10px 0;
+    font-size: $fz-date;
+  }
+
+  .news__header {
+    height: $height-tr;
+
+    .icon {
+    }
+
+    .title {
+      @include title;
+    }
+
+    .input-search {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search {
+      padding: 5px 25px;
+      border: 1px solid $light-gray;
+      border-radius: 7px;
+      width: 300px;
+      transition: 0.5s;
+
+      &:focus {
+        width: 400px;
+        border: 1px solid $accent;
+        transition: 0.5s;
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  .news__hr {
+    @include title-line;
+  }
+
+  .news__selected-tags {
+    margin-top: 15px;
+    @include tags;
+
+    & > div > div {
+      background: $accent !important;
+    }
+
+    .tag-filter {
+      line-height: 1.5;
+      font-size: 16px !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;;
+    }
+  }
+
+
+  .news__main {
+    padding: 15px 0;
+    margin-bottom: 5px;
+    @include grey-border('b');
+
+    .content {
+      .img {
+        @include images;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+
+        .date {
+        }
+
+        .preview {
+          cursor: pointer;
+          flex-grow: 1;
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
+    }
+
+    .tags {
+      @include tags;
+    }
+  }
+
+  .news__list {
+    .content {
+      .img {
+        @include images;
+        margin: 10px 10px 10px 0;
+      }
+
+      .text {
+        @include grey-border('b');
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .date {
+        }
+
+        .preview {
+          cursor: pointer;
+          flex-grow: 1;
+
+          &:hover {
+            color: $main-color;
+          }
+        }
+
+        .tags {
+          @include tags;
+        }
+      }
+    }
+  }
+
+  .news__pagination {
+    text-align: center;
+    margin: 40px;
+  }
+}
+
+
+.selected {
+  background: #0260a4f2 !important;
+  color: white;
+}
+
+
+.clear {
+  cursor: pointer;
+  transition: 0.2s;
+  position: absolute;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  color: $light-gray;
+  &:hover {
+    transition: 0.2s;
+    color: $main-color;
+  }
+}

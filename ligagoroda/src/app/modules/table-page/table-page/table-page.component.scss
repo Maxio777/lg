@@ -1,12 +1,6 @@
 @import "variables";
 @import "mixins";
 
-$height-tr: 55px;
-
-.default-container {
-  padding-top: 0;
-}
-
 table {
   margin-bottom: 130px;
 
@@ -18,8 +12,7 @@ table {
     white-space: nowrap;
 
     .title {
-      margin-left: 20px;
-      color: $main-color;
+      @include title;
     }
 
     .tournament {
@@ -30,9 +23,7 @@ table {
   thead {
 
     .line {
-      border-radius: 3px;
-      height: 6px;
-      background: $main-color;
+      @include title-line
     }
 
     .heading {

@@ -1,4 +1,3 @@
-
 export interface News {
   _id: string;
   title: string;
@@ -7,4 +6,11 @@ export interface News {
   text: string;
   date: string;
   selected?: boolean;
+  tags?: Tag[];
+}
+
+export interface Tag {
+  _id: string;
+  name: string;
+  select?: boolean;
 }

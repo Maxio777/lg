@@ -27,7 +27,7 @@ export class ClientDataService {
 
   constructor(private allDataRestService: AllDataRestService) { }
 
-/** news */
+/** news-page */
   public setNews = (news: News[]): void => this.news.next(news);
   public getNews$ = (): BehaviorSubject<News[]>  => this.news;
 

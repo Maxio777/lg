@@ -25,7 +25,7 @@ export class NewsMainPageComponent implements OnInit {
   }
 
   goToOneNews(id: string) {
-    this.router.navigate(['news/' + id ]);
+    this.router.navigate(['news-page/' + id ]);
   }
 
 }
