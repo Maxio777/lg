@@ -1,0 +1,89 @@
+<mat-form-field class="default-container">
+  <input label="" matInput #input>
+</mat-form-field>
+
+<button mat-raised-button color="primary"(click)="addTag(input.value); input.value = ''">создать</button>
+
+<div class="d-flex flex-row container mb-5">
+  <div class="col-12">
+    <div class="mat-elevation-z8">
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-row pt-4 flex-grow-1">
+          <mat-form-field class="col-5">
+            <input label="" matInput (keyup)="applyFilter(value.value)" placeholder="Поиск" #value>
+            <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="applyFilter(''); value.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+
+        </div>
+<!--        <button mat-mini-fab color="accent" class="float-right mr-5 m-auto open-close-add" (click)="openADD()" *ngIf="!openAdd">-->
+<!--          <mat-icon>add</mat-icon>-->
+<!--        </button>-->
+      </div>
+
+
+      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef >#</th>
+          <td mat-cell *matCellDef="let row; let idx = index;" mat-ripple [matRippleColor]="'red'">{{idx + 1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Теги</th>
+          <td mat-cell *matCellDef="let row"  class="cursor-pointer"
+          >
+           {{row.name}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+
+            <div class="d-flex flex-row">
+
+              <div class="m-auto align-middle flex-grow-1 cursor-pointer">
+                <mat-icon (click)="openDialog(row, 'delete')" mat-ripple>delete</mat-icon>
+                <mat-icon (click)="openDialog(row, 'update')" mat-ripple>edit</mat-icon>
+              </div>
+
+            </div>
+
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [length]="dataSource?.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 15, 20, 25]">
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #updateRef><div>
+  <mat-form-field class="w-100">
+    <input label="" matInput [value]="editTag?.name" #inp>
+
+  </mat-form-field>
+  <button mat-raised-button color="primary" aria-label (click)="closeModal(false)">Отмена</button>
+  <button mat-raised-button color="primary" aria-label (click)="closeModal({_id: editTag._id, name: inp.value}, 'update')">Сохранить</button>
+</div></ng-template>
+
+<ng-template #deleteRef><div>
+    <p>Вы уверены что хотите удалить тег <strong>{{editTag?.name}}</strong>?</p>
+
+  <button mat-raised-button color="primary" aria-label (click)="closeModal(false)">Отмена</button>
+  <button mat-raised-button color="primary" aria-label (click)="closeModal({_id: editTag._id})">Удалить</button>
+</div></ng-template>
