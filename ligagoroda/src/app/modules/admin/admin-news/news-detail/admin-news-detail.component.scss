@@ -1,7 +1,19 @@
+@import "mixins";
+
+
 mat-form-field {
   padding-right: 30px;
   padding-left: 10px;
   flex-grow: 1;
   min-width: 300px;
   width: 100%;
+}
+
+.tags {
+  @include tags;
+}
+
+.selected {
+  background: #0260a4f2 !important;
+  color: white;
 }

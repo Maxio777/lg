@@ -52,6 +52,7 @@ export class RestNewsService {
     fd.append('title', data.title);
     fd.append('textPreview', data.textPreview);
     fd.append('text', data.text);
+    fd.append('tags', JSON.stringify(data.tags));
     return this.mainService.putLG2(fd, this.apiLG + id + '?kind=' + kind);
   }
 

@@ -31,6 +31,7 @@ app.use('/api/v1/admin', require('./routes/admin/game.routes'));
 app.use('/api/v1/admin', require('./routes/admin/event.routes'));
 app.use('/api/v1/admin', require('./routes/admin/currentTournament.routes'));
 app.use('/api/v1/admin', require('./routes/admin/uploadFile.routes'));
+app.use('/api/v1/admin', require('./routes/admin/tag.routes'));
 app.use('/api/v1/', require('./routes/settings.routes'));
 
 

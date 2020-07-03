@@ -22,7 +22,12 @@ const schema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    tags: [{
+        type: Types.ObjectId,
+        ref: 'Tag',
+        default: []
+    }]
 });
 
 module.exports = model('News', schema);

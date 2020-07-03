@@ -42,7 +42,6 @@
     @if ($side == 'b') {
       border-bottom: 1px solid $main-color;
     }
-
   }
 }
 
@@ -123,11 +122,11 @@
       display: flex;
       align-items: center;
       padding: 3px 10px;
-      margin: 3px 5px;
+      margin: 3px 4px;
       font-size: 12px;
       background: $light-gray;
-      border-radius: 3px;
-      max-height: 20px;
+      border-radius: 9px;
+      height: 20px;
       cursor: pointer;
 
       -ms-user-select: none; // Для эксплорера
@@ -135,6 +134,7 @@
       -khtml-user-select: none; // Для конкверора
       -webkit-user-select: none; // Для Сафари и Хрома
       &:hover {
+        background: rgba(0, 53, 93, 0.1);
         span {
           font-weight: bold;
         }

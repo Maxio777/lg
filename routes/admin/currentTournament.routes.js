@@ -22,7 +22,9 @@ router.get('/current-tournament', cache(60),
                 return res.status(400).json({ message: 'Текущий турнир не найден' })
             }
 
-            const news = await News.find();
+            const news = await News.find()
+              .populate('tags');
+
             let players = await Player.find();
 
             let games = await Game.find({ tournament: id })

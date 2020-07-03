@@ -88,5 +88,11 @@ export const URLS_ADMIN = {
       url: '/admin/games/',
       title: 'АДМИН ПЛЕЕР'
     },
+
+    tags: {
+      route: 'tags',
+      url: '/admin/tags',
+      title: 'ТЕГИ'
+    },
   }
 };

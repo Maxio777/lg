@@ -41,7 +41,8 @@ const MODULES = [
   MatCheckboxModule,
   MatButtonToggleModule,
   MatAutocompleteModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatRippleModule
 ];
 
 @NgModule({

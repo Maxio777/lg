@@ -5,7 +5,7 @@ import {FormGroup} from '@angular/forms';
 import {initForm} from '../../../../core/helpers';
 import {AdminDataService} from '../../services/admin-data/admin-data.service';
 import {Subscription} from 'rxjs';
-import {News} from '../../../../models/news';
+import {News, Tag} from '../../../../models/news';
 import {RestNewsService} from '../../../../rest/rest-news/rest-news.service';
 import {ToastrService} from 'ngx-toastr';
 import {forEach} from 'lodash';
@@ -18,6 +18,7 @@ import {forEach} from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminNewsDetailComponent implements OnInit {
+  tags: Tag[] = [];
   isNew: boolean = true;
   image: File | null = null;
   imagePreview: string | ArrayBuffer | null = '';
@@ -38,6 +39,21 @@ export class AdminNewsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.subsOfRoute();
+    this.getTags();
+  }
+
+  getTags() {
+    this.subs.add(this.adminDataService.getTags$().subscribe(tags => {
+      this.tags = tags;
+      this.cd.detectChanges();
+    }));
+  }
+
+  select(id: string) {
+    const tag = this.tags.find(t => t._id === id);
+    if (tag) {
+      tag.select = !tag.select;
+    }
   }
 
   subsOfRoute() {
@@ -48,7 +64,6 @@ export class AdminNewsDetailComponent implements OnInit {
         this.subs.add(this.adminDataService.getNews$().pipe(
           map((news) => news.find(n => n._id === params.id)))
           .subscribe((news) => {
-            console.log('NEWS', news);
             this.news = news;
             if (this.news) {
               this.setDataToForm(this.news);
@@ -82,25 +97,24 @@ export class AdminNewsDetailComponent implements OnInit {
     forEach(data, (_, key) => {
       data[key] = data[key].trim();
     });
+    data.tags = this.tags.filter(t => t.select).map(t => t._id);
 
-    this.isNew
+    if (this.news) {
+      this.isNew
 
-      ? this.restNewsService.postNewsLG2(data, this.image, this.kind).subscribe((news) => {
-        this.toastr.success(news.message);
-        this.adminDataService.setNews([...this.adminDataService.news.getValue(), news.newNews]);
-        this.goToNewsList();
-      })
-      // @ts-ignore
-
-      : this.restNewsService.updateNewsLG2(data, this.image, this.kind, this.news._id).subscribe((news) => {
-        this.toastr.success(news.message);
-        const allNews = [...this.adminDataService.news.getValue()];
-        const index = allNews.findIndex(n => n._id === news.news._id);
-        allNews[index] = news.news;
-        console.log('allNews', allNews);
-        this.adminDataService.setNews([...allNews]);
+        ? this.restNewsService.postNewsLG2(data, this.image, this.kind).subscribe((news) => {
+          this.toastr.success(news.message);
+          this.adminDataService.setNews([...this.adminDataService.news.getValue(), news.newNews]);
+          this.goToNewsList();
+        })
+        : this.restNewsService.updateNewsLG2(data, this.image, this.kind, this.news._id).subscribe((news) => {
+          this.toastr.success(news.message);
+          const allNews = [...this.adminDataService.news.getValue()];
+          const index = allNews.findIndex(n => n._id === news.news._id);
+          allNews[index] = news.news;
+          this.adminDataService.setNews([...allNews]);
         });
-
+    }
   }
 
   goToNewsList() {

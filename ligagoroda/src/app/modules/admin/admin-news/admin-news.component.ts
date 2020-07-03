@@ -28,7 +28,7 @@ export class AdminNewsComponent implements OnInit {
   news: News[] = [];
   currentNewsId: number | string = NaN;
   goToNew = () => this.router.navigate(['/admin/news-page-new']);
-  goToNews = (id: string) => this.router.navigate(['/admin/news-page/' + id]);
+  goToNews = (id: string) => this.router.navigate(['/admin/news/' + id]);
 
   constructor(
     private fb: FormBuilder,

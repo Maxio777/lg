@@ -3,7 +3,7 @@ import { PlayerClient, TeamLG, TournamentLG } from '../../models/interfaces';
 import { GameLG } from '../../models/game';
 import { MainRestService } from '../main-rest-service';
 import { Observable } from 'rxjs';
-import { News } from '../../models/news';
+import {News, Tag} from '../../models/news';
 import { TeamTable } from '../../models/team-table';
 
 
@@ -15,7 +15,7 @@ export class AllDataRestService {
 
   constructor(private mainRestService: MainRestService) { }
 
-  getAllDataLG(id: string): Observable<[ GameLG[], PlayerClient[], News[], TournamentLG, TeamTable[], TeamLG[] ]> {
+  getAllDataLG(id: string): Observable<[ GameLG[], PlayerClient[], News[], TournamentLG, TeamTable[], TeamLG[], Tag[] ]> {
     return this.mainRestService.getLG(this.apiLG + id);
   }
 

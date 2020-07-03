@@ -9,11 +9,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <textarea  label="" type="text" matInput placeholder="Привью" formControlName="textPreview"></textarea>
+          <textarea label="" type="text" matInput placeholder="Привью" formControlName="textPreview"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <textarea  label="" type="text" matInput placeholder="Текст" formControlName="text"></textarea>
+          <textarea label="" type="text" matInput placeholder="Текст" formControlName="text"></textarea>
         </mat-form-field>
 
 
@@ -31,7 +31,16 @@
     </div>
 
 
+  </div>
 
+  <div class="tags d-flex">
+    <div>
+      <div class="tag"
+           *ngFor="let tag of tags"
+           (click)="select(tag._id)"
+           [class.selected]="tag.select"
+      >{{tag.name}}</div>
+    </div>
   </div>
 
   <div class="buttons w-100 d-flex flex-row justify-content-end">

@@ -80,4 +80,10 @@ export const LINKS_LEFT = [
     icon: 'filter_7',
     disabled: true
   },
+  {
+    url: '/admin/tags',
+    name: 'Теги',
+    icon: 'filter_8',
+    disabled: true
+  },
 ];

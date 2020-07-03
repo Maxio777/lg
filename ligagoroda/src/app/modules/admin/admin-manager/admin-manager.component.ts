@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ManagerLG } from '../../../models/interfaces';
-import { RestManagerService } from '../../../rest/rest-manager/rest-manager.service';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {ManagerLG} from '../../../models/interfaces';
+import {RestManagerService} from '../../../rest/rest-manager/rest-manager.service';
 
 @Component({
   selector: 'app-admin-manager',
@@ -30,7 +30,8 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
 
   constructor(
     private restManagerService: RestManagerService,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getManagerLG();
@@ -82,7 +83,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
   }
 
   initForm() {
-    return  new FormGroup({
+    return new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       middleName: new FormControl(''),
@@ -97,7 +98,9 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
         this.getManagerLG();
         this.form.reset();
       }));
-    } else {alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.'); }
+    } else {
+      alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.');
+    }
   }
 
   updateManagerLG(_id: string): void | Subscription {
@@ -106,7 +109,9 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
         this.getManagerLG();
         this.form.reset();
       }));
-    } else {alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.'); }
+    } else {
+      alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.');
+    }
   }
 
   deleteManagerLG() {

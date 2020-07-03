@@ -1,3 +1,4 @@
+
 <div class="news default-container">
   <div class="news__header d-flex justify-content-between align-items-center">
     <span class="d-flex justify-content-between align-items-center">
@@ -9,6 +10,7 @@
     <div >
       <div class="input-search">
         <input class="search" type="text" placeholder="Поиск по новостям" [(ngModel)]="search">
+        <img class="search-icon" src="../../../../assets/img/icons/search.png" alt="">
 
           <mat-icon
             *ngIf="search"
@@ -22,24 +24,32 @@
   <div class="news__hr"></div>
   <div class="news__selected-tags">
     <div>
-      <span class="tag-filter" *ngIf="selectedTags(tags).length">Отфильтровано по тегам: </span>
-      <div class="tag selected" *ngFor="let tag of selectedTags(tags)" (click)="select(tag._id)">{{tag.name}}<span>	&times;</span></div>
+      <span class="tag-filter" *ngIf="selectedTags.length">Отфильтровано по тегам: </span>
+      <div class="tag selected" *ngFor="let tag of selectedTags" (click)="select(tag)">{{tag.name}}<span>	&times;</span></div>
     </div>
   </div>
   <div class="news__main" [class.d-none]="(p|async) !== 1">
     <div class="content d-flex">
-      <div class="img col-7">
-        <img src="{{news[0]?.img}}" alt="" [routerLink]="['/news-page', news[0]?._id ]">
+      <div class="img col-6">
+        <img src="{{news[0]?.img}}" alt="" [routerLink]="['/news', news[0]?._id ]">
       </div>
-      <div class="text col-5">
+      <div class="text col-6">
         <div class="date">
           <img src="../../../../assets/img/icons/date.png" alt=""> {{news[0]?.date | date: 'dd.MM.yyyy'}}
         </div>
-        <div class="preview" [routerLink]="['/news-page', news[0]?._id ]">
+        <div class="preview" [routerLink]="['/news', news[0]?._id ]">
           <p><strong>{{news[0]?.title }}</strong></p>
           <p>{{news[0]?.textPreview }}</p>
         </div>
-        <ng-container *ngTemplateOutlet="tagsTemp"></ng-container>
+        <div class="tags d-flex">
+          <div>
+            <div class="tag"
+                 *ngFor="let tag of news[0]?.tags"
+                 (click)="select(tag)"
+                 [class.selected]="isTagSelected(tag.name)"
+            >{{tag.name}}</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -47,18 +57,26 @@
   <div class="news__list">
     <div class="content d-flex"
          *ngFor="let news of news | slice: 1:99 | paginate: {itemsPerPage: 4, currentPage: p|async}">
-      <div class="img col-6">
-        <img src="{{news?.img}}" alt="" [routerLink]="['/news-page', news?._id ]">
+      <div class="img col-5">
+        <img src="{{news?.img}}" alt="" [routerLink]="['/news', news?._id ]">
       </div>
-      <div class="text col-6">
+      <div class="text col-7">
         <div class="date">
           <img src="../../../../assets/img/icons/date.png" alt=""> {{news?.date | date: 'dd.MM.yyyy'}}
         </div>
-        <div class="preview" [routerLink]="['/news-page', news?._id ]">
+        <div class="preview" [routerLink]="['/news', news?._id ]">
           <p><strong>{{news?.title }}</strong></p>
           <p>{{news?.textPreview }}</p>
         </div>
-        <ng-container *ngTemplateOutlet="tagsTemp"></ng-container>
+        <div class="tags d-flex">
+          <div>
+            <div class="tag"
+                 *ngFor="let tag of news?.tags"
+                 (click)="select(tag)"
+                 [class.selected]="isTagSelected(tag.name)"
+            >{{tag.name}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -75,14 +93,4 @@
 </div>
 
 
-<ng-template #tagsTemp>
-  <div class="tags d-flex">
-    <div>
-      <div class="tag"
-           *ngFor="let tag of tags"
-           (click)="select(tag._id)"
-           [class.selected]="tag.select"
-      >{{tag.name}}</div>
-    </div>
-  </div>
-</ng-template>
+

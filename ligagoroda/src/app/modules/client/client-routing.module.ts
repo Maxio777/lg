@@ -18,7 +18,9 @@ const routes: Routes = [
     children: [
       {path: '', component: IndexComponent},
       {path: 'table', loadChildren: '../table-page/table-page.module#TablePageModule'},
-      {path: 'news/page/:p', loadChildren: '../news-page/news-page.module#NewsPageModule'},
+      {
+        path: 'news/page/:p',
+        loadChildren: '../news-page/news-page.module#NewsPageModule'},
       {
         path: URLS_CLIENT.players.route,
         component: PlayersComponent,

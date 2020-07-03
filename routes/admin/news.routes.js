@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { check, validationResult } = require('express-validator');
 const News = require('../../models/News');
+const Tag = require('../../models/Tag');
 const router = Router();
 const fileMiddleware = require('../../middleware/file');
 const auth = require('../../middleware/auth');
@@ -9,7 +10,7 @@ const auth = require('../../middleware/auth');
 const checkErrors = [
     check('title', 'Должно быть минимум 2 буквы').isLength({ min: 2, max: 100 }),
     check('textPreview', 'Должно быть от 10 до 256 знаков').isLength({ min: 10, max: 256 }),
-    check('text', 'Должно быть от 10 до 2000 знаков').isLength({ min: 10, max: 4000 }),
+    check('text', 'Должно быть от 10 до 10000 знаков').isLength({ min: 10, max: 10000 }),
 ]
 
 // /api/v1/admin/news
@@ -58,7 +59,7 @@ router.post('/news', auth, fileMiddleware.single('image'), checkErrors,
     });
 
 router.put('/news/:_id', auth, fileMiddleware.single('image'), checkErrors,
-    async (req, res) => {
+     async (req, res) => {
         console.log(req.body);
         try {
             const errors = validationResult(req);
@@ -71,14 +72,23 @@ router.put('/news/:_id', auth, fileMiddleware.single('image'), checkErrors,
 
             const _id = req.params._id
 
-            const { title, textPreview, text } = req.body;
+            let { title, textPreview, text, tags } = req.body;
+            tags = JSON.parse(tags)
             const news = await News.findOne({ _id });
+
+            // tags.forEach((t, index) => {
+            //     if ( typeof t === 'string') {
+            //         const newTag = new Tag(t)
+            //         newTag.save()
+            //         tags[index] = newTag
+            //     }
+            // })
 
             if (!news) {
                 return res.status(400).json({ message: 'Новость не найдена' })
             }
             const updated = {
-                title, textPreview, text
+                title, textPreview, text, tags
             }
 
             if (req.file) {
