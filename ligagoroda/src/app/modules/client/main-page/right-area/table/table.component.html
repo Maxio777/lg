@@ -1,0 +1,43 @@
+<table>
+
+  <caption>
+    <div class="d-flex flex-row justify-content-between align-items-center h-100">
+      <div class="d-flex align-items-center">
+        <img src="../../../../../../assets/img/icons/table.png" alt="">
+      </div>
+      <div class="text-left pr-4">
+        <h2>ТУРНИРНАЯ ТАБЛИЦА</h2>
+        <div class="tournament-name">{{currentTournament?.name}}</div>
+      </div>
+
+    </div>
+  </caption>
+  <thead>
+  <tr>
+    <th class="index"></th>
+    <th></th>
+    <th>Команды</th>
+    <th class="text-center px-1" matTooltip="Игры">И</th>
+    <th class="text-center px-1" matTooltip="Очки">О</th>
+    <th class="text-center px-1" matTooltip="Форма">Ф</th>
+<!--    <th>Р</th>-->
+  </tr>
+
+  </thead>
+  <tr class="cursor-pointer" *ngFor="let team of table; let idx = index" (click)="goToUrl(URLS.team, team._id)">
+    <td class="index">{{idx +1}}</td>
+    <td><img src="{{team.img}}" alt=""></td>
+    <td>{{team.teamName}}</td>
+    <td class="text-center px-1">{{team.gamesCount}}</td>
+    <td class="text-center px-1">{{team.points}}</td>
+    <td class="text-center px-1">
+      <div class="outcomes d-flex flex-row justify-content-center">
+        <span class="outcome"  *ngFor="let i of team.outcomes | slice:2:5" [style.background]="COLORS[i]"></span>
+      </div>
+    </td>
+  </tr>
+
+  <tbody>
+
+  </tbody>
+</table>

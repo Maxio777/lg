@@ -23,7 +23,7 @@ export class GameComponent implements OnInit {
     this.getSingleNews();
   }
 
-  // map((games ) => games.find(game => game._id === params.id))
+  // map((games-page ) => games-page.find(game => game._id === params.id))
 
   getSingleNews(): void {
     this.route.params.pipe(

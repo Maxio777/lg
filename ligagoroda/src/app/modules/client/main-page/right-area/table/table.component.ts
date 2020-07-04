@@ -7,14 +7,14 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { URLS } from 'src/app/core/urls';
-import { COLORS } from 'src/app/assets/constants/constants';
-import { ClientDataService } from '../services/client-data/client-data.service';
-import { TeamTable } from '../../../models/team-table';
-import {TournamentLG} from '../../../models/interfaces';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {URLS} from 'src/app/core/urls';
+import {COLORS} from 'src/app/assets/constants/constants';
+import {ClientDataService} from '../../../services/client-data/client-data.service';
+import {TeamTable} from '../../../../../models/team-table';
+import {TournamentLG} from '../../../../../models/interfaces';
 
 
 @Component({
@@ -44,7 +44,8 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router,
     private clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.clientDataService.getTable$().subscribe(table => {
@@ -58,10 +59,10 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   initTable(table: TeamTable[]): void {
-      this.dataSource = new MatTableDataSource<TeamTable>(table);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.cd.detectChanges();
+    this.dataSource = new MatTableDataSource<TeamTable>(table);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.cd.detectChanges();
   }
 
   goToUrl = (url: string, id = '') => this.router.navigate([url + id]);

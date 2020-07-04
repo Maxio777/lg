@@ -9,13 +9,13 @@ import {GameLG} from '../../../models/game';
 
 
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss'],
+  selector: 'app-games-page',
+  templateUrl: './games-page.component.html',
+  styleUrls: ['./games-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class GamesComponent {
+export class GamesPageComponent {
   filterSrt = [
     // {name: 'ВСЕ', str: ''}, // TODO ПОНАДОБИТСЯ НА ОТДЕЛЬНОЙ СТРАНИЦЕ
     {name: 'СЫГРАННЫЕ', str: 'completed'},

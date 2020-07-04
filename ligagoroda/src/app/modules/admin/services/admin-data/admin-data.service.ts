@@ -58,7 +58,7 @@ export class AdminDataService {
   public setManagers = (managers: ManagerLG[]) => this.managers.next(managers);
   public getManagers$ = (): Observable<ManagerLG[]> => this.managers;
 
-  /** games */
+  /** games-page */
   public setGames = (games: GameLG[]) => this.games.next(games);
   public getGames$ = (): Observable<GameLG[]> => this.games;
 

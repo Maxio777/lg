@@ -36,19 +36,27 @@
         letter-spacing: 2px;
         height: 20px;
         text-align: right;
-        width: 160px;
+        width: 200px;
         border-radius: 10px;
         box-sizing: content-box;
         margin-right: -1px;
         transition: 0.2s;
+        justify-content: center;
 
         mat-icon {
+          width: unset;
+          height: unset;
           line-height: 20px;
           font-size: 18px;
+          transition: 0.5s;
         }
 
         &:hover {
           background: $accent;
+          mat-icon {
+            transform: translateX(7px);
+            transition: 0.5s;
+          }
         }
       }
     }

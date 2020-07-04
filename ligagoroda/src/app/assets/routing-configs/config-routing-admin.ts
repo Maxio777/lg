@@ -67,7 +67,7 @@ export const URLS_ADMIN = {
 
     game: {
       route: 'game',
-      url: '/admin/games',
+      url: '/admin/games-page',
       title: 'ИГРЫ'
     },
 
@@ -84,8 +84,8 @@ export const URLS_ADMIN = {
     },
 
     games: {
-      route: 'games/:id',
-      url: '/admin/games/',
+      route: 'games-page/:id',
+      url: '/admin/games-page/',
       title: 'АДМИН ПЛЕЕР'
     },
 

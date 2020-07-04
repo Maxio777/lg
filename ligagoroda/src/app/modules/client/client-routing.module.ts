@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PlayersComponent} from './players/players.component';
-import {GamesComponent} from './games/games.component';
+import {GamesPageComponent} from './games-page/games-page.component';
 import {GameComponent} from './game/game.component';
 import {PlayerComponent} from './player/player.component';
 import {TeamComponent} from './team/team.component';
@@ -26,11 +26,10 @@ const routes: Routes = [
         component: PlayersComponent,
         data: {title: URLS_CLIENT.players.title}
       },
-      {path: URLS_CLIENT.games.route, component: GamesComponent, data: {title: URLS_CLIENT.games.title}},
-      {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
+      {path: 'games', component: GamesPageComponent, data: {title: 'ИГРЫ'}},
+      {path: 'games-page/:id', component: GameComponent, data: {title: 'ИГРА'}},
       {path: 'player/:id', component: PlayerComponent, data: {title: 'СТРАНИЦА ИГРОКА'}},
       {path: 'teams/:id', component: TeamComponent, data: {title: 'КОМАНДА'}},
-      // {path: 'news/page/:p', component: NewsComponent, data: {title: 'НОВОСТИ'}},
       {path: 'news/:id', component: SingleNewsComponent, data: {title: 'НОВОСТЬ'}}
     ]
   },
