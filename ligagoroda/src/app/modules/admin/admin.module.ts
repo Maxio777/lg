@@ -30,12 +30,10 @@ import {AdminFileUploadComponent} from './admin-file-upload/admin-file-upload.co
 import {AdminNewsDetailComponent} from './admin-news/news-detail/admin-news-detail.component';
 import {TagsComponent} from './tags/tags.component';
 import {MatDialogModule} from '@angular/material';
-import {InputTrimDirective} from '../../assets/directives/input-trim.directive';
 
 
 @NgModule({
   declarations: [
-    InputTrimDirective,
     AdminComponent,
     AdminPlayerComponent,
     AdminTournamentComponent,

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InputTrimDirective } from '../assets/directives/input-trim.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [InputTrimDirective],
   imports: [
     CommonModule
   ],
-  exports: []
+  exports: [InputTrimDirective]
 })
 export class CoreModule { }
