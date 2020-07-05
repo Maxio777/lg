@@ -4,6 +4,7 @@
 $backgroundLg: rgba(0, 53, 93, 0.05);
 
 table {
+  table-layout:fixed;
   @include table;
 
   .mat-button {
@@ -49,11 +50,10 @@ table {
     &__date {
       position: absolute;
       font-size: 12px;
-      padding: 10px;
     }
 
     &__home {
-      width: 35%;
+      padding-left: 10px;
       font-size: 15px;
     }
 
@@ -80,17 +80,21 @@ table {
     }
 
     &__guest {
-      width: 35%;
+      padding-right: 10px;
       font-size: 15px;
-    }
 
-    &__arrow {
-      margin: 10px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: min-content!important;
-      width: min-content!important;
+      .logo {
+        width: 31px;
+        height: 31px;
+      }
+
+      &--arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: min-content!important;
+        width: min-content!important;
+      }
     }
 
     .team-name {
@@ -100,9 +104,7 @@ table {
       width: 100%;
     }
   }
-
 }
-
 
 .games-menu {
   color: rgba(0, 0, 0, 0.5);
