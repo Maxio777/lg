@@ -28,6 +28,7 @@
   margin: 15px;
 
   h2 {
+    font-size: 32px;
     margin-top: -1px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -56,3 +57,14 @@
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
 }
+
+
+input {
+  font-size: 22px!important;
+}
+
+
+.mat-error, label {
+  font-size: 16px;
+}
+
