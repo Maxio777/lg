@@ -3,7 +3,7 @@ import {News, Tag} from '../../../models/news';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClientDataService} from '../../client/services/client-data/client-data.service';
-import {pluck, map} from 'rxjs/operators';
+import {pluck, map, tap} from 'rxjs/operators';
 import {sortBy} from 'lodash';
 
 @Component({
@@ -30,10 +30,19 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub.add(this.clientDataService.getNews$().subscribe(newsAll => {
+    this.sub.add(this.clientDataService.getNews$().pipe(
+      tap(n => n.forEach(news => news.isLoad = true)))
+      .subscribe(newsAll => {
       this._news = sortBy(newsAll, ['date']);
       this.cd.detectChanges();
     }));
+  }
+
+  changeLoadStatus(n: News) {
+    setTimeout(() => {
+      n.isLoad = false;
+      this.cd.detectChanges();
+    }, 500);
   }
 
   _search(n: News): boolean {

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PlayersComponent} from './players/players.component';
+import {PlayersComponent} from './main-page/right-area/players/players.component';
 import {GamesPageComponent} from './games-page/games-page.component';
 import {GameComponent} from './game/game.component';
 import {PlayerComponent} from './player/player.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
         data: {title: URLS_CLIENT.players.title}
       },
       {path: 'games', component: GamesPageComponent, data: {title: 'ИГРЫ'}},
-      {path: 'games-page/:id', component: GameComponent, data: {title: 'ИГРА'}},
+      {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
       {path: 'player/:id', component: PlayerComponent, data: {title: 'СТРАНИЦА ИГРОКА'}},
       {path: 'teams/:id', component: TeamComponent, data: {title: 'КОМАНДА'}},
       {path: 'news/:id', component: SingleNewsComponent, data: {title: 'НОВОСТЬ'}}

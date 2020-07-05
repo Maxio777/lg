@@ -1,3 +1,8 @@
+
 <!--<app-change-tournament></app-change-tournament>-->
-<app-tournament [isMainPage]="true" *ngIf="(dataService.currentSiteTitle$ | async) !== 'ТУРНИРНАЯ ТАБЛИЦА'"></app-tournament>
-<app-stat-players [isMainPage]="true" *ngIf="(dataService.currentSiteTitle$ | async) !== 'ИГРОКИ'"></app-stat-players>
+<app-games
+  *ngIf="(dataService.currentSiteTitle$ | async) !== 'ИГРЫ'
+      && (dataService.currentSiteTitle$ | async) !== 'ГЛАВНАЯ'"
+></app-games>
+<app-tournament *ngIf="(dataService.currentSiteTitle$ | async) !== 'ТУРНИРНАЯ ТАБЛИЦА'"></app-tournament>
+<app-stat-players *ngIf="(dataService.currentSiteTitle$ | async) !== 'ИГРОКИ'"></app-stat-players>

@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins/side-table.mixins";
 
 @mixin content-center {
   display: flex;
@@ -125,7 +126,7 @@
       margin: 3px 4px;
       font-size: 12px;
       background: $light-gray;
-      border-radius: 9px;
+      border-radius: 5px;
       height: 20px;
       cursor: pointer;
 

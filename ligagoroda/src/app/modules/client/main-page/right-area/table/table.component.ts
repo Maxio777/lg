@@ -8,9 +8,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {URLS} from 'src/app/core/urls';
 import {COLORS} from 'src/app/assets/constants/constants';
 import {ClientDataService} from '../../../services/client-data/client-data.service';
 import {TeamTable} from '../../../../../models/team-table';
@@ -27,21 +25,18 @@ export class TableComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
   @Input() display: string[] = [];
-  @Input() isMainPage: boolean = false;
+  @Input() isShow: boolean = false;
 
-  URLS = URLS;
   COLORS = COLORS;
   table: TeamTable[] | undefined = undefined;
   currentTournament: TournamentLG | null = null;
   dataSource: MatTableDataSource<TeamTable> | undefined;
   displayedColumns: string[] =
     ['id', 'teamName', 'gamesCount', 'win', 'loss', 'draws', 'goals', 'missedGoals', 'goalDifference', 'points'];
-  displayedColumnsForMainPage: string[] = ['id', 'teamName', 'gamesCount', 'points'];
   title: string | undefined;
   subscriptions: Subscription = new Subscription();
 
   constructor(
-    private router: Router,
     private clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
   ) {
@@ -64,8 +59,6 @@ export class TableComponent implements OnInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
     this.cd.detectChanges();
   }
-
-  goToUrl = (url: string, id = '') => this.router.navigate([url + id]);
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();

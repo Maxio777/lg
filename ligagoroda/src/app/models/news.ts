@@ -6,6 +6,7 @@ export interface News {
   text: string;
   date: string;
   selected?: boolean;
+  isLoad?: boolean;
   tags: Tag[];
 }
 

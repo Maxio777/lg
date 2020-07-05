@@ -1,4 +1,3 @@
-
 <div class="news default-container">
   <div class="news__header d-flex justify-content-between align-items-center">
     <span class="d-flex justify-content-between align-items-center">
@@ -7,16 +6,17 @@
       <h1>НОВОСТИ</h1>
     </div>
     </span>
-    <div >
+    <div>
       <div class="input-search">
         <input class="search" type="text" placeholder="Поиск по новостям" [(ngModel)]="search">
         <img class="search-icon" src="../../../../assets/img/icons/search.png" alt="">
 
-          <mat-icon
-            *ngIf="search"
-            (click)="search = ''"
-            class="clear"
-          >close</mat-icon>
+        <mat-icon
+          *ngIf="search"
+          (click)="search = ''"
+          class="clear"
+        >close
+        </mat-icon>
 
       </div>
     </div>
@@ -25,24 +25,38 @@
   <div class="news__selected-tags">
     <div>
       <span class="tag-filter" *ngIf="selectedTags.length">Отфильтровано по тегам: </span>
-      <div class="tag selected" *ngFor="let tag of selectedTags" (click)="select(tag)">{{tag.name}}<span>	&times;</span></div>
+      <div class="tag selected" *ngFor="let tag of selectedTags" (click)="select(tag)">{{tag.name}}
+        <span>	&times;</span></div>
     </div>
   </div>
+
+<!--Верхняя новость-->
   <div class="news__main" [class.d-none]="(p|async) !== 1">
     <div class="content d-flex">
       <div class="img col-6">
-        <img src="{{news[0]?.img}}" alt="" [routerLink]="['/news', news[0]?._id ]">
+        <div class="item">
+
+          <ngx-skeleton-loader
+            *ngIf="news[0]?.isLoad"
+            count="1"
+            [theme]="{
+              'border-radius': '5px',
+              'height': '278px'
+            }"
+          ></ngx-skeleton-loader>
+        </div>
+        <img [src]="news[0]?.img" alt="" [routerLink]="['/news', news[0]?._id ]" (load)="changeLoadStatus(news[0])" [hidden]="news[0]?.isLoad">
       </div>
-      <div class="text col-6">
-        <div class="date">
+      <div class="text w-100">
+        <div class="date" *ngIf="!news[0]?.isLoad; else loaderForDate">
           <img src="../../../../assets/img/icons/date.png" alt=""> {{news[0]?.date | date: 'dd.MM.yyyy'}}
         </div>
-        <div class="preview" [routerLink]="['/news', news[0]?._id ]">
+        <div class="preview" [routerLink]="['/news', news[0]?._id ]" *ngIf="!news[0]?.isLoad; else loaderForMainText">
           <p><strong>{{news[0]?.title }}</strong></p>
           <p>{{news[0]?.textPreview }}</p>
         </div>
-        <div class="tags d-flex">
-          <div>
+        <div class="tags w-100 d-flex">
+          <div *ngIf="!news[0]?.isLoad; else loaderForTags">
             <div class="tag"
                  *ngFor="let tag of news[0]?.tags"
                  (click)="select(tag)"
@@ -52,24 +66,33 @@
         </div>
       </div>
     </div>
-
   </div>
+
+<!--Список новостей-->
   <div class="news__list">
     <div class="content d-flex"
          *ngFor="let news of news | slice: 1:99 | paginate: {itemsPerPage: 4, currentPage: p|async}">
       <div class="img col-5">
-        <img src="{{news?.img}}" alt="" [routerLink]="['/news', news?._id ]">
+        <ngx-skeleton-loader
+          *ngIf="news?.isLoad"
+          count="1"
+          [theme]="{
+              'border-radius': '5px',
+              'height': '232px'
+            }"
+        ></ngx-skeleton-loader>
+        <img src="{{news?.img}}" alt="" [routerLink]="['/news', news?._id ]" [hidden]="news?.isLoad" (load)="changeLoadStatus(news)">
       </div>
-      <div class="text col-7">
-        <div class="date">
+      <div class="text w-100 col-7">
+        <div class="date" *ngIf="!news?.isLoad; else loaderForDate">
           <img src="../../../../assets/img/icons/date.png" alt=""> {{news?.date | date: 'dd.MM.yyyy'}}
         </div>
-        <div class="preview" [routerLink]="['/news', news?._id ]">
+        <div class="preview" [routerLink]="['/news', news?._id ]"  *ngIf="!news?.isLoad; else loaderForMainText">
           <p><strong>{{news?.title }}</strong></p>
           <p>{{news?.textPreview }}</p>
         </div>
         <div class="tags d-flex">
-          <div>
+          <div *ngIf="!news?.isLoad; else loaderForTags">
             <div class="tag"
                  *ngFor="let tag of news?.tags"
                  (click)="select(tag)"
@@ -93,4 +116,23 @@
 </div>
 
 
+
+<ng-template #loaderForDate>
+  <ngx-skeleton-loader count="1"></ngx-skeleton-loader>
+</ng-template>
+
+<ng-template #loaderForMainText>
+  <ngx-skeleton-loader count="1" [theme]="{
+              'border-radius': '5px',
+              'height': '80px',
+              'width': '90%'
+            }"></ngx-skeleton-loader>
+  <ngx-skeleton-loader class="mt-2" count="1"></ngx-skeleton-loader>
+  <ngx-skeleton-loader class="w-50" count="1"></ngx-skeleton-loader>
+  <ngx-skeleton-loader class="w-75" count="1"></ngx-skeleton-loader>
+</ng-template>
+
+<ng-template #loaderForTags>
+  <ngx-skeleton-loader count="1"></ngx-skeleton-loader>
+</ng-template>
 

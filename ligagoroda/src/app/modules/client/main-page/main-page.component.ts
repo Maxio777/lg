@@ -12,7 +12,6 @@ import {filter} from 'rxjs/operators';
 export class MainPageComponent implements OnInit {
   currentTitle: string | undefined;
   isAdmin: boolean = false;
-  isMainPage: any;
 
   constructor(private dataService: DataService, private router: Router) {
   }

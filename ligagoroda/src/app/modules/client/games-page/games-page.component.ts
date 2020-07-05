@@ -2,8 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component
 } from '@angular/core';
-import {Router} from '@angular/router';
-import {URLS} from '../../../core/urls';
+import {getColor} from '../../../core/urls';
 import {ClientDataService} from '../services/client-data/client-data.service';
 import {GameLG} from '../../../models/game';
 
@@ -22,8 +21,9 @@ export class GamesPageComponent {
     {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
   ];
   gamesFilter = 'completed';
+  getColor = getColor;
 
-  constructor(private router: Router, public clientDataService: ClientDataService) {
+  constructor(public clientDataService: ClientDataService) {
   }
 
   filterGames(games: GameLG[]) {
@@ -34,27 +34,6 @@ export class GamesPageComponent {
 
   setGamesFilter(gamesFilter: '' | 'completed' | 'notCompleted') {
     this.gamesFilter = gamesFilter;
-  }
-
-  goToGame(id: string) {
-    this.router.navigate([URLS.game + id]);
-  }
-
-  goToTeam(id: string) {
-    this.router.navigate([URLS.team, id]);
-  }
-
-  getColor(game: GameLG, isHome: boolean) {
-    let color = game.completed ? 'yellow' : 'grey';
-    if (game.completed) {
-      if (game.homeGoal > game.guestGoal) {
-        color = isHome ? 'green' : 'red';
-      }
-      if (game.homeGoal < game.guestGoal) {
-        color = isHome ? 'red' : 'green';
-      }
-    }
-    return color;
   }
 
 }

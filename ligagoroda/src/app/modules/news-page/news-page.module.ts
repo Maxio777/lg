@@ -6,6 +6,7 @@ import {NewsComponent} from './news/news.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [NewsComponent],
@@ -15,6 +16,7 @@ import {MatIconModule} from '@angular/material';
     NgxPaginationModule,
     FormsModule,
     MatIconModule,
+    NgxSkeletonLoaderModule,
   ]
 })
 export class NewsPageModule {

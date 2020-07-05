@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
+import {ClientDataService} from '../../../services/client-data/client-data.service';
+import {GameLG} from '../../../../../models/game';
+import {getColor} from '../../../../../core/urls';
 
 @Component({
   selector: 'app-games',
@@ -6,11 +9,26 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./games.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent {
+  @Input() isShow: boolean = true;
+  filterSrt = [
+    {name: 'СЫГРАННЫЕ', str: 'completed'},
+    {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
+  ];
+  gamesFilter = 'completed';
+  getColor = getColor;
 
-  constructor() { }
+  constructor(public clientDataService: ClientDataService) {
+  }
 
-  ngOnInit() {
+  filterGames(games: GameLG[]) {
+    return this.gamesFilter ?
+      games.filter(g => this.gamesFilter === 'completed' ? g.completed : !g.completed)
+      : games;
+  }
+
+  setGamesFilter(gamesFilter: '' | 'completed' | 'notCompleted') {
+    this.gamesFilter = gamesFilter;
   }
 
 }

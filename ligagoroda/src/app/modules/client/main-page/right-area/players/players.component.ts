@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {sortBy} from 'lodash';
-import {PlayerClient} from '../../../models/interfaces';
+import {PlayerClient} from '../../../../../models/interfaces';
 import {Subscription} from 'rxjs';
-import {ClientDataService} from '../services/client-data/client-data.service';
-import {PLAYER_MENU} from '../../../assets/constants/player-menu';
+import {ClientDataService} from '../../../services/client-data/client-data.service';
+import {PLAYER_MENU} from '../../../../../assets/constants/player-menu';
 
 
 @Component({
@@ -21,7 +21,7 @@ import {PLAYER_MENU} from '../../../assets/constants/player-menu';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayersComponent implements OnInit, OnDestroy {
-  @Input() isMainPage: boolean = false;
+  @Input() isShow: boolean = false;
 
   public players: PlayerClient[] | undefined;
   public currentVal: 'goalsCount' | 'assistsCount' | 'goalsAssists' | 'yellow' | 'red' = 'goalsCount';

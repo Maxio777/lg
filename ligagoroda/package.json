@@ -33,6 +33,7 @@
     "ngx": "^2.4.0",
     "ngx-pagination": "^4.0.0",
     "ngx-perfect-scrollbar": "^8.0.0",
+    "ngx-skeleton-loader": "^2.2.1",
     "ngx-toastr": "^8.8.0",
     "or": "^0.2.0",
     "tslib": "^1.9.0",

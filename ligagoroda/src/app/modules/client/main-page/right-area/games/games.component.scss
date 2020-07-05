@@ -1,0 +1,127 @@
+@import "mixins";
+@import "variables";
+
+$backgroundLg: rgba(0, 53, 93, 0.05);
+
+table {
+  @include table;
+
+  .mat-button {
+    font-size: 12px!important;
+  }
+
+  caption {
+    @include caption;
+  }
+
+  thead {
+    color: rgba(0, 0, 0, 0.2);
+    & > tr {
+      height: 40px;
+    }
+  }
+
+  .tbody {
+
+    font-size: $main-f-size;
+    border-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    img {
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+    }
+
+    tr {
+      height: 90px;
+
+      &:nth-child(even) {
+        background: rgba(0, 53, 93, 0.04);
+      }
+
+      &:hover {
+        @include lg-hover('b', 0);
+      }
+
+    }
+
+    &__date {
+      position: absolute;
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    &__home {
+      width: 35%;
+      font-size: 15px;
+    }
+
+    &__count {
+      font-weight: bold;
+      color: $main-color;
+      font-size: 18px;
+
+      &--circle {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin: 5px 0;
+      }
+    }
+
+    &__tour {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #7F7F7F;
+    }
+
+    &__guest {
+      width: 35%;
+      font-size: 15px;
+    }
+
+    &__arrow {
+      margin: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: min-content!important;
+      width: min-content!important;
+    }
+
+    .team-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+}
+
+
+.games-menu {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+
+  &__item {
+    padding: 0;
+    width: 50%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
+    box-sizing: content-box;
+    border-bottom: 1px solid $light-gray;
+    @include lg-hover('b');
+    @include lg-active('b');
+  }
+
+  div {
+    @include content-center;
+  }
+}

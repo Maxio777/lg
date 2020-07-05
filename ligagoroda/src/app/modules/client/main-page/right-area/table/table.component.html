@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center">
         <img src="../../../../../../assets/img/icons/table.png" alt="">
       </div>
-      <div class="text-left pr-4">
+      <div class="text-left name-and-tournament">
         <h2>ТУРНИРНАЯ ТАБЛИЦА</h2>
         <div class="tournament-name">{{currentTournament?.name}}</div>
       </div>
@@ -24,7 +24,7 @@
   </tr>
 
   </thead>
-  <tr class="cursor-pointer" *ngFor="let team of table; let idx = index" (click)="goToUrl(URLS.team, team._id)">
+  <tr class="cursor-pointer" *ngFor="let team of table; let idx = index" routerLink="/teams/{{team._id}}">
     <td class="index">{{idx +1}}</td>
     <td><img src="{{team.img}}" alt=""></td>
     <td>{{team.teamName}}</td>
