@@ -7,6 +7,13 @@ table {
   table-layout:fixed;
   @include table;
 
+  .logo {
+    img {
+      width: 31px;
+      height: 31px;
+    }
+  }
+
   .mat-button {
     font-size: 12px!important;
   }
@@ -82,11 +89,6 @@ table {
     &__guest {
       padding-right: 10px;
       font-size: 15px;
-
-      .logo {
-        width: 31px;
-        height: 31px;
-      }
 
       &--arrow {
         position: absolute;
