@@ -7,13 +7,19 @@
       <form [formGroup]="form" autocomplete="off" class="pb-2" (ngSubmit)="submit()">
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Логин" formControlName="email" (keydown.enter)="submit()" aria-label="login">
+          <input matInput placeholder="Логин" formControlName="email" aria-label="login"
+                 (keydown.enter)="submit()"
+                 appInputTrim (inputTrim)="form.get('email').setValue($event)"
+          >
           <mat-error *ngIf="form.controls['email']?.errors?.required">Обязательное поле</mat-error>
           <mat-error *ngIf="form.controls['email']?.errors?.email">Введите валидный email</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" (keydown.enter)="submit()">
-          <input matInput placeholder="Пароль" formControlName="password" [type]="hide ? 'password' : 'text'" aria-label="password">
+          <input matInput placeholder="Пароль" formControlName="password" aria-label="password"
+                 [type]="hide ? 'password' : 'text'"
+                 appInputTrim (inputTrim)="form.get('password').setValue($event)"
+          >
           <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
