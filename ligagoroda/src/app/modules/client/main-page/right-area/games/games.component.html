@@ -46,7 +46,9 @@
     </span>
 
       <div class="d-flex flex-column align-items-end">
-        <div class="py-2 cursor-pointer logo"><img src="{{game.home.img}}" alt=""></div>
+        <div class="py-2 cursor-pointer logo">
+          <img src="{{game.home.img}}" alt="">
+        </div>
         <div class="cursor-pointer team-name text-right">{{ game.home.name }}</div>
       </div>
     </td>
@@ -68,7 +70,9 @@
     </td>
     <td class="text-left tbody__guest position-relative" routerLink="/teams/{{game.guest._id}}">
       <div class="d-flex flex-column align-items-start position-relative">
-        <div class="py-2 cursor-pointer logo"><img src="{{game.guest.img}}" alt=""></div>
+        <div class="py-2 cursor-pointer logo">
+          <img src="{{game.guest.img}}" alt="">
+        </div>
         <div class="cursor-pointer team-name">{{ game.guest.name }}</div>
 
         <img class="tbody__guest--arrow cursor-pointer"
