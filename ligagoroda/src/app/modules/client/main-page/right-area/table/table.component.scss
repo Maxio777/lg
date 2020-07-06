@@ -28,6 +28,7 @@ table {
       width: 24px;
       height: 24px;
       vertical-align: sub;
+      @include border-img(3px);
     }
 
     tr {

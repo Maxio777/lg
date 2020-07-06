@@ -20,8 +20,6 @@
 
 @mixin lg-hover($side, $border-color: $hover-border-bottom) {
   &:hover {
-    background: $hover-background;
-
     @if ($side == 't') {
       border-top: $border-color;
     }
@@ -149,4 +147,8 @@
   }
 }
 
-
+@mixin border-img($b-radius: 5px) {
+  border: 1px solid rgba(0, 0, 0, 0.1);;
+  padding: 1px;
+  border-radius: $b-radius;
+}

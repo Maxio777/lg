@@ -5,12 +5,14 @@ $backgroundLg: rgba(0, 53, 93, 0.05);
 
 table {
   table-layout:fixed;
+  min-width: 270px;
   @include table;
 
   .logo {
     img {
       width: 31px!important;
       height: 31px!important;
+      @include border-img;
     }
   }
 
@@ -54,9 +56,12 @@ table {
 
     }
 
+    span {
+      font-size: 12px!important;
+    }
+
     &__date {
       position: absolute;
-      font-size: 12px;
     }
 
     &__home {

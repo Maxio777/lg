@@ -67,6 +67,10 @@
       border-top: none;
     }
 
+    img {
+      @include border-img;
+    }
+
     td {
       vertical-align: middle;
 
