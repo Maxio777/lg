@@ -6,12 +6,13 @@
 
 .example-full-width {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .auth-card {
   max-width: 500px;
   margin: auto;
-  height: 230px;
+  height: 250px;
   padding: 20px 20px 30px 20px;
 }
 
@@ -65,6 +66,6 @@ input {
 
 
 .mat-error, label {
-  font-size: 16px;
+  font-size: 14px;
 }
 

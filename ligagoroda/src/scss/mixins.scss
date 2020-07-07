@@ -20,6 +20,7 @@
 
 @mixin lg-hover($side, $border-color: $hover-border-bottom) {
   &:hover {
+    background: $hover-background;
     @if ($side == 't') {
       border-top: $border-color;
     }
