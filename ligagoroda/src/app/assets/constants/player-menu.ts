@@ -23,5 +23,5 @@ export const PLAYER_MENU = [
     indicator: 'red',
     view: 'К',
     img: 'red.png'
-  }
+  },
 ];

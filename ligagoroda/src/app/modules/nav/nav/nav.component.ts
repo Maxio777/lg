@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { NavigationEnd, Router } from '@angular/router';
-import { DataService } from '../../../services/data.service';
-import { AuthService } from '../../../services/auth/auth.service';
-import { MatSidenav } from '@angular/material';
-import { LINKS_LEFT} from '../../../assets/constants/links-menu';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable, Subscription} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
+import {NavigationEnd, Router} from '@angular/router';
+import {TitleService} from '../../../services/title/title.service';
+import {AuthService} from '../../../services/auth/auth.service';
+import {MatSidenav} from '@angular/material';
+import {LINKS_LEFT} from '../../../assets/constants/links-menu';
 
 
 @Component({
@@ -20,9 +20,11 @@ export class NavComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private breakpointObserver: BreakpointObserver,
     private router: Router,
-    public dataService: DataService,
+    public dataService: TitleService,
     private cd: ChangeDetectorRef,
-  ) {}
+  ) {
+  }
+
   @ViewChild('drawer') drawer: MatSidenav | undefined;
   selected: string = '';
   linksLeft = LINKS_LEFT;
@@ -39,8 +41,7 @@ export class NavComponent implements OnInit, OnDestroy {
         this.drawer.toggle(false);
       }
     }));
-    this.router.events.
-    pipe(filter(event => event instanceof NavigationEnd))
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const msn = document.querySelector('.mat-sidenav-content');
         if (msn) {

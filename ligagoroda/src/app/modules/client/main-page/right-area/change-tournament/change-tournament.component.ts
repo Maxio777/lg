@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../../services/data.service';
+import { TitleService } from '../../../../../services/title/title.service';
 import { MatSelectChange } from '@angular/material/select';
 import { RestTournamentsService } from '../../../../../rest/rest-tournaments/rest-tournaments.service';
 import { TournamentLG } from '../../../../../models/interfaces';
@@ -13,7 +13,7 @@ export class ChangeTournamentComponent implements OnInit {
   tournaments: TournamentLG[] = [];
 
   constructor(
-    private dataService: DataService,
+    private dataService: TitleService,
     private restTournamentsService: RestTournamentsService,
   ) {}
 

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {DataService} from '../../../../services/data.service';
+import {TitleService} from '../../../../services/title/title.service';
 
 @Component({
   selector: 'app-right-area',
@@ -8,6 +8,6 @@ import {DataService} from '../../../../services/data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RightAreaComponent {
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: TitleService) {}
 }
 

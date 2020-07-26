@@ -32,10 +32,13 @@
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss",
               "./node_modules/material-design-icons/iconfont/material-icons.css",
-              "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ngx-toastr/toastr.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/scss", "src/scss/fonts"]
+              "includePaths": [
+                "src/scss",
+                "src/scss/fonts"
+              ]
             },
             "scripts": [],
             "es5BrowserSupport": true

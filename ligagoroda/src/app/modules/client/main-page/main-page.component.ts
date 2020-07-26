@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {DataService} from '../../../services/data.service';
+import {TitleService} from '../../../services/title/title.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
   currentTitle: string | undefined;
   isAdmin: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private dataService: TitleService, private router: Router) {
   }
 
   get isMobile() {

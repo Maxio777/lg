@@ -5,7 +5,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Injectable()
-export class DataService {
+export class TitleService {
 
   team: any;
   player: any;

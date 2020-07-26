@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PlayersComponent} from './main-page/right-area/players/players.component';
-import {GamesPageComponent} from './games-page/games-page.component';
 import {GameComponent} from './game/game.component';
 import {PlayerComponent} from './player/player.component';
 import {TeamComponent} from './team/team.component';
@@ -17,7 +16,14 @@ const routes: Routes = [
     path: '', component: MainPageComponent, data: {title: 'ГЛАВНАЯ'}, canActivate: [AuthGuardService],
     children: [
       {path: '', component: IndexComponent},
-      {path: 'table', loadChildren: '../table-page/table-page.module#TablePageModule'},
+      {
+        path: 'table',
+        loadChildren: '../table-page/table-page.module#TablePageModule'
+      },
+      {
+        path: 'games',
+        loadChildren: '../games-page/games-page.module#GamesPageModule'
+      },
       {
         path: 'news/page/:p',
         loadChildren: '../news-page/news-page.module#NewsPageModule'},
@@ -26,7 +32,6 @@ const routes: Routes = [
         component: PlayersComponent,
         data: {title: URLS_CLIENT.players.title}
       },
-      {path: 'games', component: GamesPageComponent, data: {title: 'ИГРЫ'}},
       {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
       {path: 'player/:id', component: PlayerComponent, data: {title: 'СТРАНИЦА ИГРОКА'}},
       {path: 'teams/:id', component: TeamComponent, data: {title: 'КОМАНДА'}},

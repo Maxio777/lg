@@ -38,6 +38,10 @@ export class NewsComponent implements OnInit, OnDestroy {
     }));
   }
 
+  isTagSelected(tagName: string): boolean {
+    return this.selectedTags.map(t => t.name).includes(tagName);
+  }
+
   changeLoadStatus(n: News) {
     setTimeout(() => {
       n.isLoad = false;
@@ -49,10 +53,6 @@ export class NewsComponent implements OnInit, OnDestroy {
     return this.search
       ? (n.text + n.title + n.textPreview).toLowerCase().includes(this.search.toLowerCase())
       : true;
-  }
-
-  isTagSelected(tagName: string): boolean {
-    return this.selectedTags.map(t => t.name).includes(tagName);
   }
 
   _tagFilter(n: News): boolean {

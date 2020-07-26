@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AdminDataService } from './services/admin-data/admin-data.service';
-import { DataService } from '../../services/data.service';
+import { TitleService } from '../../services/title/title.service';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   constructor(
     private adminDataService: AdminDataService,
-    private dataService: DataService,
+    private dataService: TitleService,
   ) { }
 
   ngOnInit(): void {

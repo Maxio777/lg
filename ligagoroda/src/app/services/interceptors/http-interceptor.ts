@@ -1,21 +1,23 @@
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse} from '@angular/common/http';
-import {AuthService} from './auth/auth.service';
+import {AuthService} from '../auth/auth.service';
 
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = sessionStorage.getItem('Token');
     if (token) {
-      req = req.clone({ headers: req.headers.set(
-        'Authorization' ,
-        `Bearer ${token}`
+      req = req.clone({
+        headers: req.headers.set(
+          'Authorization',
+          `Bearer ${token}`
         )
       });
     }

@@ -7,12 +7,12 @@ import {MainRestService} from './rest/main-rest-service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {LayoutModule} from '@angular/cdk/layout';
-import {DataService} from './services/data.service';
+import {TitleService} from './services/title/title.service';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuardService, ChugunGuardService} from './services/guards/auth-guard.service';
-import {AppHttpInterceptor} from './services/http-interceptor';
+import {AppHttpInterceptor} from './services/interceptors/http-interceptor';
 import {MaterialModule} from './modules/material.module';
 import {SharedModule} from './modules/shared.module';
 import {CoreModule} from './modules/core.module';
@@ -73,7 +73,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     MainRestService,
-    DataService,
+    TitleService,
     AuthGuardService,
     ChugunGuardService,
     {provide: LOCALE_ID, useValue: 'ru'},
