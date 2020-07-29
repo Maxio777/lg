@@ -25,8 +25,13 @@ const routes: Routes = [
         loadChildren: '../games-page/games-page.module#GamesPageModule'
       },
       {
+        path: 'players',
+        loadChildren: '../players-page/players-page.module#PlayersPageModule'
+      },
+      {
         path: 'news/page/:p',
-        loadChildren: '../news-page/news-page.module#NewsPageModule'},
+        loadChildren: '../news-page/news-page.module#NewsPageModule'
+      },
       {
         path: URLS_CLIENT.players.route,
         component: PlayersComponent,

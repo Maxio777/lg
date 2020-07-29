@@ -153,3 +153,8 @@
   padding: 1px;
   border-radius: $b-radius;
 }
+
+@mixin nowrap-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

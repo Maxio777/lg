@@ -1,0 +1,95 @@
+<div class="players default-container">
+  <div class="players__header d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="icon"><img src="../../../../assets/img/icons/players-blue.png" alt=""></div>
+      <div class="title">
+        <h1>ИГРОКИ</h1>
+      </div>
+    </div>
+    <div>
+      <div class="input-search">
+        <label>
+          <input class="search" type="text" placeholder="Поиск по играм" [(ngModel)]="search">
+        </label>
+        <img class="search-icon" src="../../../../assets/img/icons/search.png" alt="">
+
+        <mat-icon
+          *ngIf="search"
+          (click)="search = ''"
+          class="clear"
+        >close
+        </mat-icon>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="players__hr"></div>
+
+  <table>
+    <colgroup>
+      <col style="width:28%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+      <col style="width:6%">
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th class="player">Игрок</th>
+        <th>Игры</th>
+        <th>Голы</th>
+        <th>Пасы</th>
+        <th>ГолПас</th>
+        <th>ЖК</th>
+        <th>ВЖК</th>
+        <th>КК</th>
+        <th>Голы с пенальти</th>
+        <th>Автоголы</th>
+        <th>Голы %</th>
+        <th>Пасы %</th>
+        <th>ГолПас %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of (_search(players) | slice:0:slice); let idx = index" class="my-animation">
+        <td class="player">
+          <div class="index">{{idx+1}}</div>
+          <img src="{{player?.teams[0]?.img}}" alt="">
+          <div class="player-detail">
+            <div class="name">{{player?.firstName}} {{player?.lastName}} {{player?.middleName}}</div>
+            <div class="team">{{player?.teams[0]?.name}}</div>
+          </div>
+        </td>
+        <td>{{player?.gamesCount}}</td>
+        <td>{{player?.goalsCount}}</td>
+        <td>{{player?.assistsCount}}</td>
+        <td>{{player?.goalsAssists}}</td>
+        <td>{{player?.yellow}}</td>
+        <td>{{player?.yellowReds}}</td>
+        <td>{{player?.red}}</td>
+        <td>{{player?.penalty}}</td>
+        <td>{{player?.autoGoals}}</td>
+        <td>{{getPercent(player,'goalsCount') | number:'1.0-2'}}</td>
+        <td>{{getPercent(player,'assistsCount') | number:'1.0-2'}}</td>
+        <td>{{getPercent(player,'goalsAssists') | number:'1.0-2'}}</td>
+
+
+      </tr>
+    <tr>
+      <td colspan="13" class="more" (click)="more()" *ngIf="_search(players)?.length > slice">ПОКАЗАТЬ ЕЩЕ</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
