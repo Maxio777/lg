@@ -4,7 +4,6 @@ import {PlayersComponent} from './main-page/right-area/players/players.component
 import {GameComponent} from './game/game.component';
 import {PlayerComponent} from './player/player.component';
 import {TeamComponent} from './team/team.component';
-import {SingleNewsComponent} from './all-news/single-news/single-news.component';
 import {URLS_CLIENT} from '../../assets/routing-configs/config-routing-client';
 import {MainPageComponent} from './main-page/main-page.component';
 import {IndexComponent} from './main-page/index/index.component';
@@ -33,6 +32,10 @@ const routes: Routes = [
         loadChildren: '../news-page/news-page.module#NewsPageModule'
       },
       {
+        path: 'news/:id',
+        loadChildren: '../news-single-page/news-single-page.module#NewsSinglePageModule'
+      },
+      {
         path: URLS_CLIENT.players.route,
         component: PlayersComponent,
         data: {title: URLS_CLIENT.players.title}
@@ -40,7 +43,6 @@ const routes: Routes = [
       {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
       {path: 'player/:id', component: PlayerComponent, data: {title: 'СТРАНИЦА ИГРОКА'}},
       {path: 'teams/:id', component: TeamComponent, data: {title: 'КОМАНДА'}},
-      {path: 'news/:id', component: SingleNewsComponent, data: {title: 'НОВОСТЬ'}}
     ]
   },
 ];
