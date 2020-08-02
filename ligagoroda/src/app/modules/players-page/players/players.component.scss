@@ -26,6 +26,7 @@
       display: flex;
       align-items: center;
       color: $light-gray;
+
       &:hover {
         transition: 0.2s;
         color: $main-color;
@@ -80,13 +81,29 @@
 
     thead {
       @extend .gray-15px;
+
       tr {
-        height: 60px;
+        height: 70px;
         border-bottom: 1px solid $light-gray;
+
+        th {
+          .th-container {
+            padding: 10px 0;
+            height: 70px;
+            .icon {
+              img {
+                width: auto;
+                height: 23px;
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
       }
     }
 
     $height-tr-tbody: 50px;
+
     tbody {
 
       tr {
@@ -97,6 +114,7 @@
         font-size: 14px;
         line-height: 18px;
         color: $main-color;
+
         &:hover {
           background: $hover-background;
         }
@@ -118,6 +136,7 @@
             height: 37px;
             width: 37px;
             @include border-img;
+
             &:hover {
               cursor: pointer;
             }
@@ -130,22 +149,27 @@
             flex-direction: column;
             align-items: flex-start;
             height: 100%;
+
             .name {
               @include nowrap-ellipsis;
+
               &:hover {
                 @extend .hover;
               }
             }
+
             .team {
               @include nowrap-ellipsis;
               @extend .gray-15px;
+
               &:hover {
                 @extend .hover;
               }
             }
           }
         }
-      };
+      }
+    ;
 
       .more {
         font-weight: bold;
@@ -154,15 +178,16 @@
         background: $hover-background;
         letter-spacing: 1px;
         transition: 0.2s;
+
         &:hover {
           background: $accent;
           transition: 0.2s;
           color: white;
-        };
+        }
+      ;
       }
     }
   }
-
 
 
 }

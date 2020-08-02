@@ -46,15 +46,78 @@
     <thead>
       <tr>
         <th class="player">Игрок</th>
-        <th>Игры</th>
-        <th>Голы</th>
-        <th>Пасы</th>
-        <th>ГолПас</th>
-        <th>ЖК</th>
-        <th>ВЖК</th>
-        <th>КК</th>
-        <th>Голы с пенальти</th>
-        <th>Автоголы</th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/games.png" alt="">
+            </div>
+            <div class="text">Игры</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/goal.png" alt="">
+            </div>
+            <div class="text">Голы</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/assist.png" alt="">
+            </div>
+            <div class="text">Пасы</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/goal-and-assist.png" alt="">
+            </div>
+            <div class="text">ГолПас</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/yellow.png" alt="">
+            </div>
+            <div class="text">ЖК</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/red-yellow.png" alt="">
+            </div>
+            <div class="text">ВЖК</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/red.png" alt="">
+            </div>
+            <div class="text">КК</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/penalty.png" alt="">
+            </div>
+            <div class="text">Голы с пенальти</div>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex flex-column justify-content-between th-container">
+            <div class="icon">
+              <img src="../../../../assets/img/icons/autogoal.png" alt="">
+            </div>
+            <div class="text">Автоголы</div>
+          </div>
+        </th>
         <th>Голы %</th>
         <th>Пасы %</th>
         <th>ГолПас %</th>
@@ -64,7 +127,7 @@
       <tr *ngFor="let player of (_search(players) | slice:0:slice); let idx = index" class="my-animation">
         <td class="player">
           <div class="index">{{idx+1}}</div>
-          <img src="{{player?.teams[0]?.img}}" alt="">
+          <img src="{{player?.img}}" alt="">
           <div class="player-detail">
             <div class="name">{{player?.firstName}} {{player?.lastName}} {{player?.middleName}}</div>
             <div class="team">{{player?.teams[0]?.name}}</div>

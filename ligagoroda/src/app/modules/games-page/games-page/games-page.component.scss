@@ -20,6 +20,13 @@
       }
     }
 
+    .icon {
+      img {
+        height: 35px;
+        width: auto;
+      }
+    }
+
     .title {
       @include title;
     }

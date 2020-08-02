@@ -21,6 +21,7 @@ import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {NewsMainPageComponent} from './news-main-page/news-main-page.component';
 import {GamesComponent} from './main-page/right-area/games/games.component';
 import {GamesPageComponent} from './games-page/games-page.component';
+import {UiModule} from '../ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {GamesPageComponent} from './games-page/games-page.component';
     ClientRoutingModule,
     SharedModule,
     NgxPaginationModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    UiModule
   ]
 })
 export class ClientModule {

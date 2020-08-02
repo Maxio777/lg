@@ -5,6 +5,7 @@ import {GamesPageRoutingModule} from './games-page-routing.module';
 import {GamesPageComponent} from './games-page/games-page.component';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import {UiModule} from '../ui/ui.module';
 
 @NgModule({
   declarations: [GamesPageComponent],
@@ -13,7 +14,8 @@ import {FormsModule} from '@angular/forms';
     GamesPageRoutingModule,
     MatIconModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    UiModule
   ]
 })
 export class GamesPageModule {

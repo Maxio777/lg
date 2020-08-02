@@ -23,7 +23,7 @@
                 [class.active]="currentVal === item.indicator"
                 (click)="changeActive(item.indicator)"
         >
-          <img src="../../../../assets/img/icons/{{item.img}}" alt="">
+          <img src="../../../../assets/img/icons/{{currentVal === item.indicator ? item.imgActive : item.img}}" alt="">
         </button>
 
       </div>

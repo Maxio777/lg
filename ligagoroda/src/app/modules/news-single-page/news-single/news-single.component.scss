@@ -18,7 +18,7 @@ $fz-date: 16px;
     @include title-line;
   }
 
-  $transition: 0.2s;
+  $transition: 0.2s ease-out;
 
   .go-back {
     margin-top: 20px;
@@ -28,9 +28,7 @@ $fz-date: 16px;
     stroke: $gray;
     color: $gray;
     cursor: pointer;
-
-    svg {
-      transform: rotate(180deg);
+    app-arrow {
       transition: $transition;
     }
 
@@ -38,10 +36,10 @@ $fz-date: 16px;
       transition: $transition;
       color: $main-color;
 
-      svg {
-        transition: $transition;
-        transform: rotate(180deg) translateX(5px);
-        stroke: $main-color;
+      app-arrow {
+          transition: $transition;
+          transform: translateX(-5px);
+          stroke: $main-color!important;
       }
     }
   }

@@ -67,6 +67,11 @@ table {
     border-bottom: 1px solid $light-gray;
     @include lg-hover('b');
     @include lg-active('b');
+
+    img {
+      width: 24px;
+      height: auto;
+    }
   }
 
   div {
