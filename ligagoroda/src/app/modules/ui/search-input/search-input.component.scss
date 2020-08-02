@@ -1,0 +1,43 @@
+@import "variables";
+@import "mixins";
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__input {
+    padding: 5px 30px;
+    border: 1px solid $light-gray;
+    border-radius: 7px;
+    width: 350px;
+    transition: 0.5s;
+    height: 34px;
+    font-size: 18px;
+
+    &:focus {
+      border: 1px solid $accent;
+      transition: 0.5s;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    padding-left: 9px;
+  }
+
+  &__clear {
+    cursor: pointer;
+    transition: 0.2s;
+    position: absolute;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    color: $light-gray;
+    &:hover {
+      transition: 0.2s;
+      color: $main-color;
+    }
+  }
+}
+
