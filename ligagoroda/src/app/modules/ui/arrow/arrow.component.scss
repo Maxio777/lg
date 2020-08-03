@@ -6,6 +6,7 @@ $transition: 0.2s;
 svg {
   transition: $transition;
   stroke: $gray;
+  cursor: pointer;
 }
 
 .left {

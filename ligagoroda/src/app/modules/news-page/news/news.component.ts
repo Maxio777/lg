@@ -46,7 +46,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       n.isLoad = false;
       this.cd.detectChanges();
-    }, 500);
+    }, 200);
   }
 
   _search(n: News): boolean {

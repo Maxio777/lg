@@ -7,24 +7,7 @@ table {
   width: 100%;
   text-align: center;
 
-  caption {
-    caption-side: top;
-    white-space: nowrap;
-
-    .title {
-      @include title;
-    }
-
-    .tournament {
-
-    }
-  }
-
   thead {
-
-    .line {
-      @include title-line
-    }
 
     .heading {
       height: $height-tr;

@@ -1,30 +1,8 @@
 <div class="games default-container">
-  <div class="games__header d-flex justify-content-between align-items-center">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="icon"><img src="../../../../assets/img/icons/games-active.png" alt=""></div>
-    <div class="title">
-      <h1>ИГРЫ</h1>
-    </div>
-    </div>
-    <div>
-      <div class="input-search">
-        <label>
-          <input class="search" type="text" placeholder="Поиск по играм" [(ngModel)]="search">
-        </label>
-        <img class="search-icon" src="../../../../assets/img/icons/search.png" alt="">
 
-        <mat-icon
-          *ngIf="search"
-          (click)="search = ''"
-          class="clear"
-        >close
-        </mat-icon>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="games__hr"></div>
+  <app-page-header [title]="'ИГРЫ'" [img]="'games-active'">
+    <app-search-input [placeholder]="'Поиск по играм'" (search)="search = $event"></app-search-input>
+  </app-page-header>
 
   <table>
     <colgroup>

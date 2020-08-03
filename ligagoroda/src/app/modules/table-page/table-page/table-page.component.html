@@ -1,20 +1,12 @@
 <div class="default-container">
 
+  <app-page-header [title]="'ТУРНИРНАЯ ТАБЛИЦА'" [img]="'table-blue'">
+    <div class="tournament">{{(clientDataService.getTournament$() | async)?.name}}</div>
+  </app-page-header>
+
   <table>
-  <caption>
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center">
-        <div class="img"><img src="../../../../assets/img/icons/table-blue.png" alt=""></div>
-        <div class="title"><h1>ТУРНИРНАЯ ТАБЛИЦА</h1></div>
-      </div>
-
-      <div class="tournament">{{(clientDataService.getTournament$() | async)?.name}}</div>
-    </div>
-  </caption>
-
   <thead>
   <tr><th colspan="12">
-    <div class="line"></div>
   </th></tr>
   <tr class="heading">
     <th></th>

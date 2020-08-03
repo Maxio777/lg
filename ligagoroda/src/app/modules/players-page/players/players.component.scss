@@ -14,62 +14,6 @@
 }
 
 .players {
-  &__header {
-    height: $height-tr;
-
-
-    .clear {
-      cursor: pointer;
-      transition: 0.2s;
-      position: absolute;
-      right: 5px;
-      display: flex;
-      align-items: center;
-      color: $light-gray;
-
-      &:hover {
-        transition: 0.2s;
-        color: $main-color;
-      }
-    }
-
-    .title {
-      @include title;
-    }
-
-    .input-search {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .search {
-      padding: 5px 30px;
-      border: 1px solid $light-gray;
-      border-radius: 7px;
-      width: 300px;
-      transition: 0.5s;
-      height: 34px;
-      font-size: 18px;
-
-      &:focus {
-        border-radius: 17px;
-        width: 400px;
-        border: 1px solid $accent;
-        transition: 0.5s;
-      }
-    }
-
-    .search-icon {
-      position: absolute;
-      padding-left: 9px;
-    }
-  }
-
-  &__hr {
-    @include title-line;
-  }
-
 
   table {
     @include table;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsListComponent } from './news-list.component';
+import { PageHeaderComponent } from './page-header.component';
 
-describe('NewsListComponent', () => {
-  let component: NewsListComponent;
-  let fixture: ComponentFixture<NewsListComponent>;
+describe('PageHeaderComponent', () => {
+  let component: PageHeaderComponent;
+  let fixture: ComponentFixture<PageHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsListComponent ]
+      declarations: [ PageHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewsListComponent);
+    fixture = TestBed.createComponent(PageHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

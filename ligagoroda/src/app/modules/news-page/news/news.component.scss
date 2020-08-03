@@ -21,34 +21,6 @@ $fz-date: 16px;
       @include title;
     }
 
-    .input-search {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .search {
-      padding: 5px 30px;
-      border: 1px solid $light-gray;
-      border-radius: 7px;
-      width: 300px;
-      transition: 0.5s;
-      height: 34px;
-      font-size: 18px;
-
-      &:focus {
-        border-radius: 17px;
-        width: 400px;
-        border: 1px solid $accent;
-        transition: 0.5s;
-        //box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-      }
-    }
-
-    .search-icon {
-      position: absolute;
-      padding-left: 9px;
-    }
   }
 
   .news__hr {

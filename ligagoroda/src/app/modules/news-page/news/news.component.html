@@ -1,27 +1,10 @@
 <div class="news default-container">
-  <div class="news__header d-flex justify-content-between align-items-center">
-    <span class="d-flex justify-content-between align-items-center">
-      <div class="icon"><img src="../../../../assets/img/icons/news.png" alt=""></div>
-    <div class="title">
-      <h1>НОВОСТИ</h1>
-    </div>
-    </span>
-    <div>
-      <div class="input-search">
-        <input class="search" type="text" placeholder="Поиск по новостям" [(ngModel)]="search">
-        <img class="search-icon" src="../../../../assets/img/icons/search.png" alt="">
 
-        <mat-icon
-          *ngIf="search"
-          (click)="search = ''"
-          class="clear"
-        >close
-        </mat-icon>
+  <app-page-header [title]="'НОВОСТИ'" [img]="'news'">
+    <app-search-input [placeholder]="'Поиск по новостям'" (search)="search = $event"></app-search-input>
+  </app-page-header>
 
-      </div>
-    </div>
-  </div>
-  <div class="news__hr"></div>
+
   <div class="news__selected-tags">
     <div>
       <span class="tag-filter" *ngIf="selectedTags.length">Отфильтровано по тегам: </span>

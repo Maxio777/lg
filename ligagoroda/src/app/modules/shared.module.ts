@@ -15,6 +15,7 @@ import { AddItemsComponent } from '../assets/components/add-items/add-items.comp
     FormsModule,
   ],
   exports: [
+    CommonModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
