@@ -6,6 +6,10 @@
   align-items: center;
   position: relative;
 
+  label {
+    margin-bottom: 0;
+  }
+
   &__input {
     padding: 5px 30px;
     border: 1px solid $light-gray;
