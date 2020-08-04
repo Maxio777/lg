@@ -10,7 +10,7 @@ import {PlayerClient} from '../../../models/interfaces';
 export class PlayerPercentsComponent {
   @Input() player: PlayerClient | undefined;
 
-  getPercent(player: PlayerClient, item: 'goalsCount' | 'assistsCount' | 'goalsAssists' ): number {
+  getPercent(player: PlayerClient | undefined, item: 'goalsCount' | 'assistsCount' | 'goalsAssists' ): number {
     if (player && player.gamesCount && player[item]) {
       return Number(player[item]) / Number(player.gamesCount);
     }
