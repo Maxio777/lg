@@ -1,19 +1,7 @@
 <div class="news default-container">
-  <div class="news__header d-flex justify-content-between align-items-center">
-    <span class="d-flex justify-content-between align-items-center">
-      <span class="icon"><img src="../../../../assets/img/icons/news.png" alt=""></span>
-    <span class="title">
-      <h1>НОВОСТИ</h1>
-    </span>
-    </span>
-  </div>
+  <app-page-header [title]="'НОВОСТИ'" [img]="'news'"></app-page-header>
+  <app-go-back></app-go-back>
 
-  <div class="news__hr"></div>
-
-  <div class="go-back" (click)="goBack()">
-    <app-arrow [hover]="false" [left]="true"></app-arrow>
-    <span class="text">Назад к списку новостей</span>
-  </div>
   <div class="one-news">
     <div class="one-news__date">
       <img src="../assets/img/icons/date.png" alt="">

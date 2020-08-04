@@ -1,0 +1,18 @@
+<div class="player-percents">
+
+  <div class="player-percents__goal col-4">
+    <div class="text">Голы за матч:</div>
+    <div class="percent">{{getPercent(player,'goalsCount') | number:'1.0-2'}}</div>
+  </div>
+
+  <div class="player-percents__assist col-4">
+    <div class="text">Пасы за матч:</div>
+    <div class="percent">{{getPercent(player,'assistsCount') | number:'1.0-2'}}</div>
+  </div>
+
+  <div class="player-percents__goal-assist col-4">
+    <div class="text">Гол+Пас за матч:</div>
+    <div class="percent">{{getPercent(player,'goalsAssists') | number:'1.0-2'}}</div>
+  </div>
+
+</div>

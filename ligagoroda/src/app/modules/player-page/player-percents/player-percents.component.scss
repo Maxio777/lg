@@ -1,0 +1,29 @@
+@import "variables";
+@import "mixins";
+
+.player-percents {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  color: $main-color;
+
+  & > div {
+    @include content-center;
+
+    .text {
+      font-family: 'FuturaPT', serif;
+      font-size: 14px;
+      line-height: 18px;
+
+    }
+
+    .percent {
+      margin: 0 20px;
+      @include content-center;
+      min-width: 56px;
+      min-height: 56px;
+      border-radius: 50%;
+      border: 1px solid $accent;
+    }
+  }
+}

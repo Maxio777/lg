@@ -33,7 +33,7 @@
 
   <tbody>
   <tr class="cursor-pointer w-100" *ngFor="let player of players | slice:0:10; let idx = index"
-      (click)="goToUrl(player._id)">
+      [routerLink]="'/players/' + player._id">
     <td class="index">{{idx + 1}}</td>
     <td class="index"><img src="{{player?.teams[0]?.img}}" alt=""></td>
     <td class="name">{{player.firstName}} {{player.lastName}}</td>

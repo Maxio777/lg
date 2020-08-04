@@ -29,6 +29,8 @@ export class ClientDataService {
   constructor(private allDataRestService: AllDataRestService) {
   }
 
+  getIsInitData = () => this.initData$.pipe(filter(Boolean));
+
   /** news-page */
   public setTags = (tags: Tag[]): void => this.tags.next(tags);
   public getTags$ = (): BehaviorSubject<Tag[]> => this.tags;

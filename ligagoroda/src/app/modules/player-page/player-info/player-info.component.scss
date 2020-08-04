@@ -1,0 +1,48 @@
+@import "variables";
+@import "mixins";
+
+.player-info {
+  display: flex;
+  flex-direction: row;
+  color: $main-color;
+  margin-bottom: 30px;
+
+  span {
+    color: $gray;
+  }
+  .img {
+    padding: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 7px;
+    }
+  }
+  .info {
+    margin-left: 30px;
+    .name {
+      font-weight: bold;
+      font-size: 26px;
+      padding-bottom: 10px;
+    }
+    .birthday {
+      margin-bottom: 10px;
+    }
+    .team-name {
+      display: flex;
+      align-items: center;
+      img {
+        width: 42px;
+        height: auto;
+        margin-right: 10px;
+      }
+      font-weight: bold;
+      padding-bottom: 15px;
+    }
+    .role {}
+    .number {}
+
+  }
+}

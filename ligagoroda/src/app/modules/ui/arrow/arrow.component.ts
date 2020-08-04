@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 
 @Component({
   selector: 'app-arrow',
@@ -6,13 +6,8 @@ import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
   styleUrls: ['./arrow.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArrowComponent implements OnInit {
+export class ArrowComponent {
   @Input() left = false;
   @Input() hover = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  @Input() isHover = false;
 }

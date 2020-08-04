@@ -6,7 +6,6 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import {Router} from '@angular/router';
 import {sortBy} from 'lodash';
 import {PlayerClient} from '../../../../../models/interfaces';
 import {Subscription} from 'rxjs';
@@ -28,10 +27,7 @@ export class PlayersComponent implements OnInit, OnDestroy {
   public playersMenu = PLAYER_MENU;
   private subs: Subscription = new Subscription();
 
-  goToUrl = (id: string) => this.router.navigate(['player', id]);
-
   constructor(
-    private router: Router,
     public clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
   ) {

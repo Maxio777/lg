@@ -5,8 +5,9 @@ $transition: 0.2s;
 
 svg {
   transition: $transition;
-  stroke: $gray;
+  fill: $gray;
   cursor: pointer;
+  margin-bottom: 3px;
 }
 
 .left {
@@ -17,7 +18,7 @@ svg {
   &:hover {
     transition: $transition;
     transform: translateX(5px);
-    stroke: $main-color;
+    fill: $main-color;
   }
 };
 
@@ -25,9 +26,12 @@ svg {
   &:hover {
     transition: $transition;
     transform: rotate(180deg) translateX(5px);
-    stroke: $main-color;
+    fill: $main-color;
   }
 };
 
-
-
+.hover-from-other-el {
+  transition: $transition;
+  transform: rotate(180deg) translateX(5px);
+  fill: $main-color;
+}

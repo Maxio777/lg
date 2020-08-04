@@ -1,3 +1,8 @@
-<div class="players default-container">
+<div class="player default-container">
   <app-page-header [title]="'ИГРОКИ'" [img]="'players-blue'"></app-page-header>
+  <app-go-back></app-go-back>
+  <app-player-info [player]="player"></app-player-info>
+  <app-player-statistics [player]="player"></app-player-statistics>
+  <app-player-percents [player]="player"></app-player-percents>
+  <app-player-games [player]="player"></app-player-games>
 </div>
