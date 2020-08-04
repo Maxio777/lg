@@ -6,7 +6,6 @@
     <div class="name">{{player?.lastName}} {{player?.firstName}} {{player?.middleName}}</div>
     <div class="birthday"><span>Дата рождения: </span>{{player?.birthday | date: 'dd MMMM yyyy'}}</div>
     <div class="team-name">
-      <img src="../assets/img/defaultImage.png" alt="">
       <img src="{{player?.teams[0]?.img}}" alt="">
       {{player?.teams[0]?.name}}
     </div>
