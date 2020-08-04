@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {ClientDataService} from '../../client/services/client-data/client-data.service';
 import {GameLG} from '../../../models/game';
-import {getColor} from '../../../core/urls';
+import {getColor} from '../../../core/get-color';
 import {Subscription} from 'rxjs';
 
 

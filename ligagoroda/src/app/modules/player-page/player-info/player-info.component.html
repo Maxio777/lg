@@ -1,11 +1,12 @@
 <div class="player-info" *ngIf="player">
   <div class="img col-4">
-    <img src="{{player?.img}}" alt="">
+    <img src="{{player?.img  || '../assets/img/defaultImage.png'}}" alt="">
   </div>
   <div class="info col-8">
     <div class="name">{{player?.lastName}} {{player?.firstName}} {{player?.middleName}}</div>
     <div class="birthday"><span>Дата рождения: </span>{{player?.birthday | date: 'dd MMMM yyyy'}}</div>
     <div class="team-name">
+      <img src="../assets/img/defaultImage.png" alt="">
       <img src="{{player?.teams[0]?.img}}" alt="">
       {{player?.teams[0]?.name}}
     </div>

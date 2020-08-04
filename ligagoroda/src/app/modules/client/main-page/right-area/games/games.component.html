@@ -75,9 +75,8 @@
         </div>
         <div class="cursor-pointer team-name">{{ game.guest.name }}</div>
 
-        <img class="tbody__guest--arrow cursor-pointer"
-             src="../../../../../../assets/img/icons/arrow.png" alt=""
-             routerLink="/games/{{game._id}}">
+        <app-arrow [hover]="true" [routerLink]="'/games/' + game._id"></app-arrow>
+
       </div>
 
     </td>

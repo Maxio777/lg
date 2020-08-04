@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component
 } from '@angular/core';
-import {getColor} from '../../../core/urls';
+import {getColor} from '../../../core/get-color';
 import {ClientDataService} from '../services/client-data/client-data.service';
 import {GameLG} from '../../../models/game';
 

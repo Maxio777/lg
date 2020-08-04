@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {ClientDataService} from '../../../services/client-data/client-data.service';
 import {GameLG} from '../../../../../models/game';
-import {getColor} from '../../../../../core/urls';
+import {getColor} from '../../../../../core/get-color';
 
 @Component({
   selector: 'app-games',

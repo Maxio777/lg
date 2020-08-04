@@ -1,0 +1,105 @@
+@import "variables";
+@import "mixins";
+
+
+.player-games {
+  table {
+    @include table;
+    color: $main-color;
+    margin-bottom: 10px;
+
+    thead {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+
+      .title {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: max-content;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      tr {
+        height: 30px;
+        border-bottom: 1px solid $light-gray;
+
+        th {
+          img {
+            width: auto;
+            height: 23px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        .home-logo {
+          text-align: right;
+          img {
+            @include border-img;
+          }
+        }
+
+        .guest-logo {
+          text-align: left;
+          img {
+            @include border-img;
+          }
+        }
+        td {
+          padding: 5px 0;
+
+          .team-name {
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+              text-decoration-color: $main-color;
+            }
+          }
+
+          .date-tour {
+            color: $gray;
+            .date {
+              text-align: center;
+              font-size: 14px;
+            }
+            .tour {
+              text-align: center;
+              font-size: 12px;
+            }
+          }
+
+          .count {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 0 6px;
+
+            .count-circle {
+              width: 6px;
+              height: 6px;
+              border-radius: 3px;
+              margin: 5px auto 5px auto;
+            }
+          }
+
+          .colon {
+            font-size: 18px;
+            font-weight: bold;
+            padding-bottom: 20px;
+          }
+
+        }
+      }
+      img {
+        width: 32px;
+        height: auto;
+      }
+    }
+  }
+}
+

@@ -95,10 +95,10 @@ table {
       padding-right: 10px;
       font-size: 15px;
 
-      &--arrow {
+      app-arrow {
         position: absolute;
         right: 0;
-        top: 0;
+        top: -5;
         height: min-content!important;
         width: min-content!important;
       }

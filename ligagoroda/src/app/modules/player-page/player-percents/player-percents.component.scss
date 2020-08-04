@@ -6,6 +6,7 @@
   flex-direction: row;
   font-weight: bold;
   color: $main-color;
+  margin-bottom: 50px;
 
   & > div {
     @include content-center;
@@ -18,12 +19,27 @@
     }
 
     .percent {
+      background: #ffffff;
+      position: relative;
       margin: 0 20px;
       @include content-center;
       min-width: 56px;
       min-height: 56px;
+      border: double 4px transparent;
       border-radius: 50%;
-      border: 1px solid $accent;
+      background-clip: padding-box;
+    }
+
+    .percent:after {
+      content:'';
+      position: absolute;
+      top: -1px;
+      bottom: -1px;
+      left: -1px;
+      right: -1px;
+      background: linear-gradient(211deg, rgba(255,232,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,165,0,1) 100%);
+      border-radius: 50%;
+      z-index: -1;
     }
   }
 }
