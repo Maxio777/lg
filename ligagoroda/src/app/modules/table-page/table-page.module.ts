@@ -5,6 +5,7 @@ import {TablePageRoutingModule} from './table-page-routing.module';
 import {TablePageComponent} from './table-page/table-page.component';
 import {UiModule} from '../ui/ui.module';
 
+
 @NgModule({
   declarations: [TablePageComponent],
   imports: [

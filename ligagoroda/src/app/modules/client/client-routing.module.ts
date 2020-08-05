@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PlayersComponent} from './main-page/right-area/players/players.component';
 import {GameComponent} from './game/game.component';
-import {TeamComponent} from './team/team.component';
 import {URLS_CLIENT} from '../../assets/routing-configs/config-routing-client';
 import {MainPageComponent} from './main-page/main-page.component';
 import {IndexComponent} from './main-page/index/index.component';
@@ -39,12 +38,15 @@ const routes: Routes = [
         loadChildren: '../player-page/player-page.module#PlayerPageModule'
       },
       {
+        path: 'teams/:id',
+        loadChildren: '../team-page/team-page.module#TeamPageModule'
+      },
+      {
         path: URLS_CLIENT.players.route,
         component: PlayersComponent,
         data: {title: URLS_CLIENT.players.title}
       },
       {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
-      {path: 'teams/:id', component: TeamComponent, data: {title: 'КОМАНДА'}},
     ]
   },
 ];

@@ -32,7 +32,7 @@
       </div>
       <div class="text w-100">
         <div class="date" *ngIf="!news[0]?.isLoad; else loaderForDate">
-          <img src="../../../../assets/img/icons/date.png" alt=""> {{news[0]?.date | date: 'dd.MM.yyyy'}}
+          <img src="/assets/img/icons/date.png" alt=""> {{news[0]?.date | date: 'dd.MM.yyyy'}}
         </div>
         <div class="preview" [routerLink]="['/news', news[0]?._id ]" *ngIf="!news[0]?.isLoad; else loaderForMainText">
           <p><strong>{{news[0]?.title }}</strong></p>
@@ -68,7 +68,7 @@
       </div>
       <div class="text w-100 col-7">
         <div class="date" *ngIf="!news?.isLoad; else loaderForDate">
-          <img src="../../../../assets/img/icons/date.png" alt=""> {{news?.date | date: 'dd.MM.yyyy'}}
+          <img src="/assets/img/icons/date.png" alt=""> {{news?.date | date: 'dd.MM.yyyy'}}
         </div>
         <div class="preview" [routerLink]="['/news', news?._id ]"  *ngIf="!news?.isLoad; else loaderForMainText">
           <p><strong>{{news?.title }}</strong></p>
