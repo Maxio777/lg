@@ -5,7 +5,6 @@ import {ClientRoutingModule} from './client-routing.module';
 import {IndexComponent} from './main-page/index/index.component';
 import {PlayersComponent} from './main-page/right-area/players/players.component';
 import {GameComponent} from './game/game.component';
-import {TeamComponent} from './team/team.component';
 import {TableComponent} from './main-page/right-area/table/table.component';
 import {SharedModule} from '../shared.module';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -23,7 +22,6 @@ import {UiModule} from '../ui/ui.module';
   declarations: [
     GamesPageComponent,
     TableComponent,
-    TeamComponent,
     GameComponent,
     PlayersComponent,
     IndexComponent,

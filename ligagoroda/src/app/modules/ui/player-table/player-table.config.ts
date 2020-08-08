@@ -21,7 +21,7 @@ export const INDICATORS = [
     tooltip: 'Желтая карточка'
   },
   {
-    img: 'yellow-red',
+    img: 'red-yellow',
     text: 'ВЖК',
     tooltip: 'Вторая желтая карточка'
   },
