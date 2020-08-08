@@ -1,3 +1,30 @@
-<p>
-  team-statistics works!
-</p>
+<div class="team-statistics">
+  <table>
+
+    <thead>
+    <tr>
+      <th *ngFor="let i of indicators">
+        <div class="d-flex flex-column justify-content-between th-container align-items-center" [matTooltip]="i.tooltip">
+          <div class="text">{{i.text}}</div>
+          <div class="circle" [style.background]="i.circle" *ngIf="i.circle"></div>
+
+        </div>
+      </th>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>{{teamStatistic?.gamesCount}}</td>
+      <td>{{teamStatistic?.win}}</td>
+      <td>{{teamStatistic?.draws}}</td>
+      <td>{{teamStatistic?.loss}}</td>
+      <td>{{teamStatistic?.goals}}</td>
+      <td>{{teamStatistic?.missedGoals}}</td>
+      <td>{{teamStatistic?.goalDifference}}</td>
+      <td>{{teamStatistic?.points}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>

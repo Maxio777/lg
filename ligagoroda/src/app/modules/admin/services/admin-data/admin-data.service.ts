@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, forkJoin, Observable} from 'rxjs';
-import {ManagerLG, PlayerAdmin, Referee, TeamLG, TournamentLG} from '../../../../models/interfaces';
+import {PlayerAdmin, Referee, TeamLG, TournamentLG} from '../../../../models/interfaces';
 import {GameLG} from '../../../../models/game';
 import {RestPlayersService} from '../../../../rest/rest-players/rest-players.service';
 import {RestManagerService} from '../../../../rest/rest-manager/rest-manager.service';
@@ -12,6 +12,7 @@ import {RestTeamService} from '../../../../rest/rest-team/rest-team.service';
 import {News, Tag} from '../../../../models/news';
 import {RestNewsService} from '../../../../rest/rest-news/rest-news.service';
 import {TagsRestService} from '../../../../rest/tags-rest/tags-rest.service';
+import {ManagerLG} from '../../../../models/manager';
 
 @Injectable({
   providedIn: 'root'

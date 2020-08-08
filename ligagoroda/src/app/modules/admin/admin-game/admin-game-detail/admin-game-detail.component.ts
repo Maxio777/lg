@@ -1,16 +1,17 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { AdminDataService } from '../../services/admin-data/admin-data.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, tap } from 'rxjs/operators';
-import { combineLatest, Observable, Subscription } from 'rxjs';
-import { GameLG } from '../../../../models/game';
-import { FormGroup } from '@angular/forms';
-import { ManagerLG, PlayerAdmin, Referee, TeamLG, TournamentLG } from '../../../../models/interfaces';
-import { initForm } from '../../../../core/helpers';
-import { RestGameService } from '../../../../rest/rest-game/rest-game.service';
-import { ToastrService } from 'ngx-toastr';
-import { RestEventService } from '../../../../rest/rest-event/rest-event.service';
-import { EventLG } from '../../../../models/events';
+import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy} from '@angular/core';
+import {AdminDataService} from '../../services/admin-data/admin-data.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {map, tap} from 'rxjs/operators';
+import {combineLatest, Observable, Subscription} from 'rxjs';
+import {GameLG} from '../../../../models/game';
+import {FormGroup} from '@angular/forms';
+import {PlayerAdmin, Referee, TeamLG, TournamentLG} from '../../../../models/interfaces';
+import {initForm} from '../../../../core/helpers';
+import {RestGameService} from '../../../../rest/rest-game/rest-game.service';
+import {ToastrService} from 'ngx-toastr';
+import {RestEventService} from '../../../../rest/rest-event/rest-event.service';
+import {EventLG} from '../../../../models/events';
+import {ManagerLG} from '../../../../models/manager';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { EventLG } from '../../../../models/events';
 })
 export class AdminGameDetailComponent implements OnInit, OnDestroy {
   controls =
-  ['_id', 'tournament', 'homeGoal', 'guestGoal', 'home', 'guest', 'date', 'time', 'tour', 'completed'];
+    ['_id', 'tournament', 'homeGoal', 'guestGoal', 'home', 'guest', 'date', 'time', 'tour', 'completed'];
   subs: Subscription = new Subscription();
   game: GameLG | undefined;
   referees: Referee[] = [];
@@ -39,9 +40,9 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
     this.adminDataService.getManagers$(),
     this.adminDataService.getTournaments$(),
     this.adminDataService.getTeams$(),
-    );
+  );
 
-  isEdit: {[key: string]: boolean | number} = {
+  isEdit: { [key: string]: boolean | number } = {
     homePlayers: false,
     guestPlayers: false,
     homeManagers: false,
@@ -59,7 +60,8 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {
+  }
 
 
   showToast() {
@@ -132,8 +134,8 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
     this.subs.add(this.route.params.subscribe((params) => {
       if (params.id) {
         this.subs.add(this.adminDataService.getGames$().pipe(
-          map((games ) => games.find(game => game._id === params.id)),
-          tap((game ) => game && game.homeManagers ? game.homeManagers.forEach(m => m.selected = false) : undefined))
+          map((games) => games.find(game => game._id === params.id)),
+          tap((game) => game && game.homeManagers ? game.homeManagers.forEach(m => m.selected = false) : undefined))
           .subscribe((game) => {
             this.game = game;
             if (this.game) {
@@ -141,7 +143,7 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
               this.cd.detectChanges();
             }
             this.cd.detectChanges();
-        }));
+          }));
       }
     }));
   }
@@ -177,6 +179,7 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
         this.cd.detectChanges();
       });
   }
+
   /** Обогатить евент ids игры и турнира */
   enrichEvent(event: EventLG) {
     if (this.game) {
@@ -197,26 +200,26 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
 
   postOrUpdate(event: EventLG): Observable<any> {
     return event._id
-      ?  this.restEventService.updateEventLG(event)
-      :  this.restEventService.postEventLG(event);
+      ? this.restEventService.updateEventLG(event)
+      : this.restEventService.postEventLG(event);
   }
 
   createEvent(event: any) {
     if (this.game) {
       event = this.enrichEvent(event);
 
-        this.subs.add(this.postOrUpdate(event).subscribe(data => {
-          if (this.game && data.ev) {
-            this.game.events.push(data.ev);
+      this.subs.add(this.postOrUpdate(event).subscribe(data => {
+        if (this.game && data.ev) {
+          this.game.events.push(data.ev);
 
-            this.subs.add(this.restGameService.updateGameLG(this.game).subscribe(
-              data2 => this.toastr.success(data2.message),
-              error => this.toastr.error(error.error.message)));
-          }
-          this.toastr.success(data.message);
-          this.adminDataService.getGames().subscribe();
+          this.subs.add(this.restGameService.updateGameLG(this.game).subscribe(
+            data2 => this.toastr.success(data2.message),
+            error => this.toastr.error(error.error.message)));
+        }
+        this.toastr.success(data.message);
+        this.adminDataService.getGames().subscribe();
 
-        }, error => this.toastr.error(error.error.message)));
+      }, error => this.toastr.error(error.error.message)));
     }
   }
 

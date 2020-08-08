@@ -7,42 +7,32 @@
   color: $main-color;
   margin-bottom: 50px;
 
-  span {
-    color: $gray;
-  }
-  .img {
+  &__img {
     padding: 0;
     overflow: hidden;
     flex-shrink: 0;
     img {
       width: 100%;
       height: auto;
-      border-radius: 50%;
+      border-radius: 7px;
+      padding: 20px;
     }
   }
-  .info {
+  &__info {
     margin-left: 30px;
     .name {
       font-weight: bold;
-      font-size: 26px;
+      font-size: 40px;
       padding-bottom: 10px;
     }
-    .birthday {
-      margin-bottom: 10px;
-    }
-    .team-name {
-      display: flex;
-      align-items: center;
-      img {
-        width: 42px;
-        height: auto;
-        margin-right: 10px;
-      }
-      font-weight: bold;
-      padding-bottom: 15px;
-    }
-    .role {}
-    .number {}
+  }
+}
 
+
+.managers {
+  &--title {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
   }
 }

@@ -2,8 +2,8 @@ import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import {ManagerLG} from '../../../models/interfaces';
 import {RestManagerService} from '../../../rest/rest-manager/rest-manager.service';
+import {ManagerLG} from '../../../models/manager';
 
 @Component({
   selector: 'app-admin-manager',

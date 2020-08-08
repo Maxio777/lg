@@ -1,7 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {ClientDataService} from '../../client/services/client-data/client-data.service';
 import {GameLG} from '../../../models/game';
-import {getColor} from '../../../core/get-color';
 import {Subscription} from 'rxjs';
 
 
@@ -13,15 +12,9 @@ import {Subscription} from 'rxjs';
 })
 export class GamesPageComponent implements OnInit, OnDestroy {
   subs = new Subscription();
-  games: GameLG[] = [];
   search = '';
-  filterSrt = [
-    {name: 'ВСЕ', str: ''},
-    {name: 'СЫГРАННЫЕ', str: 'completed'},
-    {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
-  ];
-  gamesFilter = '';
-  getColor = getColor;
+  games: GameLG[] = [];
+
 
   constructor(
     public clientDataService: ClientDataService,
@@ -43,17 +36,7 @@ export class GamesPageComponent implements OnInit, OnDestroy {
   }
 
   get displayGames() {
-    return this.games.filter(g => this._search(g) && this.filterGames(g));
-  }
-
-  filterGames(g: GameLG) {
-    return this.gamesFilter
-      ? this.gamesFilter === 'completed' ? g.completed : !g.completed
-      : true;
-  }
-
-  setGamesFilter(gamesFilter: '' | 'completed' | 'notCompleted') {
-    this.gamesFilter = gamesFilter;
+    return this.games.filter(g => this._search(g));
   }
 
   ngOnDestroy(): void {

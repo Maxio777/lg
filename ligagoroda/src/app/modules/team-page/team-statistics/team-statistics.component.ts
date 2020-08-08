@@ -10,6 +10,36 @@ import {TeamTable} from '../../../models/team-table';
 export class TeamStatisticsComponent implements OnInit {
   @Input() teamStatistic: TeamTable | undefined;
 
+  indicators = [
+    {
+      text: 'Игры',
+    },
+    {
+      text: 'Победы',
+      circle: 'green'
+    },
+    {
+      text: 'Ничьи',
+      circle: 'yellow'
+    },
+    {
+      text: 'Поражения',
+      circle: 'red'
+    },
+    {
+      text: 'Забито',
+    },
+    {
+      text: 'Пропущенно',
+    },
+    {
+      text: 'Разница',
+    },
+    {
+      text: 'Очки'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {

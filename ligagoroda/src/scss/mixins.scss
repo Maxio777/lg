@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins/side-table.mixins";
+@import "mixins/sub-title";
 
 @mixin content-center {
   display: flex;

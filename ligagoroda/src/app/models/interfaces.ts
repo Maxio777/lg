@@ -1,4 +1,5 @@
-import { GameLG } from './game';
+import {GameLG} from './game';
+import {ManagerLG} from './manager';
 
 
 export interface Game {
@@ -109,16 +110,6 @@ export interface Referee {
   lastName: string;
   middleName: string;
   dateOfBirth: string;
-  image: string;
-  selected?: boolean;
-}
-
-export interface ManagerLG {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  birthday: string;
   image: string;
   selected?: boolean;
 }

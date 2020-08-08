@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { MainRestService } from '../main-rest-service';
-import { Observable } from 'rxjs';
-import { ManagerLG } from '../../models/interfaces';
+import {Injectable} from '@angular/core';
+import {MainRestService} from '../main-rest-service';
+import {Observable} from 'rxjs';
+import {ManagerLG} from '../../models/manager';
 
 
 @Injectable({
@@ -10,7 +10,8 @@ import { ManagerLG } from '../../models/interfaces';
 export class RestManagerService {
   apiLG: string = 'admin/manager/';
 
-  constructor(private mainRestService: MainRestService) { }
+  constructor(private mainRestService: MainRestService) {
+  }
 
   getManagerLG(): Observable<any> {
     return this.mainRestService.getLG(this.apiLG);

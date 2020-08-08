@@ -13,8 +13,6 @@ export class PlayersComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   players: PlayerClient[] = [];
   search = '';
-  slice = 30;
-  isAppearance = false;
 
   constructor(public clientDataService: ClientDataService, private cd: ChangeDetectorRef) { }
 
@@ -25,23 +23,11 @@ export class PlayersComponent implements OnInit, OnDestroy {
     }));
   }
 
-  getPercent(player: PlayerClient, item: 'goalsCount' | 'assistsCount' | 'goalsAssists' ): number {
-    if (player && player.gamesCount && player[item]) {
-      return player.gamesCount / Number(player[item]);
-    }
-    return 0;
-  }
-
-  more() {
-    this.isAppearance = true;
-    this.slice += 20;
-  }
-
   _search(players: PlayerClient[]): PlayerClient[] {
     return this.search
       ? players.filter(p => p.lastName.toLowerCase().includes(this.search.toLowerCase())
-                        || p.firstName.toLowerCase().includes(this.search.toLowerCase())
-               || (p.middleName || '').toLowerCase().includes(this.search.toLowerCase())
+        || p.firstName.toLowerCase().includes(this.search.toLowerCase())
+        || (p.middleName || '').toLowerCase().includes(this.search.toLowerCase())
       )
       : this.players;
   }

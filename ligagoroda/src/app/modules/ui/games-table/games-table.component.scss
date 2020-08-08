@@ -1,0 +1,133 @@
+@import "variables";
+@import "mixins";
+
+
+$backgroundLg: rgba(0, 53, 93, 0.05);
+
+table {
+  table-layout:fixed;
+  min-width: 270px;
+  @include table;
+
+
+  .mat-button {
+    font-size: 14px!important;
+  }
+
+  thead {
+    color: rgba(0, 0, 0, 0.2);
+    & > tr {
+      height: 40px;
+    }
+  }
+
+  .tbody {
+
+    font-size: $main-f-size;
+    border-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    img {
+      @include border-img;
+      width: 30px;
+      height: 30px;
+      vertical-align: sub;
+    }
+
+    tr {
+      td {
+        max-height: 50px;
+      }
+      height: 50px;
+
+      &:nth-child(even) {
+        background: rgba(0, 53, 93, 0.04);
+      }
+
+      &:hover {
+        @include lg-hover('b', '0');
+      }
+
+    }
+
+    span {
+      font-size: 12px!important;
+    }
+
+    &__date {
+      color: $gray;
+      text-align: center;
+      .time {
+        margin-top: 5px;
+        font-size: 12px;
+      }
+    }
+
+    &__home {
+      padding-left: 15px;
+      font-size: 16px;
+    }
+
+    &__home--img {
+      text-align: right;
+    }
+
+    &__count {
+      font-weight: bold;
+      color: $main-color;
+      font-size: 16px;
+      letter-spacing: 4px;
+
+      & > div > div {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      &--circle {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin: 5px 0;
+      }
+    }
+
+
+    &__guest {
+      padding-right: 15px;
+      font-size: 16px;
+    }
+
+    .team-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}
+
+.games-menu {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $light-gray;
+  box-sizing: content-box;
+
+  &__item {
+    padding: 0;
+    width: 20%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
+    box-sizing: content-box;
+
+    @include lg-hover('b', 0);
+    @include lg-active('b');
+  }
+
+  div {
+    @include content-center;
+  }
+}

@@ -38,6 +38,7 @@ export class TeamComponent implements OnInit, OnDestroy {
         }
         this.teamStatistic = this.clientDataService.getTable$().getValue().find(team => team._id === id);
         this.cd.detectChanges();
+        console.log(this.players);
       }));
   }
 

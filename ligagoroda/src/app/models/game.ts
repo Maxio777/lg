@@ -1,5 +1,6 @@
-import { ManagerLG, PlayerAdmin, Referee, TeamLG, Tournament } from './interfaces';
-import { EventLG } from './events';
+import {PlayerAdmin, Referee, TeamLG, Tournament} from './interfaces';
+import {EventLG} from './events';
+import {ManagerLG} from './manager';
 
 export interface GameLG {
   _id: string;

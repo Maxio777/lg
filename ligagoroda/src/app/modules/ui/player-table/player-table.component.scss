@@ -1,0 +1,133 @@
+@import "variables";
+@import "mixins";
+
+
+.gray-15px {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  color: $gray;
+}
+
+.hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+table {
+  @include table;
+
+
+  th, td:not(.player) {
+    text-align: center;
+  }
+
+  thead {
+    @extend .gray-15px;
+
+    tr {
+      height: 70px;
+      border-bottom: 1px solid $light-gray;
+
+      th {
+        .th-container {
+          padding: 10px 0;
+          height: 70px;
+          .icon {
+            img {
+              width: auto;
+              height: 23px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  $height-tr-tbody: 50px;
+
+  tbody {
+
+    tr {
+      @include zebra;
+      height: $height-tr;
+      vertical-align: middle;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 18px;
+      color: $main-color;
+
+      &:hover {
+        background: $hover-background;
+      }
+
+      .player {
+        @include content-center;
+        justify-content: flex-start;
+        font-size: 14px;
+        height: $height-tr;
+
+        .index {
+          padding: 0 5px;
+          font-weight: bold;
+          min-width: 20px;
+        }
+
+        img {
+          margin: 0 5px;
+          height: 37px;
+          width: 37px;
+          @include border-img;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+
+        &-detail {
+          padding-left: 5px;
+          @include content-center;
+          flex-direction: column;
+          align-items: flex-start;
+          height: 100%;
+
+          .name {
+            @include nowrap-ellipsis;
+
+            &:hover {
+              @extend .hover;
+            }
+          }
+
+          .team {
+            @include nowrap-ellipsis;
+            @extend .gray-15px;
+
+            &:hover {
+              @extend .hover;
+            }
+          }
+        }
+      }
+    }
+  ;
+
+    .more {
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      background: $hover-background;
+      letter-spacing: 1px;
+      transition: 0.2s;
+
+      &:hover {
+        background: $accent;
+        transition: 0.2s;
+        color: white;
+      }
+    ;
+    }
+  }
+}

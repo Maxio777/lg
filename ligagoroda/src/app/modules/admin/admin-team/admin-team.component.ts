@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ManagerLG, PlayerAdmin, TeamLG } from '../../../models/interfaces';
+import { PlayerAdmin, TeamLG } from '../../../models/interfaces';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestTeamService } from '../../../rest/rest-team/rest-team.service';
 import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import { MatAutocomplete, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { AdminDataService } from '../services/admin-data/admin-data.service';
+import {ManagerLG} from '../../../models/manager';
 
 @Component({
   selector: 'app-admin-team',
