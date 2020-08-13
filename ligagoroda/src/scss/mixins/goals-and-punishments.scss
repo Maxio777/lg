@@ -1,0 +1,33 @@
+@import "variables";
+@import "mixins";
+
+
+@mixin goals-and-punishments {
+  .title {
+    color: $gray;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $light-gray;
+    font-size: 20px;
+  }
+
+  table {
+    @include table;
+    color: $main-color;
+    border-bottom: none;
+
+    .home {
+      text-align: right;
+    }
+
+    .minute {
+      text-align: center;
+    }
+
+    .guest {
+      text-align: left;
+    }
+  }
+  margin-bottom: 30px;
+}

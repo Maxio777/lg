@@ -1,4 +1,4 @@
-import {PlayerAdmin, Referee, TeamLG, Tournament} from './interfaces';
+import {PlayerClient, Referee, TeamLG, Tournament} from './interfaces';
 import {EventLG} from './events';
 import {ManagerLG} from './manager';
 
@@ -10,8 +10,8 @@ export interface GameLG {
   homeGoal: number;
   guestGoal: number;
   events: EventLG[];
-  homePlayers: PlayerAdmin[];
-  guestPlayers: PlayerAdmin[];
+  homePlayers: PlayerClient[];
+  guestPlayers: PlayerClient[];
   homeManagers: ManagerLG[];
   guestManagers: ManagerLG[];
   referees: Referee[];

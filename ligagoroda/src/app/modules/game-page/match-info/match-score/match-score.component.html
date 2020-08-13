@@ -1,0 +1,13 @@
+<div class="d-flex flex-row justify-content-center align-items-center main">
+
+  <div class="count text-center">
+    <span>{{ game?.homeGoal }}</span>
+    <div class="count-circle" [style.background]="getColor(game, true)"></div>
+  </div>
+  <span class="colon">:</span>
+  <div class="count">
+    <span>{{ game?.guestGoal }}</span>
+    <div class="count-circle" [style.background]="getColor(game, false)"></div>
+  </div>
+
+</div>

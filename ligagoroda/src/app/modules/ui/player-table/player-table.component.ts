@@ -1,6 +1,6 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {PlayerClient} from '../../../models/interfaces';
-import {INDICATORS} from './player-table.config';
+import {INDICATORS} from '../../../assets/constants/player-table.config';
 
 @Component({
   selector: 'app-player-table',

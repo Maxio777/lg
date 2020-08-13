@@ -1,0 +1,16 @@
+<div class="news default-container">
+  <app-page-header [title]="'ИГРЫ'" [img]="'games-title'"></app-page-header>
+  <app-go-back></app-go-back>
+
+
+  <div class="game-info d-flex">
+    <app-team-name [team]="game?.home" class="col-4"></app-team-name>
+    <app-match-info [game]="game" class="match-info col-4"></app-match-info>
+    <app-team-name [team]="game?.guest" class="col-4"></app-team-name>
+  </div>
+
+  <app-goals [game]="game"></app-goals>
+  <app-punishments [game]="game"></app-punishments>
+
+  <app-lineups [game]="game"></app-lineups>
+</div>

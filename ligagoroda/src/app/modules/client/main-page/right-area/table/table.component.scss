@@ -34,7 +34,7 @@ table {
     tr {
       height: 40px;
       &:nth-child(even) {
-        background: rgba(0, 53, 93, 0.04);
+        background: $background-light;
       }
       &:hover {
         @include lg-hover('b', 0);

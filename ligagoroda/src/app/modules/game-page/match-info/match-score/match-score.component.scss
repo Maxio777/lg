@@ -1,0 +1,31 @@
+@import "variables";
+
+
+.main {
+  background: $background-light;
+  width: max-content;
+  border-radius: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  margin-bottom: 30px;
+
+  .count {
+    font-weight: bold;
+    font-size: 28px;
+    padding: 0 15px;
+
+    .count-circle {
+      width: 6px;
+      height: 6px;
+      border-radius: 3px;
+      margin: 15px auto 5px auto;
+    }
+  }
+
+  .colon {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 24px;
+  }
+}

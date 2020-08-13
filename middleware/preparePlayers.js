@@ -40,7 +40,9 @@ class PreparePlayers {
     }
 
     static getPlayerAssistCount(id, games, events) {
-        return games.filter(game => game.events.filter(event => event.assistant._id === id
+        return games.filter(game => game.events.filter(event =>
+            event.assistant
+            && event.assistant._id === id
             && events.includes(event.type) ).length).length;
     }
 

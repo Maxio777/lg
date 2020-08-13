@@ -2,6 +2,7 @@
 @import "mixins/side-table.mixins";
 @import "mixins/sub-title";
 
+
 @mixin content-center {
   display: flex;
   align-items: center;
@@ -48,7 +49,7 @@
 
 @mixin zebra {
   &:nth-child(even) {
-    background: rgba(0, 53, 93, 0.04);
+    background: $background-light;
   }
 }
 

@@ -41,7 +41,7 @@ table {
       height: 50px;
 
       &:nth-child(even) {
-        background: rgba(0, 53, 93, 0.04);
+        background: $background-light;
       }
 
       &:hover {
@@ -113,6 +113,7 @@ table {
   justify-content: center;
   border-bottom: 1px solid $light-gray;
   box-sizing: content-box;
+  margin-bottom: -1px;
 
   &__item {
     padding: 0;

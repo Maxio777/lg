@@ -1,0 +1,13 @@
+@import "variables";
+
+img {
+  max-width: 120px;
+  height: auto;
+  margin: 30px;
+}
+
+.name {
+  font-size: 32px;
+  color: $main-color;
+  font-weight: bold;
+}

@@ -1,0 +1,27 @@
+<div class="main" *ngIf="punishments().length">
+  <div class="title">Наказания:</div>
+
+  <table>
+    <colgroup>
+      <col style = "width:43%">
+      <col style = "width:14%">
+      <col style = "width:43%">
+    </colgroup>
+    <tbody>
+    <tr *ngFor="let punishment of punishments()">
+      <th>
+        <div class="home" *ngIf="gamePageService.isHomeOrGuestPlayer(game,true, punishment?.owner?._id)">
+          {{punishment?.owner?.firstName}} {{punishment?.owner?.lastName}}
+        </div>
+      </th>
+      <th class="minute">{{punishment?.minute}}`</th>
+      <th>
+        <div class="guest" *ngIf="gamePageService.isHomeOrGuestPlayer(game,false, punishment?.owner?._id)">
+          {{punishment?.owner?.firstName}} {{punishment?.owner?.lastName}}
+        </div>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

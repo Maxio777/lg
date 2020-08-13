@@ -1,0 +1,27 @@
+<div class="main" *ngIf="goals().length">
+  <div class="title">Голы:</div>
+
+  <table>
+    <colgroup>
+      <col style = "width:43%">
+      <col style = "width:14%">
+      <col style = "width:43%">
+    </colgroup>
+    <tbody>
+      <tr *ngFor="let goal of goals()">
+        <th>
+          <div class="home" *ngIf="gamePageService.isHomeOrGuestPlayer(game,true, goal?.owner?._id)">
+            {{goal?.owner?.firstName}} {{goal?.owner?.lastName}}
+          </div>
+        </th>
+        <th class="minute">{{goal?.minute}}`</th>
+        <th>
+          <div class="guest" *ngIf="gamePageService.isHomeOrGuestPlayer(game,false, goal?.owner?._id)">
+            {{goal?.owner?.firstName}} {{goal?.owner?.lastName}}
+          </div>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="title">Составы:</div>
+
+  <div class="lineups d-flex">
+
+    <div class="home col-6">
+      <table>
+        <tbody>
+          <tr *ngFor="let player of game?.homePlayers">
+            <td>
+              <img src="{{player?.img  || '../assets/img/defaultImage.png'}}" class="player-img" alt="">
+              <span class="name">{{player?.firstName}} {{player?.lastName}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guest col-6">
+      <table>
+        <tbody>
+        <tr *ngFor="let player of game?.guestPlayers">
+          <td>
+            <img src="{{player?.img  || '../assets/img/defaultImage.png'}}" class="player-img" alt="">
+            <span class="name">{{player?.firstName}} {{player?.lastName}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

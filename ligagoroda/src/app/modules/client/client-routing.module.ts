@@ -1,8 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PlayersComponent} from './main-page/right-area/players/players.component';
-import {GameComponent} from './game/game.component';
-import {URLS_CLIENT} from '../../assets/routing-configs/config-routing-client';
 import {MainPageComponent} from './main-page/main-page.component';
 import {IndexComponent} from './main-page/index/index.component';
 import {AuthGuardService} from '../../services/guards/auth-guard.service';
@@ -42,11 +39,9 @@ const routes: Routes = [
         loadChildren: '../team-page/team-page.module#TeamPageModule'
       },
       {
-        path: URLS_CLIENT.players.route,
-        component: PlayersComponent,
-        data: {title: URLS_CLIENT.players.title}
-      },
-      {path: 'games/:id', component: GameComponent, data: {title: 'ИГРА'}},
+        path: 'games/:id',
+        loadChildren: '../game-page/game-page.module#GamePageModule'
+      }
     ]
   },
 ];
