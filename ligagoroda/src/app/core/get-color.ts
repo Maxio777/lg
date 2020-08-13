@@ -1,6 +1,6 @@
 import {GameLG} from '../models/game';
 
-export function getColor(game: GameLG, isHome: boolean) {
+export function getColor(game: GameLG | undefined, isHome: boolean) {
   let color = 'grey';
   if (game) {
     color = game.completed ? 'yellow' : 'grey';
