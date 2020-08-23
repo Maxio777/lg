@@ -25,7 +25,7 @@ class Table {
         games = JSON.parse(JSON.stringify(games)).filter(g => !!g._id);
 
 
-        games = games.sort((a, b) => {
+        games = games.filter(g => g.completed).sort((a, b) => {
             if (+a.tour < +b.tour) {
                 return -1;
             }

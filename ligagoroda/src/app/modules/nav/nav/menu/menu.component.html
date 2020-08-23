@@ -1,5 +1,5 @@
-<div class="menu" *ngIf="(authService.isAuth$ | async)">
-  <button mat-button
+<div class="menu">
+  <a mat-button
           class="menu__button"
           *ngFor="let link of linksTop"
           [routerLink]="[link.url]"
@@ -9,5 +9,5 @@
           [class.disabled]="link.disabled"
   >
     <h3>{{link.name}}</h3>
-  </button>
+  </a>
 </div>

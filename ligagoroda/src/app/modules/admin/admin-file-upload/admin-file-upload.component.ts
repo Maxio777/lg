@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-admin-file-upload',
@@ -7,7 +6,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnI
   styleUrls: ['./admin-file-upload.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminFileUploadComponent implements OnInit {
+export class AdminFileUploadComponent {
   @ViewChild('input') inputRef: ElementRef | null = null;
   @Input() kind = '';
   @Input() _id = '';
@@ -15,12 +14,6 @@ export class AdminFileUploadComponent implements OnInit {
   url = '';
 
   @Output() file = new EventEmitter<File>();
-
-  constructor(
-    // private http: HttpClient
-  ) { }
-
-  ngOnInit() {}
 
   selectImage(event: any) {
     if (event.target.files.length) {
@@ -32,16 +25,6 @@ export class AdminFileUploadComponent implements OnInit {
     if (this.inputRef) {
       this.inputRef.nativeElement.click();
     }
-
-
-
-    // const formData = new FormData();
-    // formData.append('image', this.image, this.image.name);
-    //
-    // this.http.put(`http://127.0.0.1:5000/api/v1/admin/upload/${this.kind}/${this._id}`, formData).subscribe(
-    //   (res) => console.log(res),
-    //   (err) => console.log(err)
-    // );
   }
 
 }

@@ -6,7 +6,8 @@ import {NavigationEnd, Router} from '@angular/router';
 import {TitleService} from '../../../services/title/title.service';
 import {AuthService} from '../../../services/auth/auth.service';
 import {MatSidenav} from '@angular/material';
-import {LINKS_LEFT} from '../../../assets/constants/links-menu';
+import {LINKS_LEFT, LINKS_TOP} from '../../../assets/constants/links-menu';
+import {LayoutService} from '../../../services/layout/layout.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class NavComponent implements OnInit, OnDestroy {
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     public dataService: TitleService,
+    public layoutService: LayoutService,
     private cd: ChangeDetectorRef,
   ) {
   }
@@ -28,6 +30,8 @@ export class NavComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer: MatSidenav | undefined;
   selected: string = '';
   linksLeft = LINKS_LEFT;
+  linksTop = LINKS_TOP;
+
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));

@@ -7,6 +7,7 @@ import {TeamTable} from '../../../../models/team-table';
 import {AllDataRestService} from '../../../../rest/all-data/all-data-rest.service';
 import {News, Tag} from '../../../../models/news';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -63,7 +64,12 @@ export class ClientDataService {
   getAllData(id: string = ''): Observable<void> {
     return this.allDataRestService.getAllDataLG(id)
       .pipe(map(([games, players, news, tournament, table, teams, tags]) => {
-          this.setNews(news);
+          // this.setNews(sortBy(news, ['date']));
+
+
+          this.setNews(news.sort((a, b) => a.date < b.date ? 1 : -1));
+
+
           if (players && players.length) {
             players.forEach(p => this.playersMap.set(p._id, p));
           }

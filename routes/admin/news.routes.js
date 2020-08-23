@@ -60,7 +60,6 @@ router.post('/news', auth, fileMiddleware.single('image'), checkErrors,
 
 router.put('/news/:_id', auth, fileMiddleware.single('image'), checkErrors,
      async (req, res) => {
-        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {

@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { RestTournamentsService } from '../../../rest/rest-tournaments/rest-tournaments.service';
 import { TournamentLG } from '../../../models/interfaces';
 import { Subscription } from 'rxjs';
-import { AdminDataService } from '../services/admin-data/admin-data.service';
 
 @Component({
   selector: 'app-admin-tournament',
@@ -20,7 +19,7 @@ export class AdminTournamentComponent implements OnInit {
   @Input() display: string[] = [];
   public dataSource: MatTableDataSource<any> | undefined;
   public displayedColumns: string[] =
-    ['index', 'id', 'name', 'dateStart', 'dateEnd', 'action'];
+    ['index', 'name', 'dateStart', 'dateEnd', 'action'];
 
   form: FormGroup = this.initForm();
   tournaments: TournamentLG[] = [];
@@ -28,7 +27,6 @@ export class AdminTournamentComponent implements OnInit {
   openAdd: boolean = false;
 
   constructor(
-    private adminDataService: AdminDataService,
     private restTournamentsService: RestTournamentsService
   ) { }
 
@@ -76,7 +74,7 @@ export class AdminTournamentComponent implements OnInit {
   }
 
   getTournamentsLG() {
-    return this.adminDataService.getTournaments$()
+    return this.restTournamentsService.getTournamentLG()
       .pipe(map(tournaments => tournaments.map((tournament: TournamentLG) => {
         tournament.selected = false;
         return tournament;

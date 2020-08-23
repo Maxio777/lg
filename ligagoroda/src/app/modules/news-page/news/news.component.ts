@@ -4,7 +4,6 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClientDataService} from '../../client/services/client-data/client-data.service';
 import {pluck, map, tap} from 'rxjs/operators';
-import {sortBy} from 'lodash';
 
 @Component({
   selector: 'app-news',
@@ -33,7 +32,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.sub.add(this.clientDataService.getNews$().pipe(
       tap(n => n.forEach(news => news.isLoad = true)))
       .subscribe(newsAll => {
-      this._news = sortBy(newsAll, ['date']);
+      this._news = newsAll;
       this.cd.detectChanges();
     }));
   }

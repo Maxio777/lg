@@ -1,57 +1,92 @@
-<mat-toolbar color="primary"
-             [style.border-bottom-color]="(authService.isAuth$ | async) ? '#e1e1e1' : '#00518f'">
+<div class="nav" perfectScrollbar>
+
   <div class="header">
 
     <button type="button" aria-label="Toggle sidenav"
-      mat-icon-button
-      *ngIf="authService.isAuth$ | async"
-      (click)="drawer.toggle()"
+            mat-icon-button
+            *ngIf="authService.isAuth$ | async"
+            (click)="drawer.toggle()"
     >
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
 
     <app-logo></app-logo>
 
+
     <div class="full-name position-absolute align-items-end"
-         *ngIf="authService.isAuth$ | async">
-      <div class="d-flex flex-row align-items-center">
+         *ngIf="authService.isAuth$ | async"
+    >
+      <div class="d-flex flex-row align-items-center mr-5">
         <div class="pr-3">{{ authService.fullName | async}}</div>
         <app-logout></app-logout>
       </div>
+
     </div>
+    <button type="button" aria-label="Toggle sidenav"
+            mat-icon-button
+            *ngIf="!(layoutService.is768px | async)"
+            (click)="drawerClient.toggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
 
   </div>
-  <div class="header header-bottom"
-     *ngIf="!(isHandset$ | async)"
-     [style.background]="(authService.isAuth$ | async) ? '#ffffff' : '#00518f'"
+  <div class="header-button"
+       *ngIf="(layoutService.is768px | async)"
   >
     <app-menu></app-menu>
+
   </div>
-  </mat-toolbar>
 
-<mat-sidenav-container class="sidenav-container" >
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="'push'"
-    [opened]="false"
-    [fixedInViewport]="false">
 
-    <mat-nav-list>
-      <div *ngIf="!isAdmin()">
-        <a mat-list-item
-           *ngFor="let link of linksLeft"
-           [routerLink]="[link.url]" [routerLinkActive]="['active']"
-        >
-          <mat-icon class="left-menu">{{link.icon}}</mat-icon>
-          {{link.name}}
-        </a>
-      </div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="'push'"
+                 [opened]="false"
+                 [fixedInViewport]="false">
 
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content class="home-background" perfectScrollbar>
-    <router-outlet></router-outlet>
-    <app-footer [isAuth]="authService.isAuth$ | async"></app-footer>
+      <mat-nav-list>
+        <div *ngIf="!isAdmin()">
+          <a mat-list-item
+             *ngFor="let link of linksLeft"
+             [routerLink]="[link.url]" [routerLinkActive]="['active']"
+          >
+            <mat-icon class="left-menu">{{link.icon}}</mat-icon>
+            {{link.name}}
+          </a>
+        </div>
 
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="home-background" perfectScrollbar>
+      <router-outlet></router-outlet>
+      <app-footer [isAuth]="authService.isAuth$ | async"></app-footer>
+
+    </mat-sidenav-content>
+
+    <mat-sidenav #drawerClient class="sidenav" fixedInViewport="true"
+                 position="end"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="'push'"
+                 [opened]="false"
+                 [fixedInViewport]="false">
+
+      <mat-nav-list>
+        <div>
+          <a mat-list-item
+             *ngFor="let link of linksTop"
+             [routerLink]="[link.url]" [routerLinkActive]="['active']"
+             (click)="drawerClient.toggle()"
+          >
+            <mat-icon class="left-menu">{{link.icon}}</mat-icon>
+            {{link.name}}
+          </a>
+        </div>
+
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+
+</div>

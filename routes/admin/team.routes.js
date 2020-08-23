@@ -8,7 +8,7 @@ const cache = require('../../middleware/cache')
 
 
 // /api/v1/admin/team
-router.get('/team', cache(60),
+router.get('/team',
     async (req, res) => {
         console.log(req.body);
         try {

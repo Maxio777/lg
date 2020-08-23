@@ -1,13 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Input, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { PlayerAdmin } from '../../../models/interfaces';
-import { Subscription } from 'rxjs';
-import { RestPlayersService } from '../../../rest/rest-players/rest-players.service';
-import { filter } from 'rxjs/operators';
-import { AdminDataService } from '../services/admin-data/admin-data.service';
-import { ToastrService } from 'ngx-toastr';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Input, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {PlayerAdmin} from '../../../models/interfaces';
+import {Subscription} from 'rxjs';
+import {RestPlayersService} from '../../../rest/rest-players/rest-players.service';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -16,10 +15,17 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./admin-player.component.scss']
 })
 export class AdminPlayerComponent implements OnInit, OnDestroy {
+  @ViewChild('addRef') addRef: any;
+  @ViewChild('editRef') editRef: any;
+  @ViewChild('delRef') delRef: any;
+
+  image: File | null = null;
+  imagePreview: string | ArrayBuffer | null = '';
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
-  @Input() data: string[] = [];
+  // @Input() data: string[] = [];
   @Input() display: string[] = [];
   form: FormGroup = this.fb.group({});
   isShowButton: boolean | undefined;
@@ -27,8 +33,8 @@ export class AdminPlayerComponent implements OnInit, OnDestroy {
   players: PlayerAdmin[] = [];
   teams: any;
   dataSource: MatTableDataSource<PlayerAdmin> | null = null;
-  displayedColumns: string[] = ['_id', 'image', 'lastName', 'firstName', 'middleName', 'birthday', 'selected'];
-  controls = ['lastName', 'firstName', 'middleName', 'birthday'];
+  displayedColumns: string[] = ['_id', 'img', 'lastName', 'firstName', 'middleName', 'birthday', 'selected'];
+  controls = ['_id', 'lastName', 'firstName', 'middleName', 'birthday', 'img'];
   openAdd: boolean = false;
   kind = 'player';
 
@@ -37,18 +43,53 @@ export class AdminPlayerComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private restPlayersService: RestPlayersService,
-    private adminDataService: AdminDataService,
     private toastr: ToastrService,
+    public dialog: MatDialog,
+    private cd: ChangeDetectorRef,
   ) {
     this.initForm();
   }
 
+  openDialogAdd(): void {
+    this.dialog.open(this.addRef, {width: '450px', maxWidth: '90%'});
+  }
+
+  openDialogEdit(player: PlayerAdmin): void {
+    this.controls.forEach((control) => this.form.controls[control].setValue(player[control as keyof PlayerAdmin]));
+    this.dialog.open(this.editRef, {width: '450px', maxWidth: '90%'});
+  }
+
+  openDialogDelete(id: string): void {
+    this.delRef.id = id;
+    this.dialog.open(this.delRef);
+  }
+
+  closeModal() {
+    this.dialog.closeAll();
+    this.form.reset();
+    this.form.markAsUntouched();
+    this.image = null;
+    this.imagePreview = '';
+  }
+
+  setImage(image: File) {
+    this.image = image;
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+      this.cd.detectChanges();
+    };
+
+    reader.readAsDataURL(image);
+  }
+
   initForm() {
     this.controls.forEach(control => {
-        this.form.addControl(
-          control, new FormControl('')
-        );
-      });
+      this.form.addControl(
+        control, new FormControl('')
+      );
+    });
   }
 
   ngOnInit() {
@@ -56,12 +97,6 @@ export class AdminPlayerComponent implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  openADD() {
-    this.openAdd = true;
-    this.selectedPlayerId = '';
-    this.players.forEach(t => t.selected = false);
-    this.form.reset();
-  }
 
   cancel() {
     this.openAdd = false;
@@ -70,67 +105,50 @@ export class AdminPlayerComponent implements OnInit, OnDestroy {
     this.players.forEach(t => t.selected = false);
   }
 
-  offOtherCheck(_id: string, selected: boolean) {
-    this.isShowButton = selected;
-    if (this.players && this.players.length) {
-      const players = this.players.filter(player => player._id !== _id);
-      players.forEach(player => player.selected = false);
-    }
-
-    if (selected) {
-      this.openAdd = false;
-      this.selectedPlayerId = _id;
-      const currentPlayer: any = this.players.find(play => play._id === _id);
-      if (this.form) {
-        this.controls.forEach(control => {
-          this.form.controls[control].setValue(currentPlayer[control]);
-        });
-      }
-    } else {
-      this.selectedPlayerId = '';
-      this.form.reset();
-    }
-  }
-
   addPlayerLG(): void | Subscription {
     if (this.form.valid) {
       return this.sub.add(this.restPlayersService.postPlayerLG(this.form.value).subscribe((data: any) => {
         this.toastr.success(data.message);
-        this.adminDataService.getPlayers().subscribe();
-        this.form.reset();
-      }));
-    } else {alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.'); }
-  }
-
-  updatePlayerLG(_id: string): void | Subscription {
-    if (this.form.valid) {
-      return this.sub.add(this.restPlayersService.updatePlayerLG({_id, ...this.form.value}).subscribe(() => {
+        this.closeModal();
         this.getPlayerLG();
-        this.form.reset();
       }));
-    } else {alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.'); }
+    } else {
+      alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.');
+    }
   }
 
-  deletePlayerLG() {
-    if (this.selectedPlayerId) {
-      this.restPlayersService.deletePlayerLG(this.selectedPlayerId).subscribe(() => {
+  updatePlayerLG(): void | Subscription {
+    if (this.form.valid) {
+      return this.sub.add(this.restPlayersService
+        .updatePlayer({...this.form.value}, this.image, this.kind, this.form.controls._id.value)
+        .subscribe((data: any) => {
+          this.toastr.success(data.message);
+          this.closeModal();
+          this.getPlayerLG();
+      }));
+    } else {
+      alert('Проверьте пожалуйста введенные данные и попробуйте еще раз.');
+    }
+  }
+
+  deletePlayerLG(id: string) {
+    if (id) {
+      this.restPlayersService.deletePlayerLG(id).subscribe(() => {
+        this.closeModal();
         this.form.reset();
-        this.selectedPlayerId = '';
-        this.isShowButton = false;
         this.getPlayerLG();
       });
     }
   }
 
   getPlayerLG() {
-    return this.adminDataService.getPlayers$().pipe(
-      filter((players: PlayerAdmin[]) => players.length > 0))
-      .subscribe(data => {
-      this.players = data;
-      this.initTable();
-    }, error => console.log(error));
+    return this.restPlayersService.getPlayerLG()
+      .subscribe(players => {
+        this.players = players.reverse();
+        this.initTable();
+        this.cd.detectChanges();
+      }, error => console.log(error));
   }
-
 
 
   initTable() {

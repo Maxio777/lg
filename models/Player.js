@@ -4,7 +4,6 @@ const { Schema, model } = require('mongoose');
 const schema = new Schema({
     birthday: {
         type: Date,
-        default: Date.now
     },
     lastName: {
         type: String,

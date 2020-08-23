@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -25,7 +25,6 @@ import {ErrorInterceptor} from './services/interceptors/error-interceptor';
 import {NotFoundComponent} from './assets/components/not-found/not-found.component';
 import {ClientModule} from './modules/client/client.module';
 import {NavModule} from './modules/nav/nav.module';
-import {ClientDataService, init} from './modules/client/services/client-data/client-data.service';
 
 registerLocaleData(localeRu, 'ru');
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -62,12 +61,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   exports: [MaterialModule, NavModule],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: init,
-      deps: [ClientDataService],
-      multi: true
-    },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

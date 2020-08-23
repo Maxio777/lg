@@ -27,7 +27,7 @@ export class RestManagerService {
 
 
   deleteManagerLG(idManager: any) {
-    return this.mainRestService.deleteLG(idManager, this.apiLG + idManager);
+    return this.mainRestService.deleteLG(idManager, this.apiLG);
   }
 
 

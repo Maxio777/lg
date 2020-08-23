@@ -99,7 +99,7 @@ export class AdminNewsDetailComponent implements OnInit {
     });
     data.tags = this.tags.filter(t => t.select).map(t => t._id);
 
-    if (this.news) {
+    if (this.form.valid) {
       this.isNew
 
         ? this.restNewsService.postNewsLG2(data, this.image, this.kind).subscribe((news) => {
@@ -107,13 +107,15 @@ export class AdminNewsDetailComponent implements OnInit {
           this.adminDataService.setNews([...this.adminDataService.news.getValue(), news.newNews]);
           this.goToNewsList();
         })
-        : this.restNewsService.updateNewsLG2(data, this.image, this.kind, this.news._id).subscribe((news) => {
-          this.toastr.success(news.message);
-          const allNews = [...this.adminDataService.news.getValue()];
-          const index = allNews.findIndex(n => n._id === news.news._id);
-          allNews[index] = news.news;
-          this.adminDataService.setNews([...allNews]);
-        });
+        // @ts-ignore
+        : this.restNewsService.updateNewsLG2(data, this.image, this.kind, this.news._id)
+          .subscribe((news) => {
+            this.toastr.success(news.message);
+            const allNews = [...this.adminDataService.news.getValue()];
+            const index = allNews.findIndex(n => n._id === news.news._id);
+            allNews[index] = news.news;
+            this.adminDataService.setNews([...allNews]);
+          });
     }
   }
 

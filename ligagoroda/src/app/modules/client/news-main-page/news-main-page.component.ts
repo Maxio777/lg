@@ -19,7 +19,8 @@ export class NewsMainPageComponent implements OnInit {
 
   ngOnInit() {
     this.subs.add(this.subs.add(this.clientDataService.getNews$().subscribe(news => {
-      this.news = news.reverse();
+      this.news = news;
+      console.log(this.news);
       this.cd.detectChanges();
     })));
   }

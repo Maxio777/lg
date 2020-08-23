@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ClientRoutingModule} from './client-routing.module';
@@ -16,6 +16,7 @@ import {NewsMainPageComponent} from './news-main-page/news-main-page.component';
 import {GamesComponent} from './main-page/right-area/games/games.component';
 import {GamesPageComponent} from './games-page/games-page.component';
 import {UiModule} from '../ui/ui.module';
+import {ClientDataService, init} from './services/client-data/client-data.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,14 @@ import {UiModule} from '../ui/ui.module';
   ],
   exports: [
     RightAreaComponent
+  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: init,
+      deps: [ClientDataService],
+      multi: true
+    },
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,8 @@ const { check, validationResult } = require('express-validator');
 const Player = require('../../models/Player');
 const router = Router();
 const auth = require('../../middleware/auth');
+const fileMiddleware = require('../../middleware/file');
+
 
 
 // /api/v1/admin/player
@@ -26,7 +28,6 @@ router.post('/player', auth, [
         check('firstName', 'Должно быть минимум 2 буквы').isLength({ min: 2 }),
     ],
     async (req, res) => {
-        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -52,12 +53,11 @@ router.post('/player', auth, [
         }
     });
 
-router.put('/player', auth, [
+router.put('/player/:_id', auth, fileMiddleware.single('image'), [
         check('lastName', 'Должно быть минимум 2 буквы').isLength({ min: 2 }),
         check('firstName', 'Должно быть минимум 2 буквы').isLength({ min: 2 }),
     ],
     async (req, res) => {
-        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -67,17 +67,43 @@ router.put('/player', auth, [
                 })
             }
 
-            const { _id, birthday, lastName, firstName, middleName, image } = req.body;
+            const _id = req.params._id
+
+
+            const { birthday, lastName, firstName, middleName, image } = req.body;
             const player = await Player.findOne({ _id  });
 
             if (!player) {
                 return res.status(400).json({ message: 'Игрок не найден' })
             }
 
-            await player.update({
-                birthday, lastName, firstName, middleName, image
-            });
-            res.status(201).json({ message: `Игрок "${lastName} ${firstName} ${middleName}" обновлен`, player })
+            const updated = {
+                lastName, firstName,
+            }
+
+            if (middleName) {
+                updated.middleName = middleName
+            }
+
+            if (birthday) {
+                console.log('birthday', birthday)
+                console.log('birthday', typeof birthday)
+                updated.birthday = birthday
+            }
+
+            if (req.file) {
+                updated.img = req.file.path
+            }
+
+            console.log(updated)
+
+            const updatedPlayer = await Player.findOneAndUpdate(
+              { _id },
+              { $set: updated },
+              { new: true }
+            );
+
+            res.status(201).json({ message: `Игрок "${lastName} ${firstName}" обновлен`, updatedPlayer })
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })

@@ -27,7 +27,7 @@ export class AdminNewsComponent implements OnInit {
   displayedColumns: string[] = ['_id', 'title', 'textPreview', 'date', 'action'];
   news: News[] = [];
   currentNewsId: number | string = NaN;
-  goToNew = () => this.router.navigate(['/admin/news-page-new']);
+  goToNew = () => this.router.navigate(['/admin/news-new']);
   goToNews = (id: string) => this.router.navigate(['/admin/news/' + id]);
 
   constructor(

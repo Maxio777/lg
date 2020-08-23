@@ -160,3 +160,21 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
+@mixin action-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  & > * {
+    margin: 0 5px;
+  }
+}
+
+@mixin modal-action {
+  display: flex;
+  justify-content: flex-end;
+  & > button {
+    margin: 15px 0 0 10px;
+  }
+}

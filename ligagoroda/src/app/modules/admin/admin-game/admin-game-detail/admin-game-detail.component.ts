@@ -127,7 +127,7 @@ export class AdminGameDetailComponent implements OnInit, OnDestroy {
     this.subs.add(this.route.url.pipe(map(url => url[0].path))
       .subscribe(path => {
         if (path === 'game-new') {
-          this.form.controls.date.setValue('2000-01-01T15:00:00');
+          this.form.controls.date.setValue('2020-08-08T12:00:00');
         }
       }));
 

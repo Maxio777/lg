@@ -2,21 +2,21 @@
 @import "mixins";
 
 .menu {
+  height: 40px;
   z-index: 4;
   text-align: right;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
   display: flex;
-  height: 40px;
 
   &__button {
-    height: 40px;
+    height: inherit;
     letter-spacing: 2px;
-    box-sizing: content-box;
     border-radius: 0;
+    display: flex;
+    align-items: center;
     @include menu-hover-active('b');
   }
-
 
 }

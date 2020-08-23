@@ -50,27 +50,6 @@ export class AdminTeamComponent implements OnInit, OnDestroy {
 
   kind = 'team';
 
-  arr1 = [
-    {
-      _name: 'one',
-      _lastName: 'oneLastname'
-    },
-    {
-      _name: 'two',
-      _lastName: 'twoLastname'
-    },
-    {
-      _name: 'three',
-      _lastName: 'threeLastname'
-    },
-  ];
-  arr2 = [
-    {
-      _name: 'three',
-      _lastName: 'threeLastname'
-    }
-  ];
-
   constructor(
     private restTeamService: RestTeamService,
     private cd: ChangeDetectorRef,
@@ -118,7 +97,7 @@ export class AdminTeamComponent implements OnInit, OnDestroy {
   getPlayers() {
     this.subs.add(this.adminDataService.getPlayers$()
       .subscribe((players: PlayerAdmin[]) =>  {
-        this.filteredPlayersForAdd = this.players = players;
+        this.filteredPlayersForAdd = this.players = players.reverse();
       } ));
   }
 

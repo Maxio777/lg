@@ -1,170 +1,184 @@
-<div class="d-flex flex-row pt-5">
-  <div class="col-{{selectedPlayerId || openAdd ? 8 : 12}}">
+<div class="d-flex flex-row my-5 container">
+  <div class="col-12">
     <div class="mat-elevation-z8">
 
       <div class="d-flex flex-row">
         <div class="d-flex flex-row pt-4 flex-grow-1">
           <mat-form-field class="col-5">
-          <input label="" matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск" #value>
-          <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear" (click)="applyFilter(''); value.value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
+            <label>
+              <input label="" matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск" #value>
+            </label>
+            <button mat-button *ngIf="value.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="applyFilter(''); value.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <button mat-mini-fab color="accent" class="float-right mr-5 m-auto open-close-add" (click)="openDialogAdd()">
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
-      <button mat-mini-fab color="accent" class="float-right mr-5 m-auto open-close-add" (click)="openADD()" *ngIf="!openAdd">
-        <mat-icon>add</mat-icon>
-      </button>
+
+
+      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="img">
+          <th mat-header-cell *matHeaderCellDef>Фото</th>
+          <td mat-cell *matCellDef="let row" class="cursor-pointer"
+          >
+            <img src="{{row.img ? row.img : '../../assets/img/defaultImage.png'}}" alt="">
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Фамилия</th>
+          <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
+          <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="middleName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Отчество</th>
+          <td mat-cell *matCellDef="let row">{{row.middleName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="birthday">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата рождения</th>
+          <td mat-cell *matCellDef="let row">{{row.birthday | date: 'dd.MM.y'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="selected">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+
+            <div class="action-area">
+
+              <button mat-icon-button>
+                <mat-icon (click)="openDialogEdit(row)">edit</mat-icon>
+              </button>
+
+              <button mat-icon-button>
+                <mat-icon (click)="openDialogDelete(row._id)">delete</mat-icon>
+              </button>
+
+            </div>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [length]="dataSource?.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 15, 20, 25]">
+      </mat-paginator>
     </div>
-
-
-    <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-
-      <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef >#</th>
-        <td mat-cell *matCellDef="let row; let idx = index;">{{idx + 1}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef>Фото</th>
-        <td mat-cell *matCellDef="let row"  class="cursor-pointer"
-        >
-          <img src="{{row.image ? row.image : '../../assets/img/defaultImage.webp'}}" alt="">
-        </td>
-      </ng-container>
-
-       <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Фамилия</th>
-        <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
-        <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="middleName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Отчество</th>
-        <td mat-cell *matCellDef="let row">{{row.middleName}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="birthday">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата рождения</th>
-        <td mat-cell *matCellDef="let row">{{row.birthday}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="selected">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
-
-          <div class="d-flex flex-row">
-            <div class="m-auto align-middle flex-grow-1">
-
-              <mat-checkbox
-                (change)="offOtherCheck(row._id, row.selected);"
-                [(ngModel)]="row.selected">
-              </mat-checkbox>
-
-            </div>
-
-            <div class="m-auto align-middle flex-grow-1 cursor-pointer">
-              <mat-icon (click)="deletePlayerLG(row._id)">delete</mat-icon>
-            </div>
-
-          </div>
-
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator #paginator
-                   [length]="dataSource?.data.length"
-                   [pageIndex]="0"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[10, 15, 20, 25]">
-    </mat-paginator>
   </div>
+
 </div>
 
 
-  <div class="col-4 form py-4" *ngIf="selectedPlayerId || openAdd">
-    <div [formGroup]="form" class="text-center">
+<ng-template #addRef>
+  <div>
+    <div [formGroup]="form" class="d-flex flex-column">
 
       <mat-form-field>
         <mat-label>Фамилия</mat-label>
-        <input label="" matInput placeholder="Фамилия" formControlName="lastName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)" required>
-        <!--<mat-hint>Hint</mat-hint>-->
+        <input label="" matInput placeholder="Фамилия" formControlName="lastName" required trim="blur">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Имя</mat-label>
-        <input label="" matInput placeholder="Имя" formControlName="firstName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)" required>
-        <!--<mat-hint>Hint</mat-hint>-->
+        <input label="" matInput placeholder="Имя" formControlName="firstName" required trim="blur">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Отчество</mat-label>
-        <input label="" matInput placeholder="Отчество" formControlName="middleName" appInputTrim (inputTrim)="form.get('lastName').setValue($event)">
-        <!--<mat-hint>Hint</mat-hint>-->
+        <input label="" matInput placeholder="Отчество" formControlName="middleName" trim="blur">
       </mat-form-field>
 
       <mat-form-field>
-        <input label="" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="birthday" dataformatas="MMM:dd" appInputTrim (inputTrim)="form.get('birthday').setValue($event)" [required]=false>
+        <input label="" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="birthday"
+               dataformatas="MMM:dd" [required]=false>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
-        <!--<mat-hint>Hint</mat-hint>-->
       </mat-form-field>
 
-        <!--<mat-hint>Hint</mat-hint>-->
+    </div>
+    <div class="modal-action">
+      <button mat-raised-button color="warn" aria-label (click)="closeModal()">Отмена</button>
+      <button mat-raised-button color="primary" aria-label (click)="addPlayerLG()">Сохранить</button>
+    </div>
+  </div>
+</ng-template>
 
 
+<ng-template #editRef>
+  <div>
+    <div [formGroup]="form" class="d-flex flex-column">
 
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input label="" matInput placeholder="Фамилия" formControlName="lastName" required trim="blur">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input label="" matInput placeholder="Имя" formControlName="firstName" required trim="blur">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Отчество</mat-label>
+        <input label="" matInput placeholder="Отчество" formControlName="middleName" trim="blur">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input label="" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="birthday"
+               dataformatas="MMM:dd" [required]=false>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
 
     </div>
-    <div class="buttons w-100 d-flex flex-row">
-      <button mat-raised-button color="warn" class="delete m-2 btn-block"
-              (click)="cancel()"
-      >Отменить
-      </button>
 
-      <button mat-raised-button color="primary" class="m-2 btn-block"
-              *ngIf="openAdd && !selectedPlayerId"
-              [disabled]="!form.valid"
-              (click)="addPlayerLG()"
-              >Добавить
-      </button>
-      <button mat-raised-button color="accent" class="delete m-2 btn-block"
-              *ngIf="!openAdd && selectedPlayerId"
-              [disabled]="!selectedPlayerId"
-              (click)="updatePlayerLG(selectedPlayerId)"
-              >Обновить
-      </button>
+    <div class="add-img">
+      <div class="">
+        <img class="w-100" src="{{ imagePreview || form?.controls['img'].value }}" alt="">
+      </div>
 
+      <br>
+      <app-admin-file-upload [kind]="kind" [_id]="form?.controls['_id'].value" (file)="setImage($event)"></app-admin-file-upload>
     </div>
 
-    <app-admin-file-upload *ngIf="selectedPlayerId" [kind]="kind" [_id]="selectedPlayerId"></app-admin-file-upload>
+    <div class="modal-action">
+      <button mat-raised-button color="warn" aria-label (click)="closeModal()">Отмена</button>
+      <button mat-raised-button color="primary" aria-label (click)="updatePlayerLG()">Обновить</button>
+    </div>
+  </div>
+</ng-template>
 
+
+<ng-template #delRef>
+  <div>
+    <div>
+      Вы действительно хотите удалить игрока?
+    </div>
+    <div class="modal-action">
+      <button mat-raised-button color="warn" aria-label (click)="closeModal()">Отмена</button>
+      <button mat-raised-button color="primary" aria-label (click)="deletePlayerLG(delRef['id'])">Удалить</button>
     </div>
 
-
-
-
-
-  <!--<form class="example-container" [formGroup]="options" [style.fontSize.px]="getFontSize()">-->
-    <!--<mat-form-fields [color]="options.value.color">-->
-      <!--<mat-select placeholder="Color" formControlName="color">-->
-        <!--<mat-option value="primary">Primary</mat-option>-->
-        <!--<mat-option value="accent">Accent</mat-option>-->
-        <!--<mat-option value="warn">Warn</mat-option>-->
-      <!--</mat-select>-->
-    <!--</mat-form-fields>-->
-
-    <!--<mat-form-fields [color]="options.value.color">-->
-      <!--<input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10">-->
-      <!--<mat-error *ngIf="options.get('fontSize')?.invalid">Min size: 10px</mat-error>-->
-    <!--</mat-form-fields>-->
-  <!--</form>>-->
-
-
+  </div>
+</ng-template>

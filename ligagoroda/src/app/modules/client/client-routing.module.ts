@@ -2,12 +2,11 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainPageComponent} from './main-page/main-page.component';
 import {IndexComponent} from './main-page/index/index.component';
-import {AuthGuardService} from '../../services/guards/auth-guard.service';
 
 
 const routes: Routes = [
   {
-    path: '', component: MainPageComponent, data: {title: 'ГЛАВНАЯ'}, canActivate: [AuthGuardService],
+    path: '', component: MainPageComponent, data: {title: 'ГЛАВНАЯ'},
     children: [
       {path: '', component: IndexComponent},
       {
