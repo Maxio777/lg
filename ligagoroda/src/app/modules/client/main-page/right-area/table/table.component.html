@@ -24,10 +24,10 @@
   </tr>
 
   </thead>
-  <tr class="cursor-pointer" *ngFor="let team of table; let idx = index" routerLink="/teams/{{team._id}}">
+  <tr *ngFor="let team of table; let idx = index">
     <td class="index">{{idx +1}}</td>
-    <td><img src="{{team.img}}" alt=""></td>
-    <td>{{team.teamName}}</td>
+    <td><a routerLink="/teams/{{team._id}}"><img src="{{team.img}}" alt=""></a></td>
+    <td><a routerLink="/teams/{{team._id}}">{{team.teamName}}</a></td>
     <td class="text-center px-1">{{team.gamesCount}}</td>
     <td class="text-center px-1">{{team.points}}</td>
     <td class="text-center px-1">

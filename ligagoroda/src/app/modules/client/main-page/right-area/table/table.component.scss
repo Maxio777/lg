@@ -55,5 +55,13 @@ table {
     .index {
       text-align: center;
     }
+
+    a {
+      color: $main-color;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
   }
 }

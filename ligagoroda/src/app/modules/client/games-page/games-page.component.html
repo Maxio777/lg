@@ -43,21 +43,21 @@
       <div class="date">{{ game.date | date: 'dd.MM.yy' }}</div>
       <div class="date">{{ game.date | date: ' HH:mm' }}</div>
     </td>
-    <td class="text-right tbody__home cursor-pointer" routerLink="/teams/{{game.home._id}}">{{ game.home.name }}</td>
-    <td class="text-center tbody__home--image cursor-pointer" routerLink="/teams/{{game.home._id}}"><img src="{{game.home.img}}" alt=""></td>
-    <td class="text-center cursor-pointer tbody__count" routerLink="/games/{{game._id}}">
+    <td class="text-right tbody__home"><a routerLink="/teams/{{game.home._id}}">{{ game.home.name }}</a></td>
+    <td class="text-center tbody__home--image"><a routerLink="/teams/{{game.home._id}}"><img src="{{game.home.img}}" alt=""></a></td>
+    <td class="text-center tbody__count">
       <div class="d-flex flex-row justify-content-between align-items-center">
         <div class="tbody__count--circle" [style.background]="getColor(game, true)"></div>
         <div class="d-flex flex-column px-2">
-          <div class="text-center">{{ game.homeGoal }} : {{ game.guestGoal }}</div>
+          <div class="text-center"><a routerLink="/games/{{game._id}}">{{ game.homeGoal }} : {{ game.guestGoal }}</a></div>
           <div class="tbody__tour text-center">{{game.tour}} тур.</div>
         </div>
         <div class="tbody__count--circle" [style.background]="getColor(game, false)"></div>
       </div>
     </td>
-    <td class="text-center tbody__guest--image cursor-pointer" routerLink="/teams/{{game.guest._id}}"><img src="{{game.guest.img}}" alt=""></td>
-    <td class="text-left tbody__guest cursor-pointer" routerLink="/teams/{{game.guest._id}}">{{ game.guest.name }}</td>
-    <td class="tbody__forward text-center cursor-pointer" routerLink="/games/{{game._id}}">
+    <td class="text-center tbody__guest--image" routerLink="/teams/{{game.guest._id}}"><a routerLink="/teams/{{game.guest._id}}"><img src="{{game.guest.img}}" alt=""></a></td>
+    <td class="text-left tbody__guest"><a routerLink="/teams/{{game.guest._id}}">{{ game.guest.name }}</a></td>
+    <td class="tbody__forward text-center" routerLink="/games/{{game._id}}">
       <div class="tbody__forward--image">
         <div class="arrow-3">
           <app-arrow [hover]="true"></app-arrow>

@@ -153,6 +153,14 @@
       width: 35px;
       height: 35px;
     }
+
+    a {
+      color: $main-color;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
   }
 }
 
