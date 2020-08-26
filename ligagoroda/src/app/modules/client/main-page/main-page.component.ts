@@ -14,12 +14,9 @@ export class MainPageComponent implements OnInit {
   currentTitle: string | undefined;
   isAdmin: boolean = false;
 
-  constructor(private dataService: TitleService, private router: Router, public layoutService: LayoutService) {
+  constructor(public dataService: TitleService, private router: Router, public layoutService: LayoutService) {
   }
 
-  get isMobile() {
-    return window.screen.width <= 500;
-  }
 
   ngOnInit(): void {
     this.dataService.currentSiteTitle$.subscribe(data => {

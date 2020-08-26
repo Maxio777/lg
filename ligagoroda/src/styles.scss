@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./node_modules/bootstrap/scss/bootstrap";
 
 @import "null-style";
 @import "fonts";
@@ -157,9 +158,22 @@ button:focus {
 
 .default-container {
   padding: 0 15px 15px 15px;
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+  }
+}
+
+.area__right, .area__left {
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+  }
 }
 
 
 .mat-drawer-container {
   background: #fff;
+}
+
+.test {
+  @extend .d-flex;
 }

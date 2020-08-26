@@ -1,4 +1,4 @@
-<div class="nav" perfectScrollbar>
+<div class="nav">
 
   <div class="header">
 
@@ -23,6 +23,7 @@
 
     </div>
     <button type="button" aria-label="Toggle sidenav"
+            class="drawer-client"
             mat-icon-button
             *ngIf="!(layoutService.is768px | async)"
             (click)="drawerClient.toggle()"
@@ -61,7 +62,7 @@
     </mat-sidenav>
     <mat-sidenav-content class="home-background" perfectScrollbar>
       <router-outlet></router-outlet>
-      <app-footer [isAuth]="authService.isAuth$ | async"></app-footer>
+      <app-footer></app-footer>
 
     </mat-sidenav-content>
 
@@ -70,7 +71,7 @@
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                  [mode]="'push'"
                  [opened]="false"
-                 [fixedInViewport]="false">
+                 [fixedInViewport]="true">
 
       <mat-nav-list>
         <div>

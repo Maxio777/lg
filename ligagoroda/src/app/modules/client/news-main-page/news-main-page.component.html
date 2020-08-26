@@ -18,7 +18,7 @@
   <div class="list-news col-5 h-100">
     <div class="lg-border"></div>
 
-    <div class="one-news" *ngFor="let oneNews of news | slice: 1:4">
+    <div class="one-news" *ngFor="let oneNews of news | slice: 1:5">
       <div class="photo col-5">
         <img src="{{oneNews.img}}" alt="" [routerLink]="'/news/' + oneNews._id">
       </div>

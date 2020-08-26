@@ -1,7 +1,7 @@
-<div class="footer" *ngIf="isAuth">
+<div class="footer">
   <div class="d-flex flex-row container footer">
 
-    <div class="menu-map d-flex flex-row px-3">
+    <div class="menu-map d-flex flex-row px-3" *ngIf="!(layoutService.isDesktop | async)">
       <div class="menu d-flex py-3">
         <ul>
           <li class="cursor-pointer" *ngFor="let link of links" routerLink="{{link.url}}" [class.disabled]="link.disabled">
@@ -11,7 +11,7 @@
           </li>
         </ul>
       </div>
-      <div class="map p-3">
+      <div class="map p-3" *ngIf="!(layoutService.isDesktop | async)">
 
         <img src="/assets/img/icons/lg-map.png" alt="">
         <div class="address">
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="contacts d-flex flex-column p-3">
+    <div class="contacts d-flex flex-column p-3" [class.w-100]="(layoutService.isDesktop | async)">
       <div class="managers d-flex flex-row justify-content-between text-left py-2 " *ngFor="let manager of managers">
         <div class="name w-50">
           <div class="pb-1">{{manager.name}}</div>

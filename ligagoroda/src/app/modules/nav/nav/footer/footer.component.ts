@@ -1,5 +1,6 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {LINKS_TOP} from '../../../../assets/constants/links-menu';
+import {LayoutService} from '../../../../services/layout/layout.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,9 @@ import {LINKS_TOP} from '../../../../assets/constants/links-menu';
 })
 export class FooterComponent {
   @Input() isAuth: boolean = false;
+
+  constructor(public layoutService: LayoutService) {
+  }
 
   links = LINKS_TOP;
 

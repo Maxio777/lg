@@ -22,6 +22,7 @@
                 *ngFor="let item of playersMenu"
                 [class.active]="currentVal === item.indicator"
                 (click)="changeActive(item.indicator)"
+                [matTooltip]="item.tooltip"
         >
           <img src="/assets/img/icons/{{currentVal === item.indicator ? item.imgActive : item.img}}" alt="">
         </button>

@@ -15,6 +15,10 @@
   width: 200px;
 }
 
+mat-sidenav-content {
+  height: 100%;
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }
@@ -102,6 +106,11 @@ app-logo {
   right: 0;
   padding-right: 20px;
   font-size: 14px;
+}
+
+.drawer-client {
+  position: absolute;
+  right: 20px;
 }
 
 

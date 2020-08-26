@@ -18,4 +18,8 @@ export class LayoutService {
     this.is992px = this.breakpointObserver.observe(['(min-width: 992px)']).pipe(map(result => result.matches));
     this.is1200px = this.breakpointObserver.observe(['(min-width: 1200px)']).pipe(map(result => result.matches));
   }
+
+  get isDesktop() {
+    return this.is768px;
+  }
 }
