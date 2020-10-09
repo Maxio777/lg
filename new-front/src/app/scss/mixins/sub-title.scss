@@ -1,0 +1,10 @@
+@import "variables";
+
+@mixin sub-title {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+  border-bottom: 1px solid $main-color;
+  color: $main-color;
+  padding: 5px;
+}

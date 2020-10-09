@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {ClientDataService} from '../../../core/client-data-service/client-data.service';
 
 @Component({
   selector: 'lg-client',
@@ -8,9 +9,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private clientDataService: ClientDataService) {
+  }
 
   ngOnInit(): void {
+
   }
 
 }

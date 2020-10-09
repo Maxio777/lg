@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -8,12 +8,16 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule),
+    data: {preload: false}
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules,
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

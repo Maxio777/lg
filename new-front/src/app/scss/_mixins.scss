@@ -1,0 +1,180 @@
+@import "variables";
+@import "mixins/side-table.mixins";
+@import "mixins/sub-title";
+
+
+@mixin content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin x-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin menu-hover-active($side) {
+  color: $gray;
+  @include lg-hover($side);
+  @include lg-active($side);
+}
+
+@mixin lg-hover($side, $border-color: $hover-border-bottom) {
+  &:hover {
+    background: $hover-background;
+    @if ($side == 't') {
+      border-top: $border-color;
+    }
+    @if ($side == 'b') {
+      border-bottom: $border-color;
+  }
+
+  }
+}
+
+@mixin lg-active($side) {
+  &.active {
+    background: $active-background;
+    color: $main-color;
+
+    @if ($side == 't') {
+      border-top: 1px solid $main-color;
+    }
+    @if ($side == 'b') {
+      border-bottom: 1px solid $main-color;
+    }
+  }
+}
+
+@mixin zebra {
+  &:nth-child(even) {
+    background: $background-light;
+  }
+}
+
+@mixin grey-border ($side: 'all', $color: $light-gray) {
+  @if ($side == 't') {
+    border-top: 1px solid $color;
+  }
+  @if ($side == 'r') {
+    border-right: 1px solid $color;
+  }
+  @if ($side == 'b') {
+    border-bottom: 1px solid $color;
+  }
+  @if ($side == 'l') {
+    border-left: 1px solid $color;
+  }
+  @if ($side == 'all') {
+    border: 1px solid $color;
+  }
+}
+
+@mixin outcomes($width-height: 6px) {
+  text-align: center;
+
+  & > span {
+    width: $width-height;
+    height: $width-height;
+    border-radius: $width-height / 2;
+    margin: 1px;
+  }
+}
+
+@mixin title-line {
+  border-radius: 3px;
+  height: 6px;
+  background: $main-color;
+}
+
+@mixin title {
+  margin-left: 20px;
+  color: $main-color;
+}
+
+@mixin images {
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+  border-radius: 7px;
+
+  img {
+    cursor: pointer;
+    border-radius: 7px;
+    width: inherit;
+    transition: 0.5s ease-out;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.5s ease-out;
+    }
+  }
+}
+
+@mixin tags {
+  display: flex;
+  align-self: stretch;
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      display: flex;
+      align-items: center;
+      padding: 3px 10px;
+      margin: 3px 4px;
+      font-size: 12px;
+      background: $light-gray;
+      border-radius: 5px;
+      height: 20px;
+      cursor: pointer;
+
+      -ms-user-select: none; // Для эксплорера
+      -moz-user-select: none; // Для мозилы
+      -khtml-user-select: none; // Для конкверора
+      -webkit-user-select: none; // Для Сафари и Хрома
+      &:hover {
+        background: rgba(0, 53, 93, 0.1);
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    span {
+      font-size: 18px;
+      padding-left: 10px;
+    }
+  }
+}
+
+@mixin border-img($b-radius: 5px) {
+  border: 1px solid rgba(0, 0, 0, 0.1);;
+  padding: 1px;
+  border-radius: $b-radius;
+}
+
+@mixin nowrap-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+@mixin action-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  & > * {
+    margin: 0 5px;
+  }
+}
+
+@mixin modal-action {
+  display: flex;
+  justify-content: flex-end;
+  & > button {
+    margin: 15px 0 0 10px;
+  }
+}
