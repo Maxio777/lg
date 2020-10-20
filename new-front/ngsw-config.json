@@ -30,7 +30,7 @@
   "dataGroups": [
     {
       "name": "myApi",
-      "urls": ["https://ligagoroda.ru/api/v1/**"],
+      "urls": ["https://ligagoroda.ru/**"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxAge": "1h",
