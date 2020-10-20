@@ -32,7 +32,7 @@
       "name": "myApi",
       "urls": ["https://ligagoroda.ru/api/v1/**"],
       "cacheConfig": {
-        "strategy": "performance",
+        "strategy": "freshness",
         "maxAge": "1h",
         "timeout": "5s",
         "maxSize": 20
