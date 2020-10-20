@@ -1,0 +1,9 @@
+<div class="players default-container">
+
+  <lg-page-header [title]="'ИГРОКИ'" [img]="'players-blue'">
+    <lg-search-input [placeholder]="'Поиск по игрокам'" (search)="search = $event"></lg-search-input>
+  </lg-page-header>
+
+  <lg-player-table [players]="_search(players)"></lg-player-table>
+
+</div>

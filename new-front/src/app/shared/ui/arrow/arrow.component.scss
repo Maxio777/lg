@@ -1,0 +1,37 @@
+@import "variables";
+@import "mixins";
+
+$transition: 0.2s;
+
+svg {
+  transition: $transition;
+  fill: $gray;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.hover {
+  &:hover {
+    transition: $transition;
+    transform: translateX(5px);
+    fill: $main-color;
+  }
+};
+
+.left-hover {
+  &:hover {
+    transition: $transition;
+    transform: rotate(180deg) translateX(5px);
+    fill: $main-color;
+  }
+};
+
+.hover-from-other-el {
+  transition: $transition;
+  transform: rotate(180deg) translateX(5px);
+  fill: $main-color;
+}

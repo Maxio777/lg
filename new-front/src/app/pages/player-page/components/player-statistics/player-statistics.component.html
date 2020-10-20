@@ -1,0 +1,32 @@
+<div class="player-statistics">
+  <table>
+
+    <thead>
+    <tr>
+      <th *ngFor="let i of indicators">
+        <div class="d-flex flex-column justify-content-between th-container align-items-center" [matTooltip]="i.tooltip">
+          <div class="icon">
+            <img src="/assets/img/icons/{{i.img}}-active.png" alt="">
+          </div>
+          <div class="text">{{i.text}}</div>
+        </div>
+      </th>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>{{player?.gamesCount}}</td>
+      <td>{{player?.goalsCount}}</td>
+      <td>{{player?.assistsCount}}</td>
+      <td>{{player?.goalsAssists}}</td>
+      <td>{{player?.yellow}}</td>
+      <td>{{player?.yellowReds}}</td>
+      <td>{{player?.red}}</td>
+      <td>{{player?.penalty}}</td>
+      <td>{{player?.autoGoals}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>

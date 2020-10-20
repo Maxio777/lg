@@ -1,0 +1,57 @@
+@import "variables";
+@import "mixins";
+
+
+.team-statistics {
+  padding: 10px;
+  background: $background-light;
+  border-radius: 7px;
+  margin-bottom: 50px;
+
+  table {
+    table-layout:fixed;
+    width: 100%;
+    color: $main-color;
+
+    thead {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+
+      tr {
+        height: 70px;
+        border-bottom: 1px solid $light-gray;
+
+        th {
+          .th-container {
+            padding: 10px 0;
+            height: 70px;
+
+            .circle {
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+            }
+
+            .text {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 10px 0;
+          text-align: center;
+          font-weight: bold;
+          font-size: 14px;
+
+        }
+      }
+    }
+
+  }
+}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 

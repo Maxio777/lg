@@ -1,0 +1,13 @@
+<div class="menu">
+  <a mat-button
+     class="menu__button"
+     *ngFor="let link of links"
+     [routerLink]="[link.url]"
+     [routerLinkActive]="['active']"
+     [routerLinkActiveOptions]="{ exact: link.exact }"
+     [disabled]="link.disabled"
+     [class.disabled]="link.disabled"
+  >
+    <span>{{link.name}}</span>
+  </a>
+</div>

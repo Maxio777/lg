@@ -1,0 +1,6 @@
+@import "mixins/goals-and-punishments";
+
+
+.main {
+  @include goals-and-punishments;
+}

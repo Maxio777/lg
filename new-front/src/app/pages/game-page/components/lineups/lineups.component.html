@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="title">Составы:</div>
+
+  <div class="lineups d-flex">
+
+    <div class="home col-6">
+      <ng-container
+        [ngTemplateOutlet]="playersRef"
+        [ngTemplateOutletContext]="{$implicit: game?.homePlayers}">
+      </ng-container>
+
+    </div>
+
+    <div class="guest col-6">
+      <ng-container
+        [ngTemplateOutlet]="playersRef"
+        [ngTemplateOutletContext]="{$implicit: game?.guestPlayers}">
+      </ng-container>
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #playersRef let-data>
+  <table>
+    <tbody>
+    <tr *ngFor="let player of data">
+      <td>
+        <img src="{{player?.img  || '../assets/img/defaultImage.png'}}" class="player-img" alt="">
+        <span class="name">
+          <a routerLink="/players/{{player._id}}">{{player?.firstName}} {{player?.lastName}}</a>
+        </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>

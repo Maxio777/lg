@@ -1,0 +1,68 @@
+.footer, .container {
+  color: white;
+  background: rgb(0,52,90);
+  background: linear-gradient(0deg, rgba(0,52,90,1) 0%, rgba(29,68,116,1) 50%, rgba(0,52,90,1) 100%);
+}
+
+.contacts {
+  width: 40%;
+}
+
+.contact {
+  font-size: 16px;
+}
+
+.managers {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.position {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+
+li {
+  list-style-type: none;
+  outline: none;
+}
+
+.menu {
+  width: 20%;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 25px;
+  text-align: left;
+  letter-spacing: 0.2em;
+  li:hover {
+    transform: scale(1.05);
+  }
+}
+
+.map {
+  position: relative;
+  text-align: center;
+  width: 80%;
+
+  img {
+    height: 280px;
+  }
+}
+
+
+.menu-map {
+  width: 60%;
+}
+
+.address {
+  text-align: left;
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+a {
+  color: white;
+}

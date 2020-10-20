@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, filter} from 'rxjs/operators';
-import {News, Tag} from '../../models/news';
-import {GameLG} from '../../models/game';
-import {PlayerClient, TeamLG, TournamentLG} from '../../models/interfaces';
-import {TeamTable} from '../../models/team-table';
+import {News, Tag} from '@models/news';
+import {GameLG} from '@models/game';
+import {PlayerClient, TeamLG, TournamentLG} from '@models/interfaces';
+import {TeamTable} from '@models/team-table';
 import {DataRestService} from '../../rest/data-rest-service/data-rest.service';
 
 
@@ -61,13 +61,9 @@ export class ClientDataService {
 
   getAllData(id: string = ''): Observable<void> {
     return this.dataRestService.getAllDataLG(id)
-      .pipe(map(([games, players, news, tournament, table, teams, tags]) => {
-          // this.setNews(sortBy(news, ['date']));
-
-
+      .pipe(
+        map(([games, players, news, tournament, table, teams, tags]) => {
           this.setNews(news.sort((a, b) => a.date < b.date ? 1 : -1));
-
-
           if (players && players.length) {
             players.forEach(p => this.playersMap.set(p._id, p));
           }
@@ -97,6 +93,5 @@ export class ClientDataService {
 
 // tslint:disable-next-line:typedef
 export function init(provider: ClientDataService) {
-  console.log('INIT');
   return () => provider.getAllData().subscribe();
 }

@@ -1,0 +1,44 @@
+@import "variables";
+@import "mixins";
+
+
+.main {
+  .title {
+    text-align: center;
+    color: $gray;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  table {
+    border-top: 1px solid $light-gray;
+    @include table;
+    color: $main-color;
+
+    tbody {
+      tr {
+        @include zebra;
+        td {
+          display: flex;
+          align-items: center;
+          .player-img {
+            width: 28px;
+            height: auto;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1px;
+            border-radius: 3px;
+            margin: 5px;
+          }
+          span {
+            margin-left: 5px;
+            a {
+              color: $main-color;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}

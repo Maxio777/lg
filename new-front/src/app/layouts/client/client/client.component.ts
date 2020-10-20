@@ -1,5 +1,7 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {ClientDataService} from '../../../core/client-data-service/client-data.service';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
+// @ts-ignore
+import {LINKS_TOP} from '@assets/constants/links-menu';
+
 
 @Component({
   selector: 'lg-client',
@@ -7,14 +9,6 @@ import {ClientDataService} from '../../../core/client-data-service/client-data.s
   styleUrls: ['./client.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ClientComponent implements OnInit {
-
-
-  constructor(private clientDataService: ClientDataService) {
-  }
-
-  ngOnInit(): void {
-
-  }
-
+export class ClientComponent {
+  links = LINKS_TOP;
 }

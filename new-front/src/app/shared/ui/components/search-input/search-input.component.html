@@ -1,0 +1,13 @@
+<div class="search">
+  <label>
+    <input class="search__input" type="text" placeholder="{{placeholder}}" [formControl]="searchControl">
+  </label>
+  <img class="search__search-icon" src="/assets/img/icons/search.png" alt="">
+  <mat-icon
+    class="search__clear"
+    *ngIf="searchControl.value"
+    (click)="clearInp()"
+  >close
+  </mat-icon>
+
+</div>

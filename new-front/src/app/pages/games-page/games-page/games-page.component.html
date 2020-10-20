@@ -1,0 +1,10 @@
+<div class="games default-container p-xs-0">
+
+  <lg-page-header [title]="'ИГРЫ'" [img]="'games-active'">
+    <lg-search-input [placeholder]="'Поиск по играм'" (search)="search = $event"></lg-search-input>
+  </lg-page-header>
+
+  <lg-games-table [games]="displayGames"></lg-games-table>
+
+
+</div>

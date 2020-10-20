@@ -7,8 +7,6 @@ import { Title } from '@angular/platform-browser';
 @Injectable()
 export class TitleService {
 
-  team: any;
-  player: any;
   private siteTitle$: BehaviorSubject<string> = new BehaviorSubject('');
   public currentSiteTitle$ = this.siteTitle$.asObservable();
   public currentTournamentID: BehaviorSubject<string> = new BehaviorSubject<string>('');

@@ -1,7 +1,7 @@
 $gray: #A5A7A8;
 $light-gray: rgba(0, 0, 0, 0.2);
 $main-color: #00345A;
-$main-f-size: 15px;
+$main-f-size: 1rem;
 $accent: orange;
 
 $nav-color: $main-color;
@@ -16,3 +16,9 @@ $background-light: rgba(0, 53, 93, 0.04);
 
 $height-tr: 55px;
 
+
+$xs: 0; // Extra small screen / phone
+$sm: 576px; // Small screen / phone
+$md: 768px; // Medium screen / tablet
+$lg: 992px; // Large screen / desktop
+$xl: 1200px;// Extra large screen / wide desktop

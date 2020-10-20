@@ -1,0 +1,16 @@
+<div class="news default-container">
+  <lg-page-header [title]="'ИГРЫ'" [img]="'games-title'"></lg-page-header>
+  <lg-go-back></lg-go-back>
+
+
+  <div class="game-info d-flex">
+    <lg-team-name [team]="game?.home" class="col-4"></lg-team-name>
+    <lg-match-info [game]="game" class="match-info col-4"></lg-match-info>
+    <lg-team-name [team]="game?.guest" class="col-4"></lg-team-name>
+  </div>
+
+  <lg-goals [game]="game"></lg-goals>
+  <lg-punishments [game]="game"></lg-punishments>
+
+  <lg-lineups [game]="game"></lg-lineups>
+</div>

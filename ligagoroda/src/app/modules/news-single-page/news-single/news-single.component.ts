@@ -4,7 +4,6 @@ import {map, pluck} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {News} from '../../../models/news';
 import {Subscription} from 'rxjs';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-news-single',
@@ -20,7 +19,6 @@ export class NewsSingleComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef,
     private clientDataService: ClientDataService,
-    private _location: Location
   ) {
   }
 
@@ -34,10 +32,6 @@ export class NewsSingleComponent implements OnInit, OnDestroy {
           this.cd.detectChanges();
         }));
       });
-  }
-
-  goBack() {
-    this._location.back();
   }
 
   ngOnDestroy(): void {

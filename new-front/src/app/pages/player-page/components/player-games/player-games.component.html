@@ -1,0 +1,99 @@
+<div class="player-games">
+  <table>
+
+    <colgroup>
+      <col style="width:7.5%"> <!--дата и время-->
+      <col style="width:11.5%"> <!--Хозяева-->
+      <col style="width:6%"> <!--ЛОго хозяев-->
+      <col style="width:7.5%"> <!--Счет-->
+      <col style="width:6%"> <!--Лого гостей-->
+      <col style="width:11.5%"> <!--Гости-->
+
+      <col style="width:6.25%"> <!--голы-->
+      <col style="width:6.25%"> <!--пасы-->
+      <col style="width:6.25%"> <!--голпас-->
+      <col style="width:6.25%"> <!--Жк-->
+      <col style="width:6.25%"> <!--Кк-->
+      <col style="width:6.25%"> <!--Пенальти     -->
+      <col style="width:6.25%"> <!--автоголы-->
+      <col style="width:6.25%"> <!--переход-->
+    </colgroup>
+
+    <thead>
+    <tr>
+      <th class="position-relative">
+        <div class="title">Игры с участием:</div>
+      </th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th class="text-center"><img src="/assets/img/icons/goal-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/assist-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/goal-and-assist-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/yellow-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/red-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/penalty-active.png" alt=""></th>
+      <th class="text-center"><img src="/assets/img/icons/autogoal-active.png" alt=""></th>
+      <th class="text-center"></th>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let game of player?.games">
+      <td>
+        <div class="date-tour">
+          <div class="date">{{ game.date | date: 'dd.MM.yy' }}</div>
+          <div class="tour">{{game.tour}} тур.</div>
+        </div>
+      </td>
+      <td>
+        <div class="team-name text-right" routerLink="/teams/{{game.home._id}}">
+          {{ game.home.name }}
+        </div>
+      </td>
+      <td class="home-logo">
+        <img src="{{game.home.img || '/assets/img/logo_white_black.jpg'}}" class="cursor-pointer" alt="" routerLink="/teams/{{game.home._id}}">
+      </td>
+      <td>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+
+          <div class="count text-center">
+            <span>{{ game.homeGoal }}</span>
+            <div class="count-circle" [style.background]="getColor(game, true)"></div>
+          </div>
+          <span class="colon">:</span>
+          <div class="count">
+            <span>{{ game.guestGoal }}</span>
+            <div class="count-circle" [style.background]="getColor(game, false)"></div>
+          </div>
+
+
+        </div>
+      </td>
+      <td class="guest-logo">
+        <img src="{{game.guest.img || '/assets/img/logo_white_black.jpg'}}" class="cursor-pointer" alt="" routerLink="/teams/{{game.guest._id}}">
+      </td>
+      <td>
+        <div class="team-name" routerLink="/teams/{{game.guest._id}}">
+          {{ game.guest.name }}
+        </div>
+      </td>
+      <td class="text-center">{{getEventCount(game, player._id, 'goal')}}</td>
+      <td class="text-center">{{getAssistCount(game, player._id, 'goal')}}</td>
+      <td class="text-center">{{getEventCount(game, player._id, 'goal') + getAssistCount(game, player._id, 'goal')}}</td>
+      <td class="text-center">{{getEventCount(game, player._id, 'yellow')}}</td>
+      <td class="text-center">{{getEventCount(game, player._id, 'red')}}</td>
+      <td class="text-center">{{getEventCount(game, player._id, 'penalty')}}</td>
+      <td class="text-center">{{getEventCount(game, player._id, 'autoGoal')}}</td>
+      <td class="text-center"><lg-arrow [hover]="true" [routerLink]="'/games/' + game._id"></lg-arrow></td>
+    </tr>
+
+
+    </tbody>
+  </table>
+  <div class="text-center" *ngIf="!player?.games?.length">{{player?.firstName}} {{player?.lastName}} еще не сыграл не в одной игре</div>
+
+</div>
+
+

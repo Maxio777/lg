@@ -1,0 +1,23 @@
+@import "variables";
+@import "mixins";
+
+$transition: 0.2s ease-out;
+
+.go-back {
+  margin: 20px 10px;
+  display: flex;
+  align-items: center;
+  transition: $transition;
+  color: $gray;
+  cursor: pointer;
+  width: fit-content;
+
+  lg-arrow {
+    transition: $transition;
+  }
+
+  &:hover {
+    transition: $transition;
+    color: $main-color;
+  }
+}

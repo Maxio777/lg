@@ -1,0 +1,187 @@
+@import "mixins";
+@import "variables";
+
+.table {
+  width: 100%;
+
+  th {
+    border-bottom: none;
+    border-top: none;
+  }
+
+  tr:nth-child(1) {
+    td {
+      border-top: none;
+    }
+  }
+
+  thead {
+    .title {
+      border-bottom: 1px solid #e1e1e1;
+      color: #00355d;
+    }
+
+    .games-icon {
+      width: auto;
+      height: 35px;
+    }
+
+    .tournament {
+      height: 20px;
+      background: #00355d;
+      color: rgba(255, 255, 255, 1);
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 20px;
+
+      .link-to-games {
+        cursor: pointer;
+        outline: none;
+        letter-spacing: 2px;
+        height: 20px;
+        text-align: right;
+        width: 200px;
+        border-radius: 10px;
+        box-sizing: content-box;
+        margin-right: -1px;
+        transition: 0.2s;
+        justify-content: center;
+        font-size: 0.8rem;
+        line-height: 1.7rem;
+
+        mat-icon {
+          width: unset;
+          height: unset;
+          line-height: 20px;
+          transition: 0.5s;
+        }
+
+        &:hover {
+          background: $accent;
+          mat-icon {
+            transform: translateX(7px);
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+
+  tbody {
+    td:nth-child(1), td:nth-last-child(1) {
+      border-top: none;
+    }
+
+    img {
+      @include border-img;
+    }
+
+    td {
+      vertical-align: middle;
+
+      .res {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+      }
+    }
+
+    $backgroundLg: rgba(0, 53, 93, 0.05);
+
+    .tbody {
+      &__date {
+        width: 15%;
+      }
+
+      &__home {
+        width: 17.5%;
+        background: $backgroundLg;
+      }
+
+      &__home--image {
+        width: 10%;
+        background: $backgroundLg;
+      }
+
+      &__count {
+        width: 15%;
+        background: $backgroundLg;
+
+        &--circle {
+          z-index: 1;
+          min-width: 6px;
+        }
+      }
+
+      &__tour {
+        font-weight: 300;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #7F7F7F;
+      }
+
+      &__guest--image {
+        width: 10%;
+        background: $backgroundLg;
+      }
+
+      &__guest {
+        width: 17.5%;
+        background: $backgroundLg;
+      }
+
+      &__forward {
+        width: 15%;
+      }
+    }
+
+    .tour, .date {
+      font-style: normal;
+      font-weight: 300;
+      line-height: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7F7F7F;
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+
+    a {
+      color: $main-color;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
+  }
+}
+
+.action-button {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+
+  button {
+    padding: 0;
+    width: 20%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
+    font-size: 1rem;
+
+    @include menu-hover-active('t');
+  }
+}
+
+.arrow-2 {
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: translate(-1px) rotate(45deg);
+}

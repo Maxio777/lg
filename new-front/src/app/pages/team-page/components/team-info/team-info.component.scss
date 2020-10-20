@@ -1,0 +1,38 @@
+@import "variables";
+@import "mixins";
+
+.team-info {
+  display: flex;
+  flex-direction: row;
+  color: $main-color;
+  margin-bottom: 50px;
+
+  &__img {
+    padding: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 7px;
+      padding: 20px;
+    }
+  }
+  &__info {
+    margin-left: 30px;
+    .name {
+      font-weight: bold;
+      font-size: 40px;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+
+.managers {
+  &--title {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+}

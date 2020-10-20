@@ -1,4 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "null-style";
+@import "variables";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; font-size: 13px;}
+body { margin: 0; font-family: Inter, sans-serif; color: $main-color}
+
+
+
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.4;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

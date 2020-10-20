@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+
+.menu {
+  height: 40px;
+  z-index: 4;
+  text-align: right;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  display: flex;
+
+  &__button {
+    height: inherit;
+    letter-spacing: 2px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 12px;
+    @include menu-hover-active('b');
+  }
+
+}
+
+.disabled {
+  pointer-events: none;
+}

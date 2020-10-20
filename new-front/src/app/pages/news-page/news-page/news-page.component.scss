@@ -1,0 +1,157 @@
+@import "variables";
+@import "mixins";
+
+$fz-date: 1rem;
+
+.news {
+  font-size: 1rem;
+
+  .date {
+    padding: 10px 0;
+    font-size: $fz-date;
+  }
+
+  .news__header {
+    height: $height-tr;
+
+    .icon {
+    }
+
+    .title {
+      @include title;
+    }
+
+  }
+
+  .news__hr {
+    @include title-line;
+  }
+
+  .news__selected-tags {
+    margin-top: 15px;
+    @include tags;
+
+    & > div > div {
+      background: $accent !important;
+    }
+
+    .tag-filter {
+      line-height: 1.5;
+      font-size: 1rem !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;;
+    }
+  }
+
+
+  .news__main {
+    padding: 15px 0;
+    margin-bottom: 5px;
+    @include grey-border('b');
+
+    .content {
+      .img {
+        @include images;
+      }
+
+      .text {
+        color: $main-color;
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+
+        .date {
+        }
+
+        .preview {
+          cursor: pointer;
+          flex-grow: 1;
+          &:hover {
+
+          }
+        }
+      }
+    }
+
+    .tags {
+      @include tags;
+    }
+  }
+
+  .news__list {
+    .content {
+      .img {
+        @include images;
+        margin: 10px 10px 10px 0;
+      }
+
+      .text {
+        @include grey-border('b');
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .date {
+          color: $gray;
+        }
+
+        .preview {
+          color: $main-color;
+          flex-grow: 1;
+
+          p:hover {
+            text-decoration: underline;
+            text-decoration-color: $main-color;
+            cursor: pointer;
+          }
+        }
+
+        .tags {
+          @include tags;
+        }
+      }
+    }
+  }
+
+  .news__pagination {
+    text-align: center;
+    margin: 40px;
+  }
+}
+
+
+.selected {
+  background: #0260a4f2 !important;
+  color: white;
+}
+
+
+.clear {
+  cursor: pointer;
+  transition: 0.2s;
+  position: absolute;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  color: $light-gray;
+  &:hover {
+    transition: 0.2s;
+    color: $main-color;
+  }
+}
+
+.my-pagination::ng-deep .ngx-pagination .current {
+  background: $accent;
+  border-radius: 7px;
+}
+
+.my-pagination::ng-deep .ngx-pagination {
+  a, button {
+    margin: 5px;
+  }
+  a:hover, button:hover {
+    background: $hover-background;
+    border-radius: 7px;
+  }
+}
+

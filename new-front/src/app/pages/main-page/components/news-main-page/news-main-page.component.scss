@@ -1,0 +1,139 @@
+@import "variables";
+@import "mixins";
+
+$padding: 15px;
+
+.span-hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $main-color;
+}
+
+.news-container {
+  color: $main-color;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  .lg-border {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: #e1e1e1;
+    left: 15px;
+    right: 15px;
+    z-index: 1;
+  }
+
+  .main-news {
+    padding-right: $padding;
+    padding-bottom: 15px;
+
+
+    .title-and-description {
+      //position: absolute;
+      //right: 0;
+      //left: 0;
+      //bottom: 0;
+      padding-top: 15px;
+      //padding: 40px $padding $padding 30px;
+      //background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6800934866573034) 70%, rgba(255,255,255,0) 100%);
+
+      span:hover {
+        @extend .span-hover;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        line-height: 26px;
+        font-weight: bold;
+        padding-bottom: $padding;
+
+      }
+      .description {
+        font-size: 1.1rem;
+        line-height: 20px;
+      }
+    }
+
+  }
+
+
+
+  .list-news {
+    padding: 0 0 15px;
+
+    .one-news {
+      height: 23%;
+      display: flex;
+      flex-direction: row;
+      padding: 0 $padding $padding $padding;
+
+      .photo {
+        margin-right: 10px;
+
+        .img {
+          overflow: hidden;
+          border-radius: 7px;
+        }
+      };
+
+
+      .title-and-description {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0 0 0 10px;
+        font-size: 1.1rem;
+        line-height: 18px;
+
+        .description {
+          font-size: 1.1rem;
+          line-height: 18px;
+        }
+      }
+
+      span:hover {
+        @extend .span-hover;
+      }
+
+    }
+
+    .mews-link {
+      cursor: pointer;
+      margin: 0 15px;
+      color: $main-color;
+      box-sizing: content-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+      left: 0;
+      padding: 5px 0;
+      transition: 0.2s ease-out;
+      align-self: stretch;
+
+      &:hover {
+        background: $accent;
+        color: white;
+        transition: 0.2s ease-out;
+      }
+    }
+  }
+
+  .photo {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 7px;
+
+    img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: 0.5s ease-out;
+      border-radius: 7px;
+
+      &:hover {
+        transform: scale(1.05);
+        transition: 0.5s ease-out;
+      }
+    }
+  }
+}

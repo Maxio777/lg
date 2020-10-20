@@ -7,12 +7,6 @@ import {GameLG} from '../../../models/game';
   styleUrls: ['./team-games.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamGamesComponent implements OnInit {
+export class TeamGamesComponent {
   @Input() games: GameLG[] | undefined;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

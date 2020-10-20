@@ -1,1 +1,34 @@
-<p>client works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+               [mode]="'over'"
+               [opened]="false"
+               [fixedInViewport]="false">
+
+    <mat-nav-list>
+      <div>
+        <a mat-list-item
+           *ngFor="let link of links"
+           [routerLink]="[link.url]" [routerLinkActive]="['active']"
+           [disabled]="link.disabled"
+        >
+          <mat-icon class="left-menu">{{link.icon}}</mat-icon>
+          {{link.name}}
+        </a>
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="home-background">
+
+    <lg-header (toggleSideNav)="drawer.toggle()"></lg-header>
+    <div class="container my-5 px-0 d-flex">
+      <div class="col-9">
+        <router-outlet></router-outlet>
+      </div>
+      <lg-side-panel class="col-3"></lg-side-panel>
+    </div>
+    <lg-footer></lg-footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

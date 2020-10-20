@@ -1,0 +1,26 @@
+@import 'variables';
+
+
+.header {
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: space-between;
+  background: $main-color;
+  color: white;
+}
+
+.header-button {
+  display: flex;
+  background-color: #ffffff;
+  justify-content: center;
+  height: 40px;
+  border-bottom: 1px solid $light-gray;
+}

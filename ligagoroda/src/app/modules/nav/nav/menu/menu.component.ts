@@ -1,6 +1,5 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {LINKS_TOP} from '../../../../assets/constants/links-menu';
-import {AuthService} from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +9,4 @@ import {AuthService} from '../../../../services/auth/auth.service';
 })
 export class MenuComponent {
   linksTop = LINKS_TOP;
-
-  constructor(public authService: AuthService) { }
-
 }
