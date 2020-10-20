@@ -8,7 +8,7 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix ligagoroda",
     "client:install": "npm install --prefix ligagoroda",
-    "client:build": "npm run build --prefix ligagoroda",
+    "client:build": "npm run build --prefix new-front",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \" npm run client\","
   },
   "keywords": [
