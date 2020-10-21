@@ -1,0 +1,89 @@
+@import "mixins";
+@import "variables";
+
+table {
+  @include table;
+
+  caption {
+    @include caption;
+  }
+
+  .name {
+    width: 60%;
+  }
+
+  .index {
+    width: 10%;
+  }
+
+  td {
+    padding: 0 5px;
+  }
+
+  thead {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  tbody {
+    img {
+      margin: 3px 3px;
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+      @include border-img(3px);
+    }
+
+    font-size: 1rem;
+    border-color: rgba(0, 0, 0, 0.2);
+
+    tr {
+      height: 40px;
+
+      &:nth-child(even) {
+        background: $background-light;
+      }
+
+      @include lg-hover('b', 0);
+    }
+
+    .index {
+      text-align: center;
+    }
+
+    a {
+      color: $main-color;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
+  }
+}
+
+.players-menu {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+
+  &__item {
+    padding: 0;
+    width: 20%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
+    box-sizing: content-box;
+    border-bottom: 1px solid $light-gray;
+    @include lg-hover('b');
+    @include lg-active('b');
+
+    img {
+      width: 20px;
+      height: auto;
+    }
+  }
+
+  div {
+    @include content-center;
+  }
+
+}

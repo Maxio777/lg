@@ -1,0 +1,138 @@
+@import "mixins";
+@import "variables";
+
+$backgroundLg: rgba(0, 53, 93, 0.05);
+
+table {
+  table-layout:fixed;
+  min-width: 270px;
+  @include table;
+
+  .logo {
+    img {
+      width: 31px!important;
+      height: 31px!important;
+      @include border-img;
+    }
+  }
+
+  .mat-button {
+    font-size: 0.9rem!important;
+  }
+
+  caption {
+    @include caption;
+  }
+
+  thead {
+    color: rgba(0, 0, 0, 0.2);
+    & > tr {
+      height: 40px;
+    }
+  }
+
+  .tbody {
+    color: $main-color;
+    font-size: $main-f-size;
+    border-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    a {
+      color: $main-color;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+    }
+
+    tr {
+      height: 90px;
+
+      &:nth-child(even) {
+        background: $background-light;
+      }
+
+      &:hover {
+        @include lg-hover('b', '0');
+      }
+
+    }
+
+    span {
+      font-size: 12px!important;
+    }
+
+    &__date {
+      position: absolute;
+      color: $gray;
+    }
+
+    &__home {
+      padding-left: 10px;
+    }
+
+    &__count {
+      font-weight: bold;
+      font-size: 1rem;
+
+      &--circle {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin: 5px 0;
+      }
+    }
+
+    &__tour {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #7F7F7F;
+    }
+
+    &__guest {
+      padding-right: 10px;
+
+      lg-arrow {
+        position: absolute;
+        right: 0;
+        top: -5;
+        height: min-content!important;
+        width: min-content!important;
+      }
+    }
+
+    .team-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}
+
+.games-menu {
+  color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+
+  &__item {
+    padding: 0;
+    width: 50%;
+    border-radius: 0;
+    outline: none;
+    min-width: unset;
+    line-height: 20px;
+    box-sizing: content-box;
+    border-bottom: 1px solid $light-gray;
+    @include lg-hover('b', 0);
+    @include lg-active('b');
+  }
+
+  div {
+    @include content-center;
+  }
+}

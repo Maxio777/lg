@@ -1,0 +1,44 @@
+<table>
+
+  <caption class="caption">
+    <div class="d-flex flex-row justify-content-between align-items-center h-100">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="/assets/img/icons/top-players.png" alt="">
+      </div>
+      <div class="text-left name-and-tournament">
+        <h4>ТОП-10 ИГРОКОВ</h4>
+        <div class="tournament-name">{{(this.clientDataService.getTournament$() | async)?.name}}</div>
+      </div>
+
+    </div>
+  </caption>
+
+  <thead>
+  <tr>
+    <th colspan="5">
+      <div class="d-flex flex-row w-100 players-menu">
+
+        <button mat-button class="players-menu__item"
+                *ngFor="let item of playersMenu"
+                [class.active]="currentVal === item.indicator"
+                (click)="changeActive(item.indicator)"
+                [matTooltip]="item.tooltip"
+        >
+          <img src="/assets/img/icons/{{currentVal === item.indicator ? item.imgActive : item.img}}" alt="">
+        </button>
+
+      </div>
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr class="w-100" *ngFor="let player of players | slice:0:10; let idx = index">
+    <td class="index">{{idx + 1}}</td>
+    <td class="index"><a [routerLink]="'/players/' + player._id"><img src="{{player?.teams[0]?.img || '/assets/img/defaultImage.png'}}" alt=""></a></td>
+    <td class="name"><a [routerLink]="'/players/' + player._id">{{player.firstName}} {{player.lastName}}</a></td>
+    <td class="text-center px-1 index">{{player[currentVal]}}</td>
+  </tr>
+  </tbody>
+
+</table>

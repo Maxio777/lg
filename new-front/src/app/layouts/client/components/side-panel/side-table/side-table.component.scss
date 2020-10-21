@@ -1,0 +1,67 @@
+@import "variables";
+@import "mixins";
+
+table {
+  @include table;
+
+  caption {
+    @include caption;
+  }
+
+  thead {
+    color: rgba(0,0,0,0.2);
+    .games-count, .points, .index {
+      width: 10%;
+    }
+    & > tr {
+      height: 40px;
+    }
+  }
+
+  tbody{
+    font-size: $main-f-size;
+    border-top: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+
+    img {
+      margin: 3px 10px;
+      width: 24px;
+      height: 24px;
+      vertical-align: sub;
+      @include border-img(3px);
+    }
+
+    tr {
+      height: 40px;
+      &:nth-child(even) {
+        background: $background-light;
+      }
+      &:hover {
+        @include lg-hover('b', 0);
+      }
+
+    }
+    .outcomes {
+      text-align: center;
+
+      .outcome {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin: 1px;
+      }
+    }
+
+    .index {
+      text-align: center;
+    }
+
+    a {
+      color: $main-color;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
+  }
+}
