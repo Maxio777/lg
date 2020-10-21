@@ -9,13 +9,23 @@ import {LogoComponent} from './components/header/logo/logo.component';
 import {SharedModule} from '../../shared/shared.module';
 import {MenuComponent} from './components/header/menu/menu.component';
 import {SidePanelComponent} from './components/side-panel/side-panel.component';
-import { SideTableComponent } from './components/side-panel/components/side-table/side-table.component';
-import { SideGamesComponent } from './components/side-panel/components/side-games/side-games.component';
-import { SidePlayersComponent } from './components/side-panel/components/side-players/side-players.component';
+import {SideTableComponent} from './components/side-panel/side-table/side-table.component';
+import {SideGamesComponent} from './components/side-panel/side-games/side-games.component';
+import {SidePlayersComponent} from './components/side-panel/side-players/side-players.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, HeaderComponent, FooterComponent, LogoComponent, MenuComponent, SidePanelComponent, SideTableComponent, SideGamesComponent, SidePlayersComponent],
+  declarations: [
+    ClientComponent,
+    HeaderComponent,
+    FooterComponent,
+    LogoComponent,
+    MenuComponent,
+    SidePanelComponent,
+    SideTableComponent,
+    SideGamesComponent,
+    SidePlayersComponent
+  ],
   imports: [
     CommonModule,
     ClientRoutingModule,
