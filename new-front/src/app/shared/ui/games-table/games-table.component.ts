@@ -9,17 +9,17 @@ import {getColor} from '@core/get-color';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamesTableComponent {
+  @Input() games: GameLG[] = [];
   gamesFilter = '';
   filterSrt = [
     {name: 'ВСЕ', str: ''},
     {name: 'СЫГРАННЫЕ', str: 'completed'},
     {name: 'ПРЕДСТОЯЩИЕ', str: 'notCompleted'},
   ];
-  @Input() games: GameLG[] = [];
   getColor = getColor;
 
   get displayGames(): GameLG[] {
-    return this.games.filter(g => this.filterGames(g));
+    return this.games?.filter(g => this.filterGames(g));
   }
 
   filterGames(g: GameLG): boolean {

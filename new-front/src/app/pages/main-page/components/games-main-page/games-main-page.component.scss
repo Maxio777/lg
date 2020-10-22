@@ -107,6 +107,7 @@
       &__count {
         width: 15%;
         background: $backgroundLg;
+        font-weight: bold;
 
         &--circle {
           z-index: 1;
@@ -172,7 +173,7 @@
     outline: none;
     min-width: unset;
     line-height: 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
 
     @include menu-hover-active('t');
   }

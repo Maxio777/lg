@@ -68,12 +68,12 @@ table {
 
     &__count {
       font-weight: bold;
-      color: $main-color;
       letter-spacing: 4px;
 
-      & > div > div {
+      & > div > a {
         margin-left: 10px;
         margin-right: 10px;
+        color: $main-color;
       }
 
       &--circle {

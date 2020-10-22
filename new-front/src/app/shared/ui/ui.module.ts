@@ -12,7 +12,12 @@ import {GoBackComponent} from './go-back/go-back.component';
 
 
 const components = [
-  PageHeaderComponent, SearchInputComponent, PlayerTableComponent, GamesTableComponent, ArrowComponent, GoBackComponent
+  PageHeaderComponent,
+  SearchInputComponent,
+  PlayerTableComponent,
+  GamesTableComponent,
+  ArrowComponent,
+  GoBackComponent
 ];
 
 

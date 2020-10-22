@@ -38,6 +38,7 @@
 
     tbody {
       tr {
+        @include zebra;
         .home-logo {
           text-align: right;
           img {
