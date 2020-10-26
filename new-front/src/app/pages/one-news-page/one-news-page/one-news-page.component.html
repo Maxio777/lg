@@ -1,13 +1,13 @@
-<div class="news default-container">
+<div class="news">
   <lg-page-header [title]="'НОВОСТИ'" [img]="'news'"></lg-page-header>
   <lg-go-back></lg-go-back>
 
   <div class="one-news">
     <div class="one-news__date">
-      <img src="../assets/img/icons/date.png" alt="">
+      <img class="" src="/assets/img/icons/date.png" alt="">
       <span class="text">{{ news?.date | date: 'dd MMM HH:mm' }}</span>
     </div>
-    <div class="one-news__title">{{news?.title}}</div>
+    <h3 class="one-news__title">{{news?.title}}</h3>
     <div class="one-news__content">
       <img src="{{news?.img}}" alt="">
       <div class="text" [innerHTML]="news?.text"></div>

@@ -53,9 +53,19 @@
 
   <!--Список новостей-->
   <div class="news__list">
-    <div class="content d-flex"
-         *ngFor="let news of news | paginate: {itemsPerPage: 4, currentPage: p|async}">
-      <div class="img col-5">
+
+    <div class="content d-flex flex-column flex-sm-row mb-5"
+         *ngFor="let news of news | paginate: {itemsPerPage: 3, currentPage: p|async}">
+
+      <div class="text px-0 border-bottom-none">
+        <div class="preview" *ngIf="!news?.isLoad; else loaderForMainText">
+          <h4 class="d-sm-none d-block mb-0"><strong [routerLink]="['/news', news?._id ]">{{news?.title }}</strong></h4>
+        </div>
+      </div>
+
+
+      <div class="img col-12 col-sm-5">
+
         <ngx-skeleton-loader
           *ngIf="news?.isLoad"
           count="1"
@@ -66,12 +76,12 @@
         ></ngx-skeleton-loader>
         <img src="{{news?.img}}" alt="" [routerLink]="['/news', news?._id ]" [hidden]="news?.isLoad" (load)="changeLoadStatus(news)">
       </div>
-      <div class="text w-100 col-7">
+      <div class="text w-100 col-12 col-sm-7">
         <div class="date" *ngIf="!news?.isLoad; else loaderForDate">
           <img src="/assets/img/icons/date.png" alt=""> {{news?.date | date: 'dd.MM.yyyy'}}
         </div>
         <div class="preview" *ngIf="!news?.isLoad; else loaderForMainText">
-          <p><strong [routerLink]="['/news', news?._id ]">{{news?.title }}</strong></p>
+          <h4 class="d-none d-sm-block"><strong [routerLink]="['/news', news?._id ]">{{news?.title }}</strong></h4>
           <p [routerLink]="['/news', news?._id ]">{{news?.textPreview }}</p>
         </div>
         <div class="tags d-flex">
@@ -85,7 +95,9 @@
         </div>
       </div>
     </div>
+
   </div>
+
   <div class="news__pagination">
     <pagination-controls class="my-pagination"
                          (pageChange)="currentP =$event; goToChank($event)"
@@ -95,7 +107,9 @@
                          previousLabel="сюда"
                          nextLabel="туда"
     ></pagination-controls>
+
   </div>
+
 </div>
 
 

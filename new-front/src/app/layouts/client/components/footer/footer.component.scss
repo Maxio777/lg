@@ -1,27 +1,29 @@
 .footer, .container {
+  font-size: 12px;
   color: white;
   background: rgb(0,52,90);
   background: linear-gradient(0deg, rgba(0,52,90,1) 0%, rgba(29,68,116,1) 50%, rgba(0,52,90,1) 100%);
 }
 
 .contacts {
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   width: 40%;
 }
 
 .contact {
-  font-size: 16px;
+  font-weight: 200;
 }
 
 .managers {
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 18px;
+  line-height: 1rem;
 }
 
 .position {
   color: rgba(255,255,255,0.6);
-  font-size: 14px;
 }
 
 li {
@@ -32,7 +34,6 @@ li {
 .menu {
   width: 20%;
   font-style: normal;
-  font-size: 12px;
   line-height: 25px;
   text-align: left;
   letter-spacing: 0.2em;
@@ -47,7 +48,8 @@ li {
   width: 80%;
 
   img {
-    height: 280px;
+    width: 100%;
+    height: auto;
   }
 }
 

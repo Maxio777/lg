@@ -1,4 +1,41 @@
+@import "variables";
+
+
 mat-sidenav-container {
   width: 100%;
   height: 100%;
+}
+
+.mat-drawer-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+::ng-deep.mat-list-item-content {
+  padding-right: 2rem!important;
+}
+
+
+.active {
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+
+
+lg-header{
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
+}
+.container {
+  /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 1 0 auto;
+}
+lg-footer{
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
 }

@@ -4,7 +4,7 @@
 $fz-date: 1rem;
 
 .news {
-  font-size: 1rem;
+  font-size: 1.1rem;
 
   .date {
     padding: 10px 0;
@@ -99,7 +99,7 @@ $fz-date: 1rem;
           color: $main-color;
           flex-grow: 1;
 
-          p:hover {
+          p:hover, h4:hover {
             text-decoration: underline;
             text-decoration-color: $main-color;
             cursor: pointer;
@@ -155,3 +155,6 @@ $fz-date: 1rem;
   }
 }
 
+.border-bottom-none {
+  border-bottom: 0!important;
+}

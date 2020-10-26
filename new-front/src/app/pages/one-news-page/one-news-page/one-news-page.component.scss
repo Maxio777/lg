@@ -45,8 +45,10 @@ $fz-date: 16px;
   }
 
   .one-news {
+
+    color: $main-color;
     &__date {
-      margin: 20px 10px 10px;
+      margin: 20px 0 10px;
       @include content-center;
       justify-content: flex-start;
 
@@ -57,7 +59,7 @@ $fz-date: 16px;
       }
 
       .text {
-        font-size: 12px;
+        font-size: 1rem;
         line-height: 15px;
         text-align: center;
         letter-spacing: 0.05em;
@@ -67,18 +69,20 @@ $fz-date: 16px;
 
     &__title {
       font-weight: bold;
-      font-size: 2rem;
       line-height: 1.2;
-      color: $main-color;
       margin-bottom: 15px;
     }
 
     &__content {
       img {
         float: left;
-        width: 50%;
         min-width: 300px;
         margin: 5px 35px 25px 0;
+        width: 50%;
+
+        @media (max-width: $sm) {
+          width: 100%;
+        }
       }
 
       .text {

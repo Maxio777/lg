@@ -7,6 +7,10 @@ table {
   width: 100%;
   text-align: center;
 
+  @media (max-width: $sm) {
+    font-size: 0.9rem;
+  }
+
   thead {
 
     .heading {

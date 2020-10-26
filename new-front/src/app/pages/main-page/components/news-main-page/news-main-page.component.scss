@@ -25,9 +25,7 @@ $padding: 15px;
   }
 
   .main-news {
-    padding-right: $padding;
-    padding-bottom: 15px;
-
+    padding: 0 15px 15px 0;
 
     .title-and-description {
       //position: absolute;
@@ -66,7 +64,7 @@ $padding: 15px;
       height: 23%;
       display: flex;
       flex-direction: row;
-      padding: 0 $padding $padding $padding;
+      padding: 0 0 $padding $padding;
 
       .photo {
         margin-right: 10px;

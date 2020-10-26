@@ -2,10 +2,18 @@
 @import "mixins";
 
 .header {
+  max-width: 100%;
   &__page {
     @extend .flex-between-center;
     height: $height-tr;
     color: $main-color;
+
+    @media (max-width: 768px) {
+      h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+    }
 
     &--content {
       @extend .flex-between-center;
@@ -16,7 +24,7 @@
       }
 
       .title {
-        margin-left: 20px;
+        margin-left: 1rem;
       }
     }
   }

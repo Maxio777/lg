@@ -10,6 +10,10 @@ table {
   min-width: 270px;
   @include table;
 
+  @media (max-width: $sm) {
+    font-size: 0.9rem;
+  }
+
   thead {
     color: rgba(0, 0, 0, 0.2);
     & > tr {
@@ -51,15 +55,21 @@ table {
 
     &__date {
       color: $gray;
-      text-align: center;
+      text-align: left;
       .time {
-        margin-top: 5px;
         font-size: 0.9rem;
+      }
+
+      @media (max-width: $sm) {
+        font-size: 0.8rem;
+        .time {
+          font-size: 0.8rem;
+        }
       }
     }
 
     &__home {
-      padding-left: 15px;
+      text-align: right;
     }
 
     &__home--img {
@@ -81,25 +91,29 @@ table {
         height: 6px;
         border-radius: 3px;
         margin: 5px 0;
+        min-width: 6px;
       }
     }
 
 
     &__guest {
-      padding-right: 15px;
+
     }
 
     .team-name {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
       width: 100%;
       cursor: pointer;
       color: $main-color;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .tour {
       color: $gray;
+      @media (max-width: $sm) {
+        font-size: 0.8rem;
+      }
     }
   }
 }
@@ -123,11 +137,37 @@ table {
     line-height: 20px;
     box-sizing: content-box;
 
+    @media (max-width: $sm) {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
     @include lg-hover('b', 0);
     @include lg-active('b');
   }
 
   div {
     @include content-center;
+  }
+
+  .colgroup-1 {
+    display: table-column-group;
+  }
+
+  .colgroup-2 {
+    display: none;
+  }
+
+  @media (max-width: $sm) {
+    .colgroup-1 {
+      display: none;
+    }
+
+    .colgroup-2 {
+      display: table-column-group;
+    }
   }
 }
