@@ -15,6 +15,7 @@
 
 table {
   @include table;
+  table-layout: fixed;
 
 
   th, td:not(.player) {
@@ -90,9 +91,11 @@ table {
           flex-direction: column;
           align-items: flex-start;
           height: 100%;
+          overflow: hidden;
 
           .name {
             @include nowrap-ellipsis;
+            text-align: start;
 
             &:hover {
               @extend .hover;
@@ -102,6 +105,7 @@ table {
           .team {
             @include nowrap-ellipsis;
             @extend .gray-15px;
+            text-align: start;
           }
         }
       }
@@ -128,4 +132,11 @@ table {
 
 .not-link {
   pointer-events: none;
+}
+
+
+@media (max-width: $sm) {
+  .table-column {
+    display: none;
+  }
 }

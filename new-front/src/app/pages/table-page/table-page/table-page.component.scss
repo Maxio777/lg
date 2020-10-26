@@ -43,6 +43,7 @@ table {
       @include zebra;
       @include lg-hover('b', 0);
       .team-name {
+        @include nowrap-ellipsis;
         &:hover {
           cursor: pointer;
           text-decoration: underline;
@@ -77,4 +78,3 @@ table {
     }
   }
 }
-

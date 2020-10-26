@@ -4,7 +4,7 @@
     <div class="tournament">{{(clientDataService.getTournament$() | async)?.name}}</div>
   </lg-page-header>
 
-  <table>
+  <table class="mb-3">
     <thead>
     <tr><th colspan="12">
     </th></tr>
@@ -17,8 +17,8 @@
       <th class="d-table-cell d-md-none">И</th>
       <th class="d-md-table-cell d-none">Игры</th>
 
-      <th class="d-table-cell d-md-none">П</th>
-      <th class="d-md-table-cell d-none">Победы</th>
+      <th class="d-table-cell d-md-none">В</th>
+      <th class="d-md-table-cell d-none">Выигрыши</th>
 
       <th class="d-table-cell d-md-none">Н</th>
       <th class="d-md-table-cell d-none">Ничьи</th>
@@ -68,5 +68,6 @@
     </tbody>
 
   </table>
-
 </div>
+
+
