@@ -3,13 +3,25 @@
 
     <thead>
     <tr>
-      <th *ngFor="let i of indicators">
+
+
+      <th class="d-none d-sm-table-cell" *ngFor="let i of indicators">
         <div class="d-flex flex-column justify-content-between th-container align-items-center" [matTooltip]="i.tooltip">
           <div class="text">{{i.text}}</div>
           <div class="circle" [style.background]="i.circle" *ngIf="i.circle"></div>
 
         </div>
       </th>
+
+      <th class="d-sm-none" *ngFor="let i of indicators">
+        <div class="d-flex flex-column justify-content-between th-container align-items-center" [matTooltip]="i.tooltip">
+          <div class="text">{{i.shortText}}</div>
+          <div class="circle" [style.background]="i.circle" *ngIf="i.circle"></div>
+
+        </div>
+      </th>
+
+
     </thead>
 
     <tbody>

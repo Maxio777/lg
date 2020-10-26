@@ -28,18 +28,24 @@ table {
     tr {
       height: 70px;
       border-bottom: 1px solid $light-gray;
+      @media (max-width: $sm) {
+        height: 20px;
+      }
 
       th {
         font-weight: 300;
         font-size: 0.8rem;
         .th-container {
           padding: 10px 0;
-          height: 70px;
+          height: 100%;
           .icon {
             img {
-              width: auto;
-              height: 23px;
+              width: 23px;
+              height: auto;
               margin-bottom: 5px;
+              @media (max-width: $sm) {
+                width: 18px;
+              }
             }
           }
         }

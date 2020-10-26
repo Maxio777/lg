@@ -1,3 +1,10 @@
-<div class="title">Игры:</div>
+<div class="title">Игры</div>
 
-<lg-games-table [games]="games"></lg-games-table>
+<lg-games-table
+  *ngIf="games?.length; else gamesEmptyRef"
+  [games]="games"
+></lg-games-table>
+
+<ng-template #gamesEmptyRef>
+  <div class="p-2">Игры еще не назначены</div>
+</ng-template>

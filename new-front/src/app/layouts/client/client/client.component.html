@@ -11,6 +11,7 @@
            [routerLink]="[link.url]" [routerLinkActive]="['active']"
            [disabled]="link.disabled"
            [routerLinkActiveOptions]="{ exact: link.exact }"
+           (click)="drawer.toggle()"
         >
           <mat-icon class="left-menu">{{link.icon}}</mat-icon>
           {{link.name}}

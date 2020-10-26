@@ -39,7 +39,7 @@
       <th class="d-md-table-cell d-none">Очки</th>
 
 <!--      <th class="d-table-cell d-sm-none">Ф</th>-->
-      <th class="d-sm-table-cell d-none">Форма</th>
+      <th class="td-outcomes">Форма</th>
 
     </tr>
 
@@ -59,9 +59,12 @@
       <td>{{team.missedGoals}}</td>
       <td>{{team.goalDifference}}</td>
       <td>{{team.points}}</td>
-      <td class="d-sm-table-cell d-none">
-        <div class="outcomes d-flex flex-row justify-content-center">
+      <td class="td-outcomes">
+        <div class="outcomes d-sm-flex flex-row justify-content-center d-none">
           <span class="m-1" *ngFor="let i of team.outcomes | slice:0:5" [style.background]="colors[i]"></span>
+        </div>
+        <div class="outcomes d-flex flex-row justify-content-center d-sm-none">
+          <span class="m-1" *ngFor="let i of team.outcomes | slice:2:5" [style.background]="colors[i]"></span>
         </div>
       </td>
     </tr>

@@ -6,10 +6,7 @@ table {
   color: $main-color;
   width: 100%;
   text-align: center;
-
-  @media (max-width: $sm) {
-    font-size: 0.9rem;
-  }
+  font-weight: 300;
 
   thead {
 
@@ -22,6 +19,7 @@ table {
       th {
         padding: 5px;
         font-weight: normal;
+
         &:nth-child(3) {
           text-align: left;
         }
@@ -42,18 +40,24 @@ table {
       height: $height-tr;
       @include zebra;
       @include lg-hover('b', 0);
+
       .team-name {
         @include nowrap-ellipsis;
+
         &:hover {
           cursor: pointer;
           text-decoration: underline;
           text-decoration-color: $main-color;
-        };
+        }
+      ;
       }
 
 
-
       td {
+        @media (max-width: $sm) {
+          padding: 3px;
+        }
+
 
         &:nth-child(3) {
           text-align: left;
@@ -76,5 +80,12 @@ table {
       height: 35px;
       @include border-img;
     }
+  }
+}
+
+
+@media (max-width: 400px) {
+  .td-outcomes {
+    display: none;
   }
 }

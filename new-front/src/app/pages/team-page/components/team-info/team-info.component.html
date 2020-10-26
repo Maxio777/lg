@@ -1,6 +1,6 @@
 <div class="team-info" *ngIf="team">
   <div class="team-info__img col-4">
-    <img src="{{team?.img}}" alt="">
+    <img src="{{team?.img || '/assets/img/team-logo.png' }}" alt="">
   </div>
   <div class="team-info__info col-8">
     <div class="name">{{team?.name}}</div>

@@ -14,30 +14,38 @@ export class TeamStatisticsComponent {
   indicators = [
     {
       text: 'Игры',
+      shortText: 'И',
     },
     {
-      text: 'Победы',
+      text: 'Выигрыши',
+      shortText: 'В',
       circle: 'green'
     },
     {
       text: 'Ничьи',
-      circle: 'yellow'
+      shortText: 'Н',
+      circle: 'orange'
     },
     {
       text: 'Поражения',
+      shortText: 'П',
       circle: 'red'
     },
     {
       text: 'Забито',
+      shortText: 'Г+',
     },
     {
       text: 'Пропущенно',
+      shortText: 'Г-',
     },
     {
       text: 'Разница',
+      shortText: 'Г+/-',
     },
     {
-      text: 'Очки'
+      text: 'Очки',
+      shortText: 'О',
     }
   ];
 

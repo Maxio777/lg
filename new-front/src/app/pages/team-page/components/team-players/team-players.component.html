@@ -1,2 +1,11 @@
-<div class="title">Состав:</div>
-<lg-player-table [players]="players" [notLink]="true"></lg-player-table>
+<div class="title">Состав</div>
+
+<lg-player-table
+  *ngIf="players?.length; else playersEmptyRef"
+  [players]="players"
+  [notLink]="true">
+</lg-player-table>
+
+<ng-template #playersEmptyRef>
+  <div class="p-2">Состав еще не заполнен</div>
+</ng-template>
