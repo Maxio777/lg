@@ -78,7 +78,6 @@ table {
 
     &__count {
       font-weight: bold;
-      letter-spacing: 4px;
 
       & > div > a {
         margin-left: 10px;
@@ -125,7 +124,6 @@ table {
   justify-content: center;
   border-bottom: 1px solid $light-gray;
   box-sizing: content-box;
-  margin-bottom: -1px;
 
   &__item {
     font-size: 1rem;
@@ -136,6 +134,7 @@ table {
     min-width: unset;
     line-height: 20px;
     box-sizing: content-box;
+    margin-bottom: -1px;
 
     @media (max-width: $sm) {
       display: flex;
