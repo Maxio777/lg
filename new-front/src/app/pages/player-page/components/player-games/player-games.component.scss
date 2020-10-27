@@ -4,6 +4,7 @@
 
 .player-games {
   table {
+    //table-layout: fixed;
     @include table;
     color: $main-color;
     margin-bottom: 10px;
@@ -28,9 +29,12 @@
 
         th {
           img {
-            width: auto;
-            height: 23px;
+            width: 23px;
+            height: auto;
             margin-bottom: 5px;
+            @media (max-width: $sm) {
+              width: 18px;
+            }
           }
         }
       }
@@ -38,6 +42,7 @@
 
     tbody {
       tr {
+        height: 50px;
         @include zebra;
         .home-logo {
           text-align: right;
@@ -56,6 +61,7 @@
           padding: 5px 0;
 
           .team-name {
+            @include nowrap-ellipsis;
             &:hover {
               text-decoration: underline;
               cursor: pointer;
@@ -77,7 +83,7 @@
 
           .count {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1rem;
             padding: 0 6px;
 
             .count-circle {
@@ -91,7 +97,7 @@
           .colon {
             font-size: 18px;
             font-weight: bold;
-            padding-bottom: 20px;
+            margin-top: -1rem;
           }
 
         }

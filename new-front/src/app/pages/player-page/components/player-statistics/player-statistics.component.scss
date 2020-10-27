@@ -28,14 +28,20 @@
             height: 70px;
             .icon {
               img {
-                width: auto;
-                height: 23px;
+                width: 23px;
+                height: auto;
                 margin-bottom: 5px;
+                @media (max-width: $sm) {
+                  width: 18px;
+                }
               }
             }
 
             .text {
               text-align: center;
+              @media (max-width: $sm) {
+                font-size: 0.8rem;
+              }
             }
           }
         }
@@ -48,7 +54,7 @@
           padding: 10px 0;
           text-align: center;
           font-weight: bold;
-          font-size: 14px;
+          font-size: 1rem;
 
         }
       }

@@ -1,18 +1,32 @@
-<div class="player-percents">
+<div class="player-percents d-flex flex-sm-row flex-column">
 
-  <div class="player-percents__goal col-4">
-    <div class="text">Голы за матч:</div>
-    <div class="percent">{{getPercent(player,'goalsCount') | number:'1.0-2'}}</div>
+  <div class="player-percents__goal col-10 m-auto col-sm-4 p-0">
+    <div class="text col-sm-6 col-7 order-2 order-sm-1">Голы за матч</div>
+    <div class="col-sm-6 col-5 order-1 order-sm-2">
+      <div class="div-for-height my-2">
+        <div class="percent">{{getPercent(player, 'goalsCount') | number:'1.0-2'}}</div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="player-percents__assist col-4">
-    <div class="text">Пасы за матч:</div>
-    <div class="percent">{{getPercent(player,'assistsCount') | number:'1.0-2'}}</div>
+  <div class="player-percents__assist col-10 m-auto col-sm-4 p-0">
+    <div class="text col-sm-6 col-7 order-2 order-sm-1">Пасы за матч</div>
+    <div class="col-sm-6 col-5 order-1 order-sm-2">
+      <div class="div-for-height my-2">
+        <div class="percent">{{getPercent(player, 'assistsCount') | number:'1.0-2'}}</div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="player-percents__goal-assist col-4">
-    <div class="text">Гол+Пас за матч:</div>
-    <div class="percent">{{getPercent(player,'goalsAssists') | number:'1.0-2'}}</div>
+  <div class="player-percents__goal-assist col-10 m-auto col-sm-4 p-0">
+    <div class="text col-sm-6 col-7 order-2 order-sm-1">Гол+Пас за матч</div>
+    <div class="col-sm-6 col-5 order-1 order-sm-2">
+      <div class="div-for-height my-2">
+        <div class="percent">{{getPercent(player, 'goalsAssists') | number:'1.0-2'}}</div>
+      </div>
+    </div>
   </div>
 
 </div>

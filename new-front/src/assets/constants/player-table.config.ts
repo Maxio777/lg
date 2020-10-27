@@ -1,41 +1,50 @@
 export const INDICATORS = [
   {
     img: 'games',
-    text: 'Игры'
+    text: 'Игры',
+    shortText: 'И'
   },
   {
     img: 'goal',
-    text: 'Голы'
+    text: 'Голы',
+    shortText: 'Г'
   },
   {
     img: 'assist',
-    text: 'Пасы'
+    text: 'Пасы',
+    shortText: 'П'
   },
   {
     img: 'goal-and-assist',
-    text: 'ГолПас'
+    text: 'ГолПас',
+    shortText: 'Г+П'
   },
   {
     img: 'yellow',
     text: 'ЖК',
-    tooltip: 'Желтая карточка'
+    tooltip: 'Желтая карточка',
+    shortText: 'ЖК'
   },
   {
-    img: 'red-yellow',
+    img: 'yellow-red',
     text: 'ВЖК',
-    tooltip: 'Вторая желтая карточка'
+    tooltip: 'Вторая желтая карточка',
+    shortText: 'ВЖК'
   },
   {
     img: 'red',
     text: 'КК',
-    tooltip: 'Красная карточка'
+    tooltip: 'Красная карточка',
+    shortText: 'КК'
   },
   {
     img: 'penalty',
-    text: 'Голы с пенальти'
+    text: 'Голы с пенальти',
+    shortText: 'ГП'
   },
   {
     img: 'autogoal',
-    text: 'Автоголы'
+    text: 'Автоголы',
+    shortText: 'А'
   },
 ];
