@@ -55,20 +55,20 @@
 
       <div class="d-flex d-sm-none flex-row justify-content-center align-items-center">
 
-        <div class="count text-center d-flex flex-column mx-1 align-items-center">
+        <a class="count text-center d-flex flex-column mx-1 align-items-center" routerLink="/games/{{game?._id}}">
           <span>{{ game?.homeGoal }}</span>
           <ng-container [ngTemplateOutlet]="svgRef"
                         [ngTemplateOutletContext]="{$implicit: {game: game, bool: true}}">
           </ng-container>
 
-        </div>
+        </a>
         <span class="colon">:</span>
-        <div class="count text-center d-flex flex-column mx-1 align-items-center">
+        <a class="count text-center d-flex flex-column mx-1 align-items-center" routerLink="/games/{{game?._id}}">
           <span>{{ game?.guestGoal }}</span>
           <ng-container [ngTemplateOutlet]="svgRef"
                         [ngTemplateOutletContext]="{$implicit: {game: game, bool: false}}">
           </ng-container>
-        </div>
+        </a>
 
       </div>
 
