@@ -1,4 +1,4 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <img src="{{team?.img}}" alt="">
-  <a class="name" routerLink="/teams/{{team._id}}">{{team?.name}}</a>
+  <img class="m-0 m-sm-3 p-3 p-sm-0" src="{{team?.img || '/assets/img/team-logo.png' }}" alt="">
+  <a class="name" routerLink="/teams/{{team?._id}}">{{team?.name}}</a>
 </div>

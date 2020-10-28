@@ -7,13 +7,20 @@
     text-align: center;
     color: $gray;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 1.5rem;
+
+    @media (max-width: $sm) {
+      font-size: 1.2rem;
+    }
+
+
   }
 
   table {
     border-top: 1px solid $light-gray;
     @include table;
     color: $main-color;
+    table-layout: fixed;
 
     tbody {
       tr {
@@ -31,10 +38,12 @@
           }
           span {
             margin-left: 5px;
+            @include nowrap-ellipsis;
             a {
               color: $main-color;
             }
           }
+
         }
       }
 

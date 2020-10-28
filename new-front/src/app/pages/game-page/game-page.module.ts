@@ -10,7 +10,7 @@ import {PunishmentsComponent} from './components/punishments/punishments.compone
 import {TeamNameComponent} from './components/team-name/team-name.component';
 import {SharedModule} from '../../shared/shared.module';
 import {MatchScoreComponent} from './components/match-info/match-score/match-score.component';
-import {RefereesComponent} from './components/match-info/referees/referees.component';
+import {RefereesComponent} from './components/referees/referees.component';
 import {TourDateCompletedComponent} from './components/match-info/tour-date-completed/tour-date-completed.component';
 
 

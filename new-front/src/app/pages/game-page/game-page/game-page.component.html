@@ -4,10 +4,12 @@
 
 
   <div class="game-info d-flex">
-    <lg-team-name [team]="game?.home" class="col-4"></lg-team-name>
+    <lg-team-name [team]="game?.home" class="col-4 px-0 px-sm-2"></lg-team-name>
     <lg-match-info [game]="game" class="match-info col-4"></lg-match-info>
-    <lg-team-name [team]="game?.guest" class="col-4"></lg-team-name>
+    <lg-team-name [team]="game?.guest" class="col-4 px-0 px-sm-2"></lg-team-name>
   </div>
+
+  <lg-referees [referees]="game?.referees"></lg-referees>
 
   <lg-goals [game]="game"></lg-goals>
   <lg-punishments [game]="game"></lg-punishments>

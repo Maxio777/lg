@@ -1,6 +1,7 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {Referee} from '@models/interfaces';
 
+
 @Component({
   selector: 'lg-referees',
   templateUrl: './referees.component.html',

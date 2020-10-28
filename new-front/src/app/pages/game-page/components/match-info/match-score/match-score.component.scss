@@ -6,13 +6,21 @@
   border-radius: 7px;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  padding: 1.5rem;
   margin-bottom: 30px;
+  @media (max-width: $sm) {
+    padding: 1rem;
+  }
 
   .count {
     font-weight: bold;
-    font-size: 28px;
-    padding: 0 15px;
+    font-size: 2rem;
+    padding: 0 1rem;
+
+    @media (max-width: $sm) {
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+    }
 
     .count-circle {
       width: 6px;

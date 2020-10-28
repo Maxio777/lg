@@ -1,0 +1,27 @@
+@import "variables";
+
+
+.main {
+  text-align: center;
+  margin-bottom: 2rem;
+  .title {
+    color: $gray;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+
+    @media (max-width: $sm) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .referees {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .referee {
+    color: $main-color;
+    font-weight: 400;
+    padding: 3px 0;
+  }
+
+}

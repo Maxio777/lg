@@ -1,0 +1,15 @@
+<div class="main">
+  <div class="title" *ngIf="referees?.length; else noReferees">Судьи:</div>
+  <div class="referees">
+    <div class="referee" *ngFor="let referee of referees">
+      {{referee?.firstName}} {{referee?.lastName}} {{referee?.middleName}}
+    </div>
+  </div>
+</div>
+
+
+<ng-template #noReferees>
+  <div class="title">
+    Судьи не добавлены
+  </div>
+</ng-template>
