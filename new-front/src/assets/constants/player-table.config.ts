@@ -26,7 +26,7 @@ export const INDICATORS = [
     shortText: 'ЖК'
   },
   {
-    img: 'yellow-red',
+    img: 'red-yellow',
     text: 'ВЖК',
     tooltip: 'Вторая желтая карточка',
     shortText: 'ВЖК'

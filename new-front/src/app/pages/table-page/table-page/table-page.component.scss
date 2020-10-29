@@ -54,8 +54,28 @@ table {
 
 
       td {
+
+        img {
+          width: 31px;
+          height: 31px;
+          @include border-img;
+        }
+
+
         @media (max-width: $sm) {
           padding: 3px;
+
+          img {
+            width: 23px;
+            height: auto;
+          }
+        }
+
+
+        @media (max-width: 440px) {
+          img {
+            display: none;
+          }
         }
 
 
@@ -75,11 +95,7 @@ table {
       }
     }
 
-    img {
-      width: 35px;
-      height: 35px;
-      @include border-img;
-    }
+
   }
 }
 

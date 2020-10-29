@@ -24,15 +24,15 @@
     <th *ngFor="let i of indicators">
       <div class="d-flex flex-column justify-content-center justify-content-md-between th-container">
         <div class="icon">
-          <img src="/assets/img/icons/{{i.img}}.png" alt="">
+          <img src="/assets/img/icons/{{i.img}}.png" alt="" [matTooltip]="i.text">
         </div>
-        <div class="text d-none d-md-flex">{{i.text}}</div>
+        <div class="text d-none d-lg-flex">{{i.text}}</div>
       </div>
     </th>
 
-    <th class="d-none d-sm-table-cell">Голы %</th>
-    <th class="d-none d-sm-table-cell">Пасы %</th>
-    <th class="d-none d-sm-table-cell">ГолПас %</th>
+    <th class="d-none d-sm-table-cell" matTooltip="Голы %">Голы %</th>
+    <th class="d-none d-sm-table-cell" matTooltip="Пасы %">Пасы %</th>
+    <th class="d-none d-sm-table-cell" matTooltip="ГолПас %">ГолПас %</th>
   </tr>
   </thead>
   <tbody>

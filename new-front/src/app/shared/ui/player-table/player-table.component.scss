@@ -40,11 +40,14 @@ table {
           height: 100%;
           .icon {
             img {
-              width: 23px;
-              height: auto;
+              width: auto;
+              height: 23px;
               margin-bottom: 5px;
+              @media (max-width: $md) {
+                height: 19px;
+              }
               @media (max-width: $sm) {
-                width: 18px;
+                height: 16px;
               }
             }
           }
@@ -82,8 +85,12 @@ table {
         img {
           margin: 0 5px;
           height: 37px;
-          width: 37px;
+          width: auto;
           @include border-img;
+
+          @media (max-width: $sm) {
+            height: 20px;
+          }
 
           &:hover {
             cursor: pointer;

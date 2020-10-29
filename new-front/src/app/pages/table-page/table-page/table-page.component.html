@@ -10,7 +10,6 @@
     </th></tr>
     <tr class="heading">
       <th></th>
-      <th class="d-sm-table-cell d-none"></th>
 
       <th class="">Команды</th>
 
@@ -49,8 +48,11 @@
     <tbody>
     <tr *ngFor="let team of clientDataService.getTable$() | async; let idx = index" [routerLink]="'/teams/' + team._id">
       <td class="idx">{{idx + 1 }}</td>
-      <td class="d-sm-table-cell d-none"><img src="{{team.img || '/assets/img/logo_white_black.jpg'}}" alt=""></td>
-      <td class="team-name">{{team.teamName}}</td>
+      <td class="team-name">
+        <div class="d-flex align-items-center justify-content-start">
+          <img  class="mx-1" src="{{team.img || '/assets/img/logo_white_black.jpg'}}" alt=""> {{team.teamName}}
+        </div>
+      </td>
       <td>{{team.gamesCount}}</td>
       <td>{{team.win}}</td>
       <td>{{team.draws}}</td>
