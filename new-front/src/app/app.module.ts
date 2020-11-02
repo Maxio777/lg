@@ -8,8 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ClientDataService, init} from '@core/client-data-service/client-data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {initTitleService, TitleService} from '@core/title-service/title.service';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
     CoreModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     {
