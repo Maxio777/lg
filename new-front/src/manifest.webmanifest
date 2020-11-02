@@ -1,7 +1,7 @@
 {
   "name": "liga",
   "short_name": "liga",
-  "theme_color": "#1976d2",
+  "theme_color": "#00345A",
   "background_color": "#00345A",
   "display": "standalone",
   "scope": "./",
