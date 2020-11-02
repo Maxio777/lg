@@ -3,14 +3,10 @@
 
 .main-container {
 
-  margin: 130px 0 130px 0;
+  margin: 150px 0 130px 0;
 
   @media (max-width: $md) {
     margin: 90px auto 90px auto;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 90%;
   }
 }
 
