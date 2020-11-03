@@ -19,9 +19,10 @@ export class SideTableComponent implements OnInit, OnDestroy {
   table: TeamTable[] | undefined = undefined;
   currentTournament: TournamentLG | null = null;
   subs: Subscription = new Subscription();
+  isLoad = false;
 
   constructor(
-    private clientDataService: ClientDataService,
+    public clientDataService: ClientDataService,
     private cd: ChangeDetectorRef
   ) {
   }
@@ -34,6 +35,11 @@ export class SideTableComponent implements OnInit, OnDestroy {
       this.currentTournament = tournament;
       this.cd.detectChanges();
     }));
+  }
+
+  changeLoadStatus(t: TeamTable): void {
+    t.isLoading = false;
+    this.cd.detectChanges();
   }
 
   ngOnDestroy(): void {

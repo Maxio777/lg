@@ -1,9 +1,19 @@
-<table>
+<lg-side-skeleton
+  *ngIf="!(
+  currentTournament?.name
+  && table?.length && isLoad)"
+></lg-side-skeleton>
+
+<table
+  [class.d-none]="!(
+  (clientDataService.getTournament$() | async)?.name
+  && table?.length && isLoad)"
+>
 
   <caption>
     <div class="d-flex flex-row justify-content-between align-items-center h-100">
       <div class="d-flex align-items-center">
-        <img src="/assets/img/icons/table.png" alt="">
+        <img src="/assets/img/icons/table.png" alt="" (load)="isLoad = true">
       </div>
       <div class="text-left name-and-tournament">
         <h4>ТУРНИРНАЯ ТАБЛИЦА</h4>
@@ -28,14 +38,20 @@
 
   <tbody>
   <tr *ngFor="let team of table; let idx = index">
-    <td class="index">{{idx +1}}</td>
-    <td><a routerLink="/teams/{{team._id}}"><img src="{{team.img  || '/assets/img/logo_white_black.jpg'}}" alt=""></a></td>
+    <td class="index">{{idx + 1}}</td>
+    <td>
+      <a *ngIf="!team?.isLoading"
+        routerLink="/teams/{{team._id}}"><img src="{{team.img  || '/assets/img/logo_white_black.jpg'}}" alt=""
+                                                 (load)="changeLoadStatus(team)"
+    ></a>
+      <lg-side-image-skeleton *ngIf="team?.isLoading"></lg-side-image-skeleton>
+    </td>
     <td><a routerLink="/teams/{{team._id}}">{{team.teamName}}</a></td>
     <td class="text-center px-1">{{team.gamesCount}}</td>
     <td class="text-center px-1">{{team.points}}</td>
     <td class="text-center px-1">
       <div class="outcomes d-flex flex-row justify-content-center">
-        <span class="outcome"  *ngFor="let i of team.outcomes | slice:2:5" [style.background]="colors[i]"></span>
+        <span class="outcome" *ngFor="let i of team.outcomes | slice:2:5" [style.background]="colors[i]"></span>
       </div>
     </td>
   </tr>

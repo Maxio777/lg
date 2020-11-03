@@ -19,6 +19,7 @@ export class SidePlayersComponent implements OnInit, OnDestroy {
   public currentVal: 'goalsCount' | 'assistsCount' | 'goalsAssists' | 'yellow' | 'red' = 'goalsCount';
   public playersMenu = PLAYER_MENU;
   private subs: Subscription = new Subscription();
+  isLoad = false;
 
   constructor(
     public clientDataService: ClientDataService,

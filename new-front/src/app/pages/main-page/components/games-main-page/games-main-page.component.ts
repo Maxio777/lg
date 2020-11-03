@@ -17,6 +17,7 @@ export class GamesMainPageComponent {
   ];
   gamesFilter = 'completed';
   getColor = getColor;
+  isLoad = false;
 
   constructor(public clientDataService: ClientDataService) {
   }
@@ -29,6 +30,10 @@ export class GamesMainPageComponent {
 
   setGamesFilter(gamesFilter: '' | 'completed' | 'notCompleted'): void {
     this.gamesFilter = gamesFilter;
+  }
+
+  changeLoadStatus(): void {
+    this.isLoad = true;
   }
 
 }

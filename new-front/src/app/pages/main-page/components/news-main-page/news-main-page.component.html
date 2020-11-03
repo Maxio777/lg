@@ -1,38 +1,61 @@
+<div class="news-container">
+  <div class="main-news col-7" [class.d-none]="!news[0]?.isLoad">
 
-
-<div class="news-container" *ngIf="news?.length">
-  <div class="main-news col-7">
     <div class="lg-border"></div>
     <div class="photo">
-      <img src="{{news[0].img}}" alt="" [routerLink]="'/news/' + news[0]._id">
+      <img src="{{news[0]?.img}}" alt="" [routerLink]="'/news/' + news[0]?._id" (load)="changeLoadStatus(news[0])">
     </div>
 
     <div class="title-and-description">
-      <div class="title"><span [routerLink]="'/news/' + news[0]._id">{{news[0].title}}</span></div>
-      <div class="description" [routerLink]="'/news/' + news[0]._id"><span>{{news[0].textPreview}}</span></div>
+      <div class="title"><span [routerLink]="'/news/' + news[0]?._id">{{news[0]?.title}}</span></div>
+      <div class="description" [routerLink]="'/news/' + news[0]?._id"><span>{{news[0]?.textPreview}}</span></div>
     </div>
 
-
+  </div>
+  <div class="main-news col-7" *ngIf="!news[0]?.isLoad">
+    <lg-news-main-page-skeleton></lg-news-main-page-skeleton>
   </div>
 
-  <div class="list-news col-5">
-    <div class="lg-border"></div>
 
-    <div class="one-news" *ngFor="let oneNews of news | slice: 1:5">
+  <div class="list-news col-5">
+    <div class="lg-border" *ngIf="isFirstLoad"></div>
+
+    <div class="one-news" *ngFor="let oneNews of news | slice: 1:5" [class.d-none]="!news?.length">
       <div class="photo col-5">
         <div class="img">
-          <img src="{{oneNews.img}}" alt="" [routerLink]="'/news/' + oneNews._id">
+          <lg-news-main-page-small-skeleton [img]="true" *ngIf="!oneNews?.isLoad"></lg-news-main-page-small-skeleton>
+
+          <img src="{{oneNews.img}}" alt="" [routerLink]="'/news/' + oneNews._id" (load)="changeLoadStatus(oneNews)">
         </div>
 
       </div>
-      <div class="title-and-description col-7">
+      <div class="col-7" *ngIf="!oneNews?.isLoad">
+        <lg-news-main-page-small-skeleton></lg-news-main-page-small-skeleton>
+      </div>
+
+      <div class="title-and-description col-7" *ngIf="oneNews?.isLoad">
         <span [routerLink]="'/news/' + oneNews._id">{{oneNews.title}}</span>
       </div>
     </div>
 
-    <div class="cursor-pointer mews-link text-center" routerLink="/news/page/1">
+    <div class="one-news" *ngFor="let i of [1,2,3,4]" [class.d-none]="news?.length">
+      <div class="photo col-5">
+        <div class="img">
+          <lg-news-main-page-small-skeleton [img]="true"></lg-news-main-page-small-skeleton>
+        </div>
+
+      </div>
+      <div class="col-7">
+        <lg-news-main-page-small-skeleton></lg-news-main-page-small-skeleton>
+      </div>
+    </div>
+
+    <div class="cursor-pointer mews-link text-center" routerLink="/news/page/1" *ngIf="news?.length">
       ВСЕ НОВОСТИ
     </div>
 
   </div>
 </div>
+
+
+

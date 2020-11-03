@@ -17,6 +17,7 @@ export class SideGamesComponent {
   ];
   gamesFilter = 'completed';
   getColor = getColor;
+  isLoad = false;
 
   constructor(public clientDataService: ClientDataService) {
   }

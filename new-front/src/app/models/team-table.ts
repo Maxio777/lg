@@ -1,18 +1,19 @@
-import { TeamLG } from './interfaces';
+import {TeamLG} from './interfaces';
 
 export class TeamTable {
-  _id: string = '';
-  teamName: string = '';
-  img: string = '';
-  gamesCount: number = 0;
-  win: number = 0;
-  draws: number = 0;
-  loss: number = 0;
-  points: number = 0;
-  goals: number = 0;
-  missedGoals: number = 0;
-  goalDifference: number = 0;
+  _id = '';
+  teamName = '';
+  img = '';
+  gamesCount = 0;
+  win = 0;
+  draws = 0;
+  loss = 0;
+  points = 0;
+  goals = 0;
+  missedGoals = 0;
+  goalDifference = 0;
   outcomes: number[] = [];
+  isLoading = false;
 
   constructor(team: TeamLG) {
     this._id = team._id;

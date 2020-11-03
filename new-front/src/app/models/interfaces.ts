@@ -42,6 +42,7 @@ export interface TeamLG {
   games: GameLG[];
   managers: ManagerLG[];
   img: string;
+  isLoading?: boolean;
   selected?: boolean;
 }
 

@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@an
 import {News} from '@models/news';
 import {Subscription} from 'rxjs';
 import {ClientDataService} from '@core/client-data-service/client-data.service';
-import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'lg-news-main-page',
@@ -13,8 +13,9 @@ import {Router} from '@angular/router';
 export class NewsMainPageComponent implements OnInit {
   news: News[] = [];
   subs: Subscription = new Subscription();
+  isFirstLoad = false;
 
-  constructor(private clientDataService: ClientDataService, private cd: ChangeDetectorRef, private router: Router) { }
+  constructor(private clientDataService: ClientDataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.subs.add(this.subs.add(this.clientDataService.getNews$().subscribe(news => {
@@ -25,8 +26,12 @@ export class NewsMainPageComponent implements OnInit {
     })));
   }
 
-  goToOneNews(id: string): void {
-    this.router.navigate(['news-page/' + id ]);
+  changeLoadStatus(n: News): void {
+    setTimeout(() => {
+      n.isLoad = true;
+      this.isFirstLoad = true;
+      this.cd.detectChanges();
+    }, 50);
   }
 
 }

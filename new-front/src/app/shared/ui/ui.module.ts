@@ -13,6 +13,9 @@ import {SidePanelComponent} from './side-panel/side-panel.component';
 import {SideTableComponent} from './side-panel/side-table/side-table.component';
 import {SideGamesComponent} from './side-panel/side-games/side-games.component';
 import {SidePlayersComponent} from './side-panel/side-players/side-players.component';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {SideSkeletonComponent} from './side-panel/side-skeleton/side-skeleton.component';
+import {SideImageSkeletonComponent} from './side-panel/side-image-skeleton/side-image-skeleton.component';
 
 
 const components = [
@@ -25,7 +28,9 @@ const components = [
   SidePanelComponent,
   SideTableComponent,
   SideGamesComponent,
-  SidePlayersComponent
+  SidePlayersComponent,
+  SideSkeletonComponent,
+  SideImageSkeletonComponent
 ];
 
 
@@ -36,7 +41,8 @@ const components = [
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [...components]
 })
