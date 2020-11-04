@@ -28,3 +28,21 @@
     margin-top: 5px;
   }
 }
+
+@mixin table-action {
+  transition: 0.3s;
+  cursor: pointer;
+  color: $main-color;
+  letter-spacing: 1.4px;
+  font-size: 0.8rem;
+  height: 10px;
+  min-height: 10px;
+  padding: unset;
+  background: #00355d33;
+
+    &:hover {
+      background: orange;
+      transition: 0.3s;
+      color: white;
+    }
+}

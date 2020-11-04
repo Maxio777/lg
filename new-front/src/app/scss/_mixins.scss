@@ -53,6 +53,12 @@
   }
 }
 
+@mixin last-white {
+  &:last-child {
+    background: white!important;
+  }
+}
+
 @mixin grey-border ($side: 'all', $color: $light-gray) {
   @if ($side == 't') {
     border-top: 1px solid $color;

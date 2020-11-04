@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {TitleService} from '@core/title-service/title.service';
 
 @Component({
   selector: 'lg-side-panel',
@@ -6,11 +7,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./side-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidePanelComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class SidePanelComponent {
+  constructor(public titleService: TitleService) {
   }
 
 }

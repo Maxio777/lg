@@ -4,8 +4,8 @@
   && table?.length && isLoad)"
 ></lg-side-skeleton>
 
-<table
-  [class.d-none]="!(
+<table class="my-animation-right"
+       [class.d-none]="!(
   (clientDataService.getTournament$() | async)?.name
   && table?.length && isLoad)"
 >
@@ -41,9 +41,9 @@
     <td class="index">{{idx + 1}}</td>
     <td>
       <a *ngIf="!team?.isLoading"
-        routerLink="/teams/{{team._id}}"><img src="{{team.img  || '/assets/img/logo_white_black.jpg'}}" alt=""
-                                                 (load)="changeLoadStatus(team)"
-    ></a>
+         routerLink="/teams/{{team._id}}"><img src="{{team.img  || '/assets/img/logo_white_black.jpg'}}" alt=""
+                                               (load)="changeLoadStatus(team)"
+      ></a>
       <lg-side-image-skeleton *ngIf="team?.isLoading"></lg-side-image-skeleton>
     </td>
     <td><a routerLink="/teams/{{team._id}}">{{team.teamName}}</a></td>
@@ -53,6 +53,11 @@
       <div class="outcomes d-flex flex-row justify-content-center">
         <span class="outcome" *ngFor="let i of team.outcomes | slice:2:5" [style.background]="colors[i]"></span>
       </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="100%" class="action text-center" routerLink="/table">
+      <span>ПОЛНАЯ ТАБЛИЦА</span>
     </td>
   </tr>
   </tbody>

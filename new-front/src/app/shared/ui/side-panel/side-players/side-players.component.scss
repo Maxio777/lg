@@ -57,6 +57,10 @@ table {
         text-decoration-color: $main-color;
       }
     }
+
+    .action {
+      @include table-action;
+    }
   }
 }
 

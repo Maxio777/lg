@@ -61,7 +61,7 @@ table {
     }
 
     span {
-      font-size: 12px!important;
+      font-size: 1rem;
     }
 
     &__date {
@@ -111,6 +111,17 @@ table {
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
+    }
+
+    .action {
+      @include table-action;
+    }
+
+    .wrapper-action {
+      height: 40px;
+      span {
+        font-size: 0.8rem;
+      }
     }
   }
 }

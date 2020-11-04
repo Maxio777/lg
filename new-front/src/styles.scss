@@ -34,6 +34,38 @@ p {
   cursor: pointer;
 }
 
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(1);
+  }
+}
+
+@keyframes move-right {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(1);
+  }
+}
+
+.my-animation {
+  animation: move 500ms;
+  animation-fill-mode: none;
+}
+
+.my-animation-right {
+  animation: move-right 500ms;
+  animation-fill-mode: none;
+}
+
 
 @media (max-width: $md) {
   .container {

@@ -3,6 +3,7 @@
 
 table {
   @include table;
+  border-bottom: unset;
 
   caption {
     @include caption;
@@ -33,9 +34,11 @@ table {
 
     tr {
       height: 40px;
-      &:nth-child(even) {
-        background: $background-light;
-      }
+      @include zebra;
+
+      @include last-white;
+
+
       &:hover {
         @include lg-hover('b', 0);
       }
@@ -62,6 +65,10 @@ table {
         text-decoration: underline;
         text-decoration-color: $main-color;
       }
+    }
+
+    .action {
+      @include table-action;
     }
   }
 }

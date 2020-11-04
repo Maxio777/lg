@@ -1,3 +1,3 @@
-<lg-side-table></lg-side-table>
-<lg-side-players></lg-side-players>
-<lg-side-games></lg-side-games>
+<lg-side-table [class.d-none]="(titleService.title$ | async) === 'ТАБЛИЦА'"></lg-side-table>
+<lg-side-players [class.d-none]="(titleService.title$ | async) === 'ИГРОКИ'"></lg-side-players>
+<lg-side-games [class.d-none]="(titleService.title$ | async) === 'ИГРЫ'"></lg-side-games>

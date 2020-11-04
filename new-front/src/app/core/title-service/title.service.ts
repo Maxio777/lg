@@ -10,6 +10,7 @@ import {filter, map, mergeMap} from 'rxjs/operators';
 export class TitleService {
 
   private siteTitle$: BehaviorSubject<string> = new BehaviorSubject('');
+  public title$ = this.siteTitle$.asObservable();
 
   constructor(
     private router: Router,

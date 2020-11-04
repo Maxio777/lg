@@ -4,15 +4,15 @@
   && (clientDataService.getGames$() | async).length && isLoad)"
 ></lg-side-skeleton>
 
-<table
-  [class.d-none]="!(
+<table class="my-animation-right"
+       [class.d-none]="!(
   (this.clientDataService.getTournament$() | async)?.name
   && (clientDataService.getGames$() | async).length && isLoad)"
 >
   <colgroup>
-    <col style = "width:36%">
-    <col style = "width:28%">
-    <col style = "width:36%">
+    <col style="width:36%">
+    <col style="width:28%">
+    <col style="width:36%">
   </colgroup>
   <caption class="caption">
     <div class="d-flex flex-row justify-content-between align-items-center h-100">
@@ -81,7 +81,8 @@
     <td class="text-left tbody__guest position-relative">
       <div class="d-flex flex-column align-items-start position-relative">
         <div class="py-2 cursor-pointer logo">
-          <img src="{{game.guest.img || '/assets/img/logo_white_black.jpg'}}" alt="" routerLink="/teams/{{game.guest._id}}">
+          <img src="{{game.guest.img || '/assets/img/logo_white_black.jpg'}}" alt=""
+               routerLink="/teams/{{game.guest._id}}">
         </div>
         <a class="cursor-pointer team-name" routerLink="/teams/{{game.guest._id}}">{{ game.guest.name }}</a>
 
@@ -91,6 +92,11 @@
 
     </td>
 
+  </tr>
+  <tr class="wrapper-action" routerLink="/games">
+    <td colspan="100%" class="action text-center">
+      <span>ВСЕ ИГРЫ</span>
+    </td>
   </tr>
   </tbody>
 </table>
