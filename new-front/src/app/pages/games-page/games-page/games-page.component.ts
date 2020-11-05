@@ -13,6 +13,7 @@ export class GamesPageComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   search = '';
   games: GameLG[] = [];
+  isLoad = false;
 
 
   constructor(

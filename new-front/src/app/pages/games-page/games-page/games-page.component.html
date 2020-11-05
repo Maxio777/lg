@@ -1,10 +1,11 @@
-<div class="games default-container p-xs-0 my-animation">
+<div class="games default-container p-xs-0 my-animation" [class.d-none]="!(isLoad && games.length)">
 
-  <lg-page-header [title]="'ИГРЫ'" [img]="'games-active'">
+  <lg-page-header [title]="'ИГРЫ'" [img]="'games-active'" (loadImg)="isLoad = true">
     <lg-search-input [placeholder]="'Поиск по играм'" (search)="search = $event"></lg-search-input>
   </lg-page-header>
 
   <lg-games-table [games]="displayGames"></lg-games-table>
 
-
 </div>
+
+<lg-games-page-skeleton *ngIf="!(isLoad && games.length)"></lg-games-page-skeleton>
