@@ -5,7 +5,7 @@
                [fixedInViewport]="false">
 
     <mat-nav-list>
-      <div>
+      <div class="">
         <a class="menu" mat-list-item
            *ngFor="let link of links"
            [routerLink]="[link.url]" [routerLinkActive]="['active']"
@@ -13,7 +13,9 @@
            [routerLinkActiveOptions]="{ exact: link.exact }"
            (click)="drawer.toggle()"
         >
-          <mat-icon class="left-menu">{{link.icon}}</mat-icon>
+          <span class="mr-3 icon-wrapper">
+            <img src="assets/img/icons/{{link.icon}}.png" alt="" class="icon">
+          </span>
           {{link.name}}
         </a>
       </div>

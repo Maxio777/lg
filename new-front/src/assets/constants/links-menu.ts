@@ -3,37 +3,43 @@ export const LINKS_TOP = [
     url: '/',
     name: 'ГЛАВНАЯ',
     exact: true,
-    disabled: false
+    disabled: false,
+    icon: ''
   },
   {
     url: '/games',
     name: 'ИГРЫ',
     exact: false,
-    disabled: false
+    disabled: false,
+    icon: 'games-active'
   },
   {
     url: '/table',
     name: 'ТАБЛИЦА',
     exact: false,
-    disabled: false
+    disabled: false,
+    icon: 'table-blue'
   },
   {
     url: '/players',
     name: 'ИГРОКИ',
     exact: false,
-    disabled: false
+    disabled: false,
+    icon: 'players-blue'
   },
   {
     url: '/news/page/1',
     name: 'НОВОСТИ',
     exact: false,
-    disabled: false
+    disabled: false,
+    icon: 'news'
   },
   {
     url: '/contacts',
     name: 'КОНТАКТЫ',
     exact: false,
-    disabled: true
+    disabled: true,
+    icon: ''
   },
 ];
 

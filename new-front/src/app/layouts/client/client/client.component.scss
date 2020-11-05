@@ -29,7 +29,8 @@ mat-sidenav-container {
 }
 
 .menu {
-  font-size: 1rem;
+  color: $main-color;
+  font-size: 0.8rem;
   letter-spacing: 0.1rem;
 }
 
@@ -60,3 +61,18 @@ lg-footer {
   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
   flex: 0 0 auto;
 }
+
+.icon-wrapper {
+  width: 17px;
+  text-align: center;
+  .icon {
+    height: 1.3rem;
+    width: auto;
+  }
+}
+
+
+.sidenav  {
+  width: 180px;
+}
+
