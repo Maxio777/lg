@@ -1,11 +1,11 @@
-<!--<div class="players default-container my-animation">-->
+<div class="players default-container my-animation" [class.d-none]="!(isLoad && players.length)">
 
-<!--  <lg-page-header [title]="'ИГРОКИ'" [img]="'players-blue'">-->
-<!--    <lg-search-input [placeholder]="'Поиск по игрокам'" (search)="search = $event"></lg-search-input>-->
-<!--  </lg-page-header>-->
+  <lg-page-header [title]="'ИГРОКИ'" [img]="'players-blue'" (loadImg)="isLoad = true">
+    <lg-search-input [placeholder]="'Поиск по игрокам'" (search)="search = $event"></lg-search-input>
+  </lg-page-header>
 
-<!--  <lg-player-table [players]="_search(players)"></lg-player-table>-->
+  <lg-player-table [players]="_search(players)"></lg-player-table>
 
-<!--</div>-->
+</div>
 
-<lg-players-page-skeleton *ngIf="true"></lg-players-page-skeleton>
+<lg-players-page-skeleton *ngIf="!(isLoad && players.length)"></lg-players-page-skeleton>

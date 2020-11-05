@@ -13,6 +13,7 @@ export class PlayersPageComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   players: PlayerClient[] = [];
   search = '';
+  isLoad = false;
 
   constructor(public clientDataService: ClientDataService, private cd: ChangeDetectorRef) { }
 
