@@ -1,7 +1,8 @@
-import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'lg-page-header',
+  exportAs: 'headerRef',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -9,5 +10,6 @@ import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 export class PageHeaderComponent {
   @Input() title = '';
   @Input() img = '';
+  @Output() loadImg = new EventEmitter<void>();
 
 }

@@ -16,6 +16,7 @@ export class TablePageComponent implements OnInit {
   colors = COLORS;
   table: TeamTable[] | undefined = undefined;
   currentTournament: TournamentLG | null = null;
+  loadImg = false;
 
   constructor(
     private router: Router,

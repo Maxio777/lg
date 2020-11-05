@@ -1,13 +1,17 @@
-<div class="default-container my-animation">
 
-  <lg-page-header [title]="'ТУРНИРНАЯ ТАБЛИЦА'" [img]="'table-blue'">
+<div class="default-container my-animation"
+     [class.d-none]="!(loadImg && ((clientDataService.getTable$() | async).length))"
+>
+
+  <lg-page-header [title]="'ТУРНИРНАЯ ТАБЛИЦА'" [img]="'table-blue'" (loadImg)="loadImg = true">
     <div class="tournament">{{(clientDataService.getTournament$() | async)?.name}}</div>
   </lg-page-header>
 
   <table class="mb-3">
     <thead>
-    <tr><th colspan="12">
-    </th></tr>
+    <tr>
+      <th colspan="12"></th>
+    </tr>
     <tr class="heading">
       <th></th>
 
@@ -37,7 +41,7 @@
       <th class="d-table-cell d-md-none">О</th>
       <th class="d-md-table-cell d-none">Очки</th>
 
-<!--      <th class="d-table-cell d-sm-none">Ф</th>-->
+      <!--      <th class="d-table-cell d-sm-none">Ф</th>-->
       <th class="td-outcomes">Форма</th>
 
     </tr>
@@ -50,7 +54,7 @@
       <td class="idx">{{idx + 1 }}</td>
       <td class="team-name">
         <div class="d-flex align-items-center justify-content-start">
-          <img  class="mx-1" src="{{team.img || '/assets/img/logo_white_black.jpg'}}" alt=""> {{team.teamName}}
+          <img class="mx-1" src="{{team.img || '/assets/img/logo_white_black.jpg'}}" alt=""> {{team.teamName}}
         </div>
       </td>
       <td>{{team.gamesCount}}</td>
@@ -75,4 +79,6 @@
   </table>
 </div>
 
-
+<lg-table-page-skeleton
+  *ngIf="!(loadImg && ((clientDataService.getTable$() | async).length))"
+></lg-table-page-skeleton>

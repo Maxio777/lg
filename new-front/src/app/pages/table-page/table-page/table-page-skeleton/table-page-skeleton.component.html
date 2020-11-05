@@ -1,0 +1,53 @@
+<div class="skeleton">
+
+  <div class="d-flex justify-content-start">
+    <div class="col-2 p-0">
+      <ngx-skeleton-loader
+        count="1"
+        appearance="circle"
+        animation="pulse"
+        [theme]="{
+              'border-radius': '50%',
+              'height': '55px',
+              'width': '55px',
+              'margin': '5px 0'
+            }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div class="col-10 p-0 pl-4 pl-sm-0">
+      <ngx-skeleton-loader
+        count="1"
+        animation="pulse"
+        [theme]="{
+              'border-radius': '5px',
+              'height': '55px',
+              'margin': '5px 0'
+            }"
+      ></ngx-skeleton-loader>
+    </div>
+  </div>
+
+  <div class="">
+    <ngx-skeleton-loader
+      count="1"
+      [theme]="{
+              'border-radius': '5px',
+              'height': '45px',
+              'margin': '5px 0',
+              'min-width': '263px'
+            }"
+    ></ngx-skeleton-loader>
+  </div>
+
+  <div class="">
+    <ngx-skeleton-loader
+      count="10"
+      [theme]="{
+              'border-radius': '5px',
+              'height': '45px',
+              'margin': '5px 0',
+              'min-width': '263px'
+            }"
+    ></ngx-skeleton-loader>
+  </div>
+</div>
