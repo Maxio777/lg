@@ -84,17 +84,19 @@
 
 <ng-template #helpRef>
   <div class="help-ref-wrapper position-relative mt-3">
-    <button mat-button mat-icon-button aria-label="Clear" class="lg-close position-absolute cursor-pointer" (click)="closeDialog()">
-      <mat-icon class="">close</mat-icon>
-    </button>
+    <div class="title text-center pb-2 mb-4">
+      <h3 class="mb-1"><strong>Показатели</strong></h3>
+    </div>
 
 
     <ul class="help-ref">
 
       <li *ngFor="let i of indicators" class="d-flex my-2">
         <div class="col-3 text-center"><img src="/assets/img/icons/{{i.img}}.png" alt=""></div>
-        <div class="col-8">{{i.text}}</div>
+        <div class="col-8 d-flex align-items-center">{{i.text}}</div>
       </li>
     </ul>
   </div>
+
+  <button mat-raised-button class="close-button w-100 mt-2" (click)="closeDialog()">Ясно</button>
 </ng-template>

@@ -34,7 +34,7 @@ export class PlayerTableComponent {
   }
 
   public openDialog(): void {
-    this.dialog.open(this.helpRef, { minWidth: '300px' });
+    this.dialog.open(this.helpRef, { minWidth: '280px' });
   }
 
   public closeDialog(): void {

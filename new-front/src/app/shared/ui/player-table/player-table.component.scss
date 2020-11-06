@@ -178,6 +178,21 @@ table {
   z-index: 1;
 }
 
+.title {
+  border-bottom: 1px solid $gray;
+  color: $main-color;
+}
+
+.close-button {
+  background: $main-color;
+  transition: 0.2s;
+  color: white;
+  &:hover {
+    background: orange;
+    transition: 0.2s;
+  };
+}
+
 @media (max-width: $sm) {
   .table-column {
     display: none;
