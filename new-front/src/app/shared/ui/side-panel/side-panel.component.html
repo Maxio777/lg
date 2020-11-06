@@ -1,3 +1,4 @@
+<lg-side-news [class.d-none]="(titleService.title$ | async) !== 'ГЛАВНАЯ'" class="d-block d-sm-none"></lg-side-news>
 <lg-side-table [class.d-none]="(titleService.title$ | async) === 'ТАБЛИЦА'"></lg-side-table>
 <lg-side-players [class.d-none]="(titleService.title$ | async) === 'ИГРОКИ'"></lg-side-players>
 <lg-side-games [class.d-none]="(titleService.title$ | async) === 'ИГРЫ'"></lg-side-games>

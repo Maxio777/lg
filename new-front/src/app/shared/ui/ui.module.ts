@@ -16,6 +16,7 @@ import {SidePlayersComponent} from './side-panel/side-players/side-players.compo
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {SideSkeletonComponent} from './side-panel/side-skeleton/side-skeleton.component';
 import {SideImageSkeletonComponent} from './side-panel/side-image-skeleton/side-image-skeleton.component';
+import {SideNewsComponent} from './side-panel/side-news/side-news.component';
 
 
 const components = [
@@ -30,7 +31,8 @@ const components = [
   SideGamesComponent,
   SidePlayersComponent,
   SideSkeletonComponent,
-  SideImageSkeletonComponent
+  SideImageSkeletonComponent,
+  SideNewsComponent
 ];
 
 

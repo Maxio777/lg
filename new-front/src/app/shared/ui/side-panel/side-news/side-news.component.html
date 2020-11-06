@@ -1,0 +1,38 @@
+<table class="my-animation-right"
+       [class.d-none]="!(
+  (this.clientDataService.getTournament$() | async)?.name
+  && (clientDataService.getNews$() | async).length && isLoad)">
+
+  <caption class="caption">
+    <div class="d-flex flex-row justify-content-between align-items-center h-100">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="/assets/img/icons/news-white.png" alt="" (load)="isLoad = true">
+      </div>
+      <div class="text-left name-and-tournament">
+        <h4>НОВОСТИ</h4>
+        <div class="tournament-name">{{(this.clientDataService.getTournament$() | async)?.name}}</div>
+      </div>
+
+    </div>
+  </caption>
+
+
+  <tbody>
+  <tr class="w-100" *ngFor="let news of (clientDataService.getNews$() | async) | slice:0:5; let idx = index">
+    <td class="date">{{news.date | date: 'dd.MM.yy'}}</td>
+    <td class="news"><a routerLink="/news/{{news._id}}">{{news.title}}</a></td>
+  </tr>
+  <tr>
+    <td colspan="100%" class="action text-center" routerLink="/players">
+      <span>ВСЕ НОВОСТИ</span>
+    </td>
+  </tr>
+  </tbody>
+
+</table>
+
+<lg-side-skeleton [heightLastRow]="'190px'"
+  *ngIf="!(
+  (this.clientDataService.getTournament$() | async)?.name
+  && (clientDataService.getNews$() | async).length && isLoad)"
+></lg-side-skeleton>

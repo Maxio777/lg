@@ -1,0 +1,47 @@
+@import "mixins";
+@import "variables";
+
+table {
+  @include table;
+
+  caption {
+    @include caption;
+  }
+
+  tr {
+
+    min-height: 40px;
+
+    &:nth-child(even) {
+      background: $background-light;
+    }
+
+    @include lg-hover('b', 0);
+  }
+
+  td {
+    min-height: 40px;
+    padding: 0.75rem 1rem;
+    a {
+      color: $main-color;
+      line-height: 1.6rem;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $main-color;
+      }
+    }
+
+  }
+
+  .date {
+    color: $gray;
+    font-size: 0.9rem;
+    vertical-align: top;
+    padding-top: 1.2rem;
+  }
+
+  .action {
+    height: 40px;
+    @include table-action;
+  }
+}
