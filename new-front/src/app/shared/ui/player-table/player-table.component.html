@@ -18,7 +18,16 @@
 
   <thead>
   <tr>
-    <th class="player">Игрок</th>
+    <th class="player position-relative">Игрок
+      <div class="question position-absolute">
+
+        <button mat-button mat-icon-button aria-label="Help" class="help d-inline-block d-lg-none" (click)="openDialog()">
+          <mat-icon class="">help</mat-icon>
+        </button>
+
+
+      </div>
+    </th>
 
 
     <th *ngFor="let i of indicators">
@@ -39,11 +48,14 @@
   <tr *ngFor="let player of players | slice:0:slice; let idx = index" class="my-animation">
     <td>
       <div class="player">
-        <div class="index">{{idx+1}}</div>
-        <img class="d-none d-sm-block" src="{{player?.img || '../assets/img/defaultImage.png'}}" alt="" routerLink="/players/{{player._id}}">
+        <div class="index">{{idx + 1}}</div>
+        <img class="d-none d-sm-block" src="{{player?.img || '../assets/img/defaultImage.png'}}" alt=""
+             routerLink="/players/{{player._id}}">
         <div class="player-detail">
-          <div class="name" routerLink="/players/{{player._id}}">{{player?.firstName}} {{player?.lastName}} {{player?.middleName}}</div>
-          <a class="team" [class.not-link]="notLink" routerLink="/teams/{{player?.teams[0]?._id}}">{{player?.teams[0]?.name}}</a>
+          <div class="name"
+               routerLink="/players/{{player._id}}">{{player?.firstName}} {{player?.lastName}} {{player?.middleName}}</div>
+          <a class="team" [class.not-link]="notLink"
+             routerLink="/teams/{{player?.teams[0]?._id}}">{{player?.teams[0]?.name}}</a>
         </div>
       </div>
     </td>
@@ -56,9 +68,9 @@
     <td>{{player?.red}}</td>
     <td>{{player?.penalty}}</td>
     <td>{{player?.autoGoals}}</td>
-    <td class="d-none d-sm-table-cell">{{getPercent(player,'goalsCount') | number:'1.0-2'}}</td>
-    <td class="d-none d-sm-table-cell">{{getPercent(player,'assistsCount') | number:'1.0-2'}}</td>
-    <td class="d-none d-sm-table-cell">{{getPercent(player,'goalsAssists') | number:'1.0-2'}}</td>
+    <td class="d-none d-sm-table-cell">{{getPercent(player, 'goalsCount') | number:'1.0-2'}}</td>
+    <td class="d-none d-sm-table-cell">{{getPercent(player, 'assistsCount') | number:'1.0-2'}}</td>
+    <td class="d-none d-sm-table-cell">{{getPercent(player, 'goalsAssists') | number:'1.0-2'}}</td>
 
 
   </tr>
@@ -68,3 +80,21 @@
 
   </tbody>
 </table>
+
+
+<ng-template #helpRef>
+  <div class="help-ref-wrapper position-relative mt-3">
+    <button mat-button mat-icon-button aria-label="Clear" class="lg-close position-absolute cursor-pointer" (click)="closeDialog()">
+      <mat-icon class="">close</mat-icon>
+    </button>
+
+
+    <ul class="help-ref">
+
+      <li *ngFor="let i of indicators" class="d-flex my-2">
+        <div class="col-3 text-center"><img src="/assets/img/icons/{{i.img}}.png" alt=""></div>
+        <div class="col-8">{{i.text}}</div>
+      </li>
+    </ul>
+  </div>
+</ng-template>

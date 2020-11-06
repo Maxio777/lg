@@ -17,6 +17,7 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {SideSkeletonComponent} from './side-panel/side-skeleton/side-skeleton.component';
 import {SideImageSkeletonComponent} from './side-panel/side-image-skeleton/side-image-skeleton.component';
 import {SideNewsComponent} from './side-panel/side-news/side-news.component';
+import {MatRippleModule} from '@angular/material/core';
 
 
 const components = [
@@ -38,14 +39,15 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule,
-    NgxSkeletonLoaderModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule,
+        NgxSkeletonLoaderModule,
+        MatRippleModule
+    ],
   exports: [...components]
 })
 export class UiModule {

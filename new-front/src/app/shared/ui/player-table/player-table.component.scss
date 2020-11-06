@@ -150,6 +150,33 @@ table {
   pointer-events: none;
 }
 
+.question {
+  right: 15px;
+  top: 0;
+
+  .help {
+    transition: 0.2s;
+    line-height: 23px;
+    &:hover {
+      color: orange;
+      transition: 0.2s;
+    }
+  }
+}
+
+.help-ref {
+  img {
+    height: 24px;
+    width: auto;
+  }
+}
+
+.lg-close {
+  right: -14px;
+  top: -25px;
+  line-height: 24px;
+  z-index: 1;
+}
 
 @media (max-width: $sm) {
   .table-column {
