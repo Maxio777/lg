@@ -20,6 +20,7 @@ table {
 
   th, td:not(.player) {
     text-align: center;
+    vertical-align: baseline;
   }
 
   thead {
@@ -33,6 +34,7 @@ table {
       }
 
       th {
+
         font-weight: 300;
         font-size: 0.8rem;
         .th-container {
@@ -126,6 +128,7 @@ table {
   ;
 
     .more {
+      vertical-align: middle;
       font-weight: bold;
       text-align: center;
       cursor: pointer;

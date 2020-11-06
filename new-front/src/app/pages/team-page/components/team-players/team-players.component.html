@@ -1,6 +1,7 @@
 <div class="title">Состав</div>
 
 <lg-player-table
+  [slice]="10"
   *ngIf="players?.length; else playersEmptyRef"
   [players]="players"
   [notLink]="true">

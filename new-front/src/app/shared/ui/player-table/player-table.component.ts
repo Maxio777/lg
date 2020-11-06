@@ -11,8 +11,8 @@ import {INDICATORS} from '@assets/constants/player-table.config';
 export class PlayerTableComponent {
   @Input() players: PlayerClient[] = [];
   @Input() notLink = false;
+  @Input() slice = 30;
   search = '';
-  slice = 30;
   isAppearance = false;
   indicators = INDICATORS;
 

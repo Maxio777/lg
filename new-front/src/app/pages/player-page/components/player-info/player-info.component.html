@@ -3,7 +3,7 @@
     <img src="{{player?.img || '/assets/img/defaultImage.png'}}" alt="">
   </div>
   <div class="info col-8">
-    <div class="name">{{player?.lastName}} {{player?.firstName}} {{player?.middleName}}</div>
+    <h5 class="name">{{player?.lastName}} {{player?.firstName}} {{player?.middleName}}</h5>
     <div class="birthday"><span>Дата рождения: </span>{{player?.birthday | date: 'dd MMMM yyyy'}}</div>
     <div class="team-name">
       <img src="{{player?.teams[0]?.img || '/assets/img/team-logo.png' }}" alt="">
