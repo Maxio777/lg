@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 import {GameLG} from '@models/game';
 import {getColor} from '@core/get-color';
 

@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {LINKS_TOP} from '@assets/constants/links-menu';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 
 @Component({
   selector: 'lg-menu',
@@ -8,7 +7,5 @@ import {LINKS_TOP} from '@assets/constants/links-menu';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {
-
-  links = LINKS_TOP;
-
+  @Input() links = [];
 }

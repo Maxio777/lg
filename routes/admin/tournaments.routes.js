@@ -82,10 +82,10 @@ router.put('/tournaments', auth, [
         }
     });
 
-router.delete('/tournaments/', auth,
+router.delete('/tournaments/:_id', auth,
     async (req, res) => {
         try {
-            const { _id } = req.query;
+            const { _id } = req.params;
             const tournament = await Tournament.findOne({ _id });
 
             if (!tournament) {

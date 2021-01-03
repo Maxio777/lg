@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const Tournament = require('../models/Tournament');
+const {FORMATS_TOURNAMENTS} = require("../constants/constants")
 const router = Router();
 
 
@@ -12,7 +13,12 @@ router.get('/settings',
             if (!currentTournament) {
                 return res.status(400).json({ message: 'Текущий турнир не найден' })
             }
-            res.status(200).json(currentTournament[0]._id)
+
+            const settings = {}
+
+            settings.currentTournamentId = currentTournament[0]._id;
+            settings.formats = FORMATS_TOURNAMENTS;
+            res.status(200).json(settings)
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })

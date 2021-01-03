@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {PlayerClient} from '@models/interfaces';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
 @Component({
   selector: 'lg-players-page',

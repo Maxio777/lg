@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
-const TYPES_EVENTS = require('../constants/constants');
+const {TYPES_EVENTS} = require('../constants/constants');
 
 const schema = new Schema({
 

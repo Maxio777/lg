@@ -3,7 +3,7 @@ import {Subscription, combineLatest} from 'rxjs';
 import {filter, pluck} from 'rxjs/operators';
 import {GameLG} from '@models/game';
 import {ActivatedRoute} from '@angular/router';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
 
 @Component({

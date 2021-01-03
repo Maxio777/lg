@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, Input, ChangeDete
 import {PlayerClient} from '@models/interfaces';
 import {PLAYER_MENU} from '@assets/constants/player-menu';
 import {Subscription} from 'rxjs';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 import {sortBy} from 'lodash';
 
 

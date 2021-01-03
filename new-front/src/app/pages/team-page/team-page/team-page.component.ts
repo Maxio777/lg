@@ -5,7 +5,7 @@ import {TeamTable} from '@models/team-table';
 import {GameLG} from '@models/game';
 import {filter, pluck} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
 
 @Component({

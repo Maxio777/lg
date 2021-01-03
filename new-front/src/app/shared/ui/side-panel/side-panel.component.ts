@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {TitleService} from '@core/title-service/title.service';
+import {TitleService} from '@core/services/title-service/title.service';
 
 @Component({
   selector: 'lg-side-panel',

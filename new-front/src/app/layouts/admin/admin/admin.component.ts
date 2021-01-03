@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {LINKS_ADMIN} from '@assets/constants/links-menu-admin';
 
 @Component({
   selector: 'lg-admin',
@@ -6,11 +7,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./admin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
+  isSmallWidth = false;
+  links = LINKS_ADMIN;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  toggleWidth(): void {
+    // this.isSmallWidth = !this.isSmallWidth;
   }
 
 }

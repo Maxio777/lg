@@ -1,4 +1,4 @@
-const ROLES = require('../constants/constants');
+const {ROLES} = require('../constants/constants');
 
 const { Schema, model } = require('mongoose');
 

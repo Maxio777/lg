@@ -1,0 +1,53 @@
+@import "variables";
+
+
+.example-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.small-width {
+  width: 70px;
+  transition: 0.4s ease-out;
+}
+
+.big-width {
+  width: 200px;
+  transition: 0.4s ease-in-out;
+}
+
+.example-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: $main-color;
+}
+
+.menu {
+  color: $main-color;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+
+  &.active {
+    background: $active-background;
+  }
+
+  .icon-wrapper {
+    width: 17px;
+    text-align: center;
+
+    .icon {
+      height: 1.3rem;
+      width: auto;
+    }
+  }
+}
+
+
+mat-sidenav-content {
+  padding-top: 64px;
+}

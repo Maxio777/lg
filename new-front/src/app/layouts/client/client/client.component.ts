@@ -1,5 +1,4 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-// @ts-ignore
 import {LINKS_TOP} from '@assets/constants/links-menu';
 
 

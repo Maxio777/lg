@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, Input} from '@angular/core';
 import {TeamTable} from '@models/team-table';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 import {Subscription} from 'rxjs';
 import {TournamentLG} from '@models/interfaces';
 import {COLORS} from '@assets/constants/constants';

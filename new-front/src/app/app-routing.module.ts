@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {ClientComponent} from './layouts/client/client/client.component';
+import {AdminComponent} from './layouts/admin/admin/admin.component';
+import {AuthGuardService} from '@core/services/guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -48,10 +50,38 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule),
-    data: {preload: false}
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./pages/admin-dashboard-page/admin-dashboard-page.module').then(m => m.AdminDashboardPageModule)
+      },
+      {
+        path: 'games',
+        loadChildren: () => import('./pages/admin-games-page/admin-games-page.module').then(m => m.AdminGamesPageModule)
+      },
+      {
+        path: 'players',
+        loadChildren: () => import('./pages/admin-players-page/admin-players-page.module').then(m => m.AdminPlayersPageModule)
+      },
+      {
+        path: 'teams',
+        loadChildren: () => import('./pages/admin-teams-page/admin-teams-page.module').then(m => m.AdminTeamsPageModule)
+      },
+      {
+        path: 'tournaments',
+        loadChildren: () => import('./pages/admin-tournaments-page/admin-tournaments-page.module').then(m => m.AdminTournamentsPageModule)
+      },
+      {
+        path: 'news',
+        loadChildren: () => import('./pages/admin-news-page/admin-news-page.module').then(m => m.AdminNewsPageModule)
+      },
+    ]
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./pages/auth-page/auth-page.module').then(m => m.AuthPageModule)
+  }
 ];
 
 

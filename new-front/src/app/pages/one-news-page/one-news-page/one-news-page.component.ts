@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef
 import {Subscription} from 'rxjs';
 import {News} from '@models/news';
 import {ActivatedRoute} from '@angular/router';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 import {map, pluck} from 'rxjs/operators';
 
 @Component({

@@ -1,1 +1,28 @@
-<p>admin works!</p>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened
+               [ngClass]="{'small-width': isSmallWidth, 'big-width': !isSmallWidth }"
+               (mouseenter)="toggleWidth()"
+               (mouseleave)="toggleWidth()"
+  >
+    <mat-nav-list>
+      <div class="">
+        <a class="menu" mat-list-item
+           *ngFor="let link of links"
+           [routerLink]="link.url" [routerLinkActive]="['active']"
+           [disabled]="link.disabled"
+           [routerLinkActiveOptions]="{ exact: link.exact }"
+        >
+          <span class="mr-3 icon-wrapper">
+            <img src="assets/img/icons/{{link.icon}}.png" alt="" class="icon">
+          </span>
+          {{link.name}}
+        </a>
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="example-header">Header</mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

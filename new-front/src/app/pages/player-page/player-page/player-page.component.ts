@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef
 import {combineLatest, Subscription} from 'rxjs';
 import {PlayerClient} from '@models/interfaces';
 import {ActivatedRoute} from '@angular/router';
-import {ClientDataService} from '@core/client-data-service/client-data.service';
+import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 import {filter, pluck} from 'rxjs/operators';
 
 
