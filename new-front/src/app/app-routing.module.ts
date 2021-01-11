@@ -61,6 +61,14 @@ const routes: Routes = [
         loadChildren: () => import('./pages/admin-games-page/admin-games-page.module').then(m => m.AdminGamesPageModule)
       },
       {
+        path: 'games/:id',
+        loadChildren: () => import('./pages/admin-game-page/admin-game-page.module').then(m => m.AdminGamePageModule)
+      },
+      {
+        path: 'games/new',
+        loadChildren: () => import('./pages/admin-game-page/admin-game-page.module').then(m => m.AdminGamePageModule)
+      },
+      {
         path: 'players',
         loadChildren: () => import('./pages/admin-players-page/admin-players-page.module').then(m => m.AdminPlayersPageModule)
       },
@@ -69,12 +77,28 @@ const routes: Routes = [
         loadChildren: () => import('./pages/admin-teams-page/admin-teams-page.module').then(m => m.AdminTeamsPageModule)
       },
       {
+        path: 'teams/:id',
+        loadChildren: () => import('./pages/admin-team-page/admin-team-page.module').then(m => m.AdminTeamPageModule)
+      },
+      {
         path: 'tournaments',
         loadChildren: () => import('./pages/admin-tournaments-page/admin-tournaments-page.module').then(m => m.AdminTournamentsPageModule)
       },
       {
         path: 'news',
         loadChildren: () => import('./pages/admin-news-page/admin-news-page.module').then(m => m.AdminNewsPageModule)
+      },
+      {
+        path: 'news/:id',
+        loadChildren: () => import('./pages/admin-news-single-page/admin-news-single-page.module').then(m => m.AdminNewsSinglePageModule)
+      },
+      {
+        path: 'news/new',
+        loadChildren: () => import('./pages/admin-news-single-page/admin-news-single-page.module').then(m => m.AdminNewsSinglePageModule)
+      },
+      {
+        path: 'tags',
+        loadChildren: () => import('./pages/admin-tags-page/admin-tags-page.module').then(m => m.AdminTagsPageModule)
       },
     ]
   },

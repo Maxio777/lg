@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {PlayerClient} from '@models/interfaces';
 
 @Injectable({

@@ -96,7 +96,7 @@ export class AdminTournamentsPageComponent implements OnInit, OnDestroy {
   }
 
   onDelete(id: string): void {
-    this.restTournamentService.deleteTournamentsLG(id)
+    this.restTournamentService.deleteTournaments(id)
       .subscribe(() => this.getTournamentsLG());
   }
 
@@ -107,24 +107,24 @@ export class AdminTournamentsPageComponent implements OnInit, OnDestroy {
   }
 
 
-  createTournament(): void {
+  createTournament(): Subscription {
     const data = this.form.getRawValue();
     delete data._id;
-    return this.restTournamentService.postTournamentLG(data)
+    return this.subs.add(this.restTournamentService.postTournament(data)
       .subscribe(() => this.getTournamentsLG(),
         error => console.log(error)
-      );
+      ));
   }
 
   getTournamentsLG(): void {
-    this.subs.add(this.restTournamentService.getTournamentLG().subscribe(tournaments => {
+    this.subs.add(this.restTournamentService.getTournament().subscribe(tournaments => {
       this.tournaments = tournaments;
       this.initTable();
     }));
   }
 
   updateTournament(): void | Subscription {
-    return this.restTournamentService.updateTournamentLG(JSON.stringify({_id: this.form.value.id, ...this.form.value}))
+    return this.restTournamentService.updateTournament(JSON.stringify({_id: this.form.value.id, ...this.form.value}))
       .subscribe(() => this.getTournamentsLG());
   }
 

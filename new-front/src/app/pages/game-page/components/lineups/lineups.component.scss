@@ -39,9 +39,6 @@
           span {
             margin-left: 5px;
             @include nowrap-ellipsis;
-            a {
-              color: $main-color;
-            }
           }
 
         }

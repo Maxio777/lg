@@ -85,6 +85,13 @@ p {
   animation-fill-mode: none;
 }
 
+a {
+  color: $main-color;
+  &:hover {
+    color: $main-color;
+  }
+}
+
 
 @media (max-width: $md) {
   .container {

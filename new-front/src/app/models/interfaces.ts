@@ -1,4 +1,4 @@
-import {GameLG} from './game';
+import {GameLG} from './game/game';
 import {ManagerLG} from './manager';
 
 

@@ -18,6 +18,7 @@ import {SideSkeletonComponent} from './side-panel/side-skeleton/side-skeleton.co
 import {SideImageSkeletonComponent} from './side-panel/side-image-skeleton/side-image-skeleton.component';
 import {SideNewsComponent} from './side-panel/side-news/side-news.component';
 import {MatRippleModule} from '@angular/material/core';
+import {AdminFileUploadComponent} from './admin-file-upload/admin-file-upload.component';
 
 
 const components = [
@@ -33,21 +34,22 @@ const components = [
   SidePlayersComponent,
   SideSkeletonComponent,
   SideImageSkeletonComponent,
-  SideNewsComponent
+  SideNewsComponent,
+  AdminFileUploadComponent
 ];
 
 
 @NgModule({
   declarations: [...components],
-    imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        FormsModule,
-        RouterModule,
-        NgxSkeletonLoaderModule,
-        MatRippleModule
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    NgxSkeletonLoaderModule,
+    MatRippleModule
+  ],
   exports: [...components]
 })
 export class UiModule {

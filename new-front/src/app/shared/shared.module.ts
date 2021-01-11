@@ -4,13 +4,15 @@ import {MaterialModule} from './material/material.module';
 import {UiModule} from './ui/ui.module';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 
 const MODULES = [
   MaterialModule,
   UiModule,
   NgxSkeletonLoaderModule,
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
+  NgxTrimDirectiveModule
 ];
 
 

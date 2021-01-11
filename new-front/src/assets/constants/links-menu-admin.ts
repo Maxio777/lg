@@ -34,5 +34,19 @@ export const LINKS_ADMIN = [
     exact: false,
     disabled: false,
     icon: 'news'
+  },
+  {
+    url: 'tags',
+    name: 'ТЕГИ',
+    exact: false,
+    disabled: false,
+    icon: 'tags'
+  },
+  {
+    url: 'teams',
+    name: 'КОМАНДЫ',
+    exact: false,
+    disabled: false,
+    icon: 'teams'
   }
 ];

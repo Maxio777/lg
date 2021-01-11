@@ -1,4 +1,4 @@
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 
 export function getColor(game: GameLG | undefined, isHome: boolean): string {
   let color = 'grey';

@@ -35,6 +35,36 @@ router.get('/game',
         }
     });
 
+// /api/v1/admin/game
+router.get('/game/:_id',
+    async (req, res) => {
+        console.log(req.body);
+        try {
+            const { _id } = req.params;
+            const game = await Game.findOne({_id})
+                .populate('tournament')
+                .populate('home')
+                .populate('homePlayers')
+                .populate('guestPlayers')
+                .populate('homeManagers')
+                .populate('guestManagers')
+                .populate('referees')
+                .populate('events')
+                .populate('guest')
+                .populate({ path: 'guest',  populate: (['players', 'managers']) } )
+                .populate({ path: 'home',  populate: (['players', 'managers']) } )
+                .populate({ path: 'events',  populate: (['owner', 'assistant']) } );
+
+            if (game) {
+                return res.status(200).json(game)
+            }
+            return res.status(400).json({ message: 'Игра не найдена', error: e })
+
+        } catch (e) {
+            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
+        }
+    });
+
 router.post('/game', auth, [
         // check('name', 'Должно быть минимум 2 буквы').isLength({ min: 2, max: 100 }),
     ],
@@ -55,7 +85,7 @@ router.post('/game', auth, [
             const game = await Game.findOne({ tournament, home, guest });
 
             if (game) {
-                return res.status(400).json({ message: 'Такая игра уже создана' })
+                return res.status(400).json({ message: 'Игра уже уществует' })
             }
             console.log('test');
             const newGame = new Game(req.body);

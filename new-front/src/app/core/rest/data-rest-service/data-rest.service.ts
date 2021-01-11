@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {PlayerClient, TeamLG, TournamentLG} from '@models/interfaces';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {Observable} from 'rxjs';
 import {News, Tag} from '@models/news';
 import {TeamTable} from '@models/team-table';

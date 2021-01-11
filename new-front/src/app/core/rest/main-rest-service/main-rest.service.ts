@@ -19,7 +19,7 @@ export class MainRestService {
     return this.http.get(this.host + url);
   }
 
-  postLG<T>(data: T, url: string): any {
+  postLG<T>(data: T, url: string): Observable<any> {
     return this.http.post(this.host + url, data, OPTIONS);
   }
 
@@ -27,18 +27,18 @@ export class MainRestService {
     return this.http.put(this.host + url, data, options);
   }
 
-  deleteLG(id: any, url: string) {
-    return this.http.delete(this.host + url + id);
+  deleteLG(url: string): Observable<any> {
+    return this.http.delete(this.host + url);
   }
 
 
   // Для запросов с фотками без опшнс
 
-  putLG2<T>(data: T, url: string): any {
+  putLG2<T>(data: T, url: string): Observable<any> {
     return this.http.put(this.host + url, data);
   }
 
-  postLG2<T>(data: T, url: string) {
+  postLG2<T>(data: T, url: string): Observable<any> {
     return this.http.post(this.host + url, data);
   }
 

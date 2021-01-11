@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {EventLG} from '@models/events';
 import {GamePageService} from '../../game-page-service/game-page.service';
 

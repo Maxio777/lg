@@ -122,7 +122,6 @@ export class AdminPlayersPageComponent implements OnInit, OnDestroy {
   }
 
   updatePlayerLG(): void | Subscription {
-    console.log('update');
     if (this.form.valid) {
       return this.sub.add(this.playersRestService
         .updatePlayer({...this.form.value}, this.image, this.kind, this.form.controls._id.value)

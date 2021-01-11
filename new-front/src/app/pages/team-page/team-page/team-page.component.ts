@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef
 import {combineLatest, Subscription} from 'rxjs';
 import {PlayerClient, TeamLG} from '@models/interfaces';
 import {TeamTable} from '@models/team-table';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {filter, pluck} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
@@ -39,7 +39,6 @@ export class TeamPageComponent implements OnInit, OnDestroy {
         }
         this.teamStatistic = this.clientDataService.getTable$().getValue().find(team => team._id === id);
         this.cd.detectChanges();
-        console.log(this.players);
       }));
   }
 

@@ -11,20 +11,20 @@ export class RestTournamentService {
   constructor(private mainService: MainRestService) {
   }
 
-  getTournamentLG(): Observable<any> {
+  getTournament(): Observable<any> {
     return this.mainService.getLG(this.apiLG);
   }
 
-  updateTournamentLG(body: string): any {
+  updateTournament(body: string): Observable<any> {
     return this.mainService.putLG(body, this.apiLG);
   }
 
-  postTournamentLG(body: string): any {
+  postTournament(body: string): Observable<any> {
     return this.mainService.postLG(body, this.apiLG);
   }
 
-  deleteTournamentsLG(idTournament: any): any {
-    return this.mainService.deleteLG(idTournament, this.apiLG);
+  deleteTournaments(id: string): Observable<any> {
+    return this.mainService.deleteLG(this.apiLG + id);
   }
 
 }

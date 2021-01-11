@@ -1,1 +1,92 @@
-<p>admin-news-page works!</p>
+<div class="d-flex flex-row pt-5 container">
+
+  <!--  Таблица-->
+  <div class="col-12">
+    <div class="mat-elevation-z8">
+
+      <div class="d-flex flex-row justify-content-between align-items-center p-4">
+          <mat-form-field class="col-5">
+            <input label="" matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск" #value>
+            <button mat-button matSuffix mat-icon-button aria-label="Clear"
+                    *ngIf="value.value"
+                    (click)="applyFilter(''); value.value=''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        <button mat-icon-button color="accent" class="float-right open-close-add" (click)="goToNew()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+
+      <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Заголовок</th>
+          <td mat-cell *matCellDef="let row">{{row.title}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="textPreview">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Привью</th>
+          <td mat-cell *matCellDef="let row">{{row.textPreview}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата</th>
+          <td mat-cell *matCellDef="let row">{{row.date | date}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+
+            <div class="d-flex flex-row">
+
+              <button mat-icon-button class="m-auto align-middle flex-grow-1 cursor-pointer">
+                <mat-icon (click)="goToNews(row._id)">edit</mat-icon>
+              </button>
+
+              <button mat-icon-button class="m-auto align-middle flex-grow-1 cursor-pointer">
+                <mat-icon (click)="deleteNewsLG(row._id)">delete_outline</mat-icon>
+              </button>
+
+            </div>
+
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="completed">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Завершена</th>
+          <td mat-cell *matCellDef="let row">
+
+            <mat-checkbox
+              disabled="true"
+              [(ngModel)]="row.completed">
+            </mat-checkbox>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [length]="dataSource?.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 15, 20, 25]">
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+

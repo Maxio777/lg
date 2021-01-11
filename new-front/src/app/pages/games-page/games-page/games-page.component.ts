@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
 @Component({

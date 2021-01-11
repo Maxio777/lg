@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {Subscription, combineLatest} from 'rxjs';
 import {filter, pluck} from 'rxjs/operators';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {ActivatedRoute} from '@angular/router';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
@@ -28,7 +28,6 @@ export class GamePageComponent implements OnInit, OnDestroy {
     this.subs.add(this.data$.pipe(filter(([id, bool]) => id && bool))
       .subscribe(([id, _]) => {
         this.game = this.clientDataService.gamesMap.get(id);
-        console.log(this.game);
         this.cd.detectChanges();
       }));
   }

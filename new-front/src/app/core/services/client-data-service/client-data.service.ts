@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, filter} from 'rxjs/operators';
 import {News, Tag} from '@models/news';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 import {PlayerClient, TeamLG, TournamentLG} from '@models/interfaces';
 import {TeamTable} from '@models/team-table';
 import {DataRestService} from '../../rest/data-rest-service/data-rest.service';

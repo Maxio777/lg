@@ -4,7 +4,7 @@ const errorHandler = require('../utils/errorHandler')
 
 module.exports.getAll = async (req, res) => {
 	try {
-		const tags = await Tag.find();
+		const tags = await Tag.find({},'-__v');
 
 		if (!tags.length) {
 			return res.status(400).json({ message: 'Теги еще не добавлены' })

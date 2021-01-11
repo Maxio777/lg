@@ -21,8 +21,8 @@ export class PlayersRestService {
     return this.mainRestService.postLG(body, this.apiLG);
   }
 
-  deletePlayerLG(idPlayer: any): Observable<any> {
-    return this.mainRestService.deleteLG(idPlayer, this.apiLG);
+  deletePlayerLG(id: any): Observable<any> {
+    return this.mainRestService.deleteLG(this.apiLG + id);
   }
 
   updatePlayer(data: PlayerAdmin, image: File | null, kind: string, id: string): Observable<any> {

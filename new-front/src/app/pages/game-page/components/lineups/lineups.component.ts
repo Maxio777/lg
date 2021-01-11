@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 
 @Component({
   selector: 'lg-lineups',

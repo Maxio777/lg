@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {PlayerClient} from '@models/interfaces';
 import {getColor} from '@core/get-color';
-import {GameLG} from '@models/game';
+import {GameLG} from '@models/game/game';
 
 @Component({
   selector: 'lg-player-games',

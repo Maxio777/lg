@@ -14,6 +14,13 @@ const schema = new Schema({
         type: Types.ObjectId,
         ref: 'Team',
     },
+    tour: {
+        type: String,
+    },
+    date: {
+        type: Date,
+        default: null,
+    },
     homePlayers: [{
         type: Types.ObjectId,
         ref: 'Player',
@@ -46,16 +53,11 @@ const schema = new Schema({
     }],
     guestGoal: {
         type: Number,
+        default: null
     },
     homeGoal: {
         type: Number,
-    },
-    date: {
-        type: Date,
-        default: null,
-    },
-    tour: {
-        type: Number,
+        default: null
     },
     completed: {
         type: Boolean,

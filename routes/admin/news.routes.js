@@ -31,6 +31,27 @@ router.get('/news',
         }
     });
 
+router.get('/news/:_id',
+    async (req, res) => {
+        try {
+
+            const _id = req.params._id
+
+
+            const news = await News.findOne({ _id }).populate('tags');
+
+
+            if (!news) {
+                return res.status(400).json({ message: 'Новость не найдена' })
+            }
+
+            res.status(200).json(news)
+
+        } catch (e) {
+            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
+        }
+    });
+
 router.post('/news', auth, fileMiddleware.single('image'), checkErrors,
     async (req, res) => {
         try {

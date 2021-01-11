@@ -27,5 +27,4 @@ export class RestTeamService {
     return this.mainRestService.deleteLG(idTeam, this.apiLG + idTeam);
   }
 
-
 }
