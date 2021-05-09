@@ -24,7 +24,7 @@ import {initSettings, SettingsService} from '@core/services/settings/settings.se
     CoreModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    // ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     ToastrModule.forRoot({
       timeOut: 6000,
       positionClass: 'toast-bottom-right',

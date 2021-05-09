@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {SwUpdate} from '@angular/service-worker';
+// import {SwUpdate} from '@angular/service-worker';
 import {interval} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {NavigationEnd, Router} from '@angular/router';
@@ -11,16 +11,11 @@ import {NavigationEnd, Router} from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit{
-
-  constructor(private updates: SwUpdate, private router: Router) {
-    updates.available.subscribe(() => {
-      updates.activateUpdate().then( () => {
-        document.location.reload();
-      });
-    });
+  //
+  constructor(private router: Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const contentContainer = document.querySelector('.mat-sidenav-content') || window;
