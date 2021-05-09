@@ -1,6 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-// import {SwUpdate} from '@angular/service-worker';
-import {interval} from 'rxjs';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {filter} from 'rxjs/operators';
 import {NavigationEnd, Router} from '@angular/router';
 

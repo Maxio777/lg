@@ -8,8 +8,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ClientDataService, init} from '@core/services/client-data-service/client-data.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {initTitleService, TitleService} from '@core/services/title-service/title.service';
-import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '../environments/environment';
 import {AppHttpInterceptor} from '@core/services/http-interceptor';
 import {ToastrModule} from 'ngx-toastr';
 import {initSettings, SettingsService} from '@core/services/settings/settings.service';
@@ -24,7 +22,6 @@ import {initSettings, SettingsService} from '@core/services/settings/settings.se
     CoreModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     ToastrModule.forRoot({
       timeOut: 6000,
       positionClass: 'toast-bottom-right',
