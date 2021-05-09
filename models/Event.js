@@ -1,13 +1,10 @@
 const { Schema, model, Types } = require('mongoose');
-const {TYPES_EVENTS} = require('../constants/constants');
 
 const schema = new Schema({
 
     type: {
-        type: String,
-        enum: TYPES_EVENTS,
+        type: Number,
         required: true,
-        default: 'goal'
     },
     minute: {
         type: Number,
@@ -31,10 +28,6 @@ const schema = new Schema({
         type: Types.ObjectId,
         ref: 'Tournament',
         required: true,
-    },
-    img: {
-        type: String,
-        default: ''
     }
 });
 

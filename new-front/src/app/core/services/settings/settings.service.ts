@@ -15,7 +15,7 @@ export class SettingsService {
 
   getSettings(): void {
     this.settingsRestService.getSettings().subscribe(s => {
-      this.settings.next(Settings.fromJS(s));
+      this.settings.next(Settings.fromJs(s));
     });
   }
 }

@@ -48,5 +48,19 @@ export const LINKS_ADMIN = [
     exact: false,
     disabled: false,
     icon: 'teams'
+  },
+  {
+    url: 'referees',
+    name: 'СУДЬИ',
+    exact: false,
+    disabled: false,
+    icon: 'referees'
+  },
+  {
+    url: 'managers',
+    name: 'МЕНЕДЖЕРЫ',
+    exact: false,
+    disabled: false,
+    icon: 'managers'
   }
 ];

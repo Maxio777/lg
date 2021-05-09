@@ -1,3 +1,14 @@
+const EventTypes = {
+        Goal: 1,            // 'Гол'
+        Assist: 2,          // 'Ассист'
+        Yellow: 3,          // 'Желтая карточка'
+        Red: 4,             // 'Красноая карточка'
+        YellowRed: 5,       // 'Вторая желтая карточка'
+        Penalty: 6,         // 'Пенальти'
+        PenaltyGoal: 7,     // 'Гол с пенальти'
+        AutoGoal: 8         // 'Автогол'
+}
+
 class PreparePlayers {
 
     static async addFieldsForPlayers(players, games) {
@@ -5,13 +16,13 @@ class PreparePlayers {
         players = JSON.parse(JSON.stringify(players));
         games = JSON.parse(JSON.stringify(games));
 
-        const goals = ['goal', '6mGoal', '10mGoal', 'penaltyGoal'];
-        const yellow = ['yellow'];
-        const red = ['red'];
-        const autoGoal = ['autoGoal'];
-        const penalty = ['penalty'];
-        const yellowRed = ['yellowRed'];
-        const assists = ['goal', '6mGoal', '10mGoal', 'penaltyGoal'];
+        const goals = [EventTypes.Goal, EventTypes.PenaltyGoal];
+        const yellow = [EventTypes.Yellow];
+        const red = [EventTypes.Red];
+        const autoGoal = [EventTypes.AutoGoal];
+        const penalty = [EventTypes.PenaltyGoal];
+        const yellowRed = [EventTypes.YellowRed];
+        const assists = [EventTypes.Goal];
 
         players.forEach((player) => {
             player.gamesCount = this.getPlayerGamesCount(player._id, games);
@@ -35,8 +46,13 @@ class PreparePlayers {
     }
 
     static getEventCount(id, games, events) {
-        return games.filter(game => game.events.filter(event => event.owner._id === id
-            && events.includes(event.type) ).length).length;
+        let _count = 0;
+        games.forEach(g => g.events.forEach(e => {
+            if (e && e.type && e.owner && e.owner._id === id && events.includes(e.type) ) {
+                _count++
+            }
+        }))
+        return _count
     }
 
     static getPlayerAssistCount(id, games, events) {

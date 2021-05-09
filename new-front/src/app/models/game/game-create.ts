@@ -31,7 +31,7 @@ export class GameCreate {
     this.completed = game.completed || false;
   }
 
-  static fromJS(game): GameCreate {
+  static fromJs(game): GameCreate {
     if (game) {
       return new GameCreate(game);
     }

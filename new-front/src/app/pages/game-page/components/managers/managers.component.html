@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="title" *ngIf="managers?.length; else noManagers">Менеджеры:</div>
+  <ng-content></ng-content>
+  <div class="referees">
+    <div class="referee" *ngFor="let manager of managers">
+      {{manager?.firstName}} {{manager?.lastName}} {{manager?.middleName}}
+    </div>
+  </div>
+</div>
+
+
+<ng-template #noManagers>
+  <div class="title">
+    Менеджеры не добавлены
+  </div>
+</ng-template>

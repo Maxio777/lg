@@ -1,228 +1,110 @@
+<div class="container">
+  <div class="news default-container my-animation">
+    <lg-page-header [title]="'ИГРЫ'" [img]="'games-title'"></lg-page-header>
+    <lg-go-back></lg-go-back>
 
 
-<div class="w-100 d-flex flex-column pt-5 container">
-  <div class="tournament-and-teams d-flex pb-3">
-    <div class="d-flex flex-grow-1 justify-content-center"><strong>{{game?.tournament?.name}}</strong></div>
-    <div class="d-flex flex-grow-1 justify-content-center"><strong>{{game?.home?.name}}</strong></div>
-    <div class="d-flex flex-grow-1 justify-content-center"><strong>{{game?.guest?.name}}</strong></div>
-  </div>
+    <div class="game-info d-flex">
+      <lg-team-name [team]="game?.home" class="col-4 px-0 px-sm-2"></lg-team-name>
+      <lg-match-info [game]="game" class="match-info col-4">
+        <ng-container [ngTemplateOutlet]="editGameInfoRef" ></ng-container>
+      </lg-match-info>
 
-  <div class="d-flex flex-column">
-    <div class="col-12">
-      <div [formGroup]="form" class="text-center flex-row">
-
-        <mat-form-field appearance="legacy">
-          <input #in type="datetime-local" label="" matInput placeholder="Дата" formControlName="date">
-        </mat-form-field>
-
-        <mat-form-field appearance="legacy">
-          <input label="" type="number" matInput placeholder="Тур" formControlName="tour">
-        </mat-form-field>
-
-        <mat-form-field appearance="legacy">
-          <input label="" matInput placeholder="Голы хозяева" formControlName="homeGoal">
-        </mat-form-field>
-
-        <mat-form-field appearance="legacy">
-          <input label="" matInput placeholder="Голы гости" formControlName="guestGoal">
-        </mat-form-field>
-
-        <mat-checkbox formControlName="completed">Завершен/Незавершен</mat-checkbox>
-
-
-      </div>
-
+      <lg-team-name [team]="game?.guest" class="col-4 px-0 px-sm-2"></lg-team-name>
     </div>
 
-    <!--    СОБЫТИЯ-->
-    <div class="text-left" *ngIf="game">
-      <div class="unit referees text-center">
-        <h5>События
-          <button mat-stroked-button class="ml-4"
-                  (click)="editSelect(null, 'events')"
-          >
-            Add
-          </button>
-        </h5>
+    <lg-referees [referees]="game?.referees">
+      <ng-container [ngTemplateOutlet]="editRefereesPlayersRef"></ng-container>
+    </lg-referees>
 
-        <ul>
-          <li *ngFor="let event of game?.events">
-            <pre>{{ event | json }}</pre>
-          </li>
-        </ul>
-      </div>
+<!--    <lg-goals [game]="game"></lg-goals>-->
 
-      <!--    СУДЬИ-->
-      <div class="text-left" *ngIf="game && game._id">
-        <div class="unit referees text-center">
-          <h5>Судейский состав
-            <button mat-stroked-button class="ml-4"
-                    (click)="editSelect(null,'referees')"
-            >
-              Edit
-            </button>
-          </h5>
+    <lg-admin-events [game]="game" [isGoals]="true" (deleteEvent)="onDeleteEvent($event)">
+      <ng-container [ngTemplateOutlet]="addGoalsRef"></ng-container>
+    </lg-admin-events>
 
-          <ul>
-            <li *ngFor="let referee of game?.referees">
-              {{ referee.lastName }} {{ referee.firstName }} {{ referee.middleName }}
-            </li>
-          </ul>
-        </div>
+    <lg-events [game]="game" [isGoals]="false">
+      <ng-container [ngTemplateOutlet]="addPunishmentsPlayersRef"></ng-container>
+    </lg-events>
 
-        <!--          РУКОВОДСТВО-->
-        <div class="teams d-flex flex-column">
-          <div class="management d-flex flex-row justify-content-around">
-
-
-            <div class="unit home-managers">
-              <h5>Менеджеры хозяева
-                <button mat-stroked-button class="ml-4" (click)="editSelect(null, 'homeManagers')">Edit</button>
-              </h5>
-              <ul>
-                <li *ngFor="let hManager of game?.homeManagers">
-                  {{ hManager.lastName }} {{ hManager.firstName }} {{ hManager.middleName }}
-                </li>
-              </ul>
-            </div>
-
-            <div class="unit guest-managers">
-              <h5>Менеджеры гостей
-                <button mat-stroked-button class="ml-4" (click)="editSelect(null, 'guestManagers')">
-                  Edit
-                </button>
-              </h5>
-              <ul>
-                <li *ngFor="let gManager of game?.guestManagers">
-                  {{ gManager.lastName }} {{ gManager.firstName }} {{ gManager.middleName }}
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div class="unit teams-players d-flex flex-row justify-content-around">
-
-            <!--          ИГРОКИ-->
-            <div class="unit home-players">
-              <h5>Состав хозяев
-                <button mat-stroked-button class="ml-4"
-                        (click)="editSelect(null, 'homePlayers')"
-                >
-                  Edit
-                </button>
-              </h5>
-              <ul>
-                <li *ngFor="let hPlayer of game?.homePlayers">
-                  {{ hPlayer.lastName }} {{ hPlayer.firstName }} {{ hPlayer.middleName }}
-                  <span *ngFor="let ev of getEventsForPlayer(hPlayer)"> :: {{ev.minute}} {{ev.type}}
-
-                    <mat-icon class="cursor-pointer" (click)="editSelect(null, 'events'); currentEv = ev">edit</mat-icon></span>
-
-                </li>
-              </ul>
-            </div>
-
-
-            <div class="unit guest-players">
-
-              <h5>Состав гостей
-                <button mat-stroked-button class="ml-4"
-                        (click)="editSelect(null, 'guestPlayers')"
-                >
-                  Edit
-                </button>
-              </h5>
-              <ul>
-                <li *ngFor="let gPlayer of game?.guestPlayers">
-                  {{ gPlayer.lastName }} {{ gPlayer.firstName }} {{ gPlayer.middleName }}
-                  <span *ngFor="let ev of getEventsForPlayer(gPlayer)"> :: {{ev.minute}} {{ev.type}}
-
-                    <mat-icon class="cursor-pointer" (click)="editSelect(ev, 'events')">edit</mat-icon></span>
-                </li>
-              </ul>
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
-      </div>
-
+    <div class="managers d-flex">
+      <lg-managers class="col-6" [managers]="game?.homeManagers">
+        <ng-container [ngTemplateOutlet]="editHomeManagersPlayersRef"></ng-container>
+      </lg-managers>
+      <lg-managers class="col-6" [managers]="game?.guestManagers">
+        <ng-container [ngTemplateOutlet]="editGuestManagersPlayersRef"></ng-container>
+      </lg-managers>
     </div>
 
+    <lg-lineups [game]="game">
+      <ng-container [ngTemplateOutlet]="editHomePlayersRef" ngProjectAs="home"></ng-container>
+      <ng-container [ngTemplateOutlet]="editGuestPlayersRef" ngProjectAs="guest"></ng-container>
+    </lg-lineups>
   </div>
-
-  <hr>
-
-  <div class="buttons w-100 d-flex flex-row justify-content-end">
-    <button mat-raised-button color="warn" class="delete m-2"
-            (click)="editSelect(null)"
-    >Отменить
-    </button>
-
-    <button mat-raised-button color="primary" class="m-2"
-            (click)="save()"
-    >Сохранить
-    </button>
-
-  </div>
-
-<!--  <app-edit-events *ngIf="isEdit.events && getAllGamePlayers().length"-->
-<!--                   [players]="getAllGamePlayers()"-->
-<!--                   [format]="game?.tournament?.format"-->
-<!--                   [event]="currentEv"-->
-<!--                   (cancelEdit)="editSelect(null)"-->
-<!--                   (newEvent)="createEvent($event)"-->
-<!--  ></app-edit-events>-->
-
-<!--  <app-add-items *ngIf="isEdit.homeManagers"-->
-<!--                 [items]="managers"-->
-<!--                 [existingItems]="game?.homeManagers"-->
-<!--                 [editTitle]="'Менеджеры хозяев'"-->
-<!--                 (cancelEdit)="editSelect(null)"-->
-<!--                 (submitItems)="updateItems('homeManagers', $event)"-->
-<!--  ></app-add-items>-->
-
-<!--  &lt;!&ndash;Менеджеры гостей&ndash;&gt;-->
-<!--  <app-add-items *ngIf="isEdit.guestManagers"-->
-<!--                 [items]="managers"-->
-<!--                 [existingItems]="game?.guestManagers"-->
-<!--                 [editTitle]="'Менеджеры гостей'"-->
-<!--                 (cancelEdit)="editSelect(null)"-->
-<!--                 (submitItems)="updateItems('guestManagers', $event)"-->
-<!--  ></app-add-items>-->
-
-<!--  &lt;!&ndash;Судьи&ndash;&gt;-->
-<!--  <app-add-items *ngIf="isEdit.referees"-->
-<!--                 [items]="referees"-->
-<!--                 [existingItems]="game?.referees"-->
-<!--                 [editTitle]="'Судьи'"-->
-<!--                 (cancelEdit)="editSelect(null)"-->
-<!--                 (submitItems)="updateItems('referees', $event)"-->
-<!--  ></app-add-items>-->
-
-<!--  &lt;!&ndash;Игроки гостей&ndash;&gt;-->
-<!--  <app-add-items *ngIf="isEdit.guestPlayers"-->
-<!--                 [items]="game?.guest.players"-->
-<!--                 [existingItems]="game?.guestPlayers"-->
-<!--                 [editTitle]="'Игроки гостей'"-->
-<!--                 (cancelEdit)="editSelect(null)"-->
-<!--                 (submitItems)="updateItems('guestPlayers', $event)"-->
-<!--  ></app-add-items>-->
-
-<!--  &lt;!&ndash;Игроки хозяев&ndash;&gt;-->
-<!--  <app-add-items *ngIf="isEdit.homePlayers"-->
-<!--                 [items]="game?.home?.players"-->
-<!--                 [existingItems]="game?.homePlayers"-->
-<!--                 [editTitle]="'Игроки хозяев'"-->
-<!--                 (cancelEdit)="editSelect(null)"-->
-<!--                 (submitItems)="updateItems('homePlayers', $event)"-->
-<!--  ></app-add-items>-->
-
-
-
 </div>
+
+
+<ng-template #editGameInfoRef>
+  <div class="m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditGameInfo()">edit</mat-icon>
+  </div>
+</ng-template>
+
+
+<ng-template #editHomePlayersRef>
+  <div class="m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditHomePlayers()">edit</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #editGuestPlayersRef>
+  <div class="guest m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditGuestPlayers()">edit</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #editRefereesPlayersRef>
+  <div class="guest m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditRefereesPlayers()">edit</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #editHomeManagersPlayersRef>
+  <div class="guest m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditHomeManagers()">edit</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #editGuestManagersPlayersRef>
+  <div class="guest m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">
+    <mat-icon (click)="onEditGuestManagers()">edit</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #addPunishmentsPlayersRef>
+  <div class="d-flex justify-content-around align-items-center">
+    <button mat-button mat-icon-button matTooltip="Добавить наказание хозяевам">
+      <mat-icon (click)="onAddHomePunishments()">add</mat-icon>
+    </button>
+    <button mat-button mat-icon-button matTooltip="Добавить наказание гостям">
+      <mat-icon (click)="onAddGuestPunishments()">add</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #addGoalsRef>
+  <div class="d-flex justify-content-around align-items-center">
+    <button mat-button mat-icon-button matTooltip="Добавить наказание хозяевам">
+      <mat-icon (click)="onAddHomeGoals()">add</mat-icon>
+    </button>
+    <button mat-button mat-icon-button matTooltip="Добавить наказание гостям">
+      <mat-icon (click)="onAddGuestGoals()">add</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<!--<ng-template #editPunishmentsPlayersRef>-->
+<!--  <div class="guest m-auto align-middle flex-grow-1 cursor-pointer d-flex justify-content-center">-->
+<!--    <mat-icon (click)="onEditPunishments()">edit</mat-icon>-->
+<!--  </div>-->
+<!--</ng-template>-->

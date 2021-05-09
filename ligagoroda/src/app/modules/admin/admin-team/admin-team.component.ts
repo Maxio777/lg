@@ -165,7 +165,6 @@ export class AdminTeamComponent implements OnInit, OnDestroy {
       this.candidatesIds.splice(index, 1);
     }
     this.cd.detectChanges();
-
   }
 
   getSelectedPlayers = (): PlayerAdmin[] => this.getPlayersForSelect.filter(player => player.selected);
@@ -205,18 +204,12 @@ export class AdminTeamComponent implements OnInit, OnDestroy {
     }
   }
 
-
   addTeamLG() {
-
     return this.restTeamService.postTeamLG(JSON.stringify(this.form.value)).subscribe(() => {
         this.getTeamLG();
         this.resetAllChanges();
-      },
-      error => console.log(error)
-    );
+      });
   }
-
-
 
   deleteTeamLG(_id: string): void {
     this.restTeamService.deleteTeamLG(_id).subscribe(() => {
@@ -261,7 +254,6 @@ export class AdminTeamComponent implements OnInit, OnDestroy {
         .trim().toLowerCase().includes(val.trim().toLowerCase()))
       : this.getPlayersForSelect;
   }
-
 
   filterForAddListManager(val: string) {
     this.filteredManagersForAdd = val

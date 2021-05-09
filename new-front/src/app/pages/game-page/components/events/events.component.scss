@@ -1,0 +1,13 @@
+@import "mixins/goals-and-punishments";
+@import "variables";
+
+
+.main {
+  @include goals-and-punishments;
+}
+
+.assistant {
+  font-size: 0.8rem;
+  color: $gray;
+  font-weight: 400;
+}

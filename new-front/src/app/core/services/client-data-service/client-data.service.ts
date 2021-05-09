@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, filter} from 'rxjs/operators';
 import {News, Tag} from '@models/news';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {PlayerClient, TeamLG, TournamentLG} from '@models/interfaces';
 import {TeamTable} from '@models/team-table';
 import {DataRestService} from '../../rest/data-rest-service/data-rest.service';
@@ -18,7 +18,7 @@ export class ClientDataService {
 
   /** subjects */
   tags: BehaviorSubject<Tag[]> = new BehaviorSubject<Tag[]>([]);
-  games: BehaviorSubject<GameLG[]> = new BehaviorSubject<GameLG[]>([]);
+  games: BehaviorSubject<Game[]> = new BehaviorSubject<Game[]>([]);
   players: BehaviorSubject<PlayerClient[]> = new BehaviorSubject<PlayerClient[]>([]);
   table: BehaviorSubject<TeamTable[]> = new BehaviorSubject<TeamTable[]>([]);
   news: BehaviorSubject<News[]> = new BehaviorSubject<News[]>([]);
@@ -39,8 +39,8 @@ export class ClientDataService {
   public getNews$ = (): BehaviorSubject<News[]> => this.news;
 
   /** games */
-  public setGames = (games: GameLG[]): void => this.games.next(games);
-  public getGames$ = (): BehaviorSubject<GameLG[]> => this.games;
+  public setGames = (games: Game[]): void => this.games.next(games);
+  public getGames$ = (): BehaviorSubject<Game[]> => this.games;
 
   /** players */
   public setPlayers = (players: PlayerClient[]): void => this.players.next(players);

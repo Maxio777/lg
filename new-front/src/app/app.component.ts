@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const contentContainer = document.querySelector('.mat-sidenav-content') || window;

@@ -10,7 +10,7 @@ const Table = require('../../middleware/createTable');
 const cache = require('../../middleware/cache');
 
 
-router.get('/current-tournament', cache(60),
+router.get('/current-tournament',
     async (req, res) => {
 
         try {

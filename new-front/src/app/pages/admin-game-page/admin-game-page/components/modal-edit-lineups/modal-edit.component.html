@@ -1,0 +1,16 @@
+<!--{{ data | json }}-->
+
+
+<ul>
+  <li *ngFor="let player of data?.allItems"
+      [class.selected]="player.selected"
+      (click)="player.selected = !player.selected">
+    {{ player.fullName }}
+  </li>
+</ul>
+
+
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="result" cdkFocusInitial>Сохранить</button>
+</div>

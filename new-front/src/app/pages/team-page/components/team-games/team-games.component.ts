@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 
 
 @Component({
@@ -9,5 +9,5 @@ import {GameLG} from '@models/game/game';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamGamesComponent {
-  @Input() games: GameLG[] | undefined;
+  @Input() games: Game[] | undefined;
 }

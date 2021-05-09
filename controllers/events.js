@@ -2,7 +2,6 @@ const Event = require('../models/Event');
 const { validationResult } = require('express-validator');
 
 
-
 module.exports.getAll = async (req, res) => {
     try {
         const event = await Event.find();
@@ -21,7 +20,7 @@ module.exports.add = async (req, res) => {
     try {
         const newEvent = new Event(req.body);
         await newEvent.save();
-        res.status(201).json({ message: `Событие было добавлено`, ev: newEvent._id })
+        res.status(201).json({ message: `Событие было добавлено`, _id: newEvent._id })
 
     } catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })

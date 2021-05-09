@@ -2,7 +2,7 @@ import { PlayerAdmin } from './interfaces';
 
 export interface EventLG {
   _id: string;
-  type: string;
+  type: number;
   minute: number;
   owner: PlayerAdmin;
   assistant: PlayerAdmin;

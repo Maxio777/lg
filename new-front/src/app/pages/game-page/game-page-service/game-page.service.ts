@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {PlayerClient} from '@models/interfaces';
 
 @Injectable({
@@ -7,7 +7,7 @@ import {PlayerClient} from '@models/interfaces';
 })
 export class GamePageService {
 
-  isHomeOrGuestPlayer(game: GameLG, isHome: boolean, id: string): boolean {
+  isHomeOrGuestPlayer(game: Game, isHome: boolean, id: string): boolean {
     let players: PlayerClient[] = [];
     if (game) {
       players = isHome ? game.homePlayers : game.guestPlayers;

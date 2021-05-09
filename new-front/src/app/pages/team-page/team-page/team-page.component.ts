@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef
 import {combineLatest, Subscription} from 'rxjs';
 import {PlayerClient, TeamLG} from '@models/interfaces';
 import {TeamTable} from '@models/team-table';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {filter, pluck} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
@@ -19,7 +19,7 @@ export class TeamPageComponent implements OnInit, OnDestroy {
   team: TeamLG | undefined;
   teamStatistic: TeamTable | undefined;
   players: PlayerClient[] | undefined;
-  games: GameLG[] | undefined;
+  games: Game[] | undefined;
 
   data$ = combineLatest(
     this.route.params.pipe(pluck('id')),

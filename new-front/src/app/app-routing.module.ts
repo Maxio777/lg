@@ -100,6 +100,14 @@ const routes: Routes = [
         path: 'tags',
         loadChildren: () => import('./pages/admin-tags-page/admin-tags-page.module').then(m => m.AdminTagsPageModule)
       },
+      {
+        path: 'referees',
+        loadChildren: () => import('./pages/admin-referees-page/admin-referees-page.module').then(m => m.AdminRefereesPageModule)
+      },
+      {
+        path: 'managers',
+        loadChildren: () => import('./pages/admin-managers-page/admin-managers-page.module').then(m => m.AdminManagersPageModule)
+      },
     ]
   },
   {

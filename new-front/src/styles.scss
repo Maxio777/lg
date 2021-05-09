@@ -41,7 +41,7 @@ h4 {
 }
 
 h5 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -64,6 +64,17 @@ p {
   }
 }
 
+@keyframes scale {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes move-right {
   from {
     opacity: 0;
@@ -77,6 +88,11 @@ p {
 
 .my-animation {
   animation: move 500ms;
+  animation-fill-mode: none;
+}
+
+.my-animation-field {
+  animation: scale 500ms;
   animation-fill-mode: none;
 }
 

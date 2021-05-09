@@ -18,8 +18,8 @@ const schema = new Schema({
         type: String,
     },
     date: {
-        type: Date,
-        default: null,
+        type: String,
+        default: '',
     },
     homePlayers: [{
         type: Types.ObjectId,

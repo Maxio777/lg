@@ -20,11 +20,11 @@ export class EventsRestService {
     return this.mainRestService.putLG(body, this.apiLG + unit);
   }
 
-  postEventLG(body: any): Observable<any> {
+  postEvent(body: any): Observable<any> {
     return this.mainRestService.postLG(body, this.apiLG);
   }
 
-  deleteEventLG(id: string): Observable<any> {
+  deleteEvent(id: string): Observable<any> {
     return this.mainRestService.deleteLG(this.apiLG + id);
   }
 }

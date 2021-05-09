@@ -8,7 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material/dialog';
 import {PlayersRestService} from '@core/rest/players-rest-service/players-rest.service';
-import {log} from 'util';
+
 
 @Component({
   selector: 'lg-admin-players-page',
@@ -27,10 +27,8 @@ export class AdminPlayersPageComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
-  // @Input() data: string[] = [];
   @Input() display: string[] = [];
   form: FormGroup = this.fb.group({});
-  isShowButton: boolean | undefined;
   selectedPlayerId = '';
   players: PlayerAdmin[] = [];
   teams: any;

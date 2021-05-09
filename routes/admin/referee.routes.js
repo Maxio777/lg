@@ -84,10 +84,10 @@ router.put('/referee', auth, [
         }
     });
 
-router.delete('/referee/', auth,
+router.delete('/referee/:_id', auth,
     async (req, res) => {
         try {
-            const { _id } = req.query;
+            const {_id} = req.params;
             const referee = await Referee.findOne({ _id });
 
             if (!referee) {

@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {getColor} from '@core/get-color';
 
 @Component({
@@ -9,7 +9,7 @@ import {getColor} from '@core/get-color';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatchScoreComponent {
-  @Input() game: GameLG | undefined;
+  @Input() game: Game | undefined;
   getColor = getColor;
 
 

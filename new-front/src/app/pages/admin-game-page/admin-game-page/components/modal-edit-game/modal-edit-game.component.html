@@ -1,0 +1,33 @@
+<!--{{ data | json }}-->
+
+
+<div [formGroup]="form" class="text-center flex-column d-flex">
+
+  <div class="d-flex">
+    <mat-form-field appearance="legacy" class="p-2">
+      <input #in type="datetime-local" label="" matInput placeholder="Дата" formControlName="date">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" class="p-2">
+      <input label="" type="number" matInput placeholder="Тур" formControlName="tour">
+    </mat-form-field>
+  </div>
+
+  <div class="d-flex">
+    <mat-form-field appearance="legacy" class="p-2">
+      <input label="" matInput placeholder="Голы хозяева - {{data?.home?.name}}" formControlName="homeGoal">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" class="p-2">
+      <input label="" matInput placeholder="Голы гости - {{data?.guest?.name}}" formControlName="guestGoal">
+    </mat-form-field>
+  </div>
+
+  <mat-checkbox formControlName="completed">Завершен/Незавершен</mat-checkbox>
+</div>
+
+
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="form.value" cdkFocusInitial>Сохранить</button>
+</div>

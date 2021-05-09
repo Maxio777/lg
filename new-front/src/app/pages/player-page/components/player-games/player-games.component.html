@@ -84,14 +84,15 @@
           </div>
         </div>
       </td>
-      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'goal')}}</td>
-      <td class="text-center d-none d-sm-table-cell">{{getAssistCount(game, player._id, 'goal')}}</td>
-      <td
-        class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'goal') + getAssistCount(game, player._id, 'goal')}}</td>
-      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'yellow')}}</td>
-      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'red')}}</td>
+      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, [eventTypes.Goal, eventTypes.PenaltyGoal])}}</td>
+      <td class="text-center d-none d-sm-table-cell">{{getAssistCount(game, player._id, eventTypes.Goal)}}</td>
+      <td class="text-center d-none d-sm-table-cell">
+        {{getEventCount(game, player._id, [eventTypes.Goal, eventTypes.PenaltyGoal]) + getAssistCount(game, player._id, eventTypes.Goal)}}
+      </td>
+      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, [eventTypes.Yellow])}}</td>
+      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, [eventTypes.Red])}}</td>
 <!--      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'penalty')}}</td>-->
-      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, 'autoGoal')}}</td>
+      <td class="text-center d-none d-sm-table-cell">{{getEventCount(game, player._id, [eventTypes.AutoGoal])}}</td>
       <td class="text-center">
         <lg-arrow [hover]="true" [routerLink]="'/games/' + game._id"></lg-arrow>
       </td>

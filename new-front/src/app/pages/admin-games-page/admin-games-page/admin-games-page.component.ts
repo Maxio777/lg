@@ -1,15 +1,14 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild, Input} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {MatTableDataSource} from '@angular/material/table';
 import {GamesRestService} from '@core/rest/games-rest-service/games-rest.service';
 import {FormGroup} from '@angular/forms';
-import {GameUpdate} from '@models/game/game-update';
 import {MatDialog} from '@angular/material/dialog';
-import {PlayerAdmin, TeamLG, TournamentLG} from '@models/interfaces';
+import {TeamLG, TournamentLG} from '@models/interfaces';
 import {initForm} from '@core/helpers';
 import {GameCreate} from '@models/game/game-create';
 import {RestTournamentService} from '@core/rest/tournament-rest-service/rest-tournament.service';
@@ -29,7 +28,7 @@ export class AdminGamesPageComponent implements OnInit, OnDestroy {
   @Input() data: string[] = [];
   @Input() display: string[] = [];
 
-  games: GameLG[] = [];
+  games: Game[] = [];
   tournaments: TournamentLG[] = [];
   teams: TeamLG[] = [];
   subs: Subscription = new Subscription();
@@ -61,7 +60,7 @@ export class AdminGamesPageComponent implements OnInit, OnDestroy {
   }
 
   addGames(): void {
-    this.gamesRestService.postGame(GameCreate.fromJS(this.form.getRawValue()))
+    this.gamesRestService.postGame(GameCreate.fromJs(this.form.getRawValue()))
       .subscribe(
         () => {
           this.getGames();
@@ -82,14 +81,14 @@ export class AdminGamesPageComponent implements OnInit, OnDestroy {
 
   /* Инициализация таблицы*/
   private initTable(): void {
-    this.dataSource = new MatTableDataSource<GameLG>(this.games);
+    this.dataSource = new MatTableDataSource<Game>(this.games);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
   private getGames(): void {
-    this.subs.add(this.gamesRestService.getGame<GameLG[]>()
-      .subscribe((games: GameLG[]) => {
+    this.subs.add(this.gamesRestService.getGame<Game[]>()
+      .subscribe((games: Game[]) => {
         this.games = games;
         this.initTable();
       }));

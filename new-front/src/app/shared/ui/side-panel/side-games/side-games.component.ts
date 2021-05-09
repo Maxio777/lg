@@ -1,6 +1,6 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {getColor} from '@core/get-color';
 
 @Component({
@@ -22,7 +22,7 @@ export class SideGamesComponent {
   constructor(public clientDataService: ClientDataService) {
   }
 
-  filterGames(games: GameLG[]): GameLG[] {
+  filterGames(games: Game[]): Game[] {
     return this.gamesFilter ?
       games.filter(g => this.gamesFilter === 'completed' ? g.completed : !g.completed)
       : games;

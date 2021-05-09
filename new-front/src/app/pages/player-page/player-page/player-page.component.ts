@@ -28,6 +28,7 @@ export class PlayerPageComponent implements OnInit, OnDestroy {
     this.subs.add(this.data$.pipe(filter(([id, bool]) => id && bool))
       .subscribe(([id, _]) => {
         this.player = this.clientDataService.playersMap.get(id);
+        console.log(this.player);
         this.cd.detectChanges();
       }));
   }

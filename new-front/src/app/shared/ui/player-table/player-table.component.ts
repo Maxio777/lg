@@ -23,7 +23,7 @@ export class PlayerTableComponent {
 
   getPercent(player: PlayerClient, item: 'goalsCount' | 'assistsCount' | 'goalsAssists' ): number {
     if (player && player.gamesCount && player[item]) {
-      return player.gamesCount / Number(player[item]);
+      return Number(player[item] / player.gamesCount);
     }
     return 0;
   }

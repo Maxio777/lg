@@ -1,24 +1,5 @@
-import {GameLG} from './game/game';
 import {ManagerLG} from './manager';
-
-
-export interface Game {
-  id: number;
-  home: Team;
-  guest: Team;
-  goals: Goal[];
-  home_goal: number;
-  guest_goal: number;
-  completed: boolean;
-  date: string;
-  guest_players: Player[];
-  home_players: Player[];
-  punishment: Punishment[];
-  referees: Referee[];
-  time?: string;
-  tour: number;
-  tournament: Tournament;
-}
+import {Game} from '@models/game/game';
 
 export interface Goal {
   id: number;
@@ -39,7 +20,7 @@ export interface TeamLG {
   _id: string;
   name: string;
   players: PlayerAdmin[];
-  games: GameLG[];
+  games: Game[];
   managers: ManagerLG[];
   img: string;
   isLoading?: boolean;
@@ -63,7 +44,7 @@ export interface PlayerClient {
   autoGoals?: number;
   penalty?: number;
   yellowReds?: number;
-  games?: GameLG[];
+  games?: Game[];
   teams?: { _id: string, name: string, img: string }[]; // команды конкретного турнира, обогащается на фронте
 }
 

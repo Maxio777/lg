@@ -19,6 +19,15 @@ import {SideImageSkeletonComponent} from './side-panel/side-image-skeleton/side-
 import {SideNewsComponent} from './side-panel/side-news/side-news.component';
 import {MatRippleModule} from '@angular/material/core';
 import {AdminFileUploadComponent} from './admin-file-upload/admin-file-upload.component';
+import {GoalsComponent} from 'src/app/pages/game-page/components/goals/goals.component';
+import {LineupsComponent} from 'src/app/pages/game-page/components/lineups/lineups.component';
+import {MatchInfoComponent} from 'src/app/pages/game-page/components/match-info/match-info.component';
+import {EventsComponent} from 'src/app/pages/game-page/components/events/events.component';
+import {TeamNameComponent} from 'src/app/pages/game-page/components/team-name/team-name.component';
+import {MatchScoreComponent} from 'src/app/pages/game-page/components/match-info/match-score/match-score.component';
+import {RefereesComponent} from 'src/app/pages/game-page/components/referees/referees.component';
+import {TourDateCompletedComponent} from 'src/app/pages/game-page/components/match-info/tour-date-completed/tour-date-completed.component';
+import {ManagersComponent} from 'src/app/pages/game-page/components/managers/managers.component';
 
 
 const components = [
@@ -35,7 +44,16 @@ const components = [
   SideSkeletonComponent,
   SideImageSkeletonComponent,
   SideNewsComponent,
-  AdminFileUploadComponent
+  AdminFileUploadComponent,
+  GoalsComponent,
+  LineupsComponent,
+  MatchInfoComponent,
+  EventsComponent,
+  TeamNameComponent,
+  MatchScoreComponent,
+  RefereesComponent,
+  TourDateCompletedComponent,
+  ManagersComponent
 ];
 
 

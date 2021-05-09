@@ -1,0 +1,34 @@
+<div class="main">
+  <div class="title">{{isGoals ? 'Голы' : 'Наказания'}}:</div>
+  <ng-content></ng-content>
+
+  <table>
+    <colgroup>
+      <col style = "width:43%">
+      <col style = "width:14%">
+      <col style = "width:43%">
+    </colgroup>
+    <tbody>
+    <tr *ngFor="let event of events">
+      <th>
+        <div class="pb-4 home" *ngIf="gamePageService.isHomeOrGuestPlayer(game,true, event?.owner?._id)">
+          <div class="position-relative">
+            {{event?.owner?.firstName}} {{event?.owner?.lastName}}
+            <button mat-icon-button class="pencil" (click)="openDialogDeleteConfirm(event?._id)">
+              <mat-icon matTooltip="Удалить событие">close</mat-icon>
+            </button>
+          </div>
+          <div class="assistant" *ngIf="event?.assistant">{{event?.assistant?.firstName}} {{event?.assistant?.lastName}}</div>
+        </div>
+      </th>
+      <th class="minute">{{event?.minute}}`</th>
+      <th>
+        <div class="guest" *ngIf="gamePageService.isHomeOrGuestPlayer(game,false, event?.owner?._id)">
+          {{event?.owner?.firstName}} {{event?.owner?.lastName}}
+        </div>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

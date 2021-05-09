@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
 @Component({
@@ -12,7 +12,7 @@ import {ClientDataService} from '@core/services/client-data-service/client-data.
 export class GamesPageComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   search = '';
-  games: GameLG[] = [];
+  games: Game[] = [];
   isLoad = false;
 
 
@@ -29,13 +29,13 @@ export class GamesPageComponent implements OnInit, OnDestroy {
     }));
   }
 
-  _search(g: GameLG): boolean {
+  _search(g: Game): boolean {
     return this.search
       ? g.home.name.toLowerCase().includes(this.search.toLowerCase()) || g.guest.name.toLowerCase().includes(this.search.toLowerCase())
       : true;
   }
 
-  get displayGames(): GameLG[] {
+  get displayGames(): Game[] {
     return this.games.filter(g => this._search(g));
   }
 

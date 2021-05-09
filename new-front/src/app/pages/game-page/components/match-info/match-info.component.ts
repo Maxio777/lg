@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 
 @Component({
   selector: 'lg-match-info',
@@ -8,5 +8,5 @@ import {GameLG} from '@models/game/game';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatchInfoComponent {
-  @Input() game: GameLG | undefined;
+  @Input() game: Game | undefined;
 }

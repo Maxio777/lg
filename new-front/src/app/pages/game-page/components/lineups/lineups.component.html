@@ -4,6 +4,7 @@
   <div class="lineups d-flex">
 
     <div class="home col-6 pl-0 pr-1">
+      <ng-content select="home"></ng-content>
       <ng-container
         [ngTemplateOutlet]="playersRef"
         [ngTemplateOutletContext]="{$implicit: game?.homePlayers}">
@@ -12,6 +13,7 @@
     </div>
 
     <div class="guest col-6 pr-0 pl-1">
+      <ng-content select="guest"></ng-content>
       <ng-container
         [ngTemplateOutlet]="playersRef"
         [ngTemplateOutletContext]="{$implicit: game?.guestPlayers}">
@@ -29,7 +31,7 @@
       <td>
         <img src="{{player?.img  || '../assets/img/defaultImage.png'}}" class="player-img" alt="">
         <span class="name">
-          <a routerLink="/players/{{player._id}}">{{player?.firstName}} {{player?.lastName}}</a>
+          <a routerLink="/players/{{player?._id}}">{{player?.firstName}} {{player?.lastName}}</a>
         </span>
       </td>
     </tr>

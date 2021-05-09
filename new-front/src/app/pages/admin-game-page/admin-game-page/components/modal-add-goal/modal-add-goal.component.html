@@ -1,0 +1,40 @@
+<div [formGroup]="form" class="text-center flex-column d-flex">
+
+  <mat-form-field>
+    <mat-label>Гол</mat-label>
+    <mat-select placeholder="Тип нарушения" required formControlName="type">
+      <mat-option [value]="goalType" *ngFor="let goalType of goalsOptions">
+        <div class="d-flex align-items-center">
+          <img src="assets/img/icons/events/{{goalType}}.png" alt="" class="img mr-3">
+          <div>{{ goalType | eventsToString}}</div>
+        </div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input label="" type="number"matInput placeholder="Минута" formControlName="minute">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Автор</mat-label>
+    <mat-select placeholder="Тип нарушения" required formControlName="owner">
+      <mat-option [value]="player?._id" *ngFor="let player of data?.players">{{ player?.fullName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="isGoalAndOwner" class="my-animation-field">
+    <mat-label>Ассистент</mat-label>
+    <mat-select placeholder="Тип нарушения" formControlName="assistant">
+      <mat-option [value]="player?._id" *ngFor="let player of assistantOptions">{{ player?.fullName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button
+          [disabled]="form.invalid"
+          [mat-dialog-close]="form.value" cdkFocusInitial>Сохранить</button>
+</div>

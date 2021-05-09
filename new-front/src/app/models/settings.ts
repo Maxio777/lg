@@ -7,7 +7,7 @@ export class Settings {
     this.formats = settings.formats || [];
   }
 
-  static fromJS(settings: any): Settings | null {
+  static fromJs(settings: any): Settings | null {
     if (settings) {
       return new Settings(settings);
     } else {

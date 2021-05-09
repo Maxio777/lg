@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {Subscription, combineLatest} from 'rxjs';
 import {filter, pluck} from 'rxjs/operators';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {ActivatedRoute} from '@angular/router';
 import {ClientDataService} from '@core/services/client-data-service/client-data.service';
 
@@ -19,7 +19,7 @@ export class GamePageComponent implements OnInit, OnDestroy {
     this.route.params.pipe(pluck('id')),
     this.clientDataService.getIsInitAppData()
   );
-  game: GameLG | undefined;
+  game: Game | undefined;
 
   constructor(private route: ActivatedRoute, private clientDataService: ClientDataService, private cd: ChangeDetectorRef) {
   }

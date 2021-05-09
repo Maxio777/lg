@@ -19,6 +19,10 @@ export class GamesRestService {
     return this.mainRestService.putLG(body, this.apiLG + unit);
   }
 
+  _updateGame(_id: string, body: any): Observable<any> {
+    return this.mainRestService.putLG(body, this.apiLG + _id);
+  }
+
   postGame(body: any): Observable<any> {
     return this.mainRestService.postLG(body, this.apiLG);
   }

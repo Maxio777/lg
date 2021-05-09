@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {PlayerClient, TeamLG, TournamentLG} from '@models/interfaces';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {Observable} from 'rxjs';
 import {News, Tag} from '@models/news';
 import {TeamTable} from '@models/team-table';
@@ -14,7 +14,7 @@ export class DataRestService {
   constructor(private mainRestService: MainRestService) {
   }
 
-  getAllDataLG(id: string): Observable<[GameLG[], PlayerClient[], News[], TournamentLG, TeamTable[], TeamLG[], Tag[]]> {
+  getAllDataLG(id: string): Observable<[Game[], PlayerClient[], News[], TournamentLG, TeamTable[], TeamLG[], Tag[]]> {
     return this.mainRestService.getLG(this.apiLG + id);
   }
 

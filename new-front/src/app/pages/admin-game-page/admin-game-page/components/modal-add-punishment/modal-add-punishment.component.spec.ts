@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PunishmentsComponent } from './punishments.component';
+import { ModalAddPunishmentComponent } from './modal-add-punishment.component';
 
-describe('PunishmentsComponent', () => {
-  let component: PunishmentsComponent;
-  let fixture: ComponentFixture<PunishmentsComponent>;
+describe('ModalAddPunishmentComponent', () => {
+  let component: ModalAddPunishmentComponent;
+  let fixture: ComponentFixture<ModalAddPunishmentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PunishmentsComponent ]
+      declarations: [ ModalAddPunishmentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PunishmentsComponent);
+    fixture = TestBed.createComponent(ModalAddPunishmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

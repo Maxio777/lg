@@ -5,6 +5,7 @@ import {UiModule} from './ui/ui.module';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
+import {EventsToStringPipe} from 'src/app/shared/pipes/events-to-string.pipe';
 
 const MODULES = [
   MaterialModule,
@@ -12,19 +13,19 @@ const MODULES = [
   NgxSkeletonLoaderModule,
   ReactiveFormsModule,
   FormsModule,
-  NgxTrimDirectiveModule
+  NgxTrimDirectiveModule,
 ];
 
 
 @NgModule({
-  declarations: [],
+  declarations: [EventsToStringPipe],
   imports: [
     CommonModule,
-
     ...MODULES
   ],
   exports: [
-    ...MODULES
+    ...MODULES,
+    EventsToStringPipe
   ]
 })
 export class SharedModule {

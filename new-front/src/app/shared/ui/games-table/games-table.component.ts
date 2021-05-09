@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {GameLG} from '@models/game/game';
+import {Game} from '@models/game/game';
 import {getColor} from '@core/get-color';
 
 @Component({
@@ -9,7 +9,7 @@ import {getColor} from '@core/get-color';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamesTableComponent {
-  @Input() games: GameLG[] = [];
+  @Input() games: Game[] = [];
   gamesFilter = '';
   filterSrt = [
     {name: 'ВСЕ', str: ''},
@@ -18,11 +18,11 @@ export class GamesTableComponent {
   ];
   getColor = getColor;
 
-  get displayGames(): GameLG[] {
+  get displayGames(): Game[] {
     return this.games?.filter(g => this.filterGames(g));
   }
 
-  filterGames(g: GameLG): boolean {
+  filterGames(g: Game): boolean {
     return this.gamesFilter
       ? this.gamesFilter === 'completed' ? g.completed : !g.completed
       : true;
